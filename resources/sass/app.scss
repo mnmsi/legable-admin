@@ -26,7 +26,12 @@ body {
 @import "components/breadcrumb";
 //card
 @import "components/card";
-
+//welcome card
+@import "components/welcomeCard";
+//keep safe card
+@import "components/keep-safe-card";
+//help card
+@import "components/helpCard";
 .block-min-height {
     min-height: calc(100vh - 270px);
 }
@@ -142,6 +147,5 @@ body {
         .modal-header {
             border-bottom: none;
         }
-
     }
 }

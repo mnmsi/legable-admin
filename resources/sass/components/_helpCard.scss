@@ -1,0 +1,50 @@
+.help-center-card-wrapper {
+    position: relative;
+
+    .help-center-card-content-wrapper {
+        height: 248px;
+        background: #175067;
+        border-radius: 10px;
+        padding: 16px;
+    }
+
+    .help-card-content {
+        text-align: center;
+
+        h2 {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+
+        p {;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+    }
+
+    .help-center-question-mark {
+        position: absolute;
+        top: 0;
+    }
+
+    .help-card-footer {
+        a {
+            background: #FFFFFF;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: -0.02em;
+            color: #141522;
+            display: block;
+            padding: 10px 0;
+        }
+    }
+}
