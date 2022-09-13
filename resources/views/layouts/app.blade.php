@@ -11,7 +11,7 @@
     <!--Main Navigation-->
     {{-- sidebar --}}
     @include('includes.sidebar')
-    <div class="mt-3">
+    <div class="mt-4">
         <div class="main-content">
             <div class="container-fluid">
                 @yield('content')
