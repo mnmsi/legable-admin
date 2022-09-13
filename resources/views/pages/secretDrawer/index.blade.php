@@ -2,12 +2,25 @@
 @section('content')
     <x-breadcrumb title="Drawers" subtitle="Welcome, IOTA Infotech Limited 👋 " buttonText="+ Add Drawer " link="/drawer/add"/>
     <div class="block-wrapper block-min-height wrapper-block">
-        <h3>asd</h3>
-        <h3>asd</h3>
-        <h3>asd</h3>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+        <x-card icon="{{asset('image/card/card-icon.svg')}}" title="Document"
+                date="Sep 25, 2022, 13:25 PM"/>
+
+
+
+{{--        modal--}}
+{{--        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+{{--            Launch demo modal--}}
+{{--        </button>--}}
 
         <!-- Modal -->
         <div class="modal fade global-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

@@ -43,6 +43,6 @@
 .wrapper-block {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
     gap: 30px;
 }
