@@ -26,9 +26,11 @@ body {
 @import "components/breadcrumb";
 //card
 @import "components/card";
+// content
+@import "includes/content";
 
 .block-min-height {
-    min-height: calc(100vh - 270px);
+    min-height: calc(100vh - 280px);
 }
 
 .block-wrapper {
@@ -40,13 +42,24 @@ body {
 }
 
 //header global
+.sub-header6{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303E49;
+}
 .sub-header5 { //h5 tag
     font-weight: 600;
     font-size: 18px;
     line-height: 27px;
     color: #175067;
 }
-
+.sub-header2{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 18px;
+    color: #303E49;
+}
 .sub-header3 {
     color: #303E49;
     font-weight: 600;

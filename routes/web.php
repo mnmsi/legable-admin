@@ -20,12 +20,14 @@ Route::get('/', function () {
 
 //drawer
 Route::get('/drawer', function () {
-//    return view('welcome');
     return view("pages.secretDrawer.index");
 });
 Route::get('/drawer/add', function () {
-//    return view('welcome');
     return view("pages.secretDrawer.add");
+});
+
+Route::get('/content', function () {
+    return view("pages.allContent.index");
 });
 
 //Auth::routes();
