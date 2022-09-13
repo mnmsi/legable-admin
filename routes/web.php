@@ -18,6 +18,16 @@ Route::get('/', function () {
     return view("dashboard.index");
 });
 
-Auth::routes();
+//drawer
+Route::get('/drawer', function () {
+//    return view('welcome');
+    return view("pages.secretDrawer");
+});
+Route::get('/drawer/add', function () {
+//    return view('welcome');
+    return view("pages.secretDrawer.add");
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

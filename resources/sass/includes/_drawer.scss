@@ -1,0 +1,13 @@
+// add drawer
+.drawer-add-wrapper{
+    margin: 0px;
+    .items-block{
+        padding: 20px 50px 30px 20px ;
+        &:first-child{
+            border-right: 1px solid #ECD3B1;
+        }
+        &:last-child{
+            padding-left: 50px;
+        }
+    }
+}
