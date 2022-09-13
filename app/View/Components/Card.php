@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use Closure;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Card extends Component
@@ -11,15 +13,23 @@ class Card extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $icon;
+    public $title;
+    public $date;
+    public $id;
+
+    public function __construct($icon = "", $title = "", $date = "", $id = "")
     {
-        //
+        $this->icon = $icon;
+        $this->title = $title;
+        $this->date = $date;
+        $this->id = $id;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View|Closure|string
      */
     public function render()
     {
