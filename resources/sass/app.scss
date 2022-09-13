@@ -22,10 +22,10 @@ body {
 @import "includes/sidebar";
 //drawer
 @import "includes/drawer";
-
-
 //breadcrumb
 @import "components/breadcrumb";
+//card
+@import "components/card";
 
 .block-min-height {
     min-height: calc(100vh - 270px);

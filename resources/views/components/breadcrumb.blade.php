@@ -4,8 +4,10 @@
     </div>
     <div class="icon-button-wrapper">
         <p>{{$subtitle}}</p>
-        <a href="{{$link}}"><img src="{{$buttonIcon}}" alt="image">
-            <div>{{$buttonText}}</div>
-        </a>
+        @if($buttonText != "" && $buttonIcon != "")
+            <a href="{{$link}}"><img src="{{$buttonIcon}}" alt="image">
+                <div>{{$buttonText}}</div>
+            </a>
+        @endif
     </div>
 </div>
