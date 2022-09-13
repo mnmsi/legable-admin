@@ -3,7 +3,7 @@
         <h2>{{$title}}</h2>
     </div>
     <div class="icon-button-wrapper">
-        <p>{{$checkBreadCrumb()}}</p>
+        <p>{{$subtitle}}</p>
         <a href="{{$link}}"><img src="{{$buttonIcon}}" alt="image">
             <div>{{$buttonText}}</div>
         </a>

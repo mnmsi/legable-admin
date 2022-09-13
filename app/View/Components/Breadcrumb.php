@@ -28,7 +28,6 @@ class Breadcrumb extends Component
         $this->buttonText = $buttonText;
         $this->link = $link;
         $this->id = $id;
-        $this->isBreadCrumb = $breadCrumb;
 
     }
 
