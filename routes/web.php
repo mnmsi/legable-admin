@@ -30,6 +30,10 @@ Route::get('/content', function () {
     return view("pages.allContent.index");
 });
 
+Route::get('/content/upload', function () {
+    return view("pages.allContent.upload");
+});
+
 //Auth::routes();
 //
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,12 +2,14 @@
     background: none !important;
     box-shadow: none !important;
     padding: 0px !important;
-    .conten-items{
+
+    .conten-items {
         display: grid;
         grid-gap: 30px;
         grid-template-columns: repeat(auto-fit, 240px);
     }
-    .bottom-block{
+
+    .bottom-block {
 
     }
 }
@@ -59,5 +61,18 @@
         img {
             height: 20px;
         }
+    }
+}
+
+//upload
+.content-upload-wrapper {
+    display: flex;
+    align-content: center;
+    .form-body {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
