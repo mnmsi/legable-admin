@@ -1,13 +1,48 @@
 // add drawer
-.drawer-add-wrapper{
+.drawer-add-wrapper {
     margin: 0px;
-    .items-block{
-        padding: 20px 50px 30px 20px ;
-        &:first-child{
+
+    .items-block {
+        padding: 20px 50px 30px 20px;
+
+        &:first-child {
             border-right: 1px solid #ECD3B1;
         }
-        &:last-child{
+
+        &:last-child {
             padding-left: 50px;
         }
     }
+
+    .add-wrap-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        flex-direction: column;
+
+        h5 {
+            color: #FB8B24;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center;
+            color: #303E49;
+        }
+    }
+}
+
+// index
+.wrapper-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
 }

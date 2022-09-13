@@ -24,90 +24,124 @@ body {
 @import "includes/drawer";
 
 
-//page title
-.page-title-wrapper {
-    border-bottom: 1px solid rgba(102, 112, 133, 0.2);
+//breadcrumb
+@import "components/breadcrumb";
 
-    .page-name-wrapper {
-        h2 {
-            font-weight: 600;
-            font-size: 28px;
-            color: #303E49;
-            margin-bottom: 0;
-        }
-
-    }
-
-    .icon-button-wrapper {
-        display: flex;
-        margin-bottom: 1rem;
-        justify-content: space-between;
-        align-items: center;
-
-        p {
-            margin-bottom: 0;
-            font-weight: 400;
-            font-size: 16px;
-            color: #7C7C7C;
-        }
-
-        a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            background: #F0F3F4;
-            border-radius: 100px;
-            padding: 9px 24px;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: -0.005em;
-            color: #175067;
-
-        }
-    }
+.block-min-height {
+    min-height: calc(100vh - 270px);
 }
 
-.block-wrapper{
+.block-wrapper {
     background: #FFFFFF;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     padding: 30px;
-    min-height: 100vh;
     margin: 30px 0px;
 }
 
 //header global
-.sub-header5{ //h5 tag
+.sub-header5 { //h5 tag
     font-weight: 600;
     font-size: 18px;
     line-height: 27px;
     color: #175067;
 }
 
+.sub-header3 {
+    color: #303E49;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+}
+
 //form data design
-.all-form-wrapper{
-    .form-label{
+.all-form-wrapper {
+    .form-label {
         font-weight: 400;
         font-size: 16px;
         line-height: 30px;
         letter-spacing: 0.015em;
         color: #282A2C;
     }
-    .form-control{
+
+    .form-label-2 {
+        color: #7C7C7C;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .form-control {
         padding: 11px 24px;
         border: 1px solid #D7E8EF;
         border-radius: 4px;
-        &:focus{
+
+        &:focus {
             box-shadow: none;
         }
-        &::placeholder{
+
+        &::placeholder {
             font-weight: 400;
             font-size: 14px;
             line-height: 30px;
             letter-spacing: 0.015em;
             color: rgba(23, 80, 103, 0.5);
         }
+    }
+
+    .form-check-label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.015em;
+        color: #175067
+    }
+
+    .form-check-input {
+        &:focus {
+            box-shadow: none;
+            border-color: #FB8B24;
+        }
+
+        &:checked {
+            background-color: #FB8B24;
+            border-color: #FB8B24;
+        }
+    }
+}
+
+.submit-btn {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #F8F8F8;
+    background: #175067;
+    border-radius: 5px;
+    padding: 12px 0px;
+    width: 100%;
+
+    &:hover {
+        background-color: #175067 !important;
+        border-color: #175067 !important;
+    }
+}
+
+//modal
+.global-modal {
+    .modal-width {
+        max-width: 650px;
+    }
+
+    .modal-content {
+        background: #FBF5F0;
+        border-radius: 5px;
+        padding: 60px 60px;
+
+        .modal-header {
+            border-bottom: none;
+        }
+
     }
 }
