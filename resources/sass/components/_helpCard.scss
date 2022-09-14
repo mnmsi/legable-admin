@@ -1,7 +1,8 @@
 .help-center-card-wrapper {
     position: relative;
-    max-width: 188px;
+    max-width: 90%;
     margin: 0 auto;
+    z-index: 1;
 
     .help-center-card-content-wrapper {
         height: 248px;

@@ -52,7 +52,7 @@
             </div>
             {{--   Menu Break Title end --}}
             {{--            single menu item--}}
-            <a href="/device" class="single-menu-wrapper">
+            <a href="/device" class="single-menu-wrapper {{request()->is("device") ? "active" : ""}}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/device.svg")}}" alt="icon">
