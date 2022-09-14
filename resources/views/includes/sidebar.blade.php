@@ -73,7 +73,8 @@
             </a>
             {{-- single menu item --}}
             {{--   single menu item--}}
-            <a href="#" class="single-menu-wrapper">
+            <a href="/security-settings"
+               class="single-menu-wrapper {{request()->is("security-settings") ? "active" : ""}}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/security.svg")}}" alt="icon">
