@@ -52,7 +52,7 @@
             </div>
             {{--   Menu Break Title end --}}
             {{--            single menu item--}}
-            <a href="#" class="single-menu-wrapper">
+            <a href="/device" class="single-menu-wrapper">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/device.svg")}}" alt="icon">

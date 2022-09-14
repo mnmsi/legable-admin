@@ -22,6 +22,10 @@ Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
 });
 
+Route::get("/device", function () {
+    return view("pages.device.index");
+});
+
 //drawer
 Route::get('/drawer', function () {
     return view("pages.secretDrawer.index");
