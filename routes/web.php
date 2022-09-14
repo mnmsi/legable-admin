@@ -24,12 +24,18 @@ Route::get("/search-empty", function () {
 
 //drawer
 Route::get('/drawer', function () {
-//    return view('welcome');
     return view("pages.secretDrawer.index");
 });
 Route::get('/drawer/add', function () {
-//    return view('welcome');
     return view("pages.secretDrawer.add");
+});
+
+Route::get('/content', function () {
+    return view("pages.allContent.index");
+});
+
+Route::get('/content/upload', function () {
+    return view("pages.allContent.upload");
 });
 
 //Auth::routes();

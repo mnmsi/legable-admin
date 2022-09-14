@@ -34,8 +34,10 @@ body {
 @import "components/helpCard";
 //empty search
 @import "pages/search-empty";
+// content
+@import "includes/content";
 .block-min-height {
-    min-height: calc(100vh - 270px);
+    min-height: calc(100vh - 280px);
 }
 
 .dashboard-section-title {
@@ -54,11 +56,25 @@ body {
 }
 
 //header global
+.sub-header6 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303E49;
+}
+
 .sub-header5 { //h5 tag
     font-weight: 600;
     font-size: 18px;
     line-height: 27px;
     color: #175067;
+}
+
+.sub-header2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 18px;
+    color: #303E49;
 }
 
 .sub-header3 {
@@ -124,6 +140,42 @@ body {
             border-color: #FB8B24;
         }
     }
+
+    .form-select {
+        border: 1px solid #D7E8EF;
+        border-radius: 4px;
+        letter-spacing: 0.015em;
+        color: rgba(23, 80, 103, 0.5);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 30px;
+        padding: 8px 20px;
+    }
+
+    .custom-file-upload {
+        border: 1px dashed #175067 !important;
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 30px;
+        color: rgba(23, 80, 103, 0.5);
+        padding: 8px 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:before {
+            content: url('/image/content/cloud.svg');
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    }
+}
+
+#file-upload {
+    display: none;
 }
 
 .submit-btn {
