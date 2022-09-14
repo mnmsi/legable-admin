@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+    @include('includes.footer')
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>

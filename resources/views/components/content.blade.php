@@ -1,4 +1,4 @@
-<div class="content-block-2">
+<div class="content-block-2" id="{{$id}}">
     <img src="{{$url}}" alt="" class="img-fluid top-icon" />
     <div class="footer-item">
         <p>{{$title}}</p>

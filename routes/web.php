@@ -43,8 +43,7 @@ Route::get('/drawer/add', function () {
 });
 
 Route::get('/content', function () {
-    return view("pages.allContent.
-    index");
+    return view("pages.allContent.index");
 });
 
 Route::get('/drawer/upload', function () {
