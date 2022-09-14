@@ -32,8 +32,17 @@ body {
 @import "components/keep-safe-card";
 //help card
 @import "components/helpCard";
+//empty search
+@import "pages/search-empty";
 .block-min-height {
     min-height: calc(100vh - 270px);
+}
+
+.dashboard-section-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #175067;
 }
 
 .block-wrapper {

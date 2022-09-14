@@ -1,15 +1,28 @@
 .help-center-card-wrapper {
     position: relative;
+    max-width: 188px;
+    margin: 0 auto;
 
     .help-center-card-content-wrapper {
         height: 248px;
-        background: #175067;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        background-color: #1a202c;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
         border-radius: 10px;
         padding: 16px;
     }
 
     .help-card-content {
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
 
         h2 {
             font-weight: 600;
@@ -29,16 +42,21 @@
 
     .help-center-question-mark {
         position: absolute;
+        left: 50%;
         top: 0;
+        transform: translate(-50%, -50%);
     }
 
     .help-card-footer {
+        width: 100%;
+
         a {
             background: #FFFFFF;
             border-radius: 10px;
             text-align: center;
             text-decoration: none;
             font-weight: 600;
+            width: 100%;
             font-size: 12px;
             line-height: 18px;
             letter-spacing: -0.02em;

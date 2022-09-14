@@ -1,6 +1,5 @@
 @import "../variables";
 
-
 .sidebar-wrapper {
     .sidebar-sticky-wrapper {
         position: sticky;
@@ -57,7 +56,6 @@
                 transform: translate(-50%, -50%);
             }
         }
-
     }
 
     //    sidebar menu
@@ -74,6 +72,10 @@
 
             &.active {
                 background: #D7E8EF;
+
+                &:hover {
+                    background: #D7E8EF;
+                }
             }
 
             &:hover {
@@ -94,8 +96,6 @@
                     font-size: 14px;
                 }
             }
-
-
         }
 
         .menu-break-title-wrapper {
@@ -107,7 +107,6 @@
                 text-transform: uppercase;
                 color: #89A79A;
             }
-
         }
     }
 
