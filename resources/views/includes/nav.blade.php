@@ -25,7 +25,7 @@
                             </p>
                         </li>
                         <li class="body-item">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/account-settings">
                                 <img src="{{asset('image/sidebar/icon1.png')}}" alt=""/>
                                 <label>Account Settings</label>
                             </a>

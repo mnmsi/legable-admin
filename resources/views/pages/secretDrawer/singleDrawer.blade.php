@@ -24,8 +24,8 @@
             </div>
         </div>
     </div>
-    @include('includes.modal',['id'=>'','close_id'=>'','class'=>''])
-    @include('includes.addBoxModal')
+    @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
+    @include('includes.modal.addBox')
 @endsection
 
 
