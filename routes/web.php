@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 //    return view('welcome');
-    return view("dashboard.index");
+    return view("pages.dashboard.index");
+});
+
+Route::get("/search-empty", function () {
+    return view("pages.dashboard.empty");
 });
 
 //drawer

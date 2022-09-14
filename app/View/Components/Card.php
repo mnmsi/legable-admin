@@ -17,13 +17,15 @@ class Card extends Component
     public $title;
     public $date;
     public $id;
+    public $isThreeDotShow;
 
-    public function __construct($icon = "", $title = "", $date = "", $id = "")
+    public function __construct($icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "")
     {
         $this->icon = $icon;
         $this->title = $title;
         $this->date = $date;
         $this->id = $id;
+        $this->isThreeDotShow = $isThreeDotShow;
     }
 
     /**
