@@ -3,7 +3,7 @@
     <x-breadcrumb title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
                   buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files"/>
     {{--    page content start--}}
-    <div class="search-page-wrapper">
+    <div class="search-page-wrapper block-min-height">
         <div class="search-image-wrapper">
             <img src="{{asset("image/dashboard/empty-folder.svg")}}" alt="" class="img-fluid" loading="lazy">
         </div>
