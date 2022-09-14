@@ -1,0 +1,63 @@
+.security-settings-wrapper {
+    .setting-title-bar-wrapper {
+        margin-bottom: 30px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #D7E8EF;
+
+        .change-password-title-content {
+            h4 {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 30px;
+                color: #175067;
+            }
+
+            p {
+                font-style: normal;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 0;
+                color: #7C7C7C;
+            }
+        }
+    }
+
+    .change-password-button-wrapper {
+        margin-top: 50px;
+        margin-bottom: 70px;
+        width: 100%;
+
+        .change-password-button {
+            width: 100%;
+            border: 2px solid #175067;
+            border-radius: 5px;
+            background: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            color: #175067;
+            padding: 12px;
+        }
+    }
+
+    .activate-switch-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .generate-key-submit-button {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #F8F8F8;
+        background: #175067;
+        border-radius: 5px;
+        padding: 12px 0px;
+        width: 100%;
+        border: none;
+    }
+}

@@ -40,6 +40,8 @@ body {
 @import "pages/device";
 //account
 @import "pages/account";
+//security
+@import "pages/security";
 .block-min-height {
     min-height: calc(100vh - 345px);
 }
@@ -90,6 +92,15 @@ body {
 
 //form data design
 .all-form-wrapper {
+    position: relative;
+    //password hide/un hide
+    .password-eye {
+        position: absolute;
+        top: 65px;
+        right: 0;
+        transform: translate(-50%, -50%);
+    }
+
     .form-label {
         font-weight: 400;
         font-size: 16px;
