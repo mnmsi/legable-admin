@@ -36,6 +36,8 @@ body {
 @import "pages/search-empty";
 // content
 @import "includes/content";
+//device
+@import "pages/device.blade";
 .block-min-height {
     min-height: calc(100vh - 280px);
 }
