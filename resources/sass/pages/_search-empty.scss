@@ -1,16 +1,16 @@
 .search-page-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
 
     .search-image-wrapper {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
 
         img {
             mix-blend-mode: luminosity;
-            opacity: 0.4;
+            //opacity: 0.4;
         }
     }
 
