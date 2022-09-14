@@ -15,15 +15,47 @@
 
                     <ul class="dropdown-menu user-profile">
                         <li class="u-profile">
-                            <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid avatar">
+                            <div class="p-image">
+                                <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid avatar">
+                                <img src="{{asset('image/sidebar/badge.png')}}" alt="" class="badgeIcon">
+                            </div>
+                            <p>
+                                <label>IOTA Infotech Ltd.</label>
+                                <label>Free Membership</label>
+                            </p>
                         </li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="body-item">
+                            <a class="dropdown-item" href="#">
+                                <img src="{{asset('image/sidebar/icon1.png')}}" alt=""/>
+                                <label>Account Settings</label>
+                            </a>
+                        </li>
+                        <li class="body-item">
+                            <a class="dropdown-item" href="#">
+                                <img src="{{asset('image/sidebar/icon2.png')}}" alt=""/>
+                                <label>My Plan</label>
+                            </a>
+                        </li>
+                        <li class="body-item">
+                            <a class="dropdown-item" href="#">
+                                <img src="{{asset('image/sidebar/icon3.png')}}" alt=""/>
+                                <label>Help & Support</label>
+                            </a>
+                        </li>
+                        <li class="body-item">
+                            <a class="dropdown-item go-pro" href="#">
+                                <img src="{{asset('image/sidebar/icon4.png')}}" alt=""/>
+                                <label>Upgrade to Pro</label>
+                            </a>
+                        </li>
+                        <li class="sign-out">
+                            <a class="dropdown-item" href="#">
+                                <img src="{{asset('image/sidebar/icon5.png')}}" alt=""/>
+                                <label>Sign out</label>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-{{--                <a class="nav-link active" aria-current="page" href="#">--}}
-{{--                    <img src="{{asset('image/common/profile.svg')}}" alt="profile">--}}
-{{--                </a>--}}
             </div>
         </div>
     </div>
