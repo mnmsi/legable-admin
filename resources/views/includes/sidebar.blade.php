@@ -16,7 +16,8 @@
         {{--        sidebar menu start--}}
         <div class="sidebar-menu">
             {{--            single menu item--}}
-            <a href="/" class="single-menu-wrapper {{ (request()->is('/')) ? 'active' : '' }}">
+            <a href="/"
+               class="single-menu-wrapper {{ (request()->is('/') || request()->is('search-empty')) ? 'active' : '' }}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/dashboard.svg")}}" alt="icon">
