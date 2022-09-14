@@ -17,13 +17,17 @@ Route::get('/', function () {
 //    return view('welcome');
     return view("pages.dashboard.index");
 });
-
+//search
 Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
 });
-
+//device
 Route::get("/device", function () {
     return view("pages.device.index");
+});
+//account
+Route::get("/account-settings", function () {
+    return view("pages.account.index");
 });
 
 //drawer
@@ -35,7 +39,8 @@ Route::get('/drawer/add', function () {
 });
 
 Route::get('/content', function () {
-    return view("pages.allContent.index");
+    return view("pages.allContent.
+    index");
 });
 
 Route::get('/drawer/upload', function () {

@@ -38,6 +38,8 @@ body {
 @import "includes/content";
 //device
 @import "pages/device";
+//account
+@import "pages/account";
 .block-min-height {
     min-height: calc(100vh - 345px);
 }

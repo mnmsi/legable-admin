@@ -62,7 +62,8 @@
             </a>
             {{-- single menu item --}}
             {{--            single menu item--}}
-            <a href="#" class="single-menu-wrapper">
+            <a href="/account-settings"
+               class="single-menu-wrapper {{request()->is("account-settings") ? "active" : ""}}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/account.svg")}}" alt="icon">
@@ -71,7 +72,7 @@
                 </div>
             </a>
             {{-- single menu item --}}
-            {{--            single menu item--}}
+            {{--   single menu item--}}
             <a href="#" class="single-menu-wrapper">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">

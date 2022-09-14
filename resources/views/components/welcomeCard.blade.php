@@ -1,7 +1,7 @@
 <div class="welcome-card-container">
     <div class="welcome-card-content-wrapper">
         <div class="row justify-content-between">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="welcome-card-text-content">
                     <p class="welcome-text mb-1">Good Morning</p>
                     <h2 class="heading mb-4">IOTA Infotech Limited</h2>
