@@ -29,6 +29,10 @@ Route::get("/device", function () {
 Route::get("/account-settings", function () {
     return view("pages.account.index");
 });
+//security
+Route::get("/security-settings", function () {
+    return view("pages.security.index");
+});
 
 //drawer
 Route::get('/drawer', function () {
