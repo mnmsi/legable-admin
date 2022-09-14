@@ -30,8 +30,14 @@ Route::get('/content', function () {
     return view("pages.allContent.index");
 });
 
-Route::get('/content/upload', function () {
+Route::get('/drawer/upload', function () {
     return view("pages.allContent.upload");
+});
+
+// important
+
+Route::get('/drawer/item', function () {
+    return view("pages.secretDrawer.singleDrawer");
 });
 
 //Auth::routes();

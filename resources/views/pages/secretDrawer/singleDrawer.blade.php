@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/drawer/upload','text'=>'Upload Content']])
-
-<div class="block-wrapper block-min-height content-wrappers">
+    @include('includes.pageHeader',['title'=>'Important','list'=>['Dashboard','Drawers','Important'],'btn'=>['id'=>'123','text'=>'+ Add Box'],'link'=>['url'=>'/drawer/upload','text'=>'Upload File']])
+    <div class="block-wrapper block-min-height content-wrappers">
         <div class="top-block">
             <h6 class="sub-header6 mb-4">
                 Drawers
