@@ -152,6 +152,9 @@ body {
         font-size: 14px;
         line-height: 30px;
         padding: 8px 20px;
+        &:focus{
+            box-shadow: none;
+        }
     }
 
     .custom-file-upload {
@@ -209,6 +212,30 @@ body {
 
         .modal-header {
             border-bottom: none;
+        }
+    }
+}
+.add-box-modal{
+    .modal-content{
+        background: #FFFFFF;
+        .close{
+            .img-fluid{
+                filter: invert(24%) sepia(34%) saturate(1345%) hue-rotate(155deg) brightness(87%) contrast(85%);
+            }
+        }
+    }
+    .form-check-input{
+        margin-bottom: 4px;
+    }
+}
+
+.content-modal{
+    .modal-content{
+        background: #F4FCFF;
+        .close{
+            .img-fluid{
+                filter: invert(25%) sepia(12%) saturate(3488%) hue-rotate(153deg) brightness(89%) contrast(85%);
+            }
         }
     }
 }
