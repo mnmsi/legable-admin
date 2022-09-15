@@ -1,0 +1,198 @@
+.plan-modal-wrapper {
+    .plan-modal-block {
+        max-width: 1140px;
+
+        .modal-content {
+            border-radius: 10px;
+            border: none;
+
+            .modal-body {
+                padding: 0;
+
+                .top-block {
+                    background: #175067;
+                    border-radius: 7px 7px 0 0;
+                    padding: 60px;
+                    display: grid;
+                    grid-template-columns: 1fr min-content;
+                    grid-template-rows: auto;
+                    gap: 80px;
+
+                    .left-block {
+                        h2 {
+                            color: #FBF5F0;
+                            font-weight: 600;
+                            font-size: 28px;
+                            line-height: 42px;
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 15px;
+
+                            span {
+                                color: #FFFFFF;
+                                font-weight: 600;
+                                font-size: 12px;
+                                line-height: 20px;
+                                padding: 5px 10px;
+                                border: 1px solid #ffffff;
+                                margin-left: 15px;
+                                border-radius: 5px;
+                            }
+                        }
+
+                        h3 {
+                            color: #EFB86E;
+                            font-weight: 500;
+                            font-size: 32px;
+                            line-height: 48px;
+                            margin-bottom: 40px;
+                            display: flex;
+                            align-items: center;
+
+                            span {
+                                font-weight: bold;
+                            }
+                        }
+
+                        .list-block {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 40px;
+
+                            .details-block {
+                                display: flex;
+                                align-items: center;
+                                gap: 20px;
+
+                                p {
+                                    color: #FFFFFF;
+                                    font-weight: 300;
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                    letter-spacing: 0.03em;
+                                    margin-bottom: 0;
+                                    width: 70%;
+
+                                    span {
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .right-block {
+                        width: 350px;
+                        padding: 30px 20px;
+                        border-radius: 7px;
+                        background: #ffffff;
+
+                        .top-sec {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            justify-content: space-between;
+                            border-bottom: 1px solid #ECD3B1;
+                            padding-bottom: 15px;
+                            margin-bottom: 30px;
+
+                            h4 {
+                                letter-spacing: -0.02em;
+                                font-weight: 600;
+                                font-size: 16px;
+                                line-height: 24px;
+                                color: #303E49;
+                                margin-bottom: 0;
+                            }
+
+                            span {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .form-label {
+                            font-weight: 400;
+                            font-size: 13px;
+                            line-height: 20px;
+                            color: #282A2C;
+                        }
+
+                        .form-control {
+                            padding: 7px 15px;
+
+                            &::placeholder {
+                                letter-spacing: 0.015em;
+                                font-weight: 300;
+                                font-size: 12px;
+                                line-height: 18px;
+                                color: rgba(23, 80, 103, 0.5);
+                            }
+                        }
+                    }
+                }
+
+                .bottom-block {
+                    background: #ffffff;
+                    border-radius: 0 0 7px 7px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: auto;
+                    padding: 30px 60px;
+                    gap: 50px;
+
+                    .testimonial {
+                        display: grid;
+                        grid-template-columns: min-content 1fr;
+                        grid-template-rows: 1fr min-content;
+                        column-gap: 20px;
+
+                        .avatar {
+                            border: 4px solid #FBF5F0;
+                            border-radius: 50%;
+                            height: 56px;
+                            width: 56px;
+
+                            img {
+                                height: 100%;
+                                width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        p {
+                            font-weight: 300;
+                            font-size: 13px;
+                            line-height: 20px;
+                            letter-spacing: 0.03em;
+                            color: #7C7C7C;
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 10px;
+
+                            &:before {
+                                content: '';
+                                height: 20px;
+                                width: 20px;
+                                background-image: url("/image/global/planIcon1.svg");
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-size: contain;
+                            }
+                        }
+
+                        h3 {
+                            color: #303E49;
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 22px;
+                            grid-column: 2;
+                            margin-left: 22px;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

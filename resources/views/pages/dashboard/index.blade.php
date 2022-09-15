@@ -89,6 +89,8 @@
     @include('includes.modal.fileUpload')
     @include('includes.modal.addBox')
     @include('includes.modal.welcomeCardModal')
+{{--    test--}}
+    @include('includes.modal.planModal')
     {{--    page content end--}}
 @endsection
 
@@ -96,13 +98,17 @@
     <script>
         $(document).ready(function () {
             //upload file
+            // $('#dashmodalid').on('click', function () {
+            //     $('#uploadFile').modal('show');
+            // });
             $('#dashmodalid').on('click', function () {
-                $('#uploadFile').modal('show');
+                $('#planModal').modal('show');
             });
             //create box
             $('#dashCreateBox').on('click', function () {
                 $('#addBoxModal').modal('show');
             });
+
             //new info
             $('#newInfo').on('click', function () {
                 $('#cardModal').modal('show');

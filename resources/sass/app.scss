@@ -42,6 +42,8 @@ body {
 @import "pages/account";
 //security
 @import "pages/security";
+//plan
+@import "components/planModal";
 .block-min-height {
     min-height: calc(100vh - 345px);
 }
