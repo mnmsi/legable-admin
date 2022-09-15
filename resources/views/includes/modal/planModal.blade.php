@@ -28,20 +28,20 @@
                         </div>
                     </div>
                     <div class="right-block all-form-wrapper">
-                        <form method="get" action="#" enctype="multipart/form-data">
+                        <form method="get" action="/" enctype="multipart/form-data">
                             @csrf
                             @method('get')
                             <div class="top-sec">
                                 <h4>Your Legable Subscription</h4>
-                                <span><img src="{{asset('image/global/close1.svg')}}" alt="" class="img-fluid"></span>
+                                <span id="closePlanModal"><img src="{{asset('image/global/close1.svg')}}" alt="" class="img-fluid"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="dName" class="form-label">EMAIL ADDRESS</label>
-                                <input type="text" class="form-control" id="dName" placeholder="example@gmail.com">
+                                <input type="email" class="form-control" id="dName" placeholder="example@gmail.com">
                             </div>
                             <div class="mb-3">
                                 <label for="dName" class="form-label">Card Number</label>
-                                <input type="text" class="form-control" id="dName" placeholder="0000 5432 2367 0275">
+                                <input type="number" class="form-control" id="dName" placeholder="0000 5432 2367 0275">
                             </div>
                             <div class="row">
                                 <div class="col-6">

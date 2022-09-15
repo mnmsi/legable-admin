@@ -45,7 +45,7 @@
                         <p> 30 days cycle</p>
                     </div>
                     <div class="upgrade-plan-button">
-                        <button type="button">Upgrade your plan</button>
+                        <button type="button" id="proPlanid">Upgrade your plan</button>
                     </div>
 
                 </div>
@@ -66,4 +66,20 @@
         </div>
         {{--  main page end--}}
     </div>
+    @include('includes.modal.planModal')
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('#proPlanid').on('click', function () {
+                $('#planModal').modal('show');
+            });
+
+            //hide all modal
+            $('#closePlanModal').on('click', function () {
+                $('#planModal').modal('hide');
+            });
+        })
+    </script>
 @endsection

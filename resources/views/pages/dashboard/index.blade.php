@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
+    <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Everything is encrypted here!"
                   buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files" id="dashmodalid" />
     {{--    page content start--}}
     <div class="block-min-height block-wrapper">
@@ -89,8 +89,6 @@
     @include('includes.modal.fileUpload')
     @include('includes.modal.addBox')
     @include('includes.modal.welcomeCardModal')
-{{--    test--}}
-    @include('includes.modal.planModal')
     {{--    page content end--}}
 @endsection
 
@@ -98,12 +96,10 @@
     <script>
         $(document).ready(function () {
             //upload file
-            // $('#dashmodalid').on('click', function () {
-            //     $('#uploadFile').modal('show');
-            // });
             $('#dashmodalid').on('click', function () {
-                $('#planModal').modal('show');
+                $('#uploadFile').modal('show');
             });
+
             //create box
             $('#dashCreateBox').on('click', function () {
                 $('#addBoxModal').modal('show');
