@@ -42,6 +42,10 @@ body {
 @import "pages/account";
 //security
 @import "pages/security";
+//plans
+@import "pages/plans";
+//billing
+@import "pages/billing";
 //plan
 @import "components/planModal";
 .block-min-height {
@@ -272,7 +276,6 @@ body {
 }
 
 //footer
-
 .footer-wrapper {
     height: 65px;
     background: #FFFFFF;

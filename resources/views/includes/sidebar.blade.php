@@ -89,7 +89,7 @@
             </div>
             {{--   Menu Break Title end --}}
             {{--            single menu item--}}
-            <a href="#" class="single-menu-wrapper">
+            <a href="/my-plans" class="single-menu-wrapper {{request()->is("my-plans") ? "active" : ""}} ">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/dimond.svg")}}" alt="icon">
@@ -99,7 +99,7 @@
             </a>
             {{-- single menu item --}}
             {{--            single menu item--}}
-            <a href="#" class="single-menu-wrapper">
+            <a href="/billing" class="single-menu-wrapper {{request()->is("billing") ? "active" : ""}}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/billing-info.svg")}}" alt="icon">

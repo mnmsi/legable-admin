@@ -1,0 +1,69 @@
+@extends("layouts.app")
+@section('content')
+    @include('includes.pageHeader',['title'=>'My Plan','list'=>['Dashboard','Plans & Subscriptions'],'btn'=>[],'link'=>[]])
+    <div class="block-min-height block-wrapper">
+        {{--  main page content--}}
+        {{--        title bar start--}}
+        <div class="my-plan-title-bar">
+            <p>Your Plan Details</p>
+        </div>
+        {{--        title bar end--}}
+        <div class="row align-items-stretch mt-3">
+            <div class="col-lg-6 col-md-6">
+                <div class="plan-box-wrapper">
+                    <div class="plan-box-content-wrapper">
+                        <div class="plan-card-header">
+                            <div class="plan-card-title">14 days Free Trial</div>
+                            <div>
+                                <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="plan-box-content">
+                            <p>10 days remaining in your free trial</p>
+                        </div>
+                        <div class="cancel-subscription-button-wrapper">
+                            <a href="#">Cancel Subscription</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+                <div class="plan-box-wrapper"
+                     style="background: url('{{asset("image/plans/premium-bg.svg")}}') no-repeat center; background-size: cover;">
+                    <div class="plan-card-header">
+                        <div class="plan-type">
+                            <h3>Premium</h3>
+                        </div>
+                        <div class="plan-price">
+                            <h3>
+                                <sup>$</sup>
+                                30/<span>month</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="premium-body">
+                        <p> 30 days cycle</p>
+                    </div>
+                    <div class="upgrade-plan-button">
+                        <button type="button">Upgrade your plan</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="plan-footer">
+                <div class="plan-footer-title">Enable auto renewal</div>
+                <div class="all-form-wrapper">
+                    <div class="form-check form-switch d-flex align-items-center">
+                        <input class="form-check-input" type="checkbox" id="checkPass" checked="">
+                        <label class="form-check-label ms-2 mt-2" for="checkPass">Active</label>
+                    </div>
+                </div>
+            </div>
+            <p>If this option is checked, system will renew your subscription automatically for this product . If the
+                current plan expires, However this might prevent you from</p>
+        </div>
+        {{--  main page end--}}
+    </div>
+@endsection

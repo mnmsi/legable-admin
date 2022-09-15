@@ -41,7 +41,14 @@ Route::get('/drawer', function () {
 Route::get('/drawer/add', function () {
     return view("pages.secretDrawer.add");
 });
-
+//my plans
+Route::get("/my-plans", function () {
+    return view("pages.plans.index");
+});
+//billing info
+Route::get("/billing", function () {
+    return view("pages.billing.index");
+});
 Route::get('/content', function () {
     return view("pages.allContent.index");
 });
