@@ -9,7 +9,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid"/>
+                <div class="d-flex justify-content-center">
+                    <img src="{{asset('/image/drawer/modalIcon2.svg')}}" alt="" class="img-fluid"/>
+                </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
                         <div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
-                  buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files"/>
+                  buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files" id="dashmodalid" />
     {{--    page content start--}}
     <div class="block-min-height block-wrapper">
         <div class="row mb-5 mt-4">
@@ -86,6 +86,33 @@
             </div>
         </div>
     </div>
-
+    @include('includes.modal.fileUpload')
+    @include('includes.modal.addBox')
+    @include('includes.modal.welcomeCardModal')
     {{--    page content end--}}
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            //upload file
+            $('#dashmodalid').on('click', function () {
+                $('#uploadFile').modal('show');
+            });
+            //create box
+            $('#dashCreateBox').on('click', function () {
+                $('#addBoxModal').modal('show');
+            });
+            //new info
+            $('#newInfo').on('click', function () {
+                $('#cardModal').modal('show');
+            });
+            //hide all modal
+            $('#addBoxModalClose,#addBoxModalClose,#infoModalClose').on('click', function () {
+                $('#uploadFile').modal('hide');
+                $('#addBoxModal').modal('hide');
+                $('#cardModal').modal('hide');
+            });
+        })
+    </script>
 @endsection

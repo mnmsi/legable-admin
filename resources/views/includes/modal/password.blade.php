@@ -8,7 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid"/>
+                <div class="d-flex justify-content-center">
+                    <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid"/>
+                </div>
                 <form action="/drawer/item" method="get" enctype="multipart/form-data">
                     @csrf
                     @method('get')

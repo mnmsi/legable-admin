@@ -46,6 +46,30 @@
             justify-content: space-between;
 
             .button-wrapper {
+                .dropdown {
+                    .dropdown-toggle {
+                        &:after {
+                            display: none;
+                        }
+                    }
+
+                    .dropdown-menu {
+                        width: 100%;
+                        padding: 30px 0;
+
+                        .dropdown-item {
+                            color: #175067;
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 18px;
+                            padding: 20px 25px;
+
+                            &:hover {
+                                background: #F5FCFF;
+                            }
+                        }
+                    }
+                }
             }
 
             .car-image-wrapper {
@@ -55,7 +79,7 @@
                 height: 100%;
             }
 
-            button {
+            .dropdown-toggle {
                 border: none;
                 background: #175067;
                 border-radius: 5px;
@@ -65,13 +89,103 @@
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                //padding: 12px 24px;
                 gap: 8px;
                 font-weight: 600;
                 font-size: 16px;
                 line-height: 24px;
                 text-align: center;
                 color: #FFFFFF;
+            }
+        }
+    }
+}
+
+.add-dash-icon-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:before {
+        content: '';
+        height: 20px;
+        width: 20px;
+        background-image: url("/image/dashboard/addFile2.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+.add-dash-icon-2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:before {
+        content: '';
+        height: 20px;
+        width: 20px;
+        background-image: url("/image/dashboard/addFile3.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+.add-dash-icon-3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:before {
+        content: '';
+        height: 20px;
+        width: 20px;
+        background-image: url("/image/dashboard/addFile1.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+//modal
+.welcome-card-modal {
+    .modal-fit-width{
+        max-width: fit-content;
+    }
+    .modal-content {
+        border-radius: 12px;
+        border: none;
+        .modal-body {
+            min-width: 320px;
+            padding: 0;
+            .header {
+                background: #175067;
+                border-radius: 10px 10px 0 0;
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 18px;
+                padding: 20px 0;
+                text-align: center;
+                color: #FFFFFF;
+            }
+
+            .body-item {
+                padding: 20px 10px;
+
+                p {
+                    color: #175067;
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 18px;
+                    padding: 15px 20px;
+                    margin: 0;
+                    cursor: pointer;
+                    &:hover {
+                        background: #F5FCFF;
+                        border-radius: 5px;
+                    }
+                }
             }
         }
     }

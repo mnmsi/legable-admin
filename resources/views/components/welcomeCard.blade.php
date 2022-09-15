@@ -17,10 +17,17 @@
                         <img src="{{asset("image/dashboard/drop.svg")}}" alt="image">
                     </div>
                     <div class="button-wrapper">
-                        <button class="upload-button">
-                            <img src="{{asset("image/common/circle-add.svg")}}" alt="image">
-                            Add New
-                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{asset("image/common/circle-add.svg")}}" alt="image">
+                                Add New
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item add-dash-icon-1" id="newInfo">New Information</button>
+                                <button class="dropdown-item add-dash-icon-2" id="dashCreateBox" >Create Box</button>
+                                <a class="dropdown-item add-dash-icon-3" href="/drawer/add">New Drawer</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

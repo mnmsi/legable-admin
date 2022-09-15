@@ -37,7 +37,6 @@
             });
 
             $('#contentid,#contentid2,#contentid3,#contentid4').on('click', function () {
-
                 $('#pageModal').addClass('content-modal');
                 $('#pageModal').modal('show');
             });
