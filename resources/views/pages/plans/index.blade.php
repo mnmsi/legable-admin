@@ -9,7 +9,7 @@
         </div>
         {{--        title bar end--}}
         <div class="row align-items-stretch mt-3">
-            <div class="col-lg-6 col-md-6 col-xl-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="plan-box-wrapper">
                     <div class="plan-box-content-wrapper">
                         <div class="plan-card-header">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xl-6">
+            <div class="col-lg-6 col-md-6 ">
                 <div class="plan-box-wrapper"
                      style="background: url('{{asset("image/plans/premium-bg.svg")}}') no-repeat center; background-size: cover;">
                     <div class="plan-card-header">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <p>If this option is checked, system will renew your subscription automatically for this product . If the
-                currentt plan expires, However this might prevent you from</p>
+                current plan expires, However this might prevent you from</p>
         </div>
         {{--  main page end--}}
     </div>

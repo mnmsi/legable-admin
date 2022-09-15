@@ -45,6 +45,10 @@ Route::get('/drawer/add', function () {
 Route::get("/my-plans", function () {
     return view("pages.plans.index");
 });
+//billing info
+Route::get("/billing", function () {
+    return view("pages.billing.index");
+});
 Route::get('/content', function () {
     return view("pages.allContent.index");
 });
