@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <x-breadcrumb title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
+    <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
                   buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files"/>
     {{--    page content start--}}
     <div class="block-min-height block-wrapper">
@@ -9,7 +9,7 @@
                 {{-- ligable welcome bar start--}}
                 @include("components.welcomeCard")
                 {{-- ligable welcome bar end --}}
-                {{--    qick access--}}
+                {{-- qick access--}}
 
                 <div class="row mt-5">
                     <h2 class="dashboard-section-title mb-4">Suggested</h2>

@@ -5,12 +5,21 @@
     <div class="icon-button-wrapper">
         <p>{{$subtitle}}</p>
         @if($buttonText != "")
-            <a href="{{$link}}">
-                @if($buttonIcon != "")
-                    <img src="{{$buttonIcon}}" alt="image">
-                @endif
-                <div>{{$buttonText}}</div>
-            </a>
+            @if($id == "")
+                <a href="{{$link}}">
+                    @if($buttonIcon != "")
+                        <img src="{{$buttonIcon}}" alt="image">
+                    @endif
+                    <div>{{$buttonText}}</div>
+                </a>
+            @else
+                <button id="{{$id}}">
+                    @if($buttonIcon != "")
+                        <img src="{{$buttonIcon}}" alt="image">
+                    @endif
+                    <div>{{$buttonText}}</div>
+                </button>
+            @endif
         @endif
     </div>
 </div>
