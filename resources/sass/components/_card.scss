@@ -1,3 +1,5 @@
+@import "../includes/responsive";
+
 .document-card {
     background: #FFFFFF;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.1);
@@ -18,15 +20,14 @@
         padding: 0 24px;
 
         .card-icon {
-            background: #D7E8EF;
-            mix-blend-mode: normal;
-            box-shadow: 0px 2px 100px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            //height: 72px;
-            //width: 72px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            img {
+                height: 50px;
+                width: 50px;
+                @include media("<=991px") {
+                    height: 28px;
+                    width: 28px;
+                }
+            }
         }
 
         display: flex;
@@ -48,7 +49,6 @@
         }
 
         //padding: 31px;
-
         .document-footer-title {
             color: #101828;
             font-weight: 500;
@@ -60,8 +60,6 @@
             font-size: 14px;
             color: #667085;
         }
-
-
     }
 
     .card-border {

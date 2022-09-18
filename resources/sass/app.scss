@@ -6,9 +6,14 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+//responsive
+@import "includes/responsive";
 
 body {
     background-color: $primary-bg;
+    @include media("<=991px") {
+        background-color: #fff;
+    }
     font-family: 'Poppins', sans-serif;
 }
 
@@ -48,6 +53,8 @@ body {
 @import "pages/billing";
 //plan
 @import "components/planModal";
+//offcanvas
+@import "includes/offcanvas";
 .block-min-height {
     min-height: calc(100vh - 345px);
 }
@@ -197,12 +204,14 @@ body {
             margin-right: 10px;
         }
     }
-//
+
+    //
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
+
     input[type=number] {
         -moz-appearance: textfield;
     }

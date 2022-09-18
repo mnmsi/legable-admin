@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Everything is encrypted here!"
-                  buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files" id="dashmodalid" />
+                  buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files" id="dashmodalid"/>
     {{--    page content start--}}
     <div class="block-min-height block-wrapper">
         <div class="row mb-5 mt-4">
@@ -40,7 +40,6 @@
                         <x-card id="card-2" icon="{{asset('image/card/card-icon.svg')}}" title=" Document"
                                 date="Sep 25, 2022, 13:25 PM"/>
                     </div>
-
                 </div>
                 {{--    qick access--}}
             </div>

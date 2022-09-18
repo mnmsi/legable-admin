@@ -1,4 +1,4 @@
-<div class="document-card" id="{{$id}}">
+<div class="document-card mb-4" id="{{$id}}">
     <div class="document-card-content-wrapper">
         <div class="card-icon-wrapper">
             <div class="card-icon">
