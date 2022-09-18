@@ -19,6 +19,9 @@ body {
 
 .main-content {
     margin-left: 280px;
+    @include media("<=991px") {
+        margin-left: 0;
+    }
 }
 
 //navbar
@@ -72,6 +75,11 @@ body {
     border-radius: 10px;
     padding: 30px;
     margin: 30px 0px;
+    @include media("<=991px") {
+        padding: 0 6px;
+        margin: 0;
+        box-shadow: none;
+    }
 }
 
 //header global
