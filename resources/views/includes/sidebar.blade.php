@@ -1,8 +1,8 @@
-<aside class="sidebar-wrapper">
+<aside class="sidebar-wrapper" id="sidebar">
     <div class="sidebar-wrapper-content-wrapper">
         <div class="sidebar-sticky-wrapper">
             <div class="logo-wrapper">
-                <a href="#"><img src="{{asset('image/common/logo.svg')}}" alt=""></a>
+                <a href="/"><img src="{{asset('image/common/logo.svg')}}" alt=""></a>
             </div>
             {{-- search bar--}}
             <div class="searchbar-wrapper">
