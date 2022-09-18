@@ -41,19 +41,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="dName" class="form-label">Card Number</label>
-                                <input type="number" class="form-control" id="dName" placeholder="0000 5432 2367 0275">
+                                <input type="number" class="form-control" id="dName" placeholder="0000 5432 2367 0275" size='20' autocomplete='off'>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="dName" class="form-label">Expiry Date</label>
-                                        <input type="text" class="form-control" id="dName" placeholder="month/year">
+                                        <input type="text" class="form-control" id="dName" placeholder="month/year" autocomplete='off' size='8'>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="dName" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="dName" placeholder="321">
+                                        <input type="text" class="form-control" id="dName" placeholder="321" autocomplete='off' size='4'>
                                     </div>
                                 </div>
                             </div>
