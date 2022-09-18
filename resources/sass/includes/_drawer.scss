@@ -1,6 +1,7 @@
+@import "responsive";
 // add drawer
 .drawer-add-wrapper {
-    margin: 0px;
+    margin: 0;
 
     .items-block {
         padding: 20px 50px 30px 20px;
@@ -40,9 +41,22 @@
 }
 
 // index
-.wrapper-block {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: min-content;
-    gap: 30px;
+.drawer-page{
+    .page-title-wrapper{
+        @include media("<=991px") {
+            display: none;
+        }
+    }
+
+    .wrapper-block {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: min-content;
+        gap: 30px;
+        @include media("<=991px") {
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, 150px);
+        }
+    }
 }
+
