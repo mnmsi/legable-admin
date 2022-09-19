@@ -1,22 +1,26 @@
+@import "../includes/responsive";
 .content-wrappers {
     background: none !important;
     box-shadow: none !important;
     padding: 0px !important;
-
     .conten-items {
         display: grid;
         grid-gap: 30px;
         grid-template-columns: repeat(auto-fit, 240px);
+        @include media("<=991px") {
+            // width: 240px;
+            // display: flex;
+            // grid-gap: 0;
+        }
     }
 
     .bottom-block {
-
     }
 }
 
 //component-1
 .content-block {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     padding: 20px;
@@ -28,7 +32,7 @@
 
 //component-2
 .content-block-2 {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 30px rgb(0 0 0 / 6%);
     border-radius: 4px;
     display: flex;
@@ -42,7 +46,7 @@
     }
 
     .footer-item {
-        border-top: 1px solid #E7E7ED;
+        border-top: 1px solid #e7e7ed;
         display: flex;
         align-items: center;
         gap: 20px;
