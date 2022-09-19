@@ -1,4 +1,10 @@
+@import "../includes/responsive";
+
 .keep-data-safe-wrapper {
+    @include media("<=991px") {
+        display: none;
+    }
+
     .slider-card-image-wrapper {
         height: 168px;
     }

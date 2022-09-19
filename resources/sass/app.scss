@@ -1,11 +1,11 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 //responsive
 @import "includes/responsive";
 
@@ -14,7 +14,7 @@ body {
     @include media("<=991px") {
         background-color: #fff;
     }
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .main-content {
@@ -56,8 +56,16 @@ body {
 @import "pages/billing";
 //plan
 @import "components/planModal";
-//offcanvas
+//off canvas
 @import "includes/offcanvas";
+//document
+@import "components/document";
+//section title
+@import "components/section-title";
+// add new functionality
+@import "components/add-new";
+// add new offcanvas
+@import "components/ad-new-offcanvas";
 .block-min-height {
     min-height: calc(100vh - 345px);
 }
@@ -70,7 +78,7 @@ body {
 }
 
 .block-wrapper {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     padding: 30px;
@@ -87,10 +95,11 @@ body {
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #303E49;
+    color: #303e49;
 }
 
-.sub-header5 { //h5 tag
+.sub-header5 {
+    //h5 tag
     font-weight: 600;
     font-size: 18px;
     line-height: 27px;
@@ -101,11 +110,11 @@ body {
     font-weight: 600;
     font-size: 20px;
     line-height: 18px;
-    color: #303E49;
+    color: #303e49;
 }
 
 .sub-header3 {
-    color: #303E49;
+    color: #303e49;
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
@@ -127,11 +136,11 @@ body {
         font-size: 16px;
         line-height: 30px;
         letter-spacing: 0.015em;
-        color: #282A2C;
+        color: #282a2c;
     }
 
     .form-label-2 {
-        color: #7C7C7C;
+        color: #7c7c7c;
         font-weight: 300;
         font-size: 16px;
         line-height: 24px;
@@ -139,7 +148,7 @@ body {
 
     .form-control {
         padding: 11px 24px;
-        border: 1px solid #D7E8EF;
+        border: 1px solid #d7e8ef;
         border-radius: 4px;
 
         &:focus {
@@ -162,23 +171,23 @@ body {
         display: flex;
         align-items: center;
         letter-spacing: 0.015em;
-        color: #175067
+        color: #175067;
     }
 
     .form-check-input {
         &:focus {
             box-shadow: none;
-            border-color: #FB8B24;
+            border-color: #fb8b24;
         }
 
         &:checked {
-            background-color: #FB8B24;
-            border-color: #FB8B24;
+            background-color: #fb8b24;
+            border-color: #fb8b24;
         }
     }
 
     .form-select {
-        border: 1px solid #D7E8EF;
+        border: 1px solid #d7e8ef;
         border-radius: 4px;
         letter-spacing: 0.015em;
         color: rgba(23, 80, 103, 0.5);
@@ -206,7 +215,7 @@ body {
         cursor: pointer;
 
         &:before {
-            content: url('/image/content/cloud.svg');
+            content: url("/image/content/cloud.svg");
             width: 20px;
             height: 20px;
             margin-right: 10px;
@@ -220,7 +229,7 @@ body {
         margin: 0;
     }
 
-    input[type=number] {
+    input[type="number"] {
         -moz-appearance: textfield;
     }
 }
@@ -233,7 +242,7 @@ body {
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #F8F8F8;
+    color: #f8f8f8;
     background: #175067;
     border-radius: 5px;
     padding: 12px 0px;
@@ -252,7 +261,7 @@ body {
     }
 
     .modal-content {
-        background: #FBF5F0;
+        background: #fbf5f0;
         border-radius: 5px;
         padding: 60px 60px;
 
@@ -264,11 +273,12 @@ body {
 
 .add-box-modal {
     .modal-content {
-        background: #FFFFFF;
+        background: #ffffff;
 
         .close {
             .img-fluid {
-                filter: invert(24%) sepia(34%) saturate(1345%) hue-rotate(155deg) brightness(87%) contrast(85%);
+                filter: invert(24%) sepia(34%) saturate(1345%)
+                    hue-rotate(155deg) brightness(87%) contrast(85%);
             }
         }
     }
@@ -280,22 +290,23 @@ body {
 
 .content-modal {
     .modal-content {
-        background: #F4FCFF;
+        background: #f4fcff;
 
         .close {
             .img-fluid {
-                filter: invert(25%) sepia(12%) saturate(3488%) hue-rotate(153deg) brightness(89%) contrast(85%);
+                filter: invert(25%) sepia(12%) saturate(3488%)
+                    hue-rotate(153deg) brightness(89%) contrast(85%);
             }
         }
 
         .submit-btn {
-            background: #FB8B24;
-            color: #F8F8F8;
+            background: #fb8b24;
+            color: #f8f8f8;
             border: none;
 
             &:hover {
-                background-color: #FB8B24 !important;
-                border-color: #FB8B24 !important;
+                background-color: #fb8b24 !important;
+                border-color: #fb8b24 !important;
             }
         }
     }
@@ -304,9 +315,12 @@ body {
 //footer
 .footer-wrapper {
     height: 65px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px -4px 4px rgba(231, 231, 231, 0.25);
     position: sticky;
     bottom: 0;
     z-index: 99;
+    @include media("<=991px") {
+        display: none;
+    }
 }

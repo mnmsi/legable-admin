@@ -1,4 +1,9 @@
+@import "../includes/responsive";
+
 .help-center-card-wrapper {
+    @include media("<=991px") {
+        display: none;
+    }
     position: relative;
     max-width: 90%;
     margin: 0 auto;

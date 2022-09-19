@@ -4,7 +4,7 @@
             <div class="card-icon">
                 <img src="{{$icon}}" alt="icon">
             </div>
-            <div class="three-dot pe-4">
+            <div class="three-dot">
                 <img src="{{asset("image/card/dots.svg")}}" alt="dots">
             </div>
         </div>

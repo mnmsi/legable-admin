@@ -1,0 +1,14 @@
+@import "../includes/responsive";
+
+.section-title-wrapper {
+    h2 {
+        display: none;
+        @include media("<=991px") {
+            display: block;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 22px;
+            color: #282A2C;
+        }
+    }
+}

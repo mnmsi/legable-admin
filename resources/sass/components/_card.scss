@@ -7,6 +7,9 @@
     //max-width: 332.5px;
     width: 100%;
     height: 200px;
+    @include media("<=576px") {
+        height: 107px;
+    }
 
     .document-card-content-wrapper {
         padding-top: 24px;
@@ -14,18 +17,24 @@
         flex-direction: column;
         height: 100%;
         justify-content: space-between;
+        @include media("<=576px") {
+            padding: 16px;
+        }
     }
 
     .card-icon-wrapper {
         padding: 0 24px;
+        @include media("<=576px") {
+            padding: 0;
+        }
 
         .card-icon {
             img {
                 height: 50px;
                 width: 50px;
-                @include media("<=991px") {
-                    height: 28px;
-                    width: 28px;
+                @include media("<=576px") {
+                    height: 30px;
+                    width: 30px;
                 }
             }
         }
@@ -35,10 +44,16 @@
         height: 47px;
         align-items: center;
         //padding: 31px;
+        .three-dot {
+            //padding-right: 1.5rem;
+        }
     }
 
     .document-card-footer {
         border-top: 1px dashed rgba(102, 112, 133, 0.2);
+        @include media("<=576px") {
+            border-top: none;
+        }
 
         .document-card-footer-content-wrapper {
             margin-top: 10px;
@@ -46,6 +61,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 24px;
+            @include media("<=576px") {
+                padding: 0;
+            }
         }
 
         //padding: 31px;
@@ -53,12 +71,33 @@
             color: #101828;
             font-weight: 500;
             font-size: 16px;
+            @include media("<=576px") {
+                font-size: 13px;
+                margin-bottom: 1px;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
         }
 
         .document-footer-date {
             font-weight: 300;
             font-size: 14px;
             color: #667085;
+            @include media("<=576px") {
+                font-size: 10px;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+
+        .document-lock-icon {
+            @include media("<=576px") {
+                display: none;
+            }
         }
     }
 

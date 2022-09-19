@@ -1,0 +1,21 @@
+@import "../includes/responsive";
+
+.add-new-button-wrapper {
+    display: none;
+    @include media("<=991px") {
+        display: block;
+    }
+    .add-new-icon {
+        height: 60px;
+        width: 60px;
+        background: #175067;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 78px;
+        right: 20px;
+        z-index: 9;
+    }
+}
