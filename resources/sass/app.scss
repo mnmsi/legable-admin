@@ -262,15 +262,41 @@ body {
 .global-modal {
     .modal-width {
         max-width: 650px;
+        @include media("<=991px") {
+            max-width: 100%;
+            margin: 0;
+        }
     }
 
     .modal-content {
         background: #fbf5f0;
         border-radius: 5px;
         padding: 60px 60px;
+        @include media("<=991px") {
+            border-radius: 0;
+            border: none;
+            min-height: 100vh;
+            padding: 30px 10px;
+        }
 
         .modal-header {
             border-bottom: none;
+            @include media("<=991px") {
+                justify-content: flex-start !important;
+            }
+
+            button {
+                @include media("<=991px") {
+                    background: none;
+                }
+
+                img {
+                    @include media("<=991px") {
+                        content: url("/image/global/backIcon.svg");
+                        filter: none !important;
+                    }
+                }
+            }
         }
     }
 }
@@ -281,8 +307,7 @@ body {
 
         .close {
             .img-fluid {
-                filter: invert(24%) sepia(34%) saturate(1345%)
-                    hue-rotate(155deg) brightness(87%) contrast(85%);
+                filter: invert(24%) sepia(34%) saturate(1345%) hue-rotate(155deg) brightness(87%) contrast(85%);
             }
         }
     }
@@ -298,8 +323,7 @@ body {
 
         .close {
             .img-fluid {
-                filter: invert(25%) sepia(12%) saturate(3488%)
-                    hue-rotate(153deg) brightness(89%) contrast(85%);
+                filter: invert(25%) sepia(12%) saturate(3488%) hue-rotate(153deg) brightness(89%) contrast(85%);
             }
         }
 
