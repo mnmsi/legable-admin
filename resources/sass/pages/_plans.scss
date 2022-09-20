@@ -4,6 +4,9 @@
     line-height: 30px;
     color: #175067;
     margin-bottom: 50px;
+    @include media("<=991px") {
+        margin-bottom: 30px;
+    }
 }
 
 .plan-box-wrapper {
@@ -101,6 +104,12 @@
         color: #737373;
         //margin-bottom: 12px;
         margin-bottom: 20px;
+        @include media("<=576px") {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            color: #737373;
+        }
     }
 }
 

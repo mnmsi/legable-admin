@@ -8,8 +8,8 @@
             <p>Your Plan Details</p>
         </div>
         {{--        title bar end--}}
-        <div class="row align-items-stretch mt-3">
-            <div class="col-lg-6 col-md-6">
+        <div class="row align-items-stretch lg-mt-3 mt-0">
+            <div class="col-lg-6 col-md-6 lg-mb-0 mb-4">
                 <div class="plan-box-wrapper">
                     <div class="plan-box-content-wrapper">
                         <div class="plan-card-header">
@@ -47,7 +47,6 @@
                     <div class="upgrade-plan-button">
                         <button type="button" id="proPlanid">Upgrade your plan</button>
                     </div>
-
                 </div>
             </div>
         </div>
