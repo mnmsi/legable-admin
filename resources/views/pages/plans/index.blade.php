@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 ">
+            <div class="col-lg-6 col-md-6 lg-mb-0 mb-4 ">
                 <div class="plan-box-wrapper"
                      style="background: url('{{asset("image/plans/premium-bg.svg")}}') no-repeat center; background-size: cover;">
                     <div class="plan-card-header">
@@ -60,7 +60,8 @@
                     </div>
                 </div>
             </div>
-            <p>If this option is checked, system will renew your subscription automatically for this product . If the
+            <p class="plan-footer-text">If this option is checked, system will renew your subscription automatically for
+                this product . If the
                 current plan expires, However this might prevent you from</p>
         </div>
         {{--  main page end--}}
