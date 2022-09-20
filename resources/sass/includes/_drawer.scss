@@ -1,13 +1,12 @@
-@import "responsive";
+@import "../includes/responsive";
 // add drawer
 .drawer-add-wrapper {
-    margin: 0;
-
+    margin: 0px;
     .items-block {
         padding: 20px 50px 30px 20px;
 
         &:first-child {
-            border-right: 1px solid #ECD3B1;
+            border-right: 1px solid #ecd3b1;
         }
 
         &:last-child {
@@ -23,7 +22,7 @@
         flex-direction: column;
 
         h5 {
-            color: #FB8B24;
+            color: #fb8b24;
             text-align: center;
             font-weight: 600;
             font-size: 18px;
@@ -35,28 +34,19 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #303E49;
+            color: #303e49;
         }
     }
 }
 
 // index
-.drawer-page{
-    .page-title-wrapper{
-        @include media("<=991px") {
-            display: none;
-        }
-    }
-
-    .wrapper-block {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: min-content;
-        gap: 30px;
-        @include media("<=991px") {
-            gap: 30px;
-            grid-template-columns: repeat(auto-fit, 150px);
-        }
+.wrapper-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content;
+    gap: 30px;
+    @include media("<=991px") {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 0;
     }
 }
-

@@ -1,128 +1,65 @@
-.content-page {
-    .page-title-wrapper {
-        @include media("<=991px") {
-            display: none;
-        }
-    }
-}
-
+@import "../includes/responsive";
 .content-wrappers {
     background: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
-
+    padding: 0px !important;
     .conten-items {
         display: grid;
         grid-gap: 30px;
         grid-template-columns: repeat(auto-fit, 240px);
         @include media("<=991px") {
-            padding: 15px;
-            grid-template-columns:none;
-            gap: 20px;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-            overflow-x: scroll;
-            -ms-overflow-style: none;
-            &::-webkit-scrollbar {
-                display: none;
-            }
-        }
-        .content-block{
-            @include media("<=991px") {
-                width: 150px;
-                flex: 1 0 auto;
-            }
+            // width: 240px;
+            // display: flex;
+            // grid-gap: 0;
         }
     }
 
     .bottom-block {
-        .conten-items{
-            @include media("<=991px") {
-                display: grid;
-                grid-gap: 20px;
-                grid-template-columns: repeat(auto-fit, 150px);
-            }
-            .content-block-2{
-                @include media("<=991px") {
-                    height: 100%;
-                }
-            }
-        }
     }
 }
 
 //component-1
 .content-block {
-    background: #FFFFFF;
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    @include media("<=991px") {
-        padding: 15px;
-        gap: 15px;
-    }
-    img{
-        @include media("<=991px") {
-            height: 35px;
-            width: 35px;
-        }
-    }
-
 }
 
 //component-2
 .content-block-2 {
-    background: #FFFFFF;
-    box-shadow: 0 2px 30px rgb(0 0 0 / 6%);
+    background: #ffffff;
+    box-shadow: 0px 2px 30px rgb(0 0 0 / 6%);
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include media("<=991px") {
-        height: auto;
-        width: 150px;
-    }
 
     .top-icon {
         height: 150px;
         width: 150px;
         object-fit: contain;
-        @include media("<=991px") {
-            height: auto;
-            width: 100px;
-        }
     }
 
     .footer-item {
-        border-top: 1px solid #E7E7ED;
+        border-top: 1px solid #e7e7ed;
         display: flex;
         align-items: center;
         gap: 20px;
         justify-content: space-between;
         padding: 12px 15px;
         width: 100%;
-        @include media("<=991px") {
-            padding: 10px 10px;
-            height: 100%;
-        }
 
         p {
             color: #272833;
             font-weight: 400;
             font-size: 14px;
             line-height: 21px;
-            margin-bottom: 0;
-            @include media("<=991px") {
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 21px;
-                line-break: anywhere;
-            }
+            margin-bottom: 0px;
         }
 
         img {
@@ -135,7 +72,6 @@
 .content-upload-wrapper {
     display: flex;
     align-content: center;
-
     .form-body {
         width: 60%;
         margin: 0 auto;

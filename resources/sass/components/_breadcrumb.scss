@@ -1,4 +1,9 @@
+@import "../includes/responsive";
+
 .page-title-wrapper {
+    @include media("<=991px") {
+        display: none;
+    }
     border-bottom: 1px solid rgba(102, 112, 133, 0.2);
 
     .page-name-wrapper {

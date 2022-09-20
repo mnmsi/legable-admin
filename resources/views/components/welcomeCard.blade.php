@@ -18,13 +18,14 @@
                     </div>
                     <div class="button-wrapper">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                 <img src="{{asset("image/common/circle-add.svg")}}" alt="image">
                                 Add New
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <button class="dropdown-item add-dash-icon-1" id="newInfo">New Information</button>
-                                <button class="dropdown-item add-dash-icon-2" id="dashCreateBox" >Create Box</button>
+                                <button class="dropdown-item add-dash-icon-2" id="dashCreateBox">Create Box</button>
                                 <a class="dropdown-item add-dash-icon-3" href="/drawer/add">New Drawer</a>
                             </div>
                         </div>
@@ -32,5 +33,12 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="res-welcome-card"
+     style="background: url('{{asset("image/dashboard/welcomeBg.svg")}}') no-repeat center;background-size: cover;height: 92px">
+    <div class="res-welcome-card-text-content">
+        <p class="welcome-text mb-1">Good Morning!</p>
+        <h2 class="heading">IOTA Infotech Limited</h2>
     </div>
 </div>

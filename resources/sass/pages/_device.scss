@@ -1,4 +1,4 @@
-
+@import "../includes/responsive";
 .add-device-wrapper {
     .add-device-title {
         margin-bottom: 2rem;
@@ -10,11 +10,15 @@
 }
 
 .single-card-wrapper {
+    @include media("<=991px") {
+        margin-bottom: 24px;
+        height: 113px;
+        padding: 16px;
+    }
     height: 100%;
-    border: 1px solid #ECD3B1;
+    border: 1px solid #ecd3b1;
     border-radius: 10px;
     padding: 30px 20px;
-    //padding: 40px;
     .device-card-content-wrapper {
         display: flex;
         gap: 24px;
@@ -29,8 +33,13 @@
                 font-size: 18px;
                 line-height: 27px;
                 letter-spacing: -0.01em;
-                color: #303E49;
+                color: #303e49;
                 margin-bottom: 12px;
+                @include media("<=991px") {
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
             }
 
             .device-location {
@@ -38,8 +47,15 @@
                 font-size: 18px;
                 line-height: 27px;
                 letter-spacing: -0.01em;
-                color: #303E49;
+                color: #303e49;
                 margin-bottom: 16px;
+                @include media("<=991px") {
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 22px;
+                    letter-spacing: -0.01em;
+                    margin-bottom: 12px;
+                }
             }
 
             .logged-date {
@@ -47,11 +63,17 @@
                 font-size: 18px;
                 line-height: 27px;
                 color: #737373;
+                @include media("<=991px") {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 18px;
+                    color: #737373;
+                }
             }
 
             .logout-device-button {
                 a {
-                    background: #EFB86E;
+                    background: #efb86e;
                     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
                     border-radius: 5px;
                     padding: 8px 24px;
@@ -59,9 +81,19 @@
                     font-size: 12px;
                     line-height: 20px;
                     text-align: center;
-                    color: #FBF5F0;
+                    color: #fbf5f0;
                     display: block;
                     text-decoration: none;
+                    @include media("<=991px") {
+                        background: #fff;
+                        font-weight: 600;
+                        font-size: 12px;
+                        line-height: 18px;
+                        box-shadow: none;
+                        text-align: left;
+                        color: #efb86e;
+                        padding: 0;
+                    }
                 }
             }
         }

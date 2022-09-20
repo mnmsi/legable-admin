@@ -1,4 +1,9 @@
+@import "../includes/responsive";
+
 .welcome-card-container {
+    @include media("<=991px") {
+        display: none;
+    }
     background: #FFFFFF;
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -147,15 +152,18 @@
 
 //modal
 .welcome-card-modal {
-    .modal-fit-width{
+    .modal-fit-width {
         max-width: fit-content;
     }
+
     .modal-content {
         border-radius: 12px;
         border: none;
+
         .modal-body {
             min-width: 320px;
             padding: 0;
+
             .header {
                 background: #175067;
                 border-radius: 10px 10px 0 0;
@@ -178,6 +186,7 @@
                     padding: 15px 20px;
                     margin: 0;
                     cursor: pointer;
+
                     &:hover {
                         background: #F5FCFF;
                         border-radius: 5px;
@@ -185,5 +194,27 @@
                 }
             }
         }
+    }
+}
+
+.res-welcome-card {
+    background: #175067;
+    border-radius: 5px;
+    display: none;
+    padding: 24px;
+    color: #fff;
+
+    p {
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    h2 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    @include media("<=991px") {
+        display: block;
     }
 }

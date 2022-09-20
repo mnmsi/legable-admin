@@ -1,0 +1,68 @@
+@import "../includes/responsive";
+
+.res-recently-open-dock-wrapper {
+    display: none;
+    @include media("<=991px") {
+        display: block;
+    }
+}
+
+.document-wrapper {
+    margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .document-name-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+
+        .document-name {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 21px;
+            color: #282A2C;
+            @include media("<=576px") {
+                font-size: 16px;
+            }
+        }
+
+        .document-date {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 140.1%;
+            color: rgba(124, 124, 124, 0.6);
+            @include media("<=576px") {
+                font-size: 10px;
+            }
+        }
+
+        .document-image-wrapper {
+            height: 42px;
+            width: 42px;
+            background: #EEF7FE;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .document-size-wrapper {
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 140.1%;
+        color: rgba(124, 124, 124, 0.6);
+        @include media("<=576px") {
+            font-size: 10px;
+        }
+    }
+}

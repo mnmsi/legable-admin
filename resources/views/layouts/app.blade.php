@@ -14,14 +14,14 @@
     <!--Main Navigation-->
     {{-- sidebar --}}
     {{--    @include('includes.sidebar')--}}
-    {{--    <div class="mt-4">--}}
-    {{--        <div class="main-content">--}}
-    {{--            <div class="container-fluid">--}}
-    {{--                @yield('content')--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--    @include('includes.footer')--}}
+    <div class="mt-4">
+        <div class="main-content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+    @include('includes.footer')
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>
