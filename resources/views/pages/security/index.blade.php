@@ -64,7 +64,7 @@
                 {{--  title bar end--}}
                 {{--  master key form start--}}
                 <div class="row align-items-end">
-                    <div class="col-lg-6 col-md-12 lg-mb-0 mb-3">
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group all-form-wrapper">
                             <label for="" class="mb-3 form-label">Generate Key</label>
                             <input type="text" class="form-control" placeholder="Enter Master Key">
