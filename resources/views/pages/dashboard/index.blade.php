@@ -49,7 +49,7 @@
       <div class="safe-slider-card">
        <div class="slider-card-text">your files are synced, backed up, and always encrypted.</div>
        <div class="slider-card-image-wrapper">
-        <img src="{{ asset('image/dashboard/dashboard-slider-card.svg') }}" alt="card">
+        <img src="{{ asset('image/dashboard/dashboard-slider-card.svg') }}" alt="card" class="img-fluid">
        </div>
       </div>
       {{-- safe data single  slider card end --}}

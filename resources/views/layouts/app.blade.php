@@ -8,12 +8,12 @@
 <!--Main layout-->
 <main>
     <!--Main Navigation-->
-    {{--    @include('includes.nav')--}}
+    @include('includes.nav')
     @include('includes.responsive.nav')
     @include('includes.responsive.offcanvas')
     <!--Main Navigation-->
     {{-- sidebar --}}
-    {{--    @include('includes.sidebar')--}}
+    @include('includes.sidebar')
     <div class="mt-4">
         <div class="main-content">
             <div class="container-fluid">

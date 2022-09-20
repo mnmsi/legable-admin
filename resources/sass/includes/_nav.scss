@@ -1,6 +1,11 @@
 @import "../variables";
 @import "responsive";
 
+.web-main-nav{
+    @include media("<=991px") {
+        display: none;
+    }
+}
 .primary-nav {
     height: 100px;
     position: sticky;
@@ -149,6 +154,10 @@
 
 //responsive start
 .res-nav {
+    display: none;
+    @include media("<=991px") {
+        display: block;
+    }
     background: #fff;
     padding: 25px 24px 0 24px;
 

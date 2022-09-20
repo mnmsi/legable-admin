@@ -1,6 +1,10 @@
 @import "../variables";
+@import "responsive";
 
 .sidebar-wrapper {
+    @include media("<=991px") {
+        display: none;
+    }
     .sidebar-sticky-wrapper {
         position: sticky;
         top: 0;

@@ -1,4 +1,4 @@
-<nav class="primary-nav navbar navbar-expand-lg navbar-light bg-white">
+<nav class="primary-nav navbar navbar-expand-lg navbar-light bg-white web-main-nav">
     <div class="container-fluid">
         <div class="navbar-nav ms-auto custom-nav-item">
             <a class="nav-link" href="">
