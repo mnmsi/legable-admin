@@ -1,8 +1,13 @@
+@import "../includes/responsive";
+
 .security-settings-wrapper {
     .setting-title-bar-wrapper {
         margin-bottom: 30px;
         padding-bottom: 16px;
         border-bottom: 1px solid #D7E8EF;
+        @include media("<=991px") {
+            border-bottom: 0;
+        }
 
         .change-password-title-content {
             h4 {
@@ -47,6 +52,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @include media("<=991px") {
+            display: none;
+        }
     }
 
     .generate-key-submit-button {
