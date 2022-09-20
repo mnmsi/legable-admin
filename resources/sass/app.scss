@@ -6,9 +6,14 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+//responsive
+@import "includes/responsive";
 
 body {
     background-color: $primary-bg;
+    @include media("<=991px") {
+        background-color: #fff;
+    }
     font-family: 'Poppins', sans-serif;
 }
 
@@ -48,11 +53,16 @@ body {
 @import "pages/billing";
 //plan
 @import "components/planModal";
+<<<<<<< HEAD
 
 
 //responsive
 @import "includes/responsive";
 
+=======
+//offcanvas
+@import "includes/offcanvas";
+>>>>>>> 623ff6ea4b1a494360369b8e9c9e2dc615b359ab
 .block-min-height {
     min-height: calc(100vh - 345px);
 }
