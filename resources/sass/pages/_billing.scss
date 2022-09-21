@@ -1,7 +1,38 @@
+@import "../includes/responsive";
+
+.payment-method-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media("<=576px") {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
+        color: #282A2C;
+    }
+
+    .add-payment-button {
+        display: none;
+        @include media("<=991px") {
+            display: block;
+        }
+    }
+}
+
 .payment-card-wrapper {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    @include media("<=991px") {
+        display: flex;
+        gap: 30px;
+        flex-wrap: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
 
     .single-payment-card {
         width: 321.33px;
@@ -16,6 +47,9 @@
             justify-content: center;
             align-items: center;
             background: #F7F7F7;
+            @include media("<=991px") {
+                display: none;
+            }
         }
 
         &.active {
@@ -99,6 +133,62 @@
                     text-decoration: none;
                     color: #175067;
                 }
+            }
+        }
+    }
+}
+
+.res-single-table-content {
+    display: none;
+}
+
+@include media("<=991px") {
+    .res-single-table-content {
+        display: block;
+        padding-bottom: 10px;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid rgba(102, 112, 133, 0.2);
+
+        .res-single-table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+            .res-single-date {
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 22px;
+                color: #303E49;
+            }
+
+            .res-single-price {
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 22px;
+                color: #303E49;
+            }
+        }
+    }
+    .res-table-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .res-plan-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #303E49;
+        }
+
+        .res-plan-download {
+            a {
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 22px;
+                text-decoration: none;
+                color: #175067;
             }
         }
     }
