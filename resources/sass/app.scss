@@ -141,6 +141,9 @@ body {
         top: 70px;
         right: 0;
         transform: translate(-50%, -50%);
+        @include media("<=991px") {
+            top: 61px;
+        }
     }
 
     .form-label {
@@ -344,7 +347,6 @@ body {
                 }
             }
         }
-
     }
 }
 

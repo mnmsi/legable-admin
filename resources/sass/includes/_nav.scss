@@ -1,11 +1,12 @@
 @import "../variables";
 @import "responsive";
 
-.web-main-nav{
+.web-main-nav {
     @include media("<=991px") {
         display: none;
     }
 }
+
 .primary-nav {
     height: 100px;
     position: sticky;
@@ -193,4 +194,8 @@
     line-height: 27px;
     text-align: center;
     color: #175067;
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: unset;
 }

@@ -2,15 +2,38 @@
 // add drawer
 .drawer-add-wrapper {
     margin: 0px;
+    @include media("<=991px") {
+        padding: 20px 6px;
+        margin: 0;
+        box-shadow: none;
+        flex-direction: column-reverse;
+        border-radius: 0;
+        background: transparent;
+    }
+
     .items-block {
         padding: 20px 50px 30px 20px;
+        @include media("<=991px") {
+            padding: 20px 6px;
+            margin: 0;
+            box-shadow: none;
+            flex-direction: column-reverse;
+            border-radius: 0;
+            background: transparent;
+        }
 
         &:first-child {
             border-right: 1px solid #ecd3b1;
+            @include media("<=991px") {
+                border-right: 0;
+            }
         }
 
         &:last-child {
             padding-left: 50px;
+            @include media("<=991px") {
+                padding-left: 0;
+            }
         }
     }
 
