@@ -5,8 +5,14 @@
     @stack('style')
 </head>
 <body>
+
 <!--Main layout-->
 <main>
+    <div class="loader" id="loader">
+        <div class="loader-image">
+            <img src="{{asset("image/common/loader.svg")}}" class="img-fluid" alt="image">
+        </div>
+    </div>
     <!--Main Navigation-->
     @include('includes.nav')
     @include('includes.responsive.nav')
@@ -14,6 +20,7 @@
     <!--Main Navigation-->
     {{-- sidebar --}}
     @include('includes.sidebar')
+
     <div class="mt-4">
         <div class="main-content">
             <div class="container-fluid">
@@ -25,6 +32,12 @@
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>
+<script>
+    $(window).on('load', function () {
+        $("#loader").fadeOut();
+
+    })
+</script>
 @yield('script')
 @stack('script')
 <script src="{{ asset('/sw.js') }}"></script>
@@ -34,10 +47,7 @@
             console.log("Service worker has been registered for scope: " + reg.scope);
         });
     }
-    $(document).ready(function () {
-        // alert(1)
-        //    inject code here
-    })
+
 </script>
 </body>
 </html>

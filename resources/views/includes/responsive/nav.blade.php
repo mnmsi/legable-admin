@@ -6,9 +6,11 @@
         </div>
         <div class="res-page-name">@yield('title')</div>
         <div class="res-profile-icon-wrapper">
-            <div class="res-help-icon">
-                <a href="#"><img src="{{asset('image/common/help.svg')}}" alt=""></a>
-            </div>
+            @if( request()->is('/'))
+                <div class="res-help-icon">
+                    <a href="#"><img src="{{asset('image/common/help.svg')}}" alt=""></a>
+                </div>
+            @endif
             <div class="dropdown dropdown-list">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('image/common/profile.svg')}}" alt="profile">
