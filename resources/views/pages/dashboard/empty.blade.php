@@ -1,5 +1,6 @@
 @extends("layouts.app")
 @section('content')
+    @section('title','Search')
     <x-breadcrumb title="Dashboard" subtitle="Welcome, IOTA Infotech Limited 👋 "
                   buttonIcon="{{asset('image/dashboard/document.svg')}}" buttonText="Upload Files"/>
     {{--    page content start--}}

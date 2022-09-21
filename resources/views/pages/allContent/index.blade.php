@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @section('title','All Contents')
     <div class="content-page">
         @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/drawer/upload','text'=>'Upload Content']])
 

@@ -4,7 +4,7 @@
         <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <img src="{{asset('image/common/expandNav.svg')}}" alt="">
         </div>
-        <div class="res-page-name">Dashboard</div>
+        <div class="res-page-name">@yield('title')</div>
         <div class="res-profile-icon-wrapper">
             <div class="res-help-icon">
                 <a href="#"><img src="{{asset('image/common/help.svg')}}" alt=""></a>

@@ -1,5 +1,6 @@
 @extends("layouts.app")
 @section('content')
+    @section('title','Billing Information')
     @include('includes.pageHeader',['title'=>'Billing Informations','list'=>['Dashboard','Plans & Subscriptions'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
