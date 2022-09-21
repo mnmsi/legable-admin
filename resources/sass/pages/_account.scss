@@ -1,3 +1,5 @@
+@import "../includes/responsive";
+
 .account-page-title-wrapper {
     display: flex;
     justify-content: space-between;
@@ -5,6 +7,16 @@
     border-bottom: 1px solid #D7E8EF;
     padding-bottom: 12px;
     margin-bottom: 30px;
+    @include media("<=991px") {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .account-edit-icon {
+        @include media("<=991px") {
+            display: none;
+        }
+    }
 
     .account-page-title {
         p {
@@ -13,6 +25,18 @@
             line-height: 30px;
             color: #175067;
             margin-bottom: 0;
+            @include media("<=991px") {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                color: #282A2C;
+            }
+            @include media("<=576px") {
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 22px;
+                color: #282A2C;
+            }
         }
     }
 }
@@ -26,6 +50,12 @@
         line-height: 24px;
         color: #737373;
         margin-bottom: 12px;
+        @include media("<=576px") {
+            font-size: 12px;
+            line-height: 18px;
+            color: #737373;
+            margin-bottom: 7px;
+        }
     }
 
     p {
@@ -35,6 +65,13 @@
         letter-spacing: -0.01em;
         color: #303E49;
         margin-bottom: 0;
+        @include media("<=576px") {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 20px;
+            letter-spacing: -0.01em;
+            color: #303E49;
+        }
     }
 
     .change-content-wrapper {
@@ -49,6 +86,17 @@
         line-height: 24px;
         letter-spacing: -0.01em;
         color: #FB8B24;
+        @include media("<=991px") {
+            padding: 5px 21px;
+            background: #D7E8EF;
+            border-radius: 3px;
+            font-size: 14px;
+            line-height: 18px;
+            color: #175067;
+        }
+        @include media("<=576px") {
+            font-size: 12px;
+        }
     }
 }
 
@@ -71,6 +119,9 @@
             font-size: 18px;
             line-height: 27px;
             color: #737373;
+            @include media("<=576px") {
+                font-size: 12px;
+            }
         }
     }
 
@@ -82,6 +133,9 @@
             letter-spacing: -0.01em;
             color: #303E49;
             margin-bottom: 0;
+            @include media("<=576px") {
+                font-size: 13px;
+            }
         }
     }
 
@@ -99,5 +153,61 @@
             line-height: 27px;
             color: #737373;
         }
+    }
+}
+
+.address-container {
+    @include media("<=991px") {
+        background: #F8FCFD;
+        border-radius: 5px;
+        padding: 24px 16px;
+    }
+}
+
+.change-name-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .change-text {
+        display: none;
+    }
+
+    @include media("<=991px") {
+        .change-text {
+            display: block;
+        }
+    }
+}
+
+@include media("<=991px") {
+    .add-new-box {
+        display: none;
+    }
+}
+
+.edit-address-button {
+    display: none;
+    @include media("<=991px") {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #D7E8EF;
+        border-radius: 3px;
+        width: 117px;
+        height: 28px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #175067;
+        text-decoration: none;
+        margin-top: 24px;
+        margin-left: auto;
+    }
+}
+
+.create-account-button {
+    display: none;
+    @include media("<=991px") {
+        display: block;
     }
 }
