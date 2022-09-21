@@ -1,13 +1,67 @@
+@import "../includes/responsive";
+
 .plan-modal-wrapper {
     .plan-modal-block {
         max-width: 1140px;
+        @include media("<=991px") {
+            max-width: 100%;
+            margin: 0;
+        }
 
         .modal-content {
             border-radius: 10px;
             border: none;
+            @include media("<=991px") {
+                border-radius: 0;
+                min-height: 100vh;
+            }
 
             .modal-body {
                 padding: 0;
+                @include media("<=991px") {
+                    padding: 30px;
+                }
+
+                .res-top-block {
+                    display: none;
+                    @include media("<=991px") {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 40px;
+                        margin-bottom: 30px;
+                    }
+
+                    .text-top {
+                        @include media("<=991px") {
+                            width: 100%;
+                            display: grid;
+                            grid-template-columns: min-content 1fr;
+                        }
+                    }
+
+                    button {
+                        @include media("<=991px") {
+                            background: none;
+                            border: none;
+                            padding: 0;
+                            width: 20px;
+                        }
+                    }
+
+                    h3 {
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 27px;
+                        text-align: center;
+                        color: #175067;
+                        margin-bottom: 0;
+                    }
+
+                    .modal-top-icon {
+                        min-width: 30%;
+                    }
+                }
 
                 .top-block {
                     background: #175067;
@@ -17,8 +71,20 @@
                     grid-template-columns: 1fr min-content;
                     grid-template-rows: auto;
                     gap: 80px;
+                    @include media("<=991px") {
+                        border-radius: 0;
+                        background: #ffffff;
+                        padding: 0;
+                        grid-template-columns: 1fr;
+                        gap: 0;
+                    }
 
                     .left-block {
+                        @include media("<=991px") {
+                            display: flex;
+                            flex-direction: column-reverse;
+                        }
+
                         h2 {
                             color: #FBF5F0;
                             font-weight: 600;
@@ -27,6 +93,15 @@
                             display: flex;
                             align-items: center;
                             margin-bottom: 15px;
+                            @include media("<=991px") {
+                                font-size: 15px;
+                                line-height: 22px;
+                                color: #175067;
+                                margin-bottom: 0;
+                                border-bottom: 1px solid #ECD3B1;
+                                padding-bottom: 10px;
+                                justify-content: space-between;
+                            }
 
                             span {
                                 color: #FFFFFF;
@@ -37,6 +112,13 @@
                                 border: 1px solid #ffffff;
                                 margin-left: 15px;
                                 border-radius: 5px;
+                                @include media("<=991px") {
+                                    font-size: 10px;
+                                    line-height: 15px;
+                                    color: #175067;
+                                    border: 1px solid #175067;
+                                    padding: 2px 8px;
+                                }
                             }
                         }
 
@@ -48,6 +130,11 @@
                             margin-bottom: 40px;
                             display: flex;
                             align-items: center;
+                            @include media("<=991px") {
+                                font-size: 18px;
+                                line-height: 26px;
+                                margin-bottom: 10px;
+                            }
 
                             span {
                                 font-weight: bold;
@@ -59,6 +146,9 @@
                             flex-direction: column;
                             align-items: flex-start;
                             gap: 40px;
+                            @include media("<=991px") {
+                                display: none;
+                            }
 
                             .details-block {
                                 display: flex;
@@ -87,6 +177,10 @@
                         padding: 30px 20px;
                         border-radius: 7px;
                         background: #ffffff;
+                        @include media("<=991px") {
+                            width: 100%;
+                            padding: 20px 0;
+                        }
 
                         .top-sec {
                             display: flex;
@@ -96,6 +190,9 @@
                             border-bottom: 1px solid #ECD3B1;
                             padding-bottom: 15px;
                             margin-bottom: 30px;
+                            @include media("<=991px") {
+                                display: none;
+                            }
 
                             h4 {
                                 letter-spacing: -0.02em;
@@ -144,6 +241,9 @@
                     grid-template-rows: auto;
                     padding: 30px 60px;
                     gap: 50px;
+                    @include media("<=991px") {
+                        display: none;
+                    }
 
                     .testimonial {
                         display: grid;

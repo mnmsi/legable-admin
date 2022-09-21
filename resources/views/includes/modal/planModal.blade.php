@@ -4,6 +4,15 @@
     <div class="modal-dialog modal-dialog-centered modal-width plan-modal-block">
         <div class="modal-content">
             <div class="modal-body">
+                <div class="res-top-block">
+                    <div class="text-top">
+                        <button id="closePlanModal">
+                            <img src="{{asset("/image/global/backIcon.svg")}}" alt="" class="img-fluid">
+                        </button>
+                        <h3>Go Pro</h3>
+                    </div>
+                    <img src="{{asset("/image/plans/pro_plan_logo.svg")}}" alt="" class="img-fluid modal-top-icon">
+                </div>
                 <div class="top-block">
                     <div class="left-block">
                         <h2>Get Instant Access to Legable <span>PRO</span></h2>
