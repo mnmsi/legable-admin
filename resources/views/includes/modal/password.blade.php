@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
-                    <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid"/>
+                    <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid top-modal-img"/>
                 </div>
                 <form action="/drawer/item" method="get" enctype="multipart/form-data">
                     @csrf

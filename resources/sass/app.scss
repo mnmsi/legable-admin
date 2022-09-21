@@ -104,6 +104,10 @@ body {
     font-size: 18px;
     line-height: 27px;
     color: #175067;
+    @include media("<=991px") {
+        font-size: 16px;
+        line-height: 24px;
+    }
 }
 
 .sub-header2 {
@@ -122,6 +126,10 @@ body {
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
+    @include media("<=991px") {
+        font-size: 16px;
+        line-height: 24px;
+    }
 }
 
 //form data design
@@ -141,6 +149,10 @@ body {
         line-height: 30px;
         letter-spacing: 0.015em;
         color: #282a2c;
+        @include media("<=991px") {
+            font-size: 12px;
+            line-height: 18px;
+        }
     }
 
     .form-label-2 {
@@ -148,12 +160,19 @@ body {
         font-weight: 300;
         font-size: 16px;
         line-height: 24px;
+        @include media("<=991px") {
+            font-size: 12px;
+            line-height: 18px;
+        }
     }
 
     .form-control {
         padding: 11px 24px;
         border: 1px solid #d7e8ef;
         border-radius: 4px;
+        @include media("<=991px") {
+            padding: 10px 20px;
+        }
 
         &:focus {
             box-shadow: none;
@@ -165,6 +184,9 @@ body {
             line-height: 30px;
             letter-spacing: 0.015em;
             color: rgba(23, 80, 103, 0.5);
+            @include media("<=991px") {
+                line-height: 30px;
+            }
         }
     }
 
@@ -199,6 +221,10 @@ body {
         font-size: 14px;
         line-height: 30px;
         padding: 8px 20px;
+        @include media("<=991px") {
+            padding: 6px 20px;
+            font-size: 12px;
+        }
 
         &:focus {
             box-shadow: none;
@@ -217,12 +243,20 @@ body {
         display: flex;
         align-items: center;
         cursor: pointer;
+        @include media("<=991px") {
+            padding: 6px 20px;
+            font-size: 12px;
+        }
 
         &:before {
             content: url("/image/content/cloud.svg");
             width: 20px;
             height: 20px;
             margin-right: 10px;
+            @include media("<=991px") {
+                width: 18px;
+                height: 18px;
+            }
         }
     }
 
@@ -249,8 +283,12 @@ body {
     color: #f8f8f8;
     background: #175067;
     border-radius: 5px;
-    padding: 12px 0px;
+    padding: 12px 0;
     width: 100%;
+    @include media("<=991px") {
+        font-size: 12px;
+        line-height: 18px;
+    }
 
     &:hover {
         background-color: #175067 !important;
@@ -298,6 +336,15 @@ body {
                 }
             }
         }
+
+        .modal-body {
+            .top-modal-img {
+                @include media("<=991px") {
+                    content: url("/image/content/modalImgRes.svg");
+                }
+            }
+        }
+
     }
 }
 
@@ -336,6 +383,33 @@ body {
                 background-color: #fb8b24 !important;
                 border-color: #fb8b24 !important;
             }
+        }
+    }
+}
+
+.file-upload-modal {
+    .modal-header {
+        position: relative;
+
+        &::before {
+            content: '';
+            @include media("<=991px") {
+                content: 'File Upload';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 27px;
+                color: #175067;
+            }
+        }
+    }
+
+    .modal-top-image {
+        @include media("<=991px") {
+            display: none;
         }
     }
 }

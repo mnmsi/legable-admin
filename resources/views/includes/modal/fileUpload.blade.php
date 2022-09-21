@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade global-modal add-box-modal" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade global-modal add-box-modal file-upload-modal" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-width">
         <div class="modal-content">
@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
-                    <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid"/>
+                    <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid modal-top-image"/>
                 </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
@@ -30,10 +30,10 @@
                                 <option value="3">Drawer Three</option>
                             </select>
                         </div>
-                        <div class="form-check form-switch d-flex justify-content-end align-items-center">
-                            <input class="form-check-input" type="checkbox" id="checkPass" checked>
-                            <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
-                        </div>
+{{--                        <div class="form-check form-switch d-flex justify-content-end align-items-center">--}}
+{{--                            <input class="form-check-input" type="checkbox" id="checkPass" checked>--}}
+{{--                            <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>--}}
+{{--                        </div>--}}
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary my-4 submit-btn">Upload</button>
                         </div>
