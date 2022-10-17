@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,3 +68,37 @@ Route::get('/drawer/item', function () {
 //Auth::routes();
 //
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('test', function (Request $request) {
+
+    $crypt   = \Illuminate\Support\Facades\Crypt::encrypt("saiful Islam");
+    $encrypt = encrypt("saiful islam");
+
+//    $output = false;
+//    $encrypt_method = "AES-256-CBC";
+//    $secret_key = 'xxxxxxxxxxxxxxxxxxxxxxxx';
+//    $secret_iv = 'xxxxxxxxxxxxxxxxxxxxxxxxx';
+//    // hash
+//    $key = hash('sha256', $secret_key);
+//    // iv - encrypt method AES-256-CBC expects 16 bytes
+//    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+//    if ( $request->action == 'encrypt' ) {
+//        $output = openssl_encrypt($request->string, $encrypt_method, $key, 0, $iv);
+//        $output = base64_encode($output);
+//    } else if( $request->action == 'decrypt' ) {
+//        $output = openssl_decrypt(base64_decode($request->string), $encrypt_method, $key, 0, $iv);
+//    }
+//
+//    return $output;
+
+    return [
+        'crypt'      => $crypt,
+        'encrypt'    => $encrypt,
+        'crypt_en'   => \Illuminate\Support\Facades\Crypt::decrypt($encrypt),
+        'decrypt_en' => decrypt($crypt),
+        'hash_hmac'  => hash_hmac('sha256', base64_encode('Saiful'), 'iotait.tech'),
+        'my_en'      => myencrypt("iotait", "saiful", 'saiful islam'),
+        'my_de'      => mydecrypt("iotait", "saiful", 'ZXF3VS9KUGJYWTErTnVydndJY3JNZz09'),
+    ];
+});
