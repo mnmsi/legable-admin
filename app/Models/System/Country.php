@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Content;
+namespace App\Models\System;
 
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class InformationType extends BaseModel
+class Country extends BaseModel
 {
     use HasFactory;
 }

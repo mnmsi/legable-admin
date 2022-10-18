@@ -2,10 +2,10 @@
 
 namespace App\Models\Content;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class DrawerData extends Model
+class Content extends BaseModel
 {
     use HasFactory;
 }

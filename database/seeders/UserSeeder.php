@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\User\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class DrawerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +16,9 @@ class DrawerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table((new User())->getTable())
+            ->insert([
+               ['saiful.iotait@gmail.com']
+            ]);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Models\User;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class UserLoggedDevice extends Model
+class UserLoggedDevice extends BaseModel
 {
     use HasFactory;
 }
