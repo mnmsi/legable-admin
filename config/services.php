@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'myhash' => [
+        'secret' => env('HASH_SECRET_KEY')
+    ]
+
 ];

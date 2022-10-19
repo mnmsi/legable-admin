@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Content\DrawerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
 //    return view('welcome');
@@ -37,11 +39,10 @@ Route::get("/security-settings", function () {
 });
 
 //drawer
-Route::get('/drawer', function () {
-    return view("pages.secretDrawer.index");
-});
-Route::get('/drawer/add', function () {
-    return view("pages.secretDrawer.add");
+Route::prefix('drawer')->as('drawer.')->group(function () {
+    Route::get('', [DrawerController::class, 'index'])->name('index');
+    Route::get('add', [DrawerController::class, 'add'])->name('add');
+    Route::post('store', [DrawerController::class, 'store'])->name('store');
 });
 //my plans
 Route::get("/my-plans", function () {
@@ -65,7 +66,6 @@ Route::get('/drawer/item', function () {
     return view("pages.secretDrawer.singleDrawer");
 });
 
-//Auth::routes();
 //
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
