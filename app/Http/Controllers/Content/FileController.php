@@ -30,6 +30,6 @@ class FileController extends Controller
             ];
         }, Content::where('content_type', 'drawer')->get()->all());
 
-        return view("pages.allContent.upload");
+        return view("pages.allContent.upload", compact('drawers'));
     }
 }
