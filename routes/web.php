@@ -116,7 +116,7 @@ Route::get('test', function (Request $request) {
         'crypt_en'   => \Illuminate\Support\Facades\Crypt::decrypt($encrypt),
         'decrypt_en' => decrypt($crypt),
         'hash_hmac'  => hash_hmac('sha256', base64_encode('Saiful'), 'iotait.tech'),
-        'my_en'      => myencrypt("saiful", 'saiful islam'),
-        'my_de'      => mydecrypt("saiful", 'VlVKcjhWWm44dGp5bmFna0FVNE44UT09'),
+        'my_en'      => myencrypt( 'saiful islam'),
+        'my_de'      => mydecrypt( 'MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });

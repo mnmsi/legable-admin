@@ -22,10 +22,9 @@
                     All Contents
                 </h6>
                 <div class="conten-items">
-                    <x-content title="Certificate" url="{{asset('image/content/demo1.svg')}}" id="contentid"/>
-                    <x-content title="Contract Fom" url="{{asset('image/content/demo1.svg')}}" id="contentid2"/>
-                    <x-content title="goNDA - Notes" url="{{asset('image/content/demo1.svg')}}" id="contentid3"/>
-                    <x-content title="Legable concept" url="{{asset('image/content/demo1.svg')}}" id="contentid4"/>
+                    @foreach($contents as $content)
+                        <x-content title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"/>
+                    @endforeach
                 </div>
             </div>
         </div>

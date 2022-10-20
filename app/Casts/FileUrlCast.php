@@ -17,7 +17,7 @@ class FileUrlCast implements CastsAttributes
      */
     public function get($model, string $key, $value, array $attributes)
     {
-        return myDecrypt(config('services.myhash.secret'), $attributes['created_at'], $value);
+        return myDecrypt($value);
     }
 
     /**
@@ -31,6 +31,6 @@ class FileUrlCast implements CastsAttributes
      */
     public function set($model, string $key, $value, array $attributes)
     {
-        return myEncrypt($attributes['created_at'], $value);
+        return myEncrypt($value);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models\Content;
 
 use App\Casts\FileUrlCast;
 use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
@@ -38,23 +39,22 @@ class Content extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
         static::creating(function ($model) {
             $model->user_id = Auth::id();
         });
     }
 
-    protected function id(): Attribute
+    protected static function booted()
     {
-        return Attribute::make(
-            get: fn($value, $attributes) => myEncrypt($attributes['created_at'], $value),
-            set: fn($value, $attributes) => myDecrypt($attributes['created_at'], $value),
-        );
+        parent::booted();
+        static::addGlobalScope('user', function (Builder $builder) {
+            $builder->where('user_id', Auth::id());
+        });
     }
 
-    protected function password(): Attribute
+    protected function id(): Attribute
     {
-        return Attribute::set(fn($value) => Hash::make($value));
+        return Attribute::get(fn($value) => myEncrypt($value));
     }
 
     protected function isPasswordRequired(): Attribute

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Content;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DrawerRequest extends FormRequest
 {
@@ -37,7 +38,7 @@ class DrawerRequest extends FormRequest
         $this->merge([
             'content_type'           => 'drawer',
             'name'                   => $this->drawer_name,
-            'password'               => $this->drawer_password,
+            'password'               => Hash::make($this->drawer_password),
             'is_password_required'   => $this->password_required,
             'is_able_use_master_key' => 1,
         ]);
