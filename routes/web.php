@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
+use App\Http\Controllers\Content\FileController;
+use App\Http\Controllers\Content\SecurityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +20,35 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-//    return view('welcome');
-    return view("pages.dashboard.index");
+Route::middleware('auth')->group(function () {
+
+    Route::get('/', function () {
+        return view("pages.dashboard.index");
+    });
+
+    //drawer
+    Route::prefix('drawer')->as('drawer.')->group(function () {
+        Route::get('', [DrawerController::class, 'index'])->name('index');
+        Route::get('add', [DrawerController::class, 'add'])->name('add');
+        Route::post('store', [DrawerController::class, 'store'])->name('store');
+    });
+
+    //All content
+    Route::get('/content', [ContentController::class, 'index'])->name('content');
+
+    //File
+    Route::prefix('file')->as('file.')->group(function () {
+        Route::get('', [FileController::class, 'index'])->name('index');
+        Route::get('upload', [FileController::class, 'upload'])->name('upload');
+        Route::post('store', [FileController::class, 'store'])->name('store');
+    });
+
+    Route::prefix('security')->as('security.')->group(function () {
+        Route::post('check', [SecurityController::class, 'check'])->name('check');
+    });
 });
+
+
 //search
 Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
@@ -38,12 +66,6 @@ Route::get("/security-settings", function () {
     return view("pages.security.index");
 });
 
-//drawer
-Route::prefix('drawer')->as('drawer.')->group(function () {
-    Route::get('', [DrawerController::class, 'index'])->name('index');
-    Route::get('add', [DrawerController::class, 'add'])->name('add');
-    Route::post('store', [DrawerController::class, 'store'])->name('store');
-});
 //my plans
 Route::get("/my-plans", function () {
     return view("pages.plans.index");
@@ -52,13 +74,10 @@ Route::get("/my-plans", function () {
 Route::get("/billing", function () {
     return view("pages.billing.index");
 });
-Route::get('/content', function () {
-    return view("pages.allContent.index");
-});
 
-Route::get('/drawer/upload', function () {
-    return view("pages.allContent.upload");
-});
+//Route::get('/drawer/upload', function () {
+//    return view("pages.allContent.upload");
+//});
 
 // important
 
@@ -98,7 +117,7 @@ Route::get('test', function (Request $request) {
         'crypt_en'   => \Illuminate\Support\Facades\Crypt::decrypt($encrypt),
         'decrypt_en' => decrypt($crypt),
         'hash_hmac'  => hash_hmac('sha256', base64_encode('Saiful'), 'iotait.tech'),
-        'my_en'      => myencrypt("iotait", "saiful", 'saiful islam'),
-        'my_de'      => mydecrypt("iotait", "saiful", 'ZXF3VS9KUGJYWTErTnVydndJY3JNZz09'),
+        'my_en'      => myencrypt("saiful", 'saiful islam'),
+        'my_de'      => mydecrypt("saiful", 'VlVKcjhWWm44dGp5bmFna0FVNE44UT09'),
     ];
 });

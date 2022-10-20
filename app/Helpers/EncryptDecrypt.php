@@ -1,10 +1,10 @@
 <?php
 
-function myEncrypt($secret_key, $secret_iv, $plaintext)
+function myEncrypt($secret_iv, $plaintext)
 {
     $output         = false;
     $encrypt_method = "AES-256-CBC";
-
+    $secret_key     = config('services.myhash.secret');
     // hash
     $key = hash('sha256', $secret_key);
 
@@ -15,10 +15,11 @@ function myEncrypt($secret_key, $secret_iv, $plaintext)
     return base64_encode($output);
 }
 
-function myDecrypt($secret_key, $secret_iv, $ciphertext)
+function myDecrypt($secret_iv, $ciphertext)
 {
     $output         = false;
     $encrypt_method = "AES-256-CBC";
+    $secret_key     = config('services.myhash.secret');
 
     // hash
     $key = hash('sha256', $secret_key);
@@ -27,5 +28,4 @@ function myDecrypt($secret_key, $secret_iv, $ciphertext)
     $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
     return openssl_decrypt(base64_decode($ciphertext), $encrypt_method, $key, 0, $iv);
-
 }

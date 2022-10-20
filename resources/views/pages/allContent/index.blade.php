@@ -1,8 +1,9 @@
 @extends('layouts.app')
+@section('title','All Contents')
+
 @section('content')
-    @section('title','All Contents')
     <div class="content-page">
-        @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/drawer/upload','text'=>'Upload Content']])
+        @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/file/upload','text'=>'Upload Content']])
 
         <div class="block-wrapper block-min-height content-wrappers">
             <div class="top-block">
@@ -10,9 +11,10 @@
                     Drawers
                 </h6>
                 <div class="conten-items">
-                    <x-drawer title="Most Important" url="{{asset('image/card/card-icon.svg')}}" id="drawerid"/>
-                    <x-drawer title="Documents" url="{{asset('image/card/card-icon.svg')}}" id="drawerid2"/>
-                    <x-drawer title="Videos" url="{{asset('image/card/card-icon.svg')}}" id="drawerid3"/>
+                    @foreach($drawers as $key => $drawer)
+                        <x-drawer title="{{$drawer['name']}}" url="{{asset('image/card/card-icon.svg')}}"
+                                  id="drawer_{{$key}}" :data-drawer="$drawer['id']" :required-pass="$drawer['is_password_required']" />
+                    @endforeach
                 </div>
             </div>
             <div class="bottom-block">
@@ -35,10 +37,6 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            $('#drawerid,#drawerid2,#drawerid3').on('click', function () {
-                $('#pageModal').removeClass('content-modal');
-                $('#pageModal').modal('show');
-            });
 
             $('#contentid,#contentid2,#contentid3,#contentid4').on('click', function () {
                 $('#pageModal').addClass('content-modal');
