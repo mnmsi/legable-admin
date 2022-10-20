@@ -25,6 +25,10 @@ function manipulate_data($data, array $columns)
             if ($type == 'encrypt') {
                 $columnValues[$col] = $item[$col];
             }
+
+            if (!array_key_exists('created_at', $columns)) {
+                $columnValues['created_at'] = $item['created_at'];
+            }
         }
         return $columnValues;
     }, $data);

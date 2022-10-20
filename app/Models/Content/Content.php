@@ -44,6 +44,14 @@ class Content extends BaseModel
         });
     }
 
+    protected function id(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => myEncrypt($attributes['created_at'], $value),
+            set: fn($value, $attributes) => myDecrypt($attributes['created_at'], $value),
+        );
+    }
+
     protected function password(): Attribute
     {
         return Attribute::set(fn($value) => Hash::make($value));

@@ -16,9 +16,10 @@ class DrawerController extends Controller
         return view("pages.secretDrawer.index", [
             'drawers' => array_map(function ($item) {
                 return [
-                    'id'   => $item->id,
-                    'name' => $item->name,
-                    'date' => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+                    'id'         => $item->id,
+                    'name'       => $item->name,
+                    'date'       => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+                    'created_at' => $item->created_at
                 ];
             }, Content::where('content_type', 'drawer')->get()->all())
         ]);
