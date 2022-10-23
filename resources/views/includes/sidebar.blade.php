@@ -73,7 +73,7 @@
             </a>
             {{-- single menu item --}}
             {{--   single menu item--}}
-            <a href="/security-settings"
+            <a href="/security/settings"
                class="single-menu-wrapper {{request()->is("security-settings") ? "active" : ""}}">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">

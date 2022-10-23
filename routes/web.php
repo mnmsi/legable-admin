@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     //account
     Route::get("/account-settings", [AccountSettingsController::class, 'accountSettings']);
 
+    //All content
+    Route::get('content', [ContentController::class, 'index'])->name('content');
+
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
         Route::get('', [DrawerController::class, 'index'])->name('index');
@@ -42,17 +45,16 @@ Route::middleware('auth')->group(function () {
         Route::post('create', [BoxController::class, 'create'])->name('create');
     });
 
-    //All content
-    Route::get('content', [ContentController::class, 'index'])->name('content');
-
     //File
     Route::prefix('file')->as('file.')->group(function () {
         Route::get('upload', [FileController::class, 'upload'])->name('upload');
         Route::post('store', [FileController::class, 'store'])->name('store');
     });
 
+    //Security
     Route::prefix('security')->as('security.')->group(function () {
         Route::post('check', [SecurityController::class, 'check'])->name('check');
+        Route::get("settings", [SecurityController::class, 'settings'])->name('settings');
     });
 });
 
@@ -64,11 +66,6 @@ Route::get("/search-empty", function () {
 //device
 Route::get("/device", function () {
     return view("pages.device.index");
-});
-
-//security
-Route::get("/security-settings", function () {
-    return view("pages.security.index");
 });
 
 //my plans
