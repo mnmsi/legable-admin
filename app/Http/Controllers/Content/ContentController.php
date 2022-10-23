@@ -12,7 +12,7 @@ class ContentController extends Controller
     {
         return view("pages.allContent.index", [
             'drawers' => manipulate_data(Content::where('content_type', 'drawer')->get(), ['id', 'name', 'is_password_required', 'is_able_use_master_key']),
-            'contents' => manipulate_data(Content::where('content_type', 'file')->get(), ['id', 'name', 'is_password_required', 'is_able_use_master_key'])
+            'contents' => manipulate_data(Content::where('content_type', 'file')->whereNull('parent_id')->get(), ['id', 'name', 'is_password_required', 'is_able_use_master_key'])
         ]);
     }
 }

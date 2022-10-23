@@ -19,12 +19,12 @@ class Card extends Component
     public $id;
     public $isThreeDotShow;
 
-    public function __construct($icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "")
+    public function __construct($icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "", public $click = "")
     {
-        $this->icon = $icon;
-        $this->title = $title;
-        $this->date = $date;
-        $this->id = $id;
+        $this->icon           = $icon;
+        $this->title          = $title;
+        $this->date           = $date;
+        $this->id             = $id;
         $this->isThreeDotShow = $isThreeDotShow;
     }
 
@@ -33,7 +33,8 @@ class Card extends Component
      *
      * @return View|Closure|string
      */
-    public function render()
+    public
+    function render()
     {
         return view('components.card');
     }

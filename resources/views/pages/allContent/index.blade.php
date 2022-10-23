@@ -13,7 +13,8 @@
                 <div class="conten-items">
                     @foreach($drawers as $key => $drawer)
                         <x-drawer title="{{$drawer['name']}}" url="{{asset('image/card/card-icon.svg')}}"
-                                  id="drawer_{{$key}}" :data-drawer="$drawer['id']" :required-pass="$drawer['is_password_required']" />
+                                  id="drawer_{{$key}}" :data-drawer="$drawer['id']"
+                                  :required-pass="$drawer['is_password_required']"/>
                     @endforeach
                 </div>
             </div>
@@ -37,10 +38,10 @@
     <script>
         $(document).ready(function () {
 
-            $('#contentid,#contentid2,#contentid3,#contentid4').on('click', function () {
-                $('#pageModal').addClass('content-modal');
-                $('#pageModal').modal('show');
-            });
+            // $('#contentid,#contentid2,#contentid3,#contentid4').on('click', function () {
+            //     $('#pageModal').addClass('content-modal');
+            //     $('#pageModal').modal('show');
+            // });
 
             $('#addboxid').on('click', function () {
                 $('#addBoxModal').modal('show');
@@ -50,7 +51,45 @@
                 $('#pageModal').modal('hide');
                 $('#addBoxModal').modal('hide');
             });
+
+            //Onclick drawer show security panel
+            $('.drawers').on('click', function (event) {
+                // $('input#security_key').attr('drawer', event.currentTarget.getAttribute('data-drawer'))
+                $('input#drawer-key').val(event.currentTarget.getAttribute('data-drawer'))
+                $('#pageModal').removeClass('content-modal').modal('show');
+            });
+
+            //Drawer Tag for security panel
+            $("#pageModal").on("hidden.bs.modal", function () {
+                // $('input#security_key').removeAttr("drawer");
+                $('input#drawer-key').val("")
+                $("#securityForm").trigger('reset');
+            });
+
+            $("#securityForm").submit(function (event) {
+                event.preventDefault()
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    processData: false,
+                    contentType: false,
+                    url: "{{route("security.check")}}",
+                    data: new FormData(this),
+                    success: function (response) {
+                        if (response.status) {
+                            console.log(response)
+                        } else {
+                            console.log(response.msg.join('&'))
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            })
         })
+
+
     </script>
 @endsection
 

@@ -25,6 +25,12 @@ class DrawerRequest extends FormRequest
      */
     public function rules()
     {
+        if (empty($this->password_required)) {
+            $this->merge([
+                'password_required' => 'off'
+            ]);
+        }
+
         return [
             'drawer_name'       => 'required|string|max:255',
             'drawer_password'   => 'required|string|max:255',

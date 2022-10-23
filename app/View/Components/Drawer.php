@@ -14,7 +14,7 @@ class Drawer extends Component
      *
      * @return void
      */
-    public function __construct($title, $url, $id = '')
+    public function __construct(public $dataDrawer, public $requiredPass, $title, $url, $id = '')
     {
         $this->title = $title;
         $this->url = $url;
