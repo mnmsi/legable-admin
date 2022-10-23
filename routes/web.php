@@ -5,6 +5,7 @@ use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
 use App\Http\Controllers\Content\FileController;
 use App\Http\Controllers\Content\SecurityController;
+use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,9 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index']);
+
+    //account
+    Route::get("/account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
@@ -61,10 +65,7 @@ Route::get("/search-empty", function () {
 Route::get("/device", function () {
     return view("pages.device.index");
 });
-//account
-Route::get("/account-settings", function () {
-    return view("pages.account.index");
-});
+
 //security
 Route::get("/security-settings", function () {
     return view("pages.security.index");

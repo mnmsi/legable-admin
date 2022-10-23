@@ -15,26 +15,33 @@ function manipulate_data($data, array $columns)
     }
 
     return array_map(function ($item) use ($columns) {
-        $columnValues = array();
-        foreach ($columns as $col => $type) {
+        return manipulate_sig_data($item, $columns);
+    }, $data);
+}
 
-            if (is_int($col)) {
-                $columnValues[$type] = $item[$type];
-                continue;
-            }
+function manipulate_sig_data($data, array $columns)
+{
+    $columnValues = array();
 
-            if (is_array($type)) {
-                if ($type[0] == 'date') {
-                    $columnValues[$col] = $item[$type[1]];
+    foreach ($columns as $col => $type) {
 
-                    if (array_key_exists(2, $type)) {
-                        $columnValues[$col] = Carbon::parse($columnValues[$col])->format($type[2]);
-                    }
+        if (is_int($col)) {
+            $columnValues[$type] = $data[$type];
+            continue;
+        }
+
+        if (is_array($type)) {
+            if ($type[0] == 'date') {
+                $columnValues[$col] = $data[$type[1]];
+
+                if (array_key_exists(2, $type)) {
+                    $columnValues[$col] = Carbon::parse($columnValues[$col])->format($type[2]);
                 }
             }
         }
-        return $columnValues;
-    }, $data);
+    }
+
+    return $columnValues;
 }
 
 function is_collection($data)
