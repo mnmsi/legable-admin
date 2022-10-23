@@ -19,7 +19,6 @@ class DrawerController extends Controller
                     'id'         => $item->id,
                     'name'       => $item->name,
                     'date'       => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
-                    'created_at' => $item->created_at
                 ];
             }, Content::where('content_type', 'drawer')->get()->all())
         ]);

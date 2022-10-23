@@ -25,9 +25,9 @@
                             <label for="formFile" class="form-label">Select Drawer</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>select a Drawer</option>
-                                <option value="1">Drawer One</option>
-                                <option value="2">Drawer Two</option>
-                                <option value="3">Drawer Three</option>
+                                @foreach($drawers as $drawer)
+                                    <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
+                                @endforeach
                             </select>
                         </div>
 {{--                        <div class="form-check form-switch d-flex justify-content-end align-items-center">--}}

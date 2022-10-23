@@ -1,6 +1,7 @@
 <?php
 
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 function manipulate_data($data, array $columns)
@@ -22,8 +23,14 @@ function manipulate_data($data, array $columns)
                 continue;
             }
 
-            if (!array_key_exists('created_at', $columns)) {
-                $columnValues['created_at'] = $item['created_at'];
+            if (is_array($type)) {
+                if ($type[0] == 'date') {
+                    $columnValues[$col] = $item[$type[1]];
+
+                    if (array_key_exists(2, $type)) {
+                        $columnValues[$col] = Carbon::parse($columnValues[$col])->format($type[2]);
+                    }
+                }
             }
         }
         return $columnValues;

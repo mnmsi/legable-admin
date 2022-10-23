@@ -14,30 +14,12 @@
 
                 <div class="row mt-5">
                     <h2 class="dashboard-section-title mb-4">Suggested</h2>
-                    <div class="col-lg-4 col-6">
-                        <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <x-card icon="{{ asset('image/card/card-icon.svg') }}" title=" Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <x-card id="card-1" icon="{{ asset('image/card/card-icon.svg') }}" title="Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <x-card id="card-3" icon="{{ asset('image/card/card-icon.svg') }}" title="Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <x-card id="card-2" icon="{{ asset('image/card/card-icon.svg') }}" title=" Document"
-                                date="Sep 25, 2022, 13:25 PM"/>
-                    </div>
+                    @foreach($drawers as $drawer)
+                        <div class="col-lg-4 col-6">
+                            <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
+                                    date="{{$drawer['date']}}"/>
+                        </div>
+                    @endforeach
                 </div>
                 {{-- qick access --}}
             </div>
@@ -123,6 +105,7 @@
             $('#newInfo').on('click', function () {
                 $('#cardModal').modal('show');
             });
+
             //hide all modal
             $('#addBoxModalClose,#addBoxModalClose,#infoModalClose').on('click', function () {
                 $('#uploadFile').modal('hide');

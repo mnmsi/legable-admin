@@ -1,6 +1,6 @@
 @extends('layouts.app')
+@section('title','Documents')
 @section('content')
-    @section('title','Documents')
     @include('includes.pageHeader', [
         'title' => 'Important',
         'list' => ['Dashboard', 'Drawers', 'Important'],
