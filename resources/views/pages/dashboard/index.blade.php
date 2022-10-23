@@ -1,6 +1,6 @@
 @extends('layouts.app')
+@section('title','Dashboard')
 @section('content')
-    @section('title','Dashboard')
     <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Everything is encrypted here!"
                   buttonIcon="{{ asset('image/dashboard/document.svg') }}" buttonText="Upload Files" id="dashmodalid"/>
     {{-- page content start --}}

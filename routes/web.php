@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Content\BoxController;
 use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
 use App\Http\Controllers\Content\FileController;
 use App\Http\Controllers\Content\SecurityController;
+use App\Http\Controllers\User\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,19 +24,22 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', function () {
-        return view("pages.dashboard.index");
-    });
+    Route::get('/', [DashboardController::class, 'index']);
 
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
         Route::get('', [DrawerController::class, 'index'])->name('index');
         Route::get('add', [DrawerController::class, 'add'])->name('add');
-        Route::post('store', [DrawerController::class, 'store'])->name('store');
+        Route::post('create', [DrawerController::class, 'create'])->name('create');
+    });
+
+    //box
+    Route::prefix('box')->as('box.')->group(function () {
+        Route::post('create', [BoxController::class, 'create'])->name('create');
     });
 
     //All content
-    Route::get('/content', [ContentController::class, 'index'])->name('content');
+    Route::get('content', [ContentController::class, 'index'])->name('content');
 
     //File
     Route::prefix('file')->as('file.')->group(function () {

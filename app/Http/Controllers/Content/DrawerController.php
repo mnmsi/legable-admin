@@ -30,7 +30,7 @@ class DrawerController extends Controller
         return view("pages.secretDrawer.add");
     }
 
-    public function store(DrawerRequest $request)
+    public function create(DrawerRequest $request)
     {
         $content = Content::create($request->all());
 

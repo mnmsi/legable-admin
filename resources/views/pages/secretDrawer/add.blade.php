@@ -3,7 +3,7 @@
     <x-breadcrumb title="Create a Drawer" subtitle="Newly created drawer will be protected by security key "/>
     <div class="row block-wrapper drawer-add-wrapper all-form-wrapper block-min-height">
         <div class="col-lg-6 items-block">
-            <form action="{{route('drawer.store')}}" method="POST">
+            <form action="{{route('drawer.create')}}" method="POST">
                 @csrf
 
                 <h5 class="sub-header5 mb-4">Secret Drawer</h5>
