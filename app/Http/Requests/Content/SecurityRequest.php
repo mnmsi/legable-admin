@@ -24,15 +24,15 @@ class SecurityRequest extends FormRequest
      */
     public function rules()
     {
-        if (!empty($this->drawer)) {
+        if (!empty($this->drawer_key)) {
             $this->merge([
-                'drawer_id' => myDecrypt($this->drawer)
+                'drawer_id' => myDecrypt($this->drawer_key)
             ]);
         }
 
         return [
             'security_key' => 'required|string|max:255',
-            'drawer_id'    => 'required|string|exists:App\Models\Content\Content,id',
+            'drawer_id'    => 'required|integer|exists:App\Models\Content\Content,id',
         ];
     }
 }

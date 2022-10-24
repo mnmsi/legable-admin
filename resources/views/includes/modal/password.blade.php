@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid top-modal-img"/>
                 </div>
-                <form method="post" id="securityForm">
+                <form action="{{route('security.check')}}" method="post" id="securityForm">
                     @csrf
 
                     <div class="row all-form-wrapper mt-5">
@@ -20,9 +20,10 @@
                                 <h3 class="sub-header3 mb-0">Enter your password</h3>
                                 <label for="security_key" class="form-label-2 mb-4">Enter security key to unlock this
                                     drawer</label>
-                                <input type="text" class="form-control" id="security_key" name="security_key"
+                                <input type="password" class="form-control" id="security_key" name="security_key"
                                        placeholder="Enter security key" required>
                                 <input type="hidden" id="drawer-key" name="drawer_key">
+                                <small class="text-small text-danger ml-3" id="message"></small>
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary my-4 submit-btn">Unlock Drawer</button>

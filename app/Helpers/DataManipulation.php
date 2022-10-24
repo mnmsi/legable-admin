@@ -26,7 +26,13 @@ function manipulate_sig_data($data, array $columns)
     foreach ($columns as $col => $type) {
 
         if (is_int($col)) {
-            $columnValues[$type] = $data[$type];
+
+            if ($type == 'id') {
+                $columnValues[$type] = myEncrypt($data[$type]);
+            } else {
+                $columnValues[$type] = $data[$type];
+            }
+
             continue;
         }
 

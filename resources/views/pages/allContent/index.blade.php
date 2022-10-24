@@ -54,16 +54,14 @@
 
             //Onclick drawer show security panel
             $('.drawers').on('click', function (event) {
-                // $('input#security_key').attr('drawer', event.currentTarget.getAttribute('data-drawer'))
                 $('input#drawer-key').val(event.currentTarget.getAttribute('data-drawer'))
                 $('#pageModal').removeClass('content-modal').modal('show');
             });
 
             //Drawer Tag for security panel
             $("#pageModal").on("hidden.bs.modal", function () {
-                // $('input#security_key').removeAttr("drawer");
-                $('input#drawer-key').val("")
-                $("#securityForm").trigger('reset');
+                $("#securityForm").trigger('reset')
+                $(this).find("small.text-danger").html("")
             });
 
             $("#securityForm").submit(function (event) {
@@ -76,14 +74,10 @@
                     url: "{{route("security.check")}}",
                     data: new FormData(this),
                     success: function (response) {
-                        if (response.status) {
-                            console.log(response)
-                        } else {
-                            console.log(response.msg.join('&'))
-                        }
+                        location.href = response.redirectUrl
                     },
                     error: function (error) {
-                        console.log(error)
+                        $("#message").html(error.responseJSON.message)
                     }
                 });
             })

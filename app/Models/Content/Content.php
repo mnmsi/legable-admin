@@ -52,8 +52,8 @@ class Content extends BaseModel
         });
     }
 
-    protected function id(): Attribute
+    public function drawerItems()
     {
-        return Attribute::get(fn($value) => myEncrypt($value));
+        return $this->hasMany(Content::class, 'parent_id', 'id');
     }
 }

@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('', [DrawerController::class, 'index'])->name('index');
         Route::get('add', [DrawerController::class, 'add'])->name('add');
         Route::post('create', [DrawerController::class, 'create'])->name('create');
+        Route::get('items/{data}', [DrawerController::class, 'items'])->name('items');
     });
 
     //box
@@ -83,9 +84,7 @@ Route::get("/billing", function () {
 
 // important
 
-Route::get('/drawer/item', function () {
-    return view("pages.secretDrawer.singleDrawer");
-});
+
 
 //
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

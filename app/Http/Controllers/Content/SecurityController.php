@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Content\SecurityRequest;
+use App\Models\Content\Content;
+use App\Traits\SecurityTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SecurityController extends Controller
 {
+    use SecurityTrait;
+
     public function settings()
     {
         return view("pages.security.index");
@@ -15,6 +20,24 @@ class SecurityController extends Controller
 
     public function check(SecurityRequest $request)
     {
-        dd($request->all());
+        $drawer = Content::find($request->drawer_id);
+
+        if (!$drawer) {
+            abort(404);
+        }
+
+        if ($this->checkSecurity($drawer, $request->security_key)) {
+            return response()->json([
+                'message'     => "Success!!",
+                'redirectUrl' => route('drawer.items', myEncrypt(json_encode([
+                    'drawer_id'    => $drawer->id,
+                    'security_key' => $request->security_key
+                ])))
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Invalid security key!!"
+        ], 401);
     }
 }
