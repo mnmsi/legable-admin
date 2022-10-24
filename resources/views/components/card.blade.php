@@ -1,4 +1,4 @@
-<div class="document-card mb-4" id="{{ $id }}" onclick="{{$click}}">
+<div class="document-card mb-4 {{$requiredPass? 'drawers' : 'public-drawer'}}" id="{{ $id }}" data-drawer="{{$dataDrawer}}">
     <div class="document-card-content-wrapper">
         <div class="card-icon-wrapper">
             <div class="card-icon">
@@ -14,9 +14,11 @@
                     <h2 class="document-footer-title">{{ $title }}</h2>
                     <p class="document-footer-date">{{ $date }}</p>
                 </div>
-                <div class="document-lock-icon">
-                    <img src="{{ asset('image/card/lock.svg') }}" alt="lock">
-                </div>
+                @if($requiredPass)
+                    <div class="document-lock-icon">
+                        <img src="{{ asset('image/card/lock.svg') }}" alt="lock">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -20,9 +20,10 @@ class DrawerController extends Controller
         return view("pages.secretDrawer.index", [
             'drawers' => array_map(function ($item) {
                 return [
-                    'id'   => $item->id,
-                    'name' => $item->name,
-                    'date' => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+                    'id'                   => myEncrypt($item->id),
+                    'name'                 => $item->name,
+                    'password_required' => $item->is_password_required,
+                    'date'                 => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
                 ];
             }, Content::where('content_type', 'drawer')->get()->all())
         ]);
@@ -44,20 +45,11 @@ class DrawerController extends Controller
         return redirect()->route('drawer.index');
     }
 
-    public function items($data)
+    public function items($id)
     {
-        $data = json_decode(myDecrypt($data));
-        if (!$data) {
-            abort(404);
-        }
-
-        $drawer = Content::find($data->drawer_id);
+        $drawer = Content::find(myDecrypt($id));
 
         if (!$drawer) {
-            abort(404);
-        }
-
-        if (!$this->checkSecurity($drawer, $data->security_key)) {
             abort(404);
         }
 

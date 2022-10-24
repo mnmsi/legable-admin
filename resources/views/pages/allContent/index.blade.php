@@ -17,11 +17,6 @@
     <script>
         $(document).ready(function () {
 
-            // $('#contentid,#contentid2,#contentid3,#contentid4').on('click', function () {
-            //     $('#pageModal').addClass('content-modal');
-            //     $('#pageModal').modal('show');
-            // });
-
             $('#addboxid').on('click', function () {
                 $('#addBoxModal').modal('show');
             });
@@ -42,6 +37,12 @@
                 $("#securityForm").trigger('reset')
                 $(this).find("small.text-danger").html("")
             });
+
+            $(".public-drawer").on('click', function (event) {
+                $("#contents").load(`{{url("drawer/items")}}/${event.currentTarget.getAttribute('data-drawer')}`, function (responseTxt, statusTxt) {
+                    console.log(responseTxt, statusTxt)
+                })
+            })
 
             $("#securityForm").submit(function (event) {
                 event.preventDefault()

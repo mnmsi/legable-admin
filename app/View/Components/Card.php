@@ -19,7 +19,7 @@ class Card extends Component
     public $id;
     public $isThreeDotShow;
 
-    public function __construct($icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "", public $click = "")
+    public function __construct(public $dataDrawer, public $requiredPass, $icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "", public $click = "")
     {
         $this->icon           = $icon;
         $this->title          = $title;

@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('', [DrawerController::class, 'index'])->name('index');
         Route::get('add', [DrawerController::class, 'add'])->name('add');
         Route::post('create', [DrawerController::class, 'create'])->name('create');
-        Route::get('items/{data}', [DrawerController::class, 'items'])->name('items');
+        Route::get('items/{id}', [DrawerController::class, 'items'])->name('items');
     });
 
     //box
