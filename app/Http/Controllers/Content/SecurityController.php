@@ -27,13 +27,7 @@ class SecurityController extends Controller
         }
 
         if ($this->checkSecurity($drawer, $request->security_key)) {
-            return response()->json([
-                'message'     => "Success!!",
-                'redirectUrl' => route('drawer.items', myEncrypt(json_encode([
-                    'drawer_id'    => $drawer->id,
-                    'security_key' => $request->security_key
-                ])))
-            ]);
+            return $this->returnItemView($drawer);
         }
 
         return response()->json([

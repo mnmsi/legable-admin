@@ -5,29 +5,8 @@
     <div class="content-page">
         @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/file/upload','text'=>'Upload Content']])
 
-        <div class="block-wrapper block-min-height content-wrappers">
-            <div class="top-block">
-                <h6 class="sub-header6 mb-4">
-                    Drawers
-                </h6>
-                <div class="conten-items">
-                    @foreach($drawers as $key => $drawer)
-                        <x-drawer title="{{$drawer['name']}}" url="{{asset('image/card/card-icon.svg')}}"
-                                  id="drawer_{{$key}}" :data-drawer="$drawer['id']"
-                                  :required-pass="$drawer['is_password_required']"/>
-                    @endforeach
-                </div>
-            </div>
-            <div class="bottom-block">
-                <h6 class="sub-header6 mb-4 border-bottom pb-3 mt-4">
-                    All Contents
-                </h6>
-                <div class="conten-items">
-                    @foreach($contents as $content)
-                        <x-content title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"/>
-                    @endforeach
-                </div>
-            </div>
+        <div id="contents">
+            @include('components.contents.content')
         </div>
     </div>
 
@@ -66,20 +45,17 @@
 
             $("#securityForm").submit(function (event) {
                 event.preventDefault()
-                $.ajax({
-                    type: "post",
-                    dataType: "json",
-                    processData: false,
-                    contentType: false,
-                    url: "{{route("security.check")}}",
-                    data: new FormData(this),
-                    success: function (response) {
-                        location.href = response.redirectUrl
-                    },
-                    error: function (error) {
-                        $("#message").html(error.responseJSON.message)
+                let formData = $(this).serialize()
+                $("#contents").load(`{{url("security/check")}}?${formData}`, function (responseTxt, statusTxt) {
+                    if (statusTxt === 'error') {
+                        let rep = JSON.parse(responseTxt);
+                        $("#message").html(rep.message)
+                    } else {
+                        $("#pageModal").modal('hide')
+                        $("#securityForm").trigger('reset')
+                        $(this).find("small.text-danger").html("")
                     }
-                });
+                })
             })
         })
 

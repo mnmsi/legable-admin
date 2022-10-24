@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
 
     //Security
     Route::prefix('security')->as('security.')->group(function () {
-        Route::post('check', [SecurityController::class, 'check'])->name('check');
+        Route::get('check', [SecurityController::class, 'check'])->name('check');
         Route::get("settings", [SecurityController::class, 'settings'])->name('settings');
     });
 });
