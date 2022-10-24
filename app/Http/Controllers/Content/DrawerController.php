@@ -49,7 +49,7 @@ class DrawerController extends Controller
     {
         $drawer = Content::find(myDecrypt($id));
 
-        if (!$drawer) {
+        if (!$drawer || $drawer->is_password_required) {
             abort(404);
         }
 

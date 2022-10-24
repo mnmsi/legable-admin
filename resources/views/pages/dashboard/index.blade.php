@@ -17,7 +17,8 @@
                     @foreach($drawers as $drawer)
                         <div class="col-lg-4 col-6">
                             <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
-                                    date="{{$drawer['date']}}"/>
+                                    date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
+                                    :required-pass="$drawer['is_password_required']" />
                         </div>
                     @endforeach
                 </div>
