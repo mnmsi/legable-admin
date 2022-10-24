@@ -9,6 +9,7 @@ class Drawer extends Component
     public $title;
     public $url;
     public $id;
+
     /**
      * Create a new component instance.
      *
@@ -17,8 +18,8 @@ class Drawer extends Component
     public function __construct(public $dataDrawer, public $requiredPass, $title, $url, $id = '')
     {
         $this->title = $title;
-        $this->url = $url;
-        $this->id = $id;
+        $this->url   = $url;
+        $this->id    = $id;
     }
 
     /**
@@ -28,6 +29,12 @@ class Drawer extends Component
      */
     public function render()
     {
-        return view('components.drawer');
+        $click = $this->requiredPass
+            ? "showSecurityPanel('$this->dataDrawer')"
+            : "enterDrawer('" . route('drawer.items', $this->dataDrawer) . "')";
+
+        return view('components.drawer', [
+            'click' => $click
+        ]);
     }
 }

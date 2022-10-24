@@ -16,7 +16,6 @@
 @section('script')
     <script>
         $(document).ready(function () {
-
             $('#addboxid').on('click', function () {
                 $('#addBoxModal').modal('show');
             });
@@ -25,42 +24,9 @@
                 $('#pageModal').modal('hide');
                 $('#addBoxModal').modal('hide');
             });
-
-            //Onclick drawer show security panel
-            $('.drawers').on('click', function (event) {
-                $('input#drawer-key').val(event.currentTarget.getAttribute('data-drawer'))
-                $('#pageModal').removeClass('content-modal').modal('show');
-            });
-
-            //Drawer Tag for security panel
-            $("#pageModal").on("hidden.bs.modal", function () {
-                $("#securityForm").trigger('reset')
-                $(this).find("small.text-danger").html("")
-            });
-
-            $(".public-drawer").on('click', function (event) {
-                $("#contents").load(`{{url("drawer/items")}}/${event.currentTarget.getAttribute('data-drawer')}`, function (responseTxt, statusTxt) {
-                    console.log(responseTxt, statusTxt)
-                })
-            })
-
-            $("#securityForm").submit(function (event) {
-                event.preventDefault()
-                let formData = $(this).serialize()
-                $("#contents").load(`{{url("security/check")}}?${formData}`, function (responseTxt, statusTxt) {
-                    if (statusTxt === 'error') {
-                        let rep = JSON.parse(responseTxt);
-                        $("#message").html(rep.message)
-                    } else {
-                        $("#pageModal").modal('hide')
-                        $("#securityForm").trigger('reset')
-                        $(this).find("small.text-danger").html("")
-                    }
-                })
-            })
         })
-
-
     </script>
+
+    <script src="{{asset('js/content.js')}}"></script>
 @endsection
 
