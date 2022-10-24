@@ -4,22 +4,10 @@
     <div class="block-wrapper block-min-height content-upload-wrapper all-form-wrapper">
         <div class="form-body">
 
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-
             <form action="{{route('file.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <input type="hidden" name="use_master_key" value="on">
+                <input type="hidden" name="use_master_key" value="1">
 
                 <div class="mb-3">
                     <h5 class="sub-header5 mb-3">Upload a File</h5>
@@ -44,13 +32,13 @@
 
                 <div class="form-check form-switch d-flex justify-content-end">
                     <input class="form-check-input" type="checkbox" id="checkPass" name="file_password_required"
-                           value="off">
+                           value="0">
                     <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
                 </div>
 
                 <div class="mb-3" style="display: none" id="passwordField">
                     <label for="security_key" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="security_key" name="security_key"
+                    <input type="password" class="form-control" id="security_key" name="security_key"
                            placeholder="Enter password" value="{{old('security_key')}}">
                     @include('components.utils.form_field_alert', ['name' => 'security_key'])
                 </div>

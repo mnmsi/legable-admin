@@ -14,29 +14,40 @@
                 </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
-                        <div class="mb-3">
-                            <h5 class="sub-header5 mb-3">Upload a File</h5>
-                            <label for="file-upload" class="custom-file-upload">
-                                select a file to upload
-                            </label>
-                            <input id="file-upload" type="file"/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Select Drawer</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>select a Drawer</option>
-                                @foreach($drawers as $drawer)
-                                    <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-{{--                        <div class="form-check form-switch d-flex justify-content-end align-items-center">--}}
-{{--                            <input class="form-check-input" type="checkbox" id="checkPass" checked>--}}
-{{--                            <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>--}}
-{{--                        </div>--}}
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary my-4 submit-btn">Upload</button>
-                        </div>
+
+                        <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <input type="hidden" name="use_master_key" value="1">
+
+                            <div class="mb-3">
+                                <h5 class="sub-header5 mb-3">Upload a File</h5>
+                                <label for="file-upload" class="custom-file-upload">
+                                    select a file to upload
+                                </label>
+                                <input id="file-upload" type="file" name="file"/>
+                                @include("components.utils.form_field_alert", ['name'=> 'file'])
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Select Drawer</label>
+                                <select class="form-select" aria-label="Default select example" name="drawer">
+                                    <option value="">select a Drawer</option>
+                                    @foreach($drawers as $drawer)
+                                        <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
+                                    @endforeach
+                                </select>
+                                @include("components.utils.form_field_alert", ['name'=> 'drawer'])
+                            </div>
+                            {{--                        <div class="form-check form-switch d-flex justify-content-end align-items-center">--}}
+                            {{--                            <input class="form-check-input" type="checkbox" id="checkPass" checked>--}}
+                            {{--                            <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>--}}
+                            {{--                        </div>--}}
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary my-4 submit-btn">Upload</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>

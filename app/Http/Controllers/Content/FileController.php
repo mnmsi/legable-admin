@@ -37,6 +37,6 @@ class FileController extends Controller
             abort(404);
         }
 
-        return redirect()->route('drawer.index');
+        return redirect()->route('content');
     }
 }

@@ -55,7 +55,7 @@
                             <p>Generate a master key to unlock all contents at a time </p>
                             <div class="all-form-wrapper">
                                 <div class="form-check form-switch d-flex justify-content-end">
-                                    <input class="form-check-input" type="checkbox" id="checkPass" checked="">
+                                    <input class="form-check-input" type="checkbox" id="checkPass" value="1" checked>
                                     <label class="form-check-label ms-3" for="checkPass">Activate</label>
                                 </div>
                             </div>

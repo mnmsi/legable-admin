@@ -16,7 +16,7 @@
                     <form action="{{route('box.create')}}" method="post">
                         @csrf
 
-                        <input type="hidden" name="use_master_key" value="on">
+                        <input type="hidden" name="use_master_key" value="1">
 
                         <div class="col-12">
                             <div>
@@ -44,7 +44,7 @@
 
                             <div class="form-check form-switch d-flex justify-content-end align-items-center">
                                 <input class="form-check-input" type="checkbox" id="checkPass" name="password_required"
-                                       checked>
+                                       value="1" checked>
                                 <label class="form-check-label ms-3" for="checkPass">Box Requires a Password</label>
                             </div>
 

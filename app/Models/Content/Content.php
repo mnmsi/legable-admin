@@ -56,14 +56,4 @@ class Content extends BaseModel
     {
         return Attribute::get(fn($value) => myEncrypt($value));
     }
-
-    protected function isPasswordRequired(): Attribute
-    {
-        return Attribute::set(fn($value) => $value == 'on' ? 1 : 0);
-    }
-
-    protected function isAbleUseMasterKey(): Attribute
-    {
-        return Attribute::set(fn($value) => $value == 'on' ? 1 : 0);
-    }
 }

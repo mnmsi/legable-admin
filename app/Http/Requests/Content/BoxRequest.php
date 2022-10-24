@@ -32,17 +32,17 @@ class BoxRequest extends FormRequest
             ]);
         }
 
-        if (empty($this->password_required)) {
+        if (!isset($this->password_required)) {
             $this->merge([
-                'password_required' => 'off'
+                'password_required' => 0
             ]);
         }
 
         return [
             'box_name'          => 'required|string|max:255',
             'drawer'            => 'required|string|exists:App\Models\Content\Content,id',
-            'password_required' => 'required|string|in:on,off',
-            'use_master_key'    => 'required|string|in:on,off',
+            'password_required' => 'required|integer|in:0,1',
+            'use_master_key'    => 'required|integer|in:0,1',
         ];
     }
 

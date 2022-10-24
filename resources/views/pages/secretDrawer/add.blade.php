@@ -20,7 +20,7 @@
                     @include('components.utils.form_field_alert', ['name' => 'drawer_password'])
                 </div>
                 <div class="form-check form-switch d-flex justify-content-end">
-                    <input class="form-check-input" type="checkbox" id="checkPass" name="password_required" checked>
+                    <input class="form-check-input" type="checkbox" id="checkPass" name="password_required" value="1" checked>
                     <label class="form-check-label ms-3" for="checkPass">Requires Password</label>
                 </div>
                 <div class="col-auto">

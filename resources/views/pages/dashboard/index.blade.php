@@ -124,6 +124,9 @@
                 $("#informationOfCanvas").offcanvas('show');
             });
 
+            @if ($errors->any())
+                $('#uploadFile').modal('show');
+            @endif
         })
     </script>
 @endsection

@@ -25,17 +25,17 @@ class DrawerRequest extends FormRequest
      */
     public function rules()
     {
-        if (empty($this->password_required)) {
+        if (!isset($this->password_required)) {
             $this->merge([
-                'password_required' => 'off'
+                'password_required' => 0
             ]);
         }
 
         return [
             'drawer_name'       => 'required|string|max:255',
             'drawer_password'   => 'required|string|max:255',
-            'password_required' => 'required|string|in:on,off',
-            'master_key'        => 'nullable|string|in:on,off', //need update
+            'password_required' => 'required|integer|in:0,1',
+            'master_key'        => 'nullable|integer|in:0,1', //need update
         ];
     }
 

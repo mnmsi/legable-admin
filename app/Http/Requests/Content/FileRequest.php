@@ -26,9 +26,9 @@ class FileRequest extends FormRequest
      */
     public function rules()
     {
-        if (empty($this->file_password_required)) {
+        if (!isset($this->file_password_required)) {
             $this->merge([
-                'file_password_required' => 'off'
+                'file_password_required' => 0
             ]);
         }
 
@@ -36,8 +36,8 @@ class FileRequest extends FormRequest
             'file'                   => 'required|file',
             'drawer'                 => 'required_if:security_key,null',
             'security_key'           => 'required_if:drawer,""|max:255',
-            'file_password_required' => 'required|string|in:on,off',
-            'use_master_key'         => 'required|string|in:on,off',
+            'file_password_required' => 'required|integer|in:0,1',
+            'use_master_key'         => 'required|integer|in:0,1',
         ];
     }
 
