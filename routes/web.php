@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
     //account
-    Route::get("/account-settings", [AccountSettingsController::class, 'accountSettings']);
+    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //All content
     Route::get('content', [ContentController::class, 'index'])->name('content');

@@ -4,21 +4,6 @@ $("#pageModal").on("hidden.bs.modal", function () {
     $(this).find("small.text-danger").html("")
 });
 
-// $("#securityForm").submit(function (event) {
-//     event.preventDefault()
-//     let formData = $(this).serialize()
-//     $("#contents").load(`{{url("security/check")}}?${formData}`, function (responseTxt, statusTxt) {
-//         if (statusTxt === 'error') {
-//             let rep = JSON.parse(responseTxt);
-//             $("#message").html(rep.message)
-//         } else {
-//             $("#pageModal").modal('hide')
-//             $("#securityForm").trigger('reset')
-//             $(this).find("small.text-danger").html("")
-//         }
-//     })
-// })
-
 function showSecurityPanel(drawerKey) {
     $('input#drawer-key').val(drawerKey)
     $('#pageModal').removeClass('content-modal').modal('show');
