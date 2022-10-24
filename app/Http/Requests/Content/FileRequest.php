@@ -45,7 +45,7 @@ class FileRequest extends FormRequest
     {
         if (!empty($this->drawer)) {
             $drawer    = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
-            $parent_id = myDecrypt($drawer->id);
+            $parent_id = $drawer->id;
             $password  = $drawer->password;
         } else {
             $parent_id = null;

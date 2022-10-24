@@ -56,7 +56,7 @@ class BoxRequest extends FormRequest
 
         $this->merge([
             'content_type'           => 'box',
-            'parent_id'              => myDecrypt($drawer->id),
+            'parent_id'              => $drawer->id,
             'name'                   => $this->box_name,
             'password'               => $drawer->password,
             'is_password_required'   => $this->password_required,
