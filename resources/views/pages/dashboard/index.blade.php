@@ -14,13 +14,13 @@
 
                 <div class="row mt-5">
                     <h2 class="dashboard-section-title mb-4">Suggested</h2>
-                    <div class="col-lg-4 col-6">
-                        @foreach($drawers as $drawer)
+                    @foreach($drawers as $drawer)
+                        <div class="col-lg-4 col-6">
                             <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                                     date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
                                     :required-pass="$drawer['is_password_required']"/>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
                 {{-- qick access --}}
             </div>
