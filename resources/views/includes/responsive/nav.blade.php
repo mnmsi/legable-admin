@@ -54,7 +54,7 @@
                     <li class="sign-out">
                         <form method="POST" action="{{ route('logout') }}" id="logoutform">
                             @csrf
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="logoutform.submit()">
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();">
                                 <img src="{{asset('image/sidebar/icon5.png')}}" alt=""/>
                                 <label>Sign out</label>
                             </a>
