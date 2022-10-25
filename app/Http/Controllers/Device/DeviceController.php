@@ -41,7 +41,10 @@ class DeviceController extends Controller
             abort(404);
         }
 
-        $this->invalidateSession($device->session_id);
+        if (!$this->invalidateSession($device->session_id)) {
+            abort(404);
+        }
+
         $device->delete();
 
         return redirect()->back();
