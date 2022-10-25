@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\User\UserLoggedDevice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 use Jenssegers\Agent\Agent;
 use Stevebauman\Location\Facades\Location;
 
@@ -17,7 +18,7 @@ trait AuthTrait
         ], [
             'user_id'     => $user->id,
             'ip_address'  => $request->ip(),
-            'device_name' => $this->getPlatform(),
+            'device_name' => $this->getDevice(),
             'browser'     => $this->getBrowser(),
             'location'    => $this->getLocation($request),
             'logged_at'   => now(),
@@ -42,7 +43,7 @@ trait AuthTrait
         }
     }
 
-    public function getPlatform()
+    public function getDevice()
     {
         return (new Agent())->platform();
     }
@@ -82,5 +83,10 @@ trait AuthTrait
     public function getCountryAndCity($location)
     {
         return $this->getCity($location) . ", " . $this->getCountry($location);
+    }
+
+    public function invalidateSession($sessionId)
+    {
+        return Storage::disk('session')->delete($sessionId);
     }
 }

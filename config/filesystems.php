@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'session' => [
+            'driver' => 'local',
+            'root' => storage_path('framework/sessions'),
+            'throw' => false,
+        ],
+
     ],
 
     /*

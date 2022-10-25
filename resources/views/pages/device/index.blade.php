@@ -15,7 +15,7 @@
             <div class="row gap-lg-0 gap-2 align-items-stretch">
 
                 @foreach($devices as $device)
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 mb-4">
                         <div class="single-card-wrapper">
                             <div class="device-card-content-wrapper">
                                 <div class="device-icon-wrapper">
@@ -23,14 +23,14 @@
                                 </div>
                                 <div class="device-card-content">
                                     <div
-                                        class="device-name">{{$device['device_name'] . " " . ($device['is_online'] ? "(This Device)" : "")}}</div>
+                                        class="device-name">{{$device['device_name'] . " " . ($device['this_device'] ? "(This Device)" : "")}}</div>
                                     <div class="device-location">{{$device['location']}}</div>
                                     @if ($device['this_device'])
-                                        <div class="logout-device-button">
-                                            <a href="#">Remove this device</a>
-                                        </div>
-                                    @else
                                         <p class="logged-date">Logged in till {{$device['logged_at']}}</p>
+                                    @else
+                                        <div class="logout-device-button">
+                                            <a href="{{route('device.remove', $device['id'])}}">Remove this device</a>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
