@@ -22,9 +22,10 @@
                                     <img src="{{ asset('image/device/device.svg') }}" alt="">
                                 </div>
                                 <div class="device-card-content">
-                                    <div class="device-name">{{$device['device_name'] . " " . ($device['is_online'] ? "(This Device)" : "")}}</div>
+                                    <div
+                                        class="device-name">{{$device['device_name'] . " " . ($device['is_online'] ? "(This Device)" : "")}}</div>
                                     <div class="device-location">{{$device['location']}}</div>
-                                    @if (!$device['is_online'])
+                                    @if ($device['this_device'])
                                         <div class="logout-device-button">
                                             <a href="#">Remove this device</a>
                                         </div>
