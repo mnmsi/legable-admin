@@ -24,6 +24,7 @@ class LoginController extends Controller
 
     use AuthTrait, AuthenticatesUsers {
         login as authTraitLogin;
+        logout as authTraitLogout;
     }
 
     /**
@@ -52,5 +53,11 @@ class LoginController extends Controller
         }
 
         return $login;
+    }
+
+    public function logout(Request $request)
+    {
+        $this->logoutDevice($request);
+        return $this->authTraitLogout($request);
     }
 }

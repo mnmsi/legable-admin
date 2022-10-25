@@ -21,10 +21,23 @@ trait AuthTrait
             'browser'     => $this->getBrowser(),
             'location'    => $this->getLocation($request),
             'logged_at'   => now(),
-            'is_online'   => 1
+            'is_online'   => 1,
+            'session_id'  => $request->getSession()->getId()
         ]);
 
         if (!$deviceStore) {
+            abort(404);
+        }
+    }
+
+    public function logoutDevice(Request $request)
+    {
+        $logoutDevice = UserLoggedDevice::where('ip_address', $request->ip())
+                                        ->update([
+                                            'is_online' => 0
+                                        ]);
+
+        if (!$logoutDevice) {
             abort(404);
         }
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
 use App\Http\Controllers\Content\FileController;
 use App\Http\Controllers\Content\SecurityController;
+use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use Illuminate\Http\Request;
@@ -57,6 +58,12 @@ Route::middleware('auth')->group(function () {
         Route::get('check', [SecurityController::class, 'check'])->name('check');
         Route::get("settings", [SecurityController::class, 'settings'])->name('settings');
     });
+
+    //device
+    Route::prefix('device')->as('device.')->group(function () {
+        Route::get("/", [DeviceController::class, 'devices'])->name('list');
+        Route::get("remove/{id}", [DeviceController::class, 'remove'])->name('remove');
+    });
 });
 
 
@@ -64,10 +71,7 @@ Route::middleware('auth')->group(function () {
 Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
 });
-//device
-Route::get("/device", function () {
-    return view("pages.device.index");
-});
+
 
 //my plans
 Route::get("/my-plans", function () {
@@ -83,7 +87,6 @@ Route::get("/billing", function () {
 //});
 
 // important
-
 
 
 //
@@ -118,7 +121,7 @@ Route::get('test', function (Request $request) {
         'crypt_en'   => \Illuminate\Support\Facades\Crypt::decrypt($encrypt),
         'decrypt_en' => decrypt($crypt),
         'hash_hmac'  => hash_hmac('sha256', base64_encode('Saiful'), 'iotait.tech'),
-        'my_en'      => myencrypt( 'saiful islam'),
-        'my_de'      => mydecrypt( 'MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
+        'my_en'      => myencrypt('saiful islam'),
+        'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
