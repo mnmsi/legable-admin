@@ -5,6 +5,8 @@ namespace App\Traits;
 use App\Models\User\UserLoggedDevice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Jenssegers\Agent\Agent;
 use Stevebauman\Location\Facades\Location;
@@ -88,5 +90,10 @@ trait AuthTrait
     public function invalidateSession($sessionId)
     {
         return Storage::disk('session')->delete($sessionId);
+    }
+
+    public function userPassCheck($password)
+    {
+        return Hash::check($password, Auth::user()->password);
     }
 }

@@ -16,30 +16,43 @@
 
             {{--  title bar end--}}
             {{--   form start--}}
-            <form action="">
+            <form action="{{route('user.password.change')}}" method="post" autocomplete="off">
+                @csrf
+
+                @if (Session::has('password_changed'))
+                    <div class="alert alert-success justify-content-center">
+                        {{ Session::get('password_changed') }}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-lg-6 col-md-12 lg-mb-0 mb-4">
                         <div class="form-group all-form-wrapper">
-                            <label for="" class="mb-3 form-label">Old Password</label>
-                            <input type="password" class="form-control" placeholder="Enter your current password">
+                            <label for="old_password" class="mb-3 form-label">Old Password</label>
+                            <input type="password" class="form-control" placeholder="Enter your current password"
+                                   id="old_password" name="old_password" autocomplete="off">
                             <div class="password-eye">
                                 <img src="{{asset("image/common/eyeOpen.svg")}}" alt="eye">
                             </div>
                         </div>
+                        @include('components.utils.form_field_alert', ['name' => 'old_password'])
                     </div>
+
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group all-form-wrapper">
-                            <label for="" class="mb-3 form-label">New Password</label>
-                            <input type="password" class="form-control" placeholder="Enter new password">
+                            <label for="new_password" class="mb-3 form-label">New Password</label>
+                            <input type="password" class="form-control" placeholder="Enter new password"
+                                   id="new_password" name="new_password" autocomplete="off">
                             <div class="password-eye">
                                 <img src="{{asset("image/common/eyeOpen.svg")}}" alt="eye">
                             </div>
                         </div>
+                        @include('components.utils.form_field_alert', ['name' => 'new_password'])
                     </div>
                     {{--                change password button start --}}
                     <div class="col-lg-12 col-md-12">
                         <div class="change-password-button-wrapper">
-                            <button class="change-password-button">Change Password</button>
+                            <button type="submit" class="change-password-button">Change Password</button>
                         </div>
                     </div>
                     {{--  change password button end --}}

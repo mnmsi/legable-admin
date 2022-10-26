@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Content\BoxController;
 use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
@@ -28,7 +29,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index']);
 
-    //account
+    //User
+    Route::prefix('user')->as('user.')->group(function () {
+        Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
+    });
+
+    //account settings
     Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //All content
