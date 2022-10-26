@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Traits\AuthTrait;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -19,7 +22,10 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthTrait, AuthenticatesUsers {
+        login as authTraitLogin;
+        logout as authTraitLogout;
+    }
 
     /**
      * Where to redirect users after login.
@@ -36,5 +42,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $login = $this->authTraitLogin($request);
+
+        if ($login->getStatusCode()) {
+            $this->storeDevice($request, Auth::user());
+        }
+
+        return $login;
+    }
+
+    public function logout(Request $request)
+    {
+        $this->logoutDevice($request);
+        return $this->authTraitLogout($request);
     }
 }

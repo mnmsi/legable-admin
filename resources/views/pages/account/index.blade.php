@@ -20,14 +20,14 @@
                 <div class="account-settings-content">
                     <label>Name</label>
                     <div class="change-name-content">
-                        <p>IOTA Infotech Limited</p>
+                        <p>{{$user['name']}}</p>
                         <div class="change-text">Change</div>
                     </div>
                 </div>
                 <div class="account-settings-content">
                     <label>Phone Number</label>
                     <div class="change-content-wrapper">
-                        <p>+210 235688456 </p>
+                        <p>{{$user['phone']}}</p>
                         <div class="change-text">Change</div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="account-settings-content">
                     <label>Email Address</label>
                     <div class="change-content-wrapper">
-                        <p>example@legable.com</p>
+                        <p>{{$user['email']}}</p>
                         <div class="change-text">Change</div>
                     </div>
                 </div>
