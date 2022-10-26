@@ -32,6 +32,12 @@ class MasterKeyController extends Controller
             ], 404);
         }
 
+        if (empty($user->master_key)) {
+            return response()->json([
+                'message' => "Master key hasn't set"
+            ], 404);
+        }
+
         if ($user->is_active_master_key) {
             $user->is_active_master_key = 0;
             $status                     = 'warning';
