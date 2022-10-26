@@ -8,6 +8,7 @@ use App\Models\Content\Content;
 use App\Traits\DrawerTrait;
 use App\Traits\SecurityTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SecurityController extends Controller
@@ -16,7 +17,9 @@ class SecurityController extends Controller
 
     public function settings()
     {
-        return view("pages.security.index");
+        return view("pages.security.index", [
+            'is_active_master_key' => Auth::user()->is_active_master_key
+        ]);
     }
 
     public function check(SecurityRequest $request)

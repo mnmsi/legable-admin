@@ -70,7 +70,8 @@
                             <p>Generate a master key to unlock all contents at a time </p>
                             <div class="all-form-wrapper">
                                 <div class="form-check form-switch d-flex justify-content-end">
-                                    <input class="form-check-input" type="checkbox" id="checkPass" value="1" checked>
+                                    <input class="form-check-input" type="checkbox" id="checkPass" value="1"
+                                           {{$is_active_master_key ? 'checked' : ''}} onchange="changeMasterKeyStatus('{{route('user.master-key.change.status')}}')">
                                     <label class="form-check-label ms-3" for="checkPass">Activate</label>
                                 </div>
                             </div>
@@ -79,7 +80,9 @@
                 </div>
                 {{--  title bar end--}}
                 {{--  master key form start--}}
-                <div class="row align-items-end">
+                <div class="row align-items-end" id="masterKeyRow">
+
+                    <div id="statusDiv"></div>
 
                     @if (Session::has('generate_master_key'))
                         <div class="alert alert-success justify-content-center">
@@ -105,4 +108,7 @@
             {{--  main page end--}}
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="{{asset('js/settings.js')}}"></script>
 @endsection

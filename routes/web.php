@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         //Master key
         Route::prefix('master-key')->as('master-key.')->group(function () {
             Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
+            Route::get('change/status', [MasterKeyController::class, 'changeStatus'])->name('change.status');
         });
     });
 

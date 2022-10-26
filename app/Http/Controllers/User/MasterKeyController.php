@@ -21,4 +21,30 @@ class MasterKeyController extends Controller
             ->back()
             ->with("generate_master_key", "Successfully set master key.");
     }
+
+    public function changeStatus()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json([
+                'message' => "Invalid user request"
+            ], 404);
+        }
+
+        $message = "";
+        if ($user->is_active_master_key) {
+            $user->is_active_master_key = 0;
+            $message                    = "Master key inactivated";
+        } else {
+            $user->is_active_master_key = 1;
+            $message                    = "Master key activated";
+        }
+
+        $user->save();
+
+        return response()->json([
+            'message' => $message
+        ]);
+    }
 }
