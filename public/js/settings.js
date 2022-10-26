@@ -4,13 +4,16 @@ function changeMasterKeyStatus(url) {
         url: url,
         dataType: "json",
         success: function (response) {
-            $("#statusDiv").html(`
-                        <div class="alert alert-success justify-content-center">
-                            ${response.message}
-                        </div>`)
+            showSuccessMessageOnDivById('statusDiv', response.message)
         },
         error: function (error) {
-            $("#generate_master_key").html(error.responseJSON.message)
+            showSuccessMessageOnDivById('statusDiv', error.responseJSON.message)
         }
     });
+}
+
+function showSuccessMessageOnDivById(id, msg) {
+    $("#" + id).html(`<div class="alert alert-success justify-content-center">
+                            ${msg}
+                        </div>`)
 }
