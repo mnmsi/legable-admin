@@ -32,18 +32,20 @@ class MasterKeyController extends Controller
             ], 404);
         }
 
-        $message = "";
         if ($user->is_active_master_key) {
             $user->is_active_master_key = 0;
+            $status                     = 'warning';
             $message                    = "Master key inactivated";
         } else {
             $user->is_active_master_key = 1;
+            $status                     = 'success';
             $message                    = "Master key activated";
         }
 
         $user->save();
 
         return response()->json([
+            'status'  => $status,
             'message' => $message
         ]);
     }
