@@ -14,7 +14,7 @@ trait SecurityTrait
         }
 
         if ($drawer->is_able_use_master_key && Auth::user()->is_active_master_key) {
-            if ($this->checkHash($drawer->password, $password)) {
+            if ($this->checkHash(Auth::user()->master_key, $password)) {
                 return true;
             }
         }
