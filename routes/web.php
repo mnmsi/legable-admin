@@ -9,6 +9,7 @@ use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\MasterKeyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
     //User
     Route::prefix('user')->as('user.')->group(function () {
         Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
+
+        //Master key
+        Route::prefix('master-key')->as('master-key.')->group(function () {
+            Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
+        });
     });
 
     //account settings

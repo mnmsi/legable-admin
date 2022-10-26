@@ -1,6 +1,6 @@
 @extends("layouts.app")
+@section('title','Security Settings')
 @section('content')
-    @section('title','Security Settings')
     @include('includes.pageHeader',['title'=>'Security Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
@@ -59,7 +59,9 @@
                 </div>
             </form>
             {{--   form end--}}
-            <form action="">
+            <form action="{{route('user.master-key.set')}}" method="post">
+                @csrf
+
                 {{--  title bar start--}}
                 <div class="setting-title-bar-wrapper">
                     <div class="change-password-title-content">
@@ -78,10 +80,18 @@
                 {{--  title bar end--}}
                 {{--  master key form start--}}
                 <div class="row align-items-end">
+
+                    @if (Session::has('generate_master_key'))
+                        <div class="alert alert-success justify-content-center">
+                            {{ Session::get('generate_master_key') }}
+                        </div>
+                    @endif
+
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group all-form-wrapper">
-                            <label for="" class="mb-3 form-label">Generate Key</label>
-                            <input type="text" class="form-control" placeholder="Enter Master Key">
+                            <label for="master_key" class="mb-3 form-label">Generate Key</label>
+                            <input type="password" class="form-control" placeholder="Enter Master Key" id="master_key"
+                                   name="master_key">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
