@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class MasterKeyRequest extends FormRequest
 {
@@ -27,5 +28,12 @@ class MasterKeyRequest extends FormRequest
         return [
             'master_key' => 'required|string|max:255'
         ];
+    }
+
+    protected function passedValidation()
+    {
+        $this->merge([
+            'master_key' => Hash::make($this->master_key)
+        ]);
     }
 }
