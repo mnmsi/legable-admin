@@ -36,6 +36,7 @@
         $("#loader").fadeOut();
     })
 </script>
+<script src="{{asset('js/commonMethods.js')}}"></script>
 @yield('script')
 @stack('script')
 <script src="{{ asset('/sw.js') }}"></script>

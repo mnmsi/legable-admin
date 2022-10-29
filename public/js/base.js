@@ -1,5 +1,5 @@
 $(function () {
-    if (location.href === location.origin + '/content') {
+    if (isCurrentUrl('content')) {
         if (history.state != null || history.state !== '') {
             $("#contents").html(history.state.data)
         }
@@ -10,7 +10,7 @@ window.onpopstate = (event) => {
 
     let state = event.state;
 
-    if (location.href === location.origin + '/content') {
+    if (isCurrentUrl('content')) {
         if ($.isEmptyObject(state)) {
             location.reload()
         } else {
@@ -25,5 +25,9 @@ window.onclick = (event) => {
     if (target.attr('id') === 'content') {
         history.pushState(null, '', target.attr('href'))
     }
+}
+
+function isCurrentUrl(path) {
+    return location.href === location.origin + `/${path}`
 }
 

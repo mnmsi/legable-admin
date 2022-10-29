@@ -7,6 +7,7 @@ use App\Http\Controllers\Content\DrawerController;
 use App\Http\Controllers\Content\FileController;
 use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
+use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MasterKeyController;
@@ -77,6 +78,12 @@ Route::middleware('auth')->group(function () {
         Route::get("/", [DeviceController::class, 'devices'])->name('list');
         Route::get("remove/{id}", [DeviceController::class, 'remove'])->name('remove');
     });
+
+    //My plans
+    Route::prefix('my-plans')->as('myPlan.')->group(function () {
+        Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
+        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto-renewal');
+    });
 });
 
 
@@ -85,11 +92,6 @@ Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
 });
 
-
-//my plans
-Route::get("/my-plans", function () {
-    return view("pages.plans.index");
-});
 //billing info
 Route::get("/billing", function () {
     return view("pages.billing.index");
