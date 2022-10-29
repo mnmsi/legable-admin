@@ -19,7 +19,7 @@ class Card extends Component
     public $id;
     public $isThreeDotShow;
 
-    public function __construct(public $dataDrawer, public $requiredPass, $icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "")
+    public function __construct(public $dataDrawer, public $requiredPass, public $drawerName, $icon = "", $title = "", $date = "", $id = "", $isThreeDotShow = "")
     {
         $this->icon           = $icon;
         $this->title          = $title;
@@ -37,8 +37,8 @@ class Card extends Component
     function render()
     {
         $click = $this->requiredPass
-            ? "showSecurityPanel('$this->dataDrawer')"
-            : "enterDrawer('" . route('drawer.items', $this->dataDrawer) . "')";
+            ? "showSecurityPanel('$this->dataDrawer', '$this->drawerName')"
+            : "enterDrawer('" . route('drawer.items', $this->dataDrawer) . "', this)";
 
         return view('components.card', [
             'click' => $click

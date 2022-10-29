@@ -23,6 +23,7 @@
                                 <input type="password" class="form-control" id="security_key" name="security_key"
                                        placeholder="Enter security key" required>
                                 <input type="hidden" id="drawer-key" name="drawer_key">
+                                <input type="hidden" id="drawer-name">
                                 <small class="text-small text-danger ml-3" id="message"></small>
                             </div>
                             <div class="col-auto">

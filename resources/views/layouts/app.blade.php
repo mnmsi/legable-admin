@@ -39,6 +39,7 @@
 @yield('script')
 @stack('script')
 <script src="{{ asset('/sw.js') }}"></script>
+<script src="{{ asset('js/base.js') }}"></script>
 <script>
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {

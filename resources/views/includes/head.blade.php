@@ -7,6 +7,6 @@
 <link rel="manifest" href="{{ asset('/manifest.json') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('image/favicon.png')}}"/>
-<title>{{ config('app.name', 'Laravel') }}</title>
+<title>{{ config('app.name', 'Legable') }}</title>
 <!-- Scripts -->
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
