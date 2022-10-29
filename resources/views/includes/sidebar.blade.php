@@ -37,7 +37,7 @@
             </a>
             {{--            single menu item--}}
             {{--            single menu item--}}
-            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}">
+            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}" id="content">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">
