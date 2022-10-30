@@ -138,3 +138,11 @@ Route::get('test', function (Request $request) {
         'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
+
+
+Route::get("email_verify",function (){
+   return view("auth.verify_email");
+});
+Route::get("phone_verify",function (){
+   return view("auth.verify_phone");
+});

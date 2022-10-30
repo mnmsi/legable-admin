@@ -18,7 +18,6 @@
             {{--   form start--}}
             <form action="{{route('user.password.change')}}" method="post" autocomplete="off">
                 @csrf
-
                 @if (Session::has('password_changed'))
                     <div class="alert alert-success justify-content-center">
                         {{ Session::get('password_changed') }}
