@@ -16,6 +16,9 @@ body {
     }
     font-family: "Poppins", sans-serif;
 }
+.auth-layout-body{
+    background: #FBF5F0;
+}
 
 .main-content {
     margin-left: 280px;
@@ -66,6 +69,8 @@ body {
 @import "components/add-new";
 // add new offcanvas
 @import "components/ad-new-offcanvas";
+//login
+@import "pages/login";
 .loader {
     position: fixed;
     background: #fff;
