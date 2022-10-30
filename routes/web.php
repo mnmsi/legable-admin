@@ -5,6 +5,7 @@ use App\Http\Controllers\Content\BoxController;
 use App\Http\Controllers\Content\ContentController;
 use App\Http\Controllers\Content\DrawerController;
 use App\Http\Controllers\Content\FileController;
+use App\Http\Controllers\Content\SearchController;
 use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\MyPlan\MyPlanController;
@@ -46,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //All content
-    Route::get('content', [ContentController::class, 'index'])->name('content');
+    Route::match(['get', 'post'],'content', [ContentController::class, 'index'])->name('content');
 
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
@@ -84,6 +85,9 @@ Route::middleware('auth')->group(function () {
         Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
         Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto-renewal');
     });
+
+    //Search
+    Route::get("search", [SearchController::class, 'search'])->name('search');
 });
 
 

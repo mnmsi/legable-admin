@@ -37,10 +37,14 @@
     })
 </script>
 <script src="{{asset('js/commonMethods.js')}}"></script>
+<script src="{{ asset('js/base.js') }}"></script>
+<script src="{{ asset('js/search.js') }}"></script>
+<script src="{{ asset('vendor/redirect.js') }}"></script>
+
 @yield('script')
 @stack('script')
+
 <script src="{{ asset('/sw.js') }}"></script>
-<script src="{{ asset('js/base.js') }}"></script>
 <script>
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {

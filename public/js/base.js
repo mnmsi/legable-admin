@@ -26,8 +26,3 @@ window.onclick = (event) => {
         history.pushState(null, '', target.attr('href'))
     }
 }
-
-function isCurrentUrl(path) {
-    return location.href === location.origin + `/${path}`
-}
-

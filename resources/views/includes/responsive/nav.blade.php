@@ -69,7 +69,7 @@
     <div class="searchbar-wrapper">
         <div class="searchbar-content-wrapper">
             <label for="search"><img src="{{asset('image/common/search-black.svg')}}" alt="search"></label>
-            <input type="text" id="search" placeholder="Search anything">
+            <input type="text" id="search" placeholder="Search anything" onkeyup="search('{{route('search')}}', this)">
         </div>
     </div>
 </nav>

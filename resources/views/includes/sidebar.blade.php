@@ -8,7 +8,8 @@
             <div class="searchbar-wrapper">
                 <div class="searchbar-content-wrapper">
                     <label for="search"><img src="{{asset('image/common/search.svg')}}" alt="search"></label>
-                    <input type="text" id="search" placeholder="Search anything">
+                    <input type="text" id="search" placeholder="Search anything" onkeyup="search('{{route('search')}}', this)">
+                    <div id="suggestion"></div>
                 </div>
             </div>
         </div>
