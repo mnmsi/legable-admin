@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 trait SecurityTrait
@@ -12,8 +13,8 @@ trait SecurityTrait
             return true;
         }
 
-        if ($drawer->is_able_use_master_key) {
-            if ($this->checkHash($drawer->password, $password)) {
+        if ($drawer->is_able_use_master_key && Auth::user()->is_active_master_key && !empty(Auth::user()->master_key)) {
+            if ($this->checkHash(Auth::user()->master_key, $password)) {
                 return true;
             }
         }

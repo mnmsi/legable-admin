@@ -16,7 +16,9 @@ trait AuthTrait
     public function storeDevice(Request $request, $user)
     {
         $deviceStore = UserLoggedDevice::updateOrCreate([
-            'ip_address' => $request->ip(),
+            'ip_address'  => $request->ip(),
+            'device_name' => $this->getDevice(),
+            'browser'     => $this->getBrowser(),
         ], [
             'user_id'     => $user->id,
             'ip_address'  => $request->ip(),

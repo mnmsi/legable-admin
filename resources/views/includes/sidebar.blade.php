@@ -126,10 +126,13 @@
             {{--   Profile end  --}}
             {{--  logout start--}}
             <div class="logout-button-wrapper">
-                <a href="#">
-                    <img src="{{asset("image/sidebar/logout.svg")}}" alt="image">
-                    <div>Log out</div>
-                </a>
+                <form method="POST" action="{{ route('logout') }}" id="logoutform">
+                    @csrf
+                    <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();">
+                        <img src="{{asset("image/sidebar/logout.svg")}}" alt="image">
+                        <div>Log out</div>
+                    </a>
+                </form>
             </div>
             {{--   logout end--}}
         </div>

@@ -1,6 +1,6 @@
 @extends("layouts.app")
+@section('title','Security Settings')
 @section('content')
-    @section('title','Security Settings')
     @include('includes.pageHeader',['title'=>'Security Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
@@ -59,7 +59,9 @@
                 </div>
             </form>
             {{--   form end--}}
-            <form action="">
+            <form action="{{route('user.master-key.set')}}" method="post">
+                @csrf
+
                 {{--  title bar start--}}
                 <div class="setting-title-bar-wrapper">
                     <div class="change-password-title-content">
@@ -68,7 +70,8 @@
                             <p>Generate a master key to unlock all contents at a time </p>
                             <div class="all-form-wrapper">
                                 <div class="form-check form-switch d-flex justify-content-end">
-                                    <input class="form-check-input" type="checkbox" id="checkPass" value="1" checked>
+                                    <input class="form-check-input" type="checkbox" id="checkPass" value="1"
+                                           {{$is_active_master_key ? 'checked' : ''}} onchange="changeMasterKeyStatus('{{route('user.master-key.change.status')}}')">
                                     <label class="form-check-label ms-3" for="checkPass">Activate</label>
                                 </div>
                             </div>
@@ -77,11 +80,21 @@
                 </div>
                 {{--  title bar end--}}
                 {{--  master key form start--}}
-                <div class="row align-items-end">
+                <div class="row align-items-end" id="masterKeyRow">
+
+                    <div id="statusDiv"></div>
+
+                    @if (Session::has('generate_master_key'))
+                        <div class="alert alert-success justify-content-center">
+                            {{ Session::get('generate_master_key') }}
+                        </div>
+                    @endif
+
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group all-form-wrapper">
-                            <label for="" class="mb-3 form-label">Generate Key</label>
-                            <input type="text" class="form-control" placeholder="Enter Master Key">
+                            <label for="master_key" class="mb-3 form-label">Generate Key</label>
+                            <input type="password" class="form-control" placeholder="Enter Master Key" id="master_key"
+                                   name="master_key">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
@@ -95,4 +108,7 @@
             {{--  main page end--}}
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="{{asset('js/settings.js')}}"></script>
 @endsection
