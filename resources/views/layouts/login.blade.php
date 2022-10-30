@@ -4,8 +4,7 @@
     @include('includes.head')
     @stack('style')
 </head>
-<body>
-
+<body class="auth-layout-body">
 <!--Main layout-->
 <main>
     <div class="loader" id="loader">
@@ -14,7 +13,7 @@
         </div>
     </div>
     <div class="mt-4">
-        <div class="main-content">
+        <div class="">
             <div class="container-fluid">
                 @yield('content')
             </div>
