@@ -35,4 +35,27 @@ trait ContentTrait
     {
         return $data->where('content_type', 'file');
     }
+
+    public function drawersWithDefaultAttr($data = null)
+    {
+        if (is_null($data)) {
+            return $this->dataResource($this->drawers());
+        }
+
+        return $this->dataResource($this->drawerFromData($data));
+    }
+
+    public function filesWithDefaultAttr($data = null)
+    {
+        if (is_null($data)) {
+            return $this->dataResource($this->files());
+        }
+
+        return $this->dataResource($this->filesFromData($data));
+    }
+
+    public function dataResource($data)
+    {
+        return manipulate_data($data, self::$defaultAttr);
+    }
 }
