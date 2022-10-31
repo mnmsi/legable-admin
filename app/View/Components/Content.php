@@ -15,7 +15,7 @@ class Content extends Component
      *
      * @return void
      */
-    public function __construct($title, $url, $id = '', $status = true)
+    public function __construct($title, $url, $id, $status = true)
     {
         $this->title = $title;
         $this->url = $url;

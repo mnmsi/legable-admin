@@ -16,16 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
@@ -66,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('file')->as('file.')->group(function () {
         Route::get('upload', [FileController::class, 'upload'])->name('upload');
         Route::post('store', [FileController::class, 'store'])->name('store');
+        Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
     });
 
     //Security
@@ -83,7 +75,7 @@ Route::middleware('auth')->group(function () {
     //My plans
     Route::prefix('my-plans')->as('myPlan.')->group(function () {
         Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
-        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto-renewal');
+        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto.renewal');
     });
 
     //Search
@@ -144,7 +136,6 @@ Route::get('test', function (Request $request) {
         'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
-
 
 Route::get("email_verify",function (){
    return view("auth.verify_email");

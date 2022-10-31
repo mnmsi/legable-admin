@@ -17,7 +17,7 @@
         </h6>
         <div class="conten-items">
             @foreach($contents as $content)
-                <x-content title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"/>
+                <x-content title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}" id="{{$content['id']}}"/>
             @endforeach
         </div>
     </div>
