@@ -31,21 +31,20 @@
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>
-<script>
-    $(window).on('load', function () {
-        $("#loader").fadeOut();
-    })
-</script>
+
 <script src="{{asset('js/commonMethods.js')}}"></script>
 <script src="{{ asset('js/base.js') }}"></script>
 <script src="{{ asset('js/search.js') }}"></script>
-<script src="{{ asset('vendor/redirect.js') }}"></script>
 
 @yield('script')
 @stack('script')
 
 <script src="{{ asset('/sw.js') }}"></script>
 <script>
+    $(window).on('load', function () {
+        $("#loader").fadeOut();
+    })
+
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);
