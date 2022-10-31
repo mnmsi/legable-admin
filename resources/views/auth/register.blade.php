@@ -146,6 +146,10 @@
                             </div>
                         </div>
                     {{-- checkbox end --}}
+                    {{-- submit button--}}
+                        <div class="signup_button_wrapper register_button_wrapper">
+                            <button class="signup_button" type="submit">Start Verification<img src="{{asset("image/Auth/arrow.svg")}}" alt="arrow"></button>
+                        </div>
                     </form>
                 </div>
             </div>
