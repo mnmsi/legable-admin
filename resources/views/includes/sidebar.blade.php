@@ -8,7 +8,8 @@
             <div class="searchbar-wrapper">
                 <div class="searchbar-content-wrapper">
                     <label for="search"><img src="{{asset('image/common/search.svg')}}" alt="search"></label>
-                    <input type="text" id="search" placeholder="Search anything">
+                    <input type="text" id="search" placeholder="Search anything" onkeyup="search('{{route('search')}}', this)">
+                    <div id="suggestion"></div>
                 </div>
             </div>
         </div>
@@ -37,7 +38,7 @@
             </a>
             {{--            single menu item--}}
             {{--            single menu item--}}
-            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}">
+            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}" id="content">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">

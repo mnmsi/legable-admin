@@ -1,6 +1,7 @@
 @extends("layouts.app")
+@section('title','My Plan')
+
 @section('content')
-    @section('title','My Plan')
     @include('includes.pageHeader',['title'=>'My Plan','list'=>['Dashboard','Plans & Subscriptions'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
@@ -56,11 +57,16 @@
                 <div class="plan-footer-title">Enable auto renewal</div>
                 <div class="all-form-wrapper">
                     <div class="form-check form-switch d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" id="checkPass" value="1" checked>
+                        <input class="form-check-input" type="checkbox" id="checkPass"
+                               onchange="autoRenewal('{{route('myPlan.auto-renewal')}}')"
+                               value="1" {{$auto_renewal ? 'checked' : ''}}>
                         <label class="form-check-label ms-2 mt-2" for="checkPass">Active</label>
                     </div>
                 </div>
             </div>
+
+            <div id="autoRenewalStatus"></div>
+
             <p class="plan-footer-text">If this option is checked, system will renew your subscription automatically for
                 this product . If the
                 current plan expires, However this might prevent you from</p>
@@ -71,6 +77,7 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/myPlan.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('#proPlanid').on('click', function () {

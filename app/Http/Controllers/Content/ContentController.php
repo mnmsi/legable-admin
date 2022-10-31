@@ -4,15 +4,22 @@ namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content\Content;
+use App\Traits\ContentTrait;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    public function index()
+    use ContentTrait;
+
+    public function index(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $data = collect(json_decode(str_replace("'", '"', $request->searchData), true));
+        }
+
         return view("pages.allContent.index", [
-            'drawers' => manipulate_data(Content::where('content_type', 'drawer')->get(), ['id', 'name', 'is_password_required', 'is_able_use_master_key']),
-            'contents' => manipulate_data(Content::where('content_type', 'file')->whereNull('parent_id')->get(), ['id', 'name', 'is_password_required', 'is_able_use_master_key'])
+            'drawers'  => $this->drawersWithDefaultAttr($data ?? null),
+            'contents' => $this->filesWithDefaultAttr($data ?? null)
         ]);
     }
 }

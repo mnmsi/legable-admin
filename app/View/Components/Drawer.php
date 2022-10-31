@@ -15,7 +15,7 @@ class Drawer extends Component
      *
      * @return void
      */
-    public function __construct(public $dataDrawer, public $requiredPass, $title, $url, $id = '')
+    public function __construct(public $dataDrawer, public $requiredPass, public $drawerName, $title, $url, $id = '')
     {
         $this->title = $title;
         $this->url   = $url;
@@ -30,8 +30,8 @@ class Drawer extends Component
     public function render()
     {
         $click = $this->requiredPass
-            ? "showSecurityPanel('$this->dataDrawer')"
-            : "enterDrawer('" . route('drawer.items', $this->dataDrawer) . "')";
+            ? "showSecurityPanel('$this->dataDrawer', '$this->drawerName')"
+            : "enterDrawer('" . route('drawer.items', $this->dataDrawer) . "', this)";
 
         return view('components.drawer', [
             'click' => $click

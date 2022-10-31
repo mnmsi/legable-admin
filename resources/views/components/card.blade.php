@@ -1,4 +1,4 @@
-<div class="document-card mb-4 {{$requiredPass? 'drawers' : 'public-drawer'}}" id="{{ $id }}" data-drawer="{{$dataDrawer}}" onclick="{{$click}}">
+<div class="document-card mb-4 {{$requiredPass? 'drawers' : 'public-drawer'}}" id="{{ $id }}" data-drawer-name="{{$drawerName}}" data-drawer="{{$dataDrawer}}" onclick="{{$click}}">
     <div class="document-card-content-wrapper">
         <div class="card-icon-wrapper">
             <div class="card-icon">
