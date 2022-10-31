@@ -1,8 +1,9 @@
 @import "../includes/responsive";
 .login-form-wrapper{
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
+    overflow: hidden;
     align-items: center;
     @include media("<=991px"){
         align-items: flex-start;
@@ -88,7 +89,7 @@
     label{
         color: #282A2C;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 15px;
         letter-spacing: 0.015em;
         margin-bottom: 12px;
         text-transform: uppercase;
@@ -98,7 +99,6 @@
     }
     .form-control{
         border: 1px solid #D7E8EF;
-
         border-radius: 4px;
         background: transparent;
         padding-left: 24px;
@@ -108,7 +108,7 @@
             font-size: 16px;
             color: rgba(23, 80, 103, 0.5);
         }
-        height: 56px;
+        height: 48px;
         &.is-invalid{
             border-color: #dc3545;
         }
@@ -126,12 +126,12 @@
         padding: 12px 24px;
         color: #F8F8F8;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 15px;
         background-color: #175067;
         border-radius: 5px;
         box-shadow: none;
         border: none;
-        height: 64px;
+        height: 48px;
         @include media("<=991px"){
             margin-bottom: 2rem;
         }

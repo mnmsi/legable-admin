@@ -207,7 +207,7 @@ Registration form end
     font-weight: 400;
     font-size: 20px;
     @include media("<=768px"){
-
+        font-size: 16px;
     }
 
 }
