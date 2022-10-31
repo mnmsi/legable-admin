@@ -211,3 +211,39 @@
         display: block;
     }
 }
+
+
+//==================//
+//Address form start//
+//===============//
+.address_form_title{
+    letter-spacing: -0.015em;
+    color: #3A494E;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 70px 0;
+}
+
+.address_submit_wrapper{
+    margin-bottom: 80px;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: 16px;
+        height: 48px;
+        width: 100%;
+        color: #175067;
+        border: 1px solid #175067;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    button{
+        color: #F8F8F8 !important;
+        @extend a;
+        background: #175067;
+        border: none;
+
+    }
+}

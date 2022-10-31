@@ -145,10 +145,8 @@ Route::get('test', function (Request $request) {
     ];
 });
 
-
-Route::get("email_verify",function (){
-   return view("auth.verify_email");
-});
-Route::get("phone_verify",function (){
-   return view("auth.verify_phone");
+Route::prefix("address")->as("address.")->group(function (){
+    Route::get("add",function (){
+        return view("pages.address.add");
+    })->name("add");
 });
