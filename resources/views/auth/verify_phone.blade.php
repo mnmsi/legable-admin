@@ -38,5 +38,5 @@
     </div>
 @endsection
 @section("script")
-    <script src="{{asset("js/verify_email.js")}}"></script>
+    <script src="{{asset("js/verify_phone.js")}}"></script>
 @endsection
