@@ -98,7 +98,16 @@ Route::get("/search-empty", function () {
 
 //billing info
 Route::get("/billing", function () {
-    return view("pages.billing.index");
+    return view("");
+});
+
+Route::prefix("/billing")->as("billing.")->group(function (){
+    Route::get("/",function (){
+        return view("pages.billing.index");
+    });
+    Route::get("/add",function (){
+        return view("pages.billing.add");
+    })->name("add");
 });
 
 //Route::get('/drawer/upload', function () {
@@ -146,8 +155,11 @@ Route::get('test', function (Request $request) {
 });
 
 
-//design route
+/**
+ * Define route for design purpose
+ */
 
+//Address
 
 Route::prefix("address")->as("address.")->group(function (){
     Route::get("add",function (){
@@ -157,3 +169,5 @@ Route::prefix("address")->as("address.")->group(function (){
         return view("pages.address.edit");
     })->name("edit");
 });
+
+// Add plan

@@ -222,3 +222,23 @@
         color: #7C7C7C;
     }
 }
+
+
+//=====//
+//Add new Card
+//=====//
+.card_number{
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+    &::-webkit-outer-spin-button,&::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+.image_contain_label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

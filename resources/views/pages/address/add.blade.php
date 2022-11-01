@@ -5,7 +5,7 @@
 @section('title','Add new address')
 @section('content')
 
-    @include('includes.pageHeader',['title'=>'Add new address','list'=>['Account Settings','Add new address'],'btn'=>[],'link'=>[]])
+    @include('includes.pageHeader',['title'=>'Account Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{-- address form start--}}
         <form action="">
