@@ -11,7 +11,8 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('/image/drawer/modalIcon.svg')}}" alt="" class="img-fluid top-modal-img"/>
                 </div>
-                <form action="{{route('security.check')}}" method="post" id="securityForm" onsubmit="checkSecurity(event, this,'{{route('security.check')}}')">
+                <form action="{{route('security.check')}}" method="post" id="securityForm"
+                      onsubmit="checkSecurity(event, this,'{{route('security.check')}}')">
                     @csrf
 
                     <div class="row all-form-wrapper mt-5">
@@ -24,6 +25,7 @@
                                        placeholder="Enter security key" required>
                                 <input type="hidden" id="drawer-key" name="drawer_key">
                                 <input type="hidden" id="drawer-name">
+                                <input type="hidden" id="drawer-type">
                                 <small class="text-small text-danger ml-3" id="message"></small>
                             </div>
                             <div class="col-auto">

@@ -6,7 +6,7 @@ use App\Models\Content\Content;
 
 trait ContentTrait
 {
-    public static $defaultAttr = ['id', 'name', 'is_password_required', 'is_able_use_master_key'];
+    public static $defaultAttr = ['id', 'name', 'content_type', 'is_password_required', 'is_able_use_master_key'];
 
     public function drawers()
     {
@@ -42,7 +42,7 @@ trait ContentTrait
             return $this->dataResource($this->drawers());
         }
 
-        return $this->dataResource($this->drawerFromData($data));
+        return $this->drawerFromData($data);
     }
 
     public function filesWithDefaultAttr($data = null)
@@ -51,7 +51,7 @@ trait ContentTrait
             return $this->dataResource($this->files());
         }
 
-        return $this->dataResource($this->filesFromData($data));
+        return $this->filesFromData($data);
     }
 
     public function dataResource($data)

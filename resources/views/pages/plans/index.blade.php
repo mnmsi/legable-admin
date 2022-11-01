@@ -58,7 +58,7 @@
                 <div class="all-form-wrapper">
                     <div class="form-check form-switch d-flex align-items-center">
                         <input class="form-check-input" type="checkbox" id="checkPass"
-                               onchange="autoRenewal('{{route('myPlan.auto-renewal')}}')"
+                               onchange="autoRenewal('{{route('myPlan.auto.renewal')}}')"
                                value="1" {{$auto_renewal ? 'checked' : ''}}>
                         <label class="form-check-label ms-2 mt-2" for="checkPass">Active</label>
                     </div>

@@ -39,4 +39,15 @@ class FileController extends Controller
 
         return redirect()->route('content');
     }
+
+    public function getFile($id)
+    {
+        $content = Content::find(myDecrypt($id));
+
+        if ($content->is_password_required) {
+            abort(404);
+        }
+
+        return get_file_url($content->password, $content->file_url);
+    }
 }

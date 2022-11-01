@@ -2,32 +2,60 @@
 
 use Illuminate\Support\Facades\Storage;
 
-function file_upload($file)
+function file_upload($password, $file)
 {
-    $fileName    = myEncrypt($file->getClientOriginalName());
-    $fileUrl     = 'content/' . $fileName;
-    $fileContent = myEncrypt($file->getContent());
+    $fileUrl     = 'content/' . $file->getClientOriginalName();
+    $fileContent = myEncrypt($file->getContent(), $password);
 
     $binToHex = bin2hex($fileContent);
 
-    $store = Storage::disk('public')->put($fileUrl, $binToHex);
+    $store = Storage::put($fileUrl, $binToHex);
 
     if ($store) {
-        return $fileUrl;
+        return myEncrypt($fileUrl);
     }
 
     abort(404);
 }
 
-function get_file($url)
+function file_content($password, $fileUrl)
 {
-    $fileUrl        = myDecrypt($url);
-    $fileExplodeArr = explode('/', $fileUrl);
-    $fileName       = $fileExplodeArr[array_key_last($fileExplodeArr)];
-    $hexFile        = Storage::disk('public')->get($url);
-    $encryptedFile  = hex2bin($hexFile);
+    $fileName = file_name($fileUrl);
 
-    return response()->streamDownload(function () use ($encryptedFile) {
-        echo myDecrypt($encryptedFile);
-    }, $fileName);
+    $hexFile      = Storage::get($fileUrl);
+    $imageContent = myDecrypt(hex2bin($hexFile), $password);
+
+    if (!$imageContent) {
+        abort(404);
+    }
+
+    return $imageContent;
+}
+
+function get_file($password, $fileUrl)
+{
+    $fileUrl = myDecrypt($fileUrl);
+    return image_data($fileUrl, file_content($password, $fileUrl));
+}
+
+function get_file_url($password, $fileUrl)
+{
+    $fileUrl  = myDecrypt($fileUrl);
+    $fileName = file_name($fileUrl);
+
+    return response()->make(file_content($password, $fileUrl), 200, [
+        'Content-Type'        => Storage::mimeType($fileUrl),
+        'Content-Disposition' => 'inline; filename="' . $fileName . '"',
+    ]);
+}
+
+function file_name($directory)
+{
+    $fileExplodeArr = explode('/', $directory);
+    return $fileExplodeArr[array_key_last($fileExplodeArr)];
+}
+
+function image_data($directory, $imageContent)
+{
+    return 'data:' . Storage::mimeType($directory) . ';base64,' . base64_encode($imageContent);
 }

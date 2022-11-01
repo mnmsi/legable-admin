@@ -14,10 +14,8 @@ class SearchController extends Controller
     {
         $searchData = array_map(function ($item) {
 
-            $id = myEncrypt($item['id']);
-
             return [
-                'id'                     => $id,
+                'id'                     => myEncrypt($item['id']),
                 'parent_id'              => $item['parent_id'],
                 'name'                   => $item['name'],
                 'content_type'           => $item['content_type'],

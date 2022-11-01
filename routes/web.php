@@ -16,16 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
@@ -47,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //All content
-    Route::match(['get', 'post'],'content', [ContentController::class, 'index'])->name('content');
+    Route::match(['get', 'post'], 'content', [ContentController::class, 'index'])->name('content');
 
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
@@ -66,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('file')->as('file.')->group(function () {
         Route::get('upload', [FileController::class, 'upload'])->name('upload');
         Route::post('store', [FileController::class, 'store'])->name('store');
+        Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
     });
 
     //Security
@@ -83,7 +75,7 @@ Route::middleware('auth')->group(function () {
     //My plans
     Route::prefix('my-plans')->as('myPlan.')->group(function () {
         Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
-        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto-renewal');
+        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto.renewal');
     });
 
     //Search
@@ -101,11 +93,11 @@ Route::get("/billing", function () {
     return view("");
 });
 
-Route::prefix("/billing")->as("billing.")->group(function (){
-    Route::get("/",function (){
+Route::prefix("/billing")->as("billing.")->group(function () {
+    Route::get("/", function () {
         return view("pages.billing.index");
     });
-    Route::get("/add",function (){
+    Route::get("/add", function () {
         return view("pages.billing.add");
     })->name("add");
 });
@@ -154,6 +146,13 @@ Route::get('test', function (Request $request) {
     ];
 });
 
+Route::get("email_verify", function () {
+    return view("auth.verify_email");
+});
+
+Route::get("phone_verify", function () {
+    return view("auth.verify_phone");
+});
 
 /**
  * Define route for design purpose
@@ -161,11 +160,11 @@ Route::get('test', function (Request $request) {
 
 //Address
 
-Route::prefix("address")->as("address.")->group(function (){
-    Route::get("add",function (){
+Route::prefix("address")->as("address.")->group(function () {
+    Route::get("add", function () {
         return view("pages.address.add");
     })->name("add");
-    Route::get("edit/{id}",function (){
+    Route::get("edit/{id}", function () {
         return view("pages.address.edit");
     })->name("edit");
 });

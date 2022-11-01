@@ -10,16 +10,17 @@ class Content extends Component
     public $url;
     public $id;
     public $status;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $url, $id = '', $status = true)
+    public function __construct(public $requiredPass, public $type, $title, $url, $id, $status = true)
     {
-        $this->title = $title;
-        $this->url = $url;
-        $this->id = $id;
+        $this->title  = $title;
+        $this->url    = $url;
+        $this->id     = $id;
         $this->status = $status;
     }
 
@@ -30,6 +31,10 @@ class Content extends Component
      */
     public function render()
     {
-        return view('components.content');
+        $click = $this->requiredPass
+            ? "showSecurityPanel('$this->id', '$this->title', '$this->type')"
+            : "showContent('" . route('file.get.file', $this->id) . "')";
+
+        return view('components.content', compact('click'));
     }
 }

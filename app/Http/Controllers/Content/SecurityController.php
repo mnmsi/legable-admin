@@ -31,7 +31,14 @@ class SecurityController extends Controller
         }
 
         if ($this->checkSecurity($drawer, $request->security_key)) {
-            return $this->returnItemView($drawer);
+            if ($drawer->content_type === 'file') {
+                return response()->json([
+                    'content_type' => $drawer->content_type,
+                    'data'         => get_file($drawer->password, $drawer->file_url),
+                ]);
+            } else {
+                return $this->returnItemView($drawer);
+            }
         }
 
         return response()->json([
