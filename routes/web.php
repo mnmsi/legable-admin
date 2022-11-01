@@ -145,8 +145,15 @@ Route::get('test', function (Request $request) {
     ];
 });
 
+
+//design route
+
+
 Route::prefix("address")->as("address.")->group(function (){
     Route::get("add",function (){
         return view("pages.address.add");
     })->name("add");
+    Route::get("edit/{id}",function (){
+        return view("pages.address.edit");
+    })->name("edit");
 });

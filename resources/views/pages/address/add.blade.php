@@ -9,9 +9,12 @@
     <div class="block-min-height block-wrapper">
         {{-- address form start--}}
         <form action="">
-            <div class="text-center">
-                <h2 class="address_form_title">Add New Address</h2>
+            {{--address page header start --}}
+            <div class="address_header">
+                <h2 class="address_form_title">Add Address</h2>
+                <p>Add your address</p>
             </div>
+            {{--address page header end --}}
             {{-- Input start --}}
             <div class="row">
                 <div class="address_input_wrapper">

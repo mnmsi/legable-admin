@@ -216,12 +216,20 @@
 //==================//
 //Address form start//
 //===============//
-.address_form_title{
-    letter-spacing: -0.015em;
-    color: #3A494E;
-    font-weight: 600;
-    font-size: 24px;
-    margin: 70px 0;
+
+.address_header{
+    border-bottom: 1px solid #D7E8EF;
+    margin-bottom: 30px;
+    .address_form_title{
+        color: #175067;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    p{
+        color: #7C7C7C;
+        font-size: 16px;
+    }
 }
 
 .address_submit_wrapper{
