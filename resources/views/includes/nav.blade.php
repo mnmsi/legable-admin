@@ -1,10 +1,41 @@
 <nav class="primary-nav navbar navbar-expand-lg navbar-light bg-white web-main-nav">
     <div class="container-fluid">
         <div class="navbar-nav ms-auto custom-nav-item">
-            <a class="nav-link" href="">
-                <img src="{{asset('image/common/bell.svg')}}" alt="">
-            </a>
-            <a class="nav-link" href="#">
+            {{-- notification start --}}
+            <div class="dropdown notification_process">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{asset('image/common/bell.svg')}}" alt="">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li class="notification_panel_title">Notification</li>
+                    <li class="notification_element active">
+                       <div class="notification_text_icon">
+                           <div class="notification_icon">
+                               <img src="{{asset("image/bell.png")}}" alt="image">
+                           </div>
+                           <div class="notification_text">
+                               Hi, IOTA Infotech Limited!
+                               Your plan will be <strong >renewed in 5 days</strong>.
+                           </div>
+                       </div>
+                        <div class="time">1hr ago</div>
+                    </li>
+                    <li class="notification_element">
+                        <div class="notification_text_icon">
+                            <div class="notification_icon">
+                                <img src="{{asset("image/bell.png")}}" alt="image">
+                            </div>
+                            <div class="notification_text">
+                                Hi, IOTA Infotech Limited!
+                                Your plan will be <strong >renewed in 5 days</strong>.
+                            </div>
+                        </div>
+                        <div class="time">1hr ago</div>
+                    </li>
+                </ul>
+            </div>
+        {{--  notification end--}}
+            <a class="nav-link">
                 <img src="{{asset('image/common/setting.svg')}}" alt="">
             </a>
             <div class="dropdown dropdown-list">
@@ -48,7 +79,6 @@
                         </a>
                     </li>
                     <li class="sign-out">
-
                         <form method="POST" action="{{ route('logout') }}" id="logoutForm">
                             @csrf
                             <a class="dropdown-item" href="javascript:void(0)"
@@ -62,4 +92,5 @@
             </div>
         </div>
     </div>
+
 </nav>
