@@ -21,14 +21,14 @@
                     <label>Name</label>
                     <div class="change-name-content">
                         <p>{{$user['name']}}</p>
-                        <div class="change-text">Change</div>
+                        <div class="change-text">verified</div>
                     </div>
                 </div>
                 <div class="account-settings-content">
                     <label>Phone Number</label>
                     <div class="change-content-wrapper">
                         <p>{{$user['phone']}}</p>
-                        <div class="change-text">Change</div>
+                        <div class="change-text">verified</div>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <label>Email Address</label>
                     <div class="change-content-wrapper">
                         <p>{{$user['email']}}</p>
-                        <div class="change-text">Change</div>
+                        <div class="change-text">verified</div>
                     </div>
                 </div>
             </div>
@@ -74,14 +74,16 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="single-address-box add-new-box">
-                    <div class="address-box-add-content">
-                        <div class="add-new-button">
-                            <img src="{{asset("image/common/squire-add.svg")}}" alt="add">
+                <a href="{{route("address.add")}}">
+                    <div class="single-address-box add-new-box">
+                        <div class="address-box-add-content">
+                            <div class="add-new-button">
+                                <img src="{{asset("image/common/squire-add.svg")}}" alt="add">
+                            </div>
+                            <p>Add New Address</p>
                         </div>
-                        <p>Add New Address</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         {{--  main page end--}}

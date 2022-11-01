@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
 
     //All content
-    Route::match(['get', 'post'],'content', [ContentController::class, 'index'])->name('content');
+    Route::match(['get', 'post'], 'content', [ContentController::class, 'index'])->name('content');
 
     //drawer
     Route::prefix('drawer')->as('drawer.')->group(function () {
@@ -90,7 +90,16 @@ Route::get("/search-empty", function () {
 
 //billing info
 Route::get("/billing", function () {
-    return view("pages.billing.index");
+    return view("");
+});
+
+Route::prefix("/billing")->as("billing.")->group(function () {
+    Route::get("/", function () {
+        return view("pages.billing.index");
+    });
+    Route::get("/add", function () {
+        return view("pages.billing.add");
+    })->name("add");
 });
 
 //Route::get('/drawer/upload', function () {
@@ -137,9 +146,27 @@ Route::get('test', function (Request $request) {
     ];
 });
 
-Route::get("email_verify",function (){
-   return view("auth.verify_email");
+Route::get("email_verify", function () {
+    return view("auth.verify_email");
 });
-Route::get("phone_verify",function (){
-   return view("auth.verify_phone");
+
+Route::get("phone_verify", function () {
+    return view("auth.verify_phone");
 });
+
+/**
+ * Define route for design purpose
+ */
+
+//Address
+
+Route::prefix("address")->as("address.")->group(function () {
+    Route::get("add", function () {
+        return view("pages.address.add");
+    })->name("add");
+    Route::get("edit/{id}", function () {
+        return view("pages.address.edit");
+    })->name("edit");
+});
+
+// Add plan
