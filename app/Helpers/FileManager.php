@@ -9,7 +9,7 @@ function file_upload($password, $file)
 
     $binToHex = bin2hex($fileContent);
 
-    $store = Storage::disk('public')->put($fileUrl, $binToHex);
+    $store = Storage::put($fileUrl, $binToHex);
 
     if ($store) {
         return myEncrypt($fileUrl);
@@ -20,37 +20,26 @@ function file_upload($password, $file)
 
 function get_file($password, $url)
 {
-    $fileUrl        = myDecrypt($url);
-    $fileExplodeArr = explode('/', $fileUrl);
-    $fileName       = $fileExplodeArr[array_key_last($fileExplodeArr)];
+    $fileUrl  = myDecrypt($url);
+    $fileName = file_name($fileUrl);
 
-    $hexFile       = Storage::disk('public')->get($fileUrl);
-    $encryptedFile = hex2bin($hexFile);
+    $hexFile      = Storage::get($fileUrl);
+    $imageContent = myDecrypt(hex2bin($hexFile), $password);
 
-//    $response = response()->stream(function () use ($encryptedFile, $password) {
-//        echo myDecrypt($encryptedFile, $password);
-//    });
-//
-//    $disposition = $response->headers->makeDisposition(
-//        ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-//        $fileName,
-//        str_replace('%', '', Str::ascii($fileName))
-//    );
-//
-//    $response->headers->set('Content-Disposition', $disposition);
+    if (!$imageContent) {
+        abort(404);
+    }
 
-//    return $response;
-//    return response()->stream(function () use ($encryptedFile, $password) {
-//        echo myDecrypt($encryptedFile, $password);
-//    }, 200, [
-//        'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
-//        'Content-Type'        => Storage::mimeType($fileName),
-//        'Content-Disposition' => 'attachment; filename="' . basename($fileName) . '"',
-//        'Pragma'              => 'public',
-//    ]);
+    return image_data($fileUrl, $imageContent);
+}
 
-    return response()->make(myDecrypt($encryptedFile, $password), 200, [
-        'Content-Type'        => Storage::mimeType($fileName),
-        'Content-Disposition' => 'inline; filename="' . $fileName . '"',
-    ]);
+function file_name($directory)
+{
+    $fileExplodeArr = explode('/', $directory);
+    return $fileExplodeArr[array_key_last($fileExplodeArr)];
+}
+
+function image_data($directory, $imageContent)
+{
+    return 'data:' . Storage::mimeType($directory) . ';base64,' . base64_encode($imageContent);
 }
