@@ -3,6 +3,7 @@
 <head>
     @include('includes.head')
     @stack('style')
+    @yield('style')
 </head>
 <body>
 

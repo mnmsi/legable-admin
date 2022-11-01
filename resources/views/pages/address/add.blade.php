@@ -1,6 +1,10 @@
 @extends("layouts.app")
+@section('style')
+    <link rel="stylesheet" href="{{asset("css/select2.min.css")}}">
+@endsection
+@section('title','Add new address')
 @section('content')
-    @section('title','Add new address')
+
     @include('includes.pageHeader',['title'=>'Add new address','list'=>['Account Settings','Add new address'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{-- address form start--}}
@@ -41,7 +45,7 @@
                         <div class="col-lg-6 col-md-6 mb-4">
                             <div class="form-group input-wrapper">
                                 <label for="address_line_two" class="form-label">Select Country</label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control country-select">
                                     <option value="" selected>Country</option>
                                     <option value="bn">Bangladesh</option>
                                 </select>
@@ -108,5 +112,14 @@
         </form>
         {{-- address form end--}}
     </div>
-
+@endsection
+@section("script")
+    <script src="{{asset("js/select2.min.js")}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.country-select').select2({
+                placeholder: 'Select an option',
+            });
+        });
+    </script>
 @endsection
