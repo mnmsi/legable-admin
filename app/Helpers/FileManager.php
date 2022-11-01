@@ -18,9 +18,8 @@ function file_upload($password, $file)
     abort(404);
 }
 
-function file_content($password, $url)
+function file_content($password, $fileUrl)
 {
-    $fileUrl  = myDecrypt($url);
     $fileName = file_name($fileUrl);
 
     $hexFile      = Storage::get($fileUrl);
@@ -35,15 +34,17 @@ function file_content($password, $url)
 
 function get_file($password, $fileUrl)
 {
+    $fileUrl = myDecrypt($fileUrl);
     return image_data($fileUrl, file_content($password, $fileUrl));
 }
 
 function get_file_url($password, $fileUrl)
 {
+    $fileUrl  = myDecrypt($fileUrl);
     $fileName = file_name($fileUrl);
 
     return response()->make(file_content($password, $fileUrl), 200, [
-        'Content-Type'        => Storage::mimeType($fileName),
+        'Content-Type'        => Storage::mimeType($fileUrl),
         'Content-Disposition' => 'inline; filename="' . $fileName . '"',
     ]);
 }

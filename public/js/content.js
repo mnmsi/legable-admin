@@ -5,7 +5,7 @@ $("#pageModal").on("hidden.bs.modal", function () {
 });
 
 $("#fileShowModal").on("hidden.bs.modal", function () {
-    $("#fileImg").attr('src', "")
+    $("#allTypeContent").attr('src', "")
 });
 
 function showSecurityPanel(contentKey, contentName, contentType) {
@@ -70,7 +70,8 @@ function getFile(url, formData) {
 }
 
 function showContent(image) {
-    $("#fileImg").attr('src', image)
+
+    $("#allTypeContent").attr('src', image);
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show')
 }
