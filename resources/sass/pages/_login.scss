@@ -108,6 +108,9 @@
             font-size: 16px;
             color: rgba(23, 80, 103, 0.5);
         }
+        &:disabled{
+            color: rgba(23, 80, 103, 0.5);
+        }
         height: 48px;
         &.is-invalid{
             border-color: #dc3545;

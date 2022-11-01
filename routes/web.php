@@ -170,4 +170,7 @@ Route::prefix("address")->as("address.")->group(function (){
     })->name("edit");
 });
 
-// Add plan
+//edit personal info
+Route::get("account-edit/{id}",function (){
+   return view('pages.account.edit');
+})->name("account.edit");

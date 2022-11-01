@@ -1,6 +1,6 @@
 @extends("layouts.app")
+@section('title','Account Settings')
 @section('content')
-    @section('title','Account Settings')
     @include('includes.pageHeader',['title'=>'Account Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--        main page content--}}
@@ -10,7 +10,7 @@
                 <p>Personal Informations</p>
             </div>
             <div class="account-edit-icon">
-                <a href="#"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
+                <a href="{{route("account.edit",$user['id'])}}"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
             </div>
         </div>
         {{--        title bar end--}}
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <a href="{{route("address.add")}}">
+                <a href="{{route("address.add")}}" class="text-decoration-none">
                     <div class="single-address-box add-new-box">
                         <div class="address-box-add-content">
                             <div class="add-new-button">
