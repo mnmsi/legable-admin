@@ -44,6 +44,10 @@ class FileController extends Controller
     {
         $content = Content::find(myDecrypt($id));
 
-        return get_file($content->password, $content->file_url);
+        if ($content->is_password_required) {
+            abort(404);
+        }
+
+        return get_file_url($content->password, $content->file_url);
     }
 }

@@ -18,7 +18,7 @@ function file_upload($password, $file)
     abort(404);
 }
 
-function get_file($password, $url)
+function file_content($password, $url)
 {
     $fileUrl  = myDecrypt($url);
     $fileName = file_name($fileUrl);
@@ -30,7 +30,22 @@ function get_file($password, $url)
         abort(404);
     }
 
-    return image_data($fileUrl, $imageContent);
+    return $imageContent;
+}
+
+function get_file($password, $fileUrl)
+{
+    return image_data($fileUrl, file_content($password, $fileUrl));
+}
+
+function get_file_url($password, $fileUrl)
+{
+    $fileName = file_name($fileUrl);
+
+    return response()->make(file_content($password, $fileUrl), 200, [
+        'Content-Type'        => Storage::mimeType($fileName),
+        'Content-Disposition' => 'inline; filename="' . $fileName . '"',
+    ]);
 }
 
 function file_name($directory)

@@ -4,10 +4,10 @@ function autoRenewal(url) {
         url: url,
         dataType: "json",
         success: function (response) {
-            showSuccessMessageOnDivById('autoRenewalStatus', response.status, response.message)
+            showAjaxMessageOnDivById('autoRenewalStatus', response.status, response.message)
         },
         error: function (error) {
-            showSuccessMessageOnDivById('autoRenewalStatus', 'danger', error.responseJSON.message)
+            showAjaxMessageOnDivById('autoRenewalStatus', 'danger', error.responseJSON.message)
         }
     });
 }

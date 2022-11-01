@@ -7,7 +7,7 @@
             @foreach($drawers as $key => $drawer)
                 <x-drawer title="{{$drawer['name']}}" url="{{asset('image/card/card-icon.svg')}}"
                           id="drawer_{{$key}}" :data-drawer="$drawer['id']"
-                          :required-pass="$drawer['is_password_required']" :drawer-name="$drawer['name']"/>
+                          :required-pass="$drawer['is_password_required']" :drawer-name="$drawer['name']" :type="$drawer['content_type']"/>
             @endforeach
         </div>
     </div>
@@ -17,7 +17,7 @@
         </h6>
         <div class="conten-items">
             @foreach($contents as $content)
-                <x-content title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}" id="{{$content['id']}}"/>
+                <x-content :type="$content['content_type']" :required-pass="$content['is_password_required']"  title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}" id="{{$content['id']}}"/>
             @endforeach
         </div>
     </div>

@@ -32,7 +32,7 @@
 
                 <div class="form-check form-switch d-flex justify-content-end">
                     <input class="form-check-input" type="checkbox" id="checkPass" name="file_password_required"
-                           value="0">
+                           value="1">
                     <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
                 </div>
 
