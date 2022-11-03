@@ -66,3 +66,19 @@
         }
     }
 }
+
+.info_form_select_wrapper{
+    border: 1px solid #D7E8EF;
+    border-radius: 4px;
+    //background: transparent;
+    padding-left: 24px;
+    height: 48px;
+    color: rgba(23, 80, 103, 0.5);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.015em;
+    &:focus{
+        box-shadow: none;
+        border: 1px solid #D7E8EF;
+    }
+}

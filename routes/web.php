@@ -173,3 +173,10 @@ Route::prefix("address")->as("address.")->group(function () {
 Route::get("account-edit/{id}",function (){
    return view('pages.account.edit');
 })->name("account.edit");
+
+
+//add information
+
+Route::get("/information",function (){
+    return view("pages.information.add");
+});
