@@ -12,6 +12,7 @@ use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::middleware('auth')->group(function () {
 
     //User
     Route::prefix('user')->as('user.')->group(function () {
+        Route::get("edit", [UserController::class, 'edit'])->name("edit");
+        Route::post("update", [UserController::class, 'update'])->name("update");
         Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
 
         //Master key
@@ -35,7 +38,7 @@ Route::middleware('auth')->group(function () {
     });
 
     //account settings
-    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
+    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings'])->name('acc.setting');
 
     //All content
     Route::match(['get', 'post'], 'content', [ContentController::class, 'index'])->name('content');
@@ -169,7 +172,4 @@ Route::prefix("address")->as("address.")->group(function () {
     })->name("edit");
 });
 
-//edit personal info
-Route::get("account-edit/{id}",function (){
-   return view('pages.account.edit');
-})->name("account.edit");
+

@@ -7,10 +7,13 @@
         {{--        title bar start--}}
         <div class="account-page-title-wrapper">
             <div class="account-page-title">
-                <p>Personal Informations</p>
+                <p>Personal Information's</p>
             </div>
             <div class="account-edit-icon">
-                <a href="{{route("account.edit",$user['id'])}}"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
+                <a href="{{route("user.edit")}}">
+                    <img src="{{asset("image/common/edit.svg")}}" alt="edit"
+                         class="img-fluid">
+                </a>
             </div>
         </div>
         {{--        title bar end--}}
