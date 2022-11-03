@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         return view("pages.dashboard.index", [
             'drawers' => manipulate_data(Content::where('content_type', 'drawer')->orderBy('uses_at', 'desc')->get(),
-                ['id', 'name', 'date'=> ['date', 'created_at', 'M d, Y, h:m A'], 'is_password_required', 'is_able_use_master_key']),
+                ['id', 'name', 'content_type', 'date'=> ['date', 'created_at', 'M d, Y, h:m A'], 'is_password_required', 'is_able_use_master_key']),
             'information' => manipulate_data(InformationType::all(), ['id', 'name'])
         ]);
     }
