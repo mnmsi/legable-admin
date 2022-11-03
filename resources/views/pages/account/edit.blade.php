@@ -39,10 +39,17 @@
                             {{--  photo submit form--}}
                             <div class="d-flex justify-content-center flex-column">
 
-                                <img id="avatar"
-                                     src="{{asset("https://images.unsplash.com/photo-1667222448667-f786c1e91c88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")}}"
-                                     alt="avatar" height="100px" width="100px"
-                                     style="border-radius: 50%; object-fit: cover; cursor: pointer; margin: 0 auto 24px  auto">
+                                @if ($user['avatar'])
+                                    <img id="avatar"
+                                         src="{{get_image($user['avatar'])}}"
+                                         alt="avatar" height="100px" width="100px"
+                                         style="border-radius: 50%; object-fit: cover; cursor: pointer; margin: 0 auto 24px  auto">
+                                @else
+                                    <img id="avatar"
+                                         src="{{asset("https://images.unsplash.com/photo-1667222448667-f786c1e91c88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")}}"
+                                         alt="avatar" height="100px" width="100px"
+                                         style="border-radius: 50%; object-fit: cover; cursor: pointer; margin: 0 auto 24px  auto">
+                                @endif
                                 <input type="file" hidden id="file" name="avatar" accept="image/*">
                                 <button class="photo_upload_button"><img src="" alt=""><img
                                         src="{{asset("image/Auth/upload.png")}}" alt=""> Upload Photo

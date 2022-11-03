@@ -3,21 +3,22 @@
         <div class="navbar-nav ms-auto custom-nav-item">
             {{-- notification start --}}
             <div class="dropdown notification_process">
-                <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink"
+                   data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('image/common/bell.svg')}}" alt="">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li class="notification_panel_title">Notification</li>
                     <li class="notification_element active">
-                       <div class="notification_text_icon">
-                           <div class="notification_icon">
-                               <img src="{{asset("image/bell.png")}}" alt="image">
-                           </div>
-                           <div class="notification_text">
-                               Hi, IOTA Infotech Limited!
-                               Your plan will be <strong >renewed in 5 days</strong>.
-                           </div>
-                       </div>
+                        <div class="notification_text_icon">
+                            <div class="notification_icon">
+                                <img src="{{asset("image/bell.png")}}" alt="image">
+                            </div>
+                            <div class="notification_text">
+                                Hi, IOTA Infotech Limited!
+                                Your plan will be <strong>renewed in 5 days</strong>.
+                            </div>
+                        </div>
                         <div class="time">1hr ago</div>
                     </li>
                     <li class="notification_element">
@@ -27,20 +28,20 @@
                             </div>
                             <div class="notification_text">
                                 Hi, IOTA Infotech Limited!
-                                Your plan will be <strong >renewed in 5 days</strong>.
+                                Your plan will be <strong>renewed in 5 days</strong>.
                             </div>
                         </div>
                         <div class="time">1hr ago</div>
                     </li>
                 </ul>
             </div>
-        {{--  notification end--}}
+            {{--  notification end--}}
             <a class="nav-link">
                 <img src="{{asset('image/common/setting.svg')}}" alt="">
             </a>
             <div class="dropdown dropdown-list">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('image/common/profile.svg')}}" alt="profile">
+                    <img src="{{get_image(Auth::user()->avatar)}}" alt="profile" height="40" width="auto">
                 </a>
 
                 <ul class="dropdown-menu user-profile">

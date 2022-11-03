@@ -69,4 +69,9 @@ function collection_to_arr($data)
     return $data->toArray();
 }
 
+function get_image($path)
+{
+    return asset("storage/" . $path);
+}
+
 
