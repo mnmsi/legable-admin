@@ -4,10 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Traits\UserTrait;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Traits\User\UserTrait;
 
 class UserController extends Controller
 {

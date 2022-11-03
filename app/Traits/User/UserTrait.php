@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 trait UserTrait
 {
-
     public static $updateAttr = ['id', 'name', 'email', 'phone', 'avatar'];
 
     public function getUserUpdatableData()

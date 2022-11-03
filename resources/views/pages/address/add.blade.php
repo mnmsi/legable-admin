@@ -8,7 +8,9 @@
     @include('includes.pageHeader',['title'=>'Account Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{-- address form start--}}
-        <form action="">
+        <form action="{{route('user.address.store')}}" method="post">
+            @csrf
+
             {{--address page header start --}}
             <div class="address_header">
                 <h2 class="address_form_title">Add Address</h2>
@@ -25,11 +27,7 @@
                                 <input id="address_line_one" type="text"
                                        class="form-control @error('address_line_one') is-invalid @enderror" name="address_line_one"
                                        required autocomplete="false" autofocus placeholder="Enter your zip code">
-                                @error('address_line_one')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @include('components.utils.form_field_alert', ['name' => 'address_line_one'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
@@ -37,26 +35,21 @@
                                 <label for="address_line_two" class="form-label">Address Line 2</label>
                                 <input id="address_line_two" type="text"
                                        class="form-control @error('address_line_two') is-invalid @enderror" name="address_line_two"
-                                       required autocomplete="false" autofocus placeholder="Enter your address">
-                                @error('address_line_two')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                       autocomplete="false" autofocus placeholder="Enter your address">
+                                @include('components.utils.form_field_alert', ['name' => 'address_line_two'])
+
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
                             <div class="form-group input-wrapper">
-                                <label for="address_line_two" class="form-label">Select Country</label>
-                                <select name="" id="" class="form-control country-select">
-                                    <option value="" selected>Country</option>
-                                    <option value="bn">Bangladesh</option>
+                                <label for="country" class="form-label">Select Country</label>
+                                <select name="country" id="country" class="form-control country-select" required>
+                                    <option value="">Country</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{$country['id']}}">{{$country['name']}}</option>
+                                    @endforeach
                                 </select>
-                                @error('address_line_two')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @include('components.utils.form_field_alert', ['name' => 'country'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
@@ -65,11 +58,7 @@
                                 <input id="city" type="text"
                                        class="form-control @error('city') is-invalid @enderror" name="city"
                                        required autocomplete="false" autofocus placeholder="Enter your city">
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @include('components.utils.form_field_alert', ['name' => 'city'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
@@ -78,11 +67,7 @@
                                 <input id="region" type="text"
                                        class="form-control @error('region') is-invalid @enderror" name="region"
                                        required autocomplete="false" autofocus placeholder="Enter your region">
-                                @error('region')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @include('components.utils.form_field_alert', ['name' => 'region'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
@@ -91,11 +76,7 @@
                                 <input id="zip" type="text"
                                        class="form-control @error('zip') is-invalid @enderror" name="zip"
                                        required autocomplete="false" autofocus placeholder="Enter your zip code">
-                                @error('zip')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @include('components.utils.form_field_alert', ['name' => 'zip'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">

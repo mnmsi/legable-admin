@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <a href="{{route("address.add")}}" class="text-decoration-none">
+                <a href="{{route("user.address.add")}}" class="text-decoration-none">
                     <div class="single-address-box add-new-box">
                         <div class="address-box-add-content">
                             <div class="add-new-button">

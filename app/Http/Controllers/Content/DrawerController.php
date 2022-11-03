@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Content;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Content\DrawerRequest;
 use App\Models\Content\Content;
-use App\Traits\DrawerTrait;
-use App\Traits\SecurityTrait;
-use Illuminate\Http\Request;
+use App\Traits\Content\DrawerTrait;
+use App\Traits\Content\SecurityTrait;
 use Illuminate\Support\Carbon;
-use function GuzzleHttp\Promise\all;
 
 class DrawerController extends Controller
 {

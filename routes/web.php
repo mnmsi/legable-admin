@@ -12,6 +12,7 @@ use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,21 @@ Route::middleware('auth')->group(function () {
             Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
             Route::get('change/status', [MasterKeyController::class, 'changeStatus'])->name('change.status');
         });
+
+        Route::prefix("address")->as("address.")->group(function () {
+            Route::get("add", [UserAddressController::class, 'add'])->name("add");
+            Route::post("store", [UserAddressController::class, 'store'])->name("store");
+            Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
+        });
+
+//        Route::prefix("address")->as("address.")->group(function () {
+//            Route::get("add", function () {
+//                return view("pages.address.add");
+//            })->name("add");
+//            Route::get("edit/{id}", function () {
+//                return view("pages.address.edit");
+//            })->name("edit");
+//        });
     });
 
     //account settings
@@ -155,21 +171,6 @@ Route::get("email_verify", function () {
 
 Route::get("phone_verify", function () {
     return view("auth.verify_phone");
-});
-
-/**
- * Define route for design purpose
- */
-
-//Address
-
-Route::prefix("address")->as("address.")->group(function () {
-    Route::get("add", function () {
-        return view("pages.address.add");
-    })->name("add");
-    Route::get("edit/{id}", function () {
-        return view("pages.address.edit");
-    })->name("edit");
 });
 
 
