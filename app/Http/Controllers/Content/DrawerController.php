@@ -20,10 +20,11 @@ class DrawerController extends Controller
         return view("pages.secretDrawer.index", [
             'drawers' => array_map(function ($item) {
                 return [
-                    'id'                   => myEncrypt($item->id),
-                    'name'                 => $item->name,
+                    'id'                => myEncrypt($item->id),
+                    'name'              => $item->name,
+                    'content_type'      => $item->content_type,
                     'password_required' => $item->is_password_required,
-                    'date'                 => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+                    'date'              => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
                 ];
             }, Content::where('content_type', 'drawer')->get()->all())
         ]);
