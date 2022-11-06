@@ -153,18 +153,3 @@ Route::get("email_verify", function () {
 Route::get("phone_verify", function () {
     return view("auth.verify_phone");
 });
-
-/**
- * Define route for design purpose
- */
-
-//Address
-
-Route::prefix("address")->as("address.")->group(function () {
-    Route::get("add", function () {
-        return view("pages.address.add");
-    })->name("add");
-    Route::get("edit/{id}", function () {
-        return view("pages.address.edit");
-    })->name("edit");
-});
