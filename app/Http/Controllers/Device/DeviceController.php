@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Device;
 
 use App\Http\Controllers\Controller;
 use App\Models\User\UserLoggedDevice;
-use App\Traits\AuthTrait;
+use App\Traits\Auth\AuthTrait;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 
 class DeviceController extends Controller
 {

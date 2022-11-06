@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Content;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Content\SecurityRequest;
 use App\Models\Content\Content;
-use App\Traits\DrawerTrait;
-use App\Traits\SecurityTrait;
-use Illuminate\Http\Request;
+use App\Traits\Content\DrawerTrait;
+use App\Traits\Content\SecurityTrait;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class SecurityController extends Controller
 {

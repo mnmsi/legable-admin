@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
-use App\Traits\SearchTrait;
+use App\Traits\Content\SearchTrait;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller

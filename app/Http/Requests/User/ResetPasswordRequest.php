@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\User;
 
-use App\Traits\AuthTrait;
+use App\Traits\Auth\AuthTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

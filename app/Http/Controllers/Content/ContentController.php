@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
-use App\Models\Content\Content;
-use App\Traits\ContentTrait;
+use App\Traits\Content\ContentTrait;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller

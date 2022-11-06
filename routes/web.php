@@ -12,6 +12,8 @@ use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\UserAddressController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     //User
     Route::prefix('user')->as('user.')->group(function () {
+        Route::get("edit", [UserController::class, 'edit'])->name("edit");
+        Route::post("update", [UserController::class, 'update'])->name("update");
         Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
 
         //Master key
@@ -32,10 +36,25 @@ Route::middleware('auth')->group(function () {
             Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
             Route::get('change/status', [MasterKeyController::class, 'changeStatus'])->name('change.status');
         });
+
+        Route::prefix("address")->as("address.")->group(function () {
+            Route::get("add", [UserAddressController::class, 'add'])->name("add");
+            Route::post("store", [UserAddressController::class, 'store'])->name("store");
+            Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
+        });
+
+//        Route::prefix("address")->as("address.")->group(function () {
+//            Route::get("add", function () {
+//                return view("pages.address.add");
+//            })->name("add");
+//            Route::get("edit/{id}", function () {
+//                return view("pages.address.edit");
+//            })->name("edit");
+//        });
     });
 
     //account settings
-    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
+    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings'])->name('acc.setting');
 
     //All content
     Route::match(['get', 'post'], 'content', [ContentController::class, 'index'])->name('content');
@@ -154,3 +173,31 @@ Route::get("phone_verify", function () {
     return view("auth.verify_phone");
 });
 
+
+/**
+ * Define route for design purpose
+ */
+
+//Address
+
+Route::prefix("address")->as("address.")->group(function () {
+    Route::get("add", function () {
+        return view("pages.address.add");
+    })->name("add");
+    Route::get("edit/{id}", function () {
+        return view("pages.address.edit");
+    })->name("edit");
+});
+
+
+//edit personal info
+Route::get("account-edit/{id}",function (){
+    return view('pages.account.edit');
+})->name("account.edit");
+
+
+//add information
+
+Route::get("/information",function (){
+    return view("pages.information.add");
+});
