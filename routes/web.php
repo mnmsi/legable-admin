@@ -153,3 +153,4 @@ Route::get("email_verify", function () {
 Route::get("phone_verify", function () {
     return view("auth.verify_phone");
 });
+
