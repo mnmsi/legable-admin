@@ -43,15 +43,6 @@ Route::middleware('auth')->group(function () {
             Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
             Route::post("update/{id}", [UserAddressController::class, 'update'])->name("update");
         });
-
-//        Route::prefix("address")->as("address.")->group(function () {
-//            Route::get("add", function () {
-//                return view("pages.address.add");
-//            })->name("add");
-//            Route::get("edit/{id}", function () {
-//                return view("pages.address.edit");
-//            })->name("edit");
-//        });
     });
 
     //account settings

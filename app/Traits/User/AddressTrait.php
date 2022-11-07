@@ -48,7 +48,7 @@ trait AddressTrait
 
     public function activeAddressId()
     {
-        return $this->activeAddress()->id ?? $this->getFirstAddressFromList()->id;
+        return $this->activeAddress()->id ?? $this->getFirstAddressFromList()['id'];
     }
 
     public function activeAddressEncId()
@@ -66,7 +66,8 @@ trait AddressTrait
         return $this->getAddress()->map(function ($item) {
             return [
                 'full_address' => $this->fullAddress($item),
-                'status'       => $item->status
+                'status'       => $item->status,
+                'id'           => $item->id
             ];
         });
     }
