@@ -66,3 +66,52 @@
         }
     }
 }
+
+.info_form_select_wrapper{
+    border: 1px solid #D7E8EF;
+    border-radius: 4px;
+    //background: transparent;
+    padding-left: 24px;
+    height: 48px;
+    color: rgba(23, 80, 103, 0.5);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.015em;
+    &:focus{
+        box-shadow: none;
+        border: 1px solid #D7E8EF;
+    }
+}
+.choose_file{
+    border: 1px dashed rgba(23, 80, 103, 0.7);
+    border-radius: 4px;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    span{
+        color: #282A2C;
+        font-weight: 500;
+        font-size: 13px;
+    }
+    img{
+        margin-right: 13px;
+    }
+    height: 48px;
+}
+
+.add_more_button{
+    border: 1px solid #175067;
+    border-radius: 4px;
+    height: 40px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #175067;
+    font-weight: 500;
+    font-size: 12px;
+    img{
+        margin-right: 9px;
+    }
+
+}

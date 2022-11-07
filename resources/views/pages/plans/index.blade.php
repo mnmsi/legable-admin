@@ -24,7 +24,7 @@
                             <p>10 days remaining in your free trial</p>
                         </div>
                         <div class="cancel-subscription-button-wrapper">
-                            <a href="#">Cancel Subscription</a>
+                            <a href="javascript:void(0)" id="cancel_subscription">Cancel Subscription</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,6 @@
             </div>
 
             <div id="autoRenewalStatus"></div>
-
             <p class="plan-footer-text">If this option is checked, system will renew your subscription automatically for
                 this product . If the
                 current plan expires, However this might prevent you from</p>
@@ -74,6 +73,7 @@
         {{--  main page end--}}
     </div>
     @include('includes.modal.planModal')
+    @include('includes.modal.cancelPlan')
 @endsection
 
 @section('script')
@@ -88,6 +88,10 @@
             $('#closePlanModal').on('click', function () {
                 $('#planModal').modal('hide');
             });
+            //plan modal
+            $("#cancel_subscription").on("click",function (){
+                $("#cancelPlan").modal("show");
+            })
         })
     </script>
 @endsection

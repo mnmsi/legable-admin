@@ -17,7 +17,7 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 Auth::routes();
 
@@ -175,3 +175,35 @@ Route::get("phone_verify", function () {
 });
 
 
+/**
+ * Define route for design purpose
+ */
+
+//Address
+
+Route::prefix("address")->as("address.")->group(function () {
+    Route::get("add", function () {
+        return view("pages.address.add");
+    })->name("add");
+    Route::get("edit/{id}", function () {
+        return view("pages.address.edit");
+    })->name("edit");
+});
+
+
+//edit personal info
+Route::get("account-edit/{id}",function (){
+    return view('pages.account.edit');
+})->name("account.edit");
+
+
+//add information
+
+Route::get("/information",function (){
+    return view("pages.information.add");
+});
+
+Route::get("/pdf",function (){
+    $pdf = Pdf::loadView('pages.invoice.index');
+    return $pdf->stream();
+});

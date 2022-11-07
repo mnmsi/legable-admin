@@ -14,7 +14,6 @@
                 </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
-
                         <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
 
