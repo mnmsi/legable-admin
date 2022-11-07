@@ -66,9 +66,11 @@
                         <div class="single-address-box-content-wrapper">
                             <div class="single-address-box-header">
                                 <div class="address-title">Address {{$key + 1}}</div>
-                                <div>
-                                    <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
-                                </div>
+                                @if($address['status'])
+                                    <div>
+                                        <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+                                    </div>
+                                @endif
                             </div>
                             <div class="address-box-content">
                                 <p>{{$address['full_address']}}</p>
@@ -79,7 +81,7 @@
                 </div>
             @endforeach
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-3">
                 <a href="{{route("user.address.add")}}" class="text-decoration-none">
                     <div class="single-address-box add-new-box">
                         <div class="address-box-add-content">
