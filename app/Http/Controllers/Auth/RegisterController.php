@@ -7,6 +7,7 @@ use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\System\Country;
 use App\Models\User\User;
 use App\Providers\RouteServiceProvider;
+use App\Traits\Auth\AuthTrait;
 use App\Traits\Auth\RegisterTrait;
 use App\Traits\User\AddressTrait;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
     |
     */
 
-    use AddressTrait, RegisterTrait, RegistersUsers {
+    use AuthTrait, AddressTrait, RegisterTrait, RegistersUsers {
         showRegistrationForm as traitRegistrationForm;
     }
 
@@ -97,6 +98,7 @@ class RegisterController extends Controller
             }
 
             $user->addresses()->attach($user->id, $request->address);
+            $this->storeDevice($request, $user);
 
             $this->guard()->login($user);
 
