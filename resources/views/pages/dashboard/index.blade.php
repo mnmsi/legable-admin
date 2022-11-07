@@ -12,10 +12,12 @@
                 {{-- ligable welcome bar end --}}
                 {{-- qick access --}}
 
-                <div class="row mt-5">
+                <div class="mt-5">
                     <h2 class="dashboard-section-title mb-4">Suggested</h2>
-                    @foreach($drawers as $drawer)
-                        <div class="col-lg-4 col-6">
+                </div>
+                <div class="row" id="draggable">
+                    @foreach($drawers as $key => $drawer)
+                        <div class="col-lg-4 col-6" id="{{$drawer['id']}}">
                             <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                                     date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
                                     :required-pass="$drawer['is_password_required']" :type="$drawer['content_type']"/>
@@ -88,10 +90,28 @@
     @include('includes.offcanvas.new-information')
     {{-- page content end --}}
 @endsection
-
 @section('script')
+    <script src="{{asset("js/jquery-ui.min.js")}}"></script>
+    <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
     <script>
         $(document).ready(function () {
+            $("#draggable").sortable({
+                animation: 300,
+                // dropOnEmpty: false,
+                // scroll: true,
+                axis: "x",
+                classes: {
+                    "ui-sortable": "highlight"
+                },
+                tolerance: "pointer",
+                items: ".col-lg-4",
+                update: function () {
+                    var order = $("#draggable").sortable('toArray');
+                    localStorage.setItem("Sorted",JSON.stringify(order));
+                }
+
+            });
+
             //upload file
             $('#dashmodalid').on('click', function () {
                 $('#uploadFile').modal('show');
@@ -131,4 +151,5 @@
         })
     </script>
     <script src="{{asset('js/content.js')}}"></script>
+
 @endsection
