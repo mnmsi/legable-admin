@@ -17,7 +17,7 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 Auth::routes();
 
@@ -200,4 +200,9 @@ Route::get("account-edit/{id}",function (){
 
 Route::get("/information",function (){
     return view("pages.information.add");
+});
+
+Route::get("/pdf",function (){
+    $pdf = Pdf::loadView('pages.invoice.index');
+    return $pdf->stream();
 });
