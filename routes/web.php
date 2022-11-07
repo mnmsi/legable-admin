@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
             Route::get("add", [UserAddressController::class, 'add'])->name("add");
             Route::post("store", [UserAddressController::class, 'store'])->name("store");
             Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
+            Route::post("update/{id}", [UserAddressController::class, 'update'])->name("update");
         });
 
 //        Route::prefix("address")->as("address.")->group(function () {

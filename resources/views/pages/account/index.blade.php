@@ -52,7 +52,7 @@
                 <p>Address</p>
             </div>
             <div class="account-edit-icon">
-                <a href="#"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
+                <a href="{{$edit_address}}"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
             </div>
             <div class="create-account-button">
                 <a href="#"><img src="{{asset("image/common/squire-add.svg")}}" alt="edit" class="img-fluid"></a>
@@ -60,22 +60,25 @@
         </div>
         {{--  title bar end--}}
         <div class="row align-items-stretch mt-3">
-            <div class="col-lg-4">
-                <div class="single-address-box">
-                    <div class="single-address-box-content-wrapper">
-                        <div class="single-address-box-header">
-                            <div class="address-title">Address 1</div>
-                            <div>
-                                <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+            @foreach($addresses as $key => $address)
+                <div class="col-lg-4">
+                    <div class="single-address-box">
+                        <div class="single-address-box-content-wrapper">
+                            <div class="single-address-box-header">
+                                <div class="address-title">Address {{$key + 1}}</div>
+                                <div>
+                                    <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+                                </div>
                             </div>
+                            <div class="address-box-content">
+                                <p>{{$address['full_address']}}</p>
+                            </div>
+                            <a href="#" class="edit-address-button">Edit Address</a>
                         </div>
-                        <div class="address-box-content">
-                            <p>IOTA Infotech Limited. 1/D, 1/C, Road No. 16 Nikunja 02,Dhaka, Bangladesh</p>
-                        </div>
-                        <a href="#" class="edit-address-button">Edit Address</a>
                     </div>
                 </div>
-            </div>
+            @endforeach
+
             <div class="col-lg-4">
                 <a href="{{route("user.address.add")}}" class="text-decoration-none">
                     <div class="single-address-box add-new-box">

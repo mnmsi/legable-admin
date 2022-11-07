@@ -30,6 +30,19 @@ class UserAddressController extends Controller
 
     public function edit($id)
     {
-        return view("pages.address.edit");
+        return view("pages.address.edit", [
+            'id'        => $id,
+            'countries' => Country::all(),
+            'address'   => $this->getAddressFromEncId($id),
+        ]);
+    }
+
+    public function update(AddressRequest $request, $id)
+    {
+        if (!$this->updateAddress($id, $request)) {
+            abort(404);
+        }
+
+        return redirect()->route('acc.setting');
     }
 }
