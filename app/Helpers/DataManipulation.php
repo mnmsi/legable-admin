@@ -70,7 +70,7 @@ function collection_to_arr($data)
 
 function get_image($path)
 {
-    return $path ? asset("storage/" . $path) : "http://127.0.0.1:8000/image/common/profile.svg";
+    return asset($path ? "storage/" . $path : "image/common/profile.svg");
 }
 
 
