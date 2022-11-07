@@ -32,11 +32,10 @@
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>
-
+<scritpt src="{{asset("js/jquery-ui.min.js")}}"></scritpt>
 <script src="{{asset('js/commonMethods.js')}}"></script>
 <script src="{{ asset('js/base.js') }}"></script>
 <script src="{{ asset('js/search.js') }}"></script>
-
 @yield('script')
 @stack('script')
 
