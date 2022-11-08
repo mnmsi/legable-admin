@@ -72,7 +72,7 @@ trait VerificationTrait
         $twilio_number = getenv("TWILIO_NUMBER");
 
         $client = new Client($account_sid, $auth_token);
-        return $client->messages->create($recipients,
+        return $client->messages->create("+$recipients",
             ['from' => $twilio_number, 'body' => $message]);
     }
 }
