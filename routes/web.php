@@ -95,10 +95,10 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::get('mail', function () {
+Route::get('mail', function (Request $request) {
     Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
         $message->subject('Legable');
-        $message->to('saiful.b1k996@gmail.com');
+        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
     });
 });
 
