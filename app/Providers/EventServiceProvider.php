@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\MailVerificationEvent;
+use App\Listeners\MailVerificationEventListener;
 use App\Models\User\User;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -20,6 +22,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        MailVerificationEvent::class => [
+            MailVerificationEventListener::class
+        ]
     ];
 
     /**

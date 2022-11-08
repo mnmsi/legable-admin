@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User\User;
+use App\Notifications\MailVerificationNotification;
 use Illuminate\Auth\Events\Registered;
 
 class UserObserver
@@ -22,7 +23,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        event(new Registered($user));
+//        event(new Registered($user));
+        $user->notify(new MailVerificationNotification());
     }
 
     /**

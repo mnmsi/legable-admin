@@ -97,12 +97,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('mail', function (Request $request) {
-//    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
-//        $message->subject('Legable');
-//        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
-//    });
+    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
+        $message->subject('Legable');
+        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
+    });
 
-    event(new Registered(\App\Models\User\User::find(9)));
+//    event(new Registered(\App\Models\User\User::find(9)));
 
 });
 
