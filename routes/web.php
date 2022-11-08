@@ -14,6 +14,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MasterKeyController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -96,10 +97,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('mail', function (Request $request) {
-    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
-        $message->subject('Legable');
-        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
-    });
+//    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
+//        $message->subject('Legable');
+//        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
+//    });
+
+    event(new Registered(\App\Models\User\User::find(9)));
+
 });
 
 //search

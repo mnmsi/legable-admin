@@ -33,6 +33,7 @@ class RegisterController extends Controller
 
     use AuthTrait, AddressTrait, RegisterTrait, RegistersUsers {
         showRegistrationForm as traitRegistrationForm;
+        register as traitRegister;
     }
 
     /**
