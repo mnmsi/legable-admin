@@ -9,11 +9,11 @@
 
 <!--Main layout-->
 <main>
-    <div class="loader" id="loader">
-        <div class="loader-image">
-            <img src="{{asset("image/common/loader.svg")}}" class="img-fluid" alt="image">
-        </div>
-    </div>
+{{--    <div class="loader" id="loader">--}}
+{{--        <div class="loader-image">--}}
+{{--            <img src="{{asset("image/common/loader.svg")}}" class="img-fluid" alt="image">--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!--Main Navigation-->
     @include('includes.nav')
     @include('includes.responsive.nav')
@@ -41,9 +41,9 @@
 
 <script src="{{ asset('/sw.js') }}"></script>
 <script>
-    $(window).on('load', function () {
-        $("#loader").fadeOut();
-    })
+    // $(window).on('load', function () {
+    //     $("#loader").fadeOut();
+    // })
 
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
