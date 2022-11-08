@@ -16,6 +16,7 @@ use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -91,8 +92,15 @@ Route::middleware('auth')->group(function () {
 
     //Search
     Route::get("search", [SearchController::class, 'search'])->name('search');
+
 });
 
+Route::get('mail', function () {
+    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
+        $message->subject('Legable');
+        $message->to('saiful.b1k996@gmail.com');
+    });
+});
 
 //search
 Route::get("/search-empty", function () {
@@ -183,18 +191,18 @@ Route::prefix("address")->as("address.")->group(function () {
 
 
 //edit personal info
-Route::get("account-edit/{id}",function (){
+Route::get("account-edit/{id}", function () {
     return view('pages.account.edit');
 })->name("account.edit");
 
 
 //add information
 
-Route::get("/information",function (){
+Route::get("/information", function () {
     return view("pages.information.add");
 });
 
-Route::get("/pdf",function (){
+Route::get("/pdf", function () {
     $pdf = Pdf::loadView('pages.invoice.index');
     return $pdf->stream();
 });
