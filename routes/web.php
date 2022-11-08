@@ -11,13 +11,14 @@ use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\PhoneVerificationController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -25,7 +26,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     //User
     Route::prefix('user')->as('user.')->group(function () {
@@ -94,16 +95,17 @@ Route::middleware('auth')->group(function () {
     //Search
     Route::get("search", [SearchController::class, 'search'])->name('search');
 
-});
-
-Route::get('mail', function (Request $request) {
-    Mail::raw('Sending emails with Mailgun and Laravel ', function ($message) {
-        $message->subject('Legable');
-        $message->to($request->mail ?? 'saiful.b1k996@gmail.com');
+    //Mail verification
+    Route::prefix('mail')->as('mail.')->group(function() {
+        Route::get('verification', [MailVerificationController::class, 'showVerification'])->name('verification');
+        Route::post('verify', [MailVerificationController::class, 'verifyMail'])->name('verify');
     });
 
-//    event(new Registered(\App\Models\User\User::find(9)));
-
+    //Phone verification
+    Route::prefix('phone')->as('phone.')->group(function() {
+        Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
+        Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
+    });
 });
 
 //search

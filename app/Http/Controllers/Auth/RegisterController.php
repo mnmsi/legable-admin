@@ -80,7 +80,7 @@ class RegisterController extends Controller
             }
 
             DB::commit();
-            return view('auth.verify_email');
+            return redirect()->route('mail.verification');
 //            return $request->wantsJson()
 //                ? new JsonResponse([], 201)
 //                : redirect($this->redirectPath());

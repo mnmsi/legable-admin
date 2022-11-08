@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\MailVerificationEvent;
+use App\Events\PhoneVerificationEvent;
 use App\Listeners\MailVerificationEventListener;
+use App\Listeners\PhoneVerificationEventListener;
 use App\Models\User\User;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -25,6 +27,10 @@ class EventServiceProvider extends ServiceProvider
 
         MailVerificationEvent::class => [
             MailVerificationEventListener::class
+        ],
+
+        PhoneVerificationEvent::class => [
+            PhoneVerificationEventListener::class
         ]
     ];
 

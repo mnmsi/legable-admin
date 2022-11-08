@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Events\MailVerificationEvent;
+use App\Events\PhoneVerificationEvent;
 use App\Models\User\User;
 use App\Notifications\MailVerificationNotification;
 use Illuminate\Auth\Events\Registered;
@@ -35,7 +36,9 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        //
+        if (in_array('email_verified_at', array_keys($user->getChanges()))) {
+            event(new PhoneVerificationEvent());
+        }
     }
 
     /**
