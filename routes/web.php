@@ -9,6 +9,7 @@ use App\Http\Controllers\Content\SearchController;
 use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\MyPlan\MyPlanController;
+use App\Http\Controllers\System\SubscriptionController;
 use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\BillingController;
 use App\Http\Controllers\User\CardController;
@@ -103,6 +104,9 @@ Route::middleware('auth')->group(function () {
 
     //Search
     Route::get("search", [SearchController::class, 'search'])->name('search');
+
+    //Subscribe
+    Route::post("subscribe", [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
     //Mail verification
     Route::prefix('mail')->as('mail.')->group(function () {

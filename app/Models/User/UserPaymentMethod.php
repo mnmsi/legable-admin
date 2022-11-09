@@ -18,6 +18,7 @@ class UserPaymentMethod extends BaseModel
         'number',
         'exp_month',
         'exp_year',
+        'cvc',
         'is_active'
     ];
 

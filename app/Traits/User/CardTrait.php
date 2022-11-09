@@ -12,6 +12,11 @@ trait CardTrait
         return UserPaymentMethod::create($data);
     }
 
+    public function updateOrCreate($cond, $data)
+    {
+        return UserPaymentMethod::updateOrCreate($cond, $data);
+    }
+
     public function getFirstCard()
     {
         return UserPaymentMethod::first();
@@ -49,23 +54,5 @@ trait CardTrait
                 'is_active' => $item->is_active,
             ];
         });
-    }
-
-    public function validateCard($cardInfo)
-    {
-        return $this->createToken($cardInfo);
-    }
-
-    private function createToken($data)
-    {
-        $stripe = new StripeClient(env('STRIPE_SECRET'));
-        return $stripe->tokens->create([
-            'card' => [
-                'number'    => $data['number'],
-                'exp_month' => $data['exp_month'],
-                'exp_year'  => $data['exp_year'],
-                'cvc'       => $data['cvc'],
-            ],
-        ]);
     }
 }

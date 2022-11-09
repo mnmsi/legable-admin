@@ -4,12 +4,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CardRequest;
+use App\Traits\System\StripePaymentTrait;
 use App\Traits\User\CardTrait;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
-    use CardTrait;
+    use CardTrait, StripePaymentTrait;
 
     public function addCard()
     {
