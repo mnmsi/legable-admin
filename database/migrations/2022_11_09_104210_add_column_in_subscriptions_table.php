@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->double('plan_amount')->after('card_id');
-            $table->timestamp('expires_at')->after('card_id');
+            $table->date('expires_at')->after('card_id');
         });
     }
 

@@ -16,6 +16,11 @@ class SubscriptionController extends Controller
 
     public function subscribe(CardRequest $request)
     {
+        if ($this->checkPlan()) {
+            return redirect()->back()
+                             ->with("plan_exists", "Already subscribed plan!!");
+        }
+
         $requestData                = $request->except('_token');
         $requestData['user_id']     = Auth::id();
         $requestData['plan_amount'] = 30;

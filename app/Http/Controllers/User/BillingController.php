@@ -16,4 +16,9 @@ class BillingController extends Controller
             'cards' => $this->cardList()
         ]);
     }
+
+    public function updatePlan()
+    {
+        return view('pages.billing.update_plan');
+    }
 }

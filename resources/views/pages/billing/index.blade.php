@@ -1,7 +1,7 @@
 @extends("layouts.app")
 @section('title','Billing Information')
 @section('content')
-    @include('includes.pageHeader',['title'=>'Billing Informations','list'=>['Dashboard','Plans & Subscriptions'],'btn'=>[],'link'=>[]])
+    @include('includes.pageHeader',['title'=>"Billing Information's",'list'=>['Dashboard','Plans & Subscriptions'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
         {{--        title bar start--}}
@@ -51,34 +51,6 @@
                         </div>
                     </label>
                 @endforeach
-
-                {{--                <label for="visa">--}}
-                {{--                    <div class="single-payment-card">--}}
-                {{--                        <div class="single-payment-card-header">--}}
-                {{--                            <div class="card-name">Debit Card</div>--}}
-                {{--                            <input type="radio" name="card" id="visa">--}}
-                {{--                            <div class="selected-sign">--}}
-                {{--                                <img src="{{asset("image/billing/tick.svg")}}" alt="">--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="payment-card-body">--}}
-                {{--                            <div class="payment-method-logo">--}}
-                {{--                                <img src="{{asset("image/billing/visa.svg")}}" alt="">--}}
-                {{--                            </div>--}}
-                {{--                            <div class="encrypted">--}}
-                {{--                                <img src="{{asset("image/billing/encrypted.svg")}}" alt="">--}}
-                {{--                            </div>--}}
-                {{--                            <div class="card-digit">--}}
-                {{--                                4258--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="payment-card-footer">--}}
-                {{--                            <div class="minus-action">--}}
-                {{--                                --}}{{--   <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </label>--}}
 
                 <a href="{{route("billing.card.add")}}">
                     <div class="single-payment-card add-card">

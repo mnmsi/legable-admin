@@ -8,7 +8,13 @@
         {{--        title bar start--}}
         <div class="my-plan-title-bar">
             <p>Your Plan Details</p>
+            @if(session()->has('plan_exists'))
+                <div class="alert alert-warning">
+                    {{ session()->get('plan_exists') }}
+                </div>
+            @endif
         </div>
+
         {{--        title bar end--}}
         <div class="row align-items-stretch lg-mt-3 mt-0">
             <div class="col-lg-6 col-md-6 lg-mb-0 mb-4">
