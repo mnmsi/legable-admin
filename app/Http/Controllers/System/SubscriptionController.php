@@ -21,13 +21,13 @@ class SubscriptionController extends Controller
                              ->with("plan_exists", "Already subscribed plan!!");
         }
 
-        if (is_null(Auth::user()->email_verified_at)) {
-            return redirect()->route('mail.verification');
-        }
-
-        if (is_null(Auth::user()->phone_verified_at)) {
-            return redirect()->route('phone.verification');
-        }
+//        if (is_null(Auth::user()->email_verified_at)) {
+//            return redirect()->route('mail.verification');
+//        }
+//
+//        if (is_null(Auth::user()->phone_verified_at)) {
+//            return redirect()->route('phone.verification');
+//        }
 
         $requestData                = $request->except('_token');
         $requestData['user_id']     = Auth::id();
