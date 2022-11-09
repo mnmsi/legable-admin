@@ -20,18 +20,23 @@ class SubscriptionController extends Controller
         $requestData['user_id']     = Auth::id();
         $requestData['plan_amount'] = 30;
 
-        $subscribe = $this->payment($request->all());
+        $subscribe = $this->payment($requestData);
         if (strtolower($subscribe->status) !== 'succeeded') {
             abort(404);
         }
 
         $requestData['brand'] = $subscribe->payment_method_details->card->brand;
 
-        if (!$card = $this->updateOrCreate($requestData, $requestData)) {
+        if (!$card = $this->updateOrCreate([
+            'user_id' => Auth::id(),
+            'number'  => $request->number
+        ], $requestData)) {
             abort(404);
         }
 
-        if (!$subsData = $this->subscribePlan($card->id)) {
+        $requestData['card_id'] = $card->id;
+
+        if (!$subsData = $this->subscribePlan($requestData)) {
             abort(404);
         }
 

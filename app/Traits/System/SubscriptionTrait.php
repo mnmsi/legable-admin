@@ -6,12 +6,13 @@ use App\Models\Subscription\Subscription;
 
 trait SubscriptionTrait
 {
-    public function subscribePlan($cardId)
+    public function subscribePlan($data)
     {
         return Subscription::create([
-            'plan_id'    => 2,
-            'card_id'    => $cardId,
-            'expires_at' => now()->addMonth()
+            'plan_id'     => 2,
+            'card_id'     => $data['card_id'],
+            'plan_amount' => $data['plan_amount'],
+            'expires_at'  => now()->addMonth()
         ]);
     }
 }
