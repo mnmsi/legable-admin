@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </label>
-                <a href="{{route("billing.add")}}">
+                <a href="{{route("billing.card.add")}}">
                     <div class="single-payment-card add-card">
                         <img src="{{asset("image/billing/plus.svg")}}" alt="">
                     </div>

@@ -10,6 +10,8 @@ use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\MyPlan\MyPlanController;
 use App\Http\Controllers\User\AccountSettingsController;
+use App\Http\Controllers\User\BillingController;
+use App\Http\Controllers\User\CardController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
@@ -96,13 +98,23 @@ Route::middleware('auth')->group(function () {
     Route::get("search", [SearchController::class, 'search'])->name('search');
 
     //Mail verification
-    Route::prefix('mail')->as('mail.')->group(function() {
+    Route::prefix('mail')->as('mail.')->group(function () {
         Route::get('verification', [MailVerificationController::class, 'showVerification'])->name('verification');
         Route::post('verify', [MailVerificationController::class, 'verifyMail'])->name('verify');
     });
 
+    //Billing
+    Route::prefix('billing')->as('billing.')->group(function () {
+        Route::get('', [BillingController::class, 'index'])->name('index');
+
+        Route::prefix('card')->as('card.')->group(function () {
+            Route::get('add', [CardController::class, 'addCard'])->name('add');
+            Route::post('store', [CardController::class, 'storeCard'])->name('store');
+        });
+    });
+
     //Phone verification
-    Route::prefix('phone')->as('phone.')->group(function() {
+    Route::prefix('phone')->as('phone.')->group(function () {
         Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
         Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
     });
@@ -112,24 +124,6 @@ Route::middleware('auth')->group(function () {
 Route::get("/search-empty", function () {
     return view("pages.dashboard.empty");
 });
-
-//billing info
-Route::get("/billing", function () {
-    return view("");
-});
-
-Route::prefix("/billing")->as("billing.")->group(function () {
-    Route::get("/", function () {
-        return view("pages.billing.index");
-    });
-    Route::get("/add", function () {
-        return view("pages.billing.add");
-    })->name("add");
-});
-
-//Route::get('/drawer/upload', function () {
-//    return view("pages.allContent.upload");
-//});
 
 // important
 
@@ -170,37 +164,6 @@ Route::get('test', function (Request $request) {
         'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
-
-Route::get("email_verify", function () {
-    return view("auth.verify_email");
-});
-
-Route::get("phone_verify", function () {
-    return view("auth.verify_phone");
-});
-
-
-/**
- * Define route for design purpose
- */
-
-//Address
-
-Route::prefix("address")->as("address.")->group(function () {
-    Route::get("add", function () {
-        return view("pages.address.add");
-    })->name("add");
-    Route::get("edit/{id}", function () {
-        return view("pages.address.edit");
-    })->name("edit");
-});
-
-
-//edit personal info
-Route::get("account-edit/{id}", function () {
-    return view('pages.account.edit');
-})->name("account.edit");
-
 
 //add information
 

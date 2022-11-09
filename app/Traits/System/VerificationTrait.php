@@ -16,15 +16,14 @@ trait VerificationTrait
         return UserVerification::create($data);
     }
 
-    public function createToken($userId, $gateway)
+    public function createToken($gateway)
     {
-        return $this->create($this->makeData($userId, $gateway));
+        return $this->create($this->makeData($gateway));
     }
 
-    public function makeData($userId, $gateway)
+    public function makeData($gateway)
     {
         return [
-            'user_id'    => $userId,
             'gateway'    => $gateway,
             'otp'        => $this->generateToken(),
             'expires_at' => now()->addMinutes(5),

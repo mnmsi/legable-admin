@@ -30,7 +30,7 @@ class MailVerificationEventListener
      */
     public function handle(MailVerificationEvent $event)
     {
-        $verification = $this->createToken($event->user->id, 'mail');
+        $verification = $this->createToken( 'mail');
 
         $event->user->notify(new MailVerificationNotification($verification->otp));
     }

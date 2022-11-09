@@ -35,7 +35,7 @@ class PhoneVerificationEventListener
      */
     public function handle(PhoneVerificationEvent $event)
     {
-        $generatedToken = $this->createToken(Auth::id(), 'phone');
+        $generatedToken = $this->createToken('phone');
 
         $message    = "Your OTP is: $generatedToken->otp";
         $this->sendOtpInMobile(Auth::user()->phone, $message);
