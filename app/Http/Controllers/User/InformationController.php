@@ -15,6 +15,6 @@ class InformationController extends Controller
 
     public function store(InformationRequest $request)
     {
-            dd($request->all());
+        dd($request->all());
     }
 }
