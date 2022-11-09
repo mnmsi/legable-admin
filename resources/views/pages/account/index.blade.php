@@ -52,7 +52,10 @@
                 <p>Address</p>
             </div>
             <div class="account-edit-icon">
-                <a href="{{$edit_address}}"><img src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
+                @if(!is_null($edit_address))
+                    <a href="{{route('user.address.edit', $edit_address)}}"><img
+                            src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
+                @endif
             </div>
             <div class="create-account-button">
                 <a href="#"><img src="{{asset("image/common/squire-add.svg")}}" alt="edit" class="img-fluid"></a>
@@ -68,7 +71,8 @@
                                 <div class="address-title">Address {{$key + 1}}</div>
                                 @if($address['status'])
                                     <div>
-                                        <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+                                        <img src="{{asset("image/common/golden-sign.svg")}}" alt="image"
+                                             class="img-fluid">
                                     </div>
                                 @endif
                             </div>

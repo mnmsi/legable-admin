@@ -48,12 +48,14 @@ trait AddressTrait
 
     public function activeAddressId()
     {
-        return $this->activeAddress()->id ?? $this->getFirstAddressFromList()['id'];
+        return $this->activeAddress()->id ?? null;
+//        return ($this->activeAddress()->id ?? $this->getFirstAddressFromList()['id']) ?? null;
     }
 
     public function activeAddressEncId()
     {
-        return myEncrypt($this->activeAddressId());
+        $address = $this->activeAddressId();
+        return !is_null($address) ? myEncrypt($address) : null;
     }
 
     public function getFirstAddressFromList()
