@@ -4,8 +4,15 @@
             <div class="card-icon">
                 <img src="{{ $icon }}" alt="icon">
             </div>
-            <div class="three-dot">
-                <img src="{{ asset('image/card/dots.svg') }}" alt="dots">
+            <div class="dropdown">
+                <div class="three-dot" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                    <img src="{{ asset('image/card/dots.svg') }}" alt="dots">
+                </div>
+                <ul class="dropdown-menu card-dropdown" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{{$id}}">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{{$id}}">Rename Drawer</a></li>
+                    <li><a class="dropdown-item" href="{{$id}}">Delete Drawer</a></li>
+                </ul>
             </div>
         </div>
         <div class="document-card-footer">

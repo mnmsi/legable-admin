@@ -9,99 +9,134 @@ use App\Http\Controllers\Content\SearchController;
 use App\Http\Controllers\Content\SecurityController;
 use App\Http\Controllers\Device\DeviceController;
 use App\Http\Controllers\MyPlan\MyPlanController;
+use App\Http\Controllers\System\SubscriptionController;
 use App\Http\Controllers\User\AccountSettingsController;
+use App\Http\Controllers\User\BillingController;
+use App\Http\Controllers\User\CardController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\InformationController;
+use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\PhoneVerificationController;
+use App\Http\Controllers\User\UserAddressController;
+use App\Http\Controllers\User\UserController;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
 
-    //User
-    Route::prefix('user')->as('user.')->group(function () {
-        Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
+    Route::middleware('subscription')->group(function () {
+        //Dashboard
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        //Master key
-        Route::prefix('master-key')->as('master-key.')->group(function () {
-            Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
-            Route::get('change/status', [MasterKeyController::class, 'changeStatus'])->name('change.status');
+        //User
+        Route::prefix('user')->as('user.')->group(function () {
+            Route::get("edit", [UserController::class, 'edit'])->name("edit");
+            Route::post("update", [UserController::class, 'update'])->name("update");
+            Route::post('password/change', [ResetPasswordController::class, 'passwordReset'])->name('password.change');
+
+            //Master key
+            Route::prefix('master-key')->as('master-key.')->group(function () {
+                Route::post('set', [MasterKeyController::class, 'setMasterKey'])->name('set');
+                Route::get('change/status', [MasterKeyController::class, 'changeStatus'])->name('change.status');
+            });
+
+            Route::prefix("address")->as("address.")->group(function () {
+                Route::get("add", [UserAddressController::class, 'add'])->name("add");
+                Route::post("store", [UserAddressController::class, 'store'])->name("store");
+                Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
+                Route::post("update/{id}", [UserAddressController::class, 'update'])->name("update");
+            });
+        });
+
+        //account settings
+        Route::get("account-settings", [AccountSettingsController::class, 'accountSettings'])->name('acc.setting');
+
+        //All content
+        Route::match(['get', 'post'], 'content', [ContentController::class, 'index'])->name('content');
+
+        //drawer
+        Route::prefix('drawer')->as('drawer.')->group(function () {
+            Route::get('', [DrawerController::class, 'index'])->name('index');
+            Route::get('add', [DrawerController::class, 'add'])->name('add');
+            Route::post('create', [DrawerController::class, 'create'])->name('create');
+            Route::get('items/{id}', [DrawerController::class, 'items'])->name('items');
+        });
+
+        //box
+        Route::prefix('box')->as('box.')->group(function () {
+            Route::post('create', [BoxController::class, 'create'])->name('create');
+        });
+
+        //File
+        Route::prefix('file')->as('file.')->group(function () {
+            Route::get('upload', [FileController::class, 'upload'])->name('upload');
+            Route::post('store', [FileController::class, 'store'])->name('store');
+            Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
+        });
+
+        //Information
+        Route::prefix('information')->as('information.')->group(function () {
+            Route::get('', [InformationController::class, 'addInfo'])->name('add');
+            Route::post('store', [FileController::class, 'store'])->name('store');
+        });
+
+        //Security
+        Route::prefix('security')->as('security.')->group(function () {
+            Route::get('check', [SecurityController::class, 'check'])->name('check');
+            Route::get("settings", [SecurityController::class, 'settings'])->name('settings');
+        });
+
+        //device
+        Route::prefix('device')->as('device.')->group(function () {
+            Route::get("/", [DeviceController::class, 'devices'])->name('list');
+            Route::get("remove/{id}", [DeviceController::class, 'remove'])->name('remove');
+        });
+
+        //My plans
+        Route::prefix('my-plans')->as('myPlan.')->group(function () {
+            Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
+            Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto.renewal');
+        });
+
+        //Search
+        Route::get("search", [SearchController::class, 'search'])->name('search');
+
+        //Subscribe
+        Route::post("subscribe", [SubscriptionController::class, 'subscribe'])->name('subscribe');
+
+        //Billing
+        Route::prefix('billing')->as('billing.')->group(function () {
+            Route::get('', [BillingController::class, 'index'])->name('index');
+
+            Route::prefix('card')->as('card.')->group(function () {
+                Route::get('add', [CardController::class, 'addCard'])->name('add');
+                Route::post('store', [CardController::class, 'storeCard'])->name('store');
+                Route::get('active/{id}', [CardController::class, 'activeCard'])->name('active');
+                Route::get('delete/{id}', [CardController::class, 'deleteCard'])->name('delete');
+            });
+        });
+
+        //Mail verification
+        Route::prefix('mail')->as('mail.')->group(function () {
+            Route::get('verification', [MailVerificationController::class, 'showVerification'])->name('verification');
+            Route::post('verify', [MailVerificationController::class, 'verifyMail'])->name('verify');
+        });
+
+        //Phone verification
+        Route::prefix('phone')->as('phone.')->group(function () {
+            Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
+            Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
         });
     });
-
-    //account settings
-    Route::get("account-settings", [AccountSettingsController::class, 'accountSettings']);
-
-    //All content
-    Route::match(['get', 'post'],'content', [ContentController::class, 'index'])->name('content');
-
-    //drawer
-    Route::prefix('drawer')->as('drawer.')->group(function () {
-        Route::get('', [DrawerController::class, 'index'])->name('index');
-        Route::get('add', [DrawerController::class, 'add'])->name('add');
-        Route::post('create', [DrawerController::class, 'create'])->name('create');
-        Route::get('items/{id}', [DrawerController::class, 'items'])->name('items');
-    });
-
-    //box
-    Route::prefix('box')->as('box.')->group(function () {
-        Route::post('create', [BoxController::class, 'create'])->name('create');
-    });
-
-    //File
-    Route::prefix('file')->as('file.')->group(function () {
-        Route::get('upload', [FileController::class, 'upload'])->name('upload');
-        Route::post('store', [FileController::class, 'store'])->name('store');
-        Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
-    });
-
-    //Security
-    Route::prefix('security')->as('security.')->group(function () {
-        Route::get('check', [SecurityController::class, 'check'])->name('check');
-        Route::get("settings", [SecurityController::class, 'settings'])->name('settings');
-    });
-
-    //device
-    Route::prefix('device')->as('device.')->group(function () {
-        Route::get("/", [DeviceController::class, 'devices'])->name('list');
-        Route::get("remove/{id}", [DeviceController::class, 'remove'])->name('remove');
-    });
-
-    //My plans
-    Route::prefix('my-plans')->as('myPlan.')->group(function () {
-        Route::get("/", [MyPlanController::class, 'myPlan'])->name('my-plan');
-        Route::get('auto-renewal', [MyPlanController::class, 'autoRenewal'])->name('auto.renewal');
-    });
-
-    //Search
-    Route::get("search", [SearchController::class, 'search'])->name('search');
 });
-
-
-//search
-Route::get("/search-empty", function () {
-    return view("pages.dashboard.empty");
-});
-
-//billing info
-Route::get("/billing", function () {
-    return view("pages.billing.index");
-});
-
-//Route::get('/drawer/upload', function () {
-//    return view("pages.allContent.upload");
-//});
-
-// important
-
-
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('test', function (Request $request) {
@@ -137,9 +172,8 @@ Route::get('test', function (Request $request) {
     ];
 });
 
-Route::get("email_verify",function (){
-   return view("auth.verify_email");
-});
-Route::get("phone_verify",function (){
-   return view("auth.verify_phone");
+//add information
+Route::get("/pdf", function () {
+    $pdf = Pdf::loadView('pages.invoice.index');
+    return $pdf->stream();
 });

@@ -193,3 +193,21 @@
         }
     }
 }
+
+.payment-card-wrapper
+{
+    [type=radio]{
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .selected-sign{
+        opacity: 0;
+    }
+
+    [type=radio]:checked + .selected-sign {
+        opacity: 1;
+    }
+
+}

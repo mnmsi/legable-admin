@@ -37,32 +37,54 @@
                         </div>
                     </div>
                     <div class="right-block all-form-wrapper">
-                        <form method="get" action="/" enctype="multipart/form-data">
+                        <form method="post" action="{{route('subscribe')}}">
                             @csrf
-                            @method('get')
+
                             <div class="top-sec">
                                 <h4>Your Legable Subscription</h4>
-                                <span id="closePlanModal"><img src="{{asset('image/global/close1.svg')}}" alt="" class="img-fluid"></span>
+                                <span id="closePlanModal"><img src="{{asset('image/global/close1.svg')}}" alt=""
+                                                               class="img-fluid"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="dName" class="form-label">EMAIL ADDRESS</label>
-                                <input type="email" class="form-control" id="dName" placeholder="example@gmail.com">
+                                <label for="dName" class="form-label">Card Holder</label>
+                                <input type="text" class="form-control" id="dName" name="name" placeholder="Enter name">
                             </div>
                             <div class="mb-3">
                                 <label for="dName" class="form-label">Card Number</label>
-                                <input type="number" class="form-control" id="dName" placeholder="0000 5432 2367 0275" size='20' autocomplete='off'>
+                                <input type="number" class="form-control" id="dName" name="number"
+                                       placeholder="0000 5432 2367 0275" size='20' autocomplete='off'>
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="dName" class="form-label">Expiry Date</label>
-                                        <input type="text" class="form-control" id="dName" placeholder="month/year" autocomplete='off' size='8'>
+                                    <div class="form-group input-wrapper">
+                                        <label for="expiry_date" class="form-label">Expiry Date</label>
+                                        <div class="input-group">
+                                            <input autocomplete="off"
+                                                   value="{{old('exp_month')}}"
+                                                   class="exp form-control @error('expiry_date') is-invalid @enderror"
+                                                   id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical"
+                                                   placeholder="MM" type="text" data-pattern-validate
+                                                   name="exp_month"/>
+
+                                            <input autocomplete="off"
+                                                   value="{{old('exp_year')}}"
+                                                   class="exp form-control @error('expiry_date') is-invalid @enderror"
+                                                   id="year"
+                                                   maxlength="4" pattern="[0-9]*" inputmode="numerical"
+                                                   placeholder="YYYY"
+                                                   type="text" data-pattern-validate
+                                                   name="exp_year"/>
+                                        </div>
+                                        @include('components.utils.form_field_alert', ['name' => 'exp_month'])
+                                        @include('components.utils.form_field_alert', ['name' => 'exp_year'])
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="dName" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="dName" placeholder="321" autocomplete='off' size='4'>
+                                        <input type="text" class="form-control" id="dName" name="cvc" placeholder="321"
+                                               autocomplete='off' size='4'>
+                                        @include('components.utils.form_field_alert', ['name' => 'cvc'])
                                     </div>
                                 </div>
                             </div>

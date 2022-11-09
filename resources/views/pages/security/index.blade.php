@@ -4,7 +4,6 @@
     @include('includes.pageHeader',['title'=>'Security Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
         {{--  main page content--}}
-
         <div class="security-settings-wrapper">
             {{--        title bar start--}}
             <div class="setting-title-bar-wrapper">
@@ -13,7 +12,6 @@
                     <p>create a unique password to secure your account</p>
                 </div>
             </div>
-
             {{--  title bar end--}}
             {{--   form start--}}
             <form action="{{route('user.password.change')}}" method="post" autocomplete="off">
@@ -23,7 +21,6 @@
                         {{ Session::get('password_changed') }}
                     </div>
                 @endif
-
                 <div class="row">
                     <div class="col-lg-6 col-md-12 lg-mb-0 mb-4">
                         <div class="form-group all-form-wrapper">

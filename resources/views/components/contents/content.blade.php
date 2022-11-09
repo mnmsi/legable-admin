@@ -7,7 +7,8 @@
             @foreach($drawers as $key => $drawer)
                 <x-drawer title="{{$drawer['name']}}" url="{{asset('image/card/card-icon.svg')}}"
                           id="drawer_{{$key}}" :data-drawer="$drawer['id']"
-                          :required-pass="$drawer['is_password_required']" :drawer-name="$drawer['name']" :type="$drawer['content_type']"/>
+                          :required-pass="$drawer['is_password_required']" :drawer-name="$drawer['name']"
+                          :type="$drawer['content_type']"/>
             @endforeach
         </div>
     </div>

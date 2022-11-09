@@ -15,8 +15,8 @@ function isCurrentUrl(path) {
 let myRedirect = function (redirectUrl, arg, value) {
     let csrf = $("[name='csrf-token']").attr('content');
     let form = $('<form action="' + redirectUrl + '" method="post">' +
-        '<input type="hidden" name="_token" value="' + csrf + '"></input>' +
-        '<input type="hidden" name="' + arg + '" value="' + JSON.stringify(value).replaceAll('"', "'") + '"></input>' + '</form>');
+        '<input type="hidden" name="_token" value="' + csrf + '"/>' +
+        '< type="hidden" name="' + arg + '" value="' + JSON.stringify(value).replaceAll('"', "'") + '"/>' + '</form>');
     $('body').append(form);
     $(form).submit();
 };
@@ -41,4 +41,20 @@ function jsonParse(data)
     } catch (e) {
         return false;
     }
+}
+
+function base64MimeType(encoded) {
+    var result = null;
+
+    if (typeof encoded !== 'string') {
+        return result;
+    }
+
+    var mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+
+    if (mime && mime.length) {
+        result = mime[1];
+    }
+
+    return result;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\Auth;
 
 use App\Models\User\UserLoggedDevice;
 use Illuminate\Http\Request;

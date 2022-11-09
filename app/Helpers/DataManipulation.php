@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -67,6 +66,11 @@ function obj_to_arr($data)
 function collection_to_arr($data)
 {
     return $data->toArray();
+}
+
+function get_image($path)
+{
+    return asset($path ? "storage/" . $path : "image/common/profile.svg");
 }
 
 

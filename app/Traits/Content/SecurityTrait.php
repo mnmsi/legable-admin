@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\Content;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
