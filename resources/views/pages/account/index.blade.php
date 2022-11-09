@@ -31,7 +31,7 @@
                     <label>Phone Number</label>
                     <div class="change-content-wrapper">
                         <p>{{$user['phone']}}</p>
-                        <div class="change-text">verified</div>
+                        <div class="change-text">{{$phone_verification_status}}</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <label>Email Address</label>
                     <div class="change-content-wrapper">
                         <p>{{$user['email']}}</p>
-                        <div class="change-text">verified</div>
+                        <div class="change-text">{{$email_verification_status}}</div>
                     </div>
                 </div>
             </div>

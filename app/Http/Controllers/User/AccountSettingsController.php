@@ -17,7 +17,9 @@ class AccountSettingsController extends Controller
         return view("pages.account.index", [
             'user'         => manipulate_sig_data(Auth::user(), ['id', 'name', 'email', 'phone']),
             'addresses'    => $this->addressList(),
-            'edit_address' => route('user.address.edit', $this->activeAddressEncId())
+            'edit_address' => route('user.address.edit', $this->activeAddressEncId()),
+            'email_verification_status' => is_null(Auth::user()->email_verified_at) ? 'unverified' : 'verified',
+            'phone_verification_status' => is_null(Auth::user()->phone_verified_at) ? 'unverified' : 'verified'
         ]);
     }
 }
