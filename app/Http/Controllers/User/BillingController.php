@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Traits\System\SubscriptionTrait;
 use App\Traits\User\CardTrait;
 use Illuminate\Http\Request;
 
 class BillingController extends Controller
 {
-    use CardTrait;
+    use CardTrait, SubscriptionTrait;
 
     public function index()
     {
@@ -19,6 +20,10 @@ class BillingController extends Controller
 
     public function updatePlan()
     {
+        if (!is_null($this->checkPlan()) || $this->checkTrial()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('pages.billing.update_plan');
     }
 }

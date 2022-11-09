@@ -28,7 +28,7 @@ trait SubscriptionTrait
         $now              = now()->format("Y-m-d");
         $userRegisteredAt = Carbon::parse(Auth::user()->created_at)->addDays(15)->format("Y-m-d");
 
-        if ($userRegisteredAt > $now) {
+        if ($now > $userRegisteredAt) {
             return false;
         }
 

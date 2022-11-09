@@ -112,12 +112,6 @@ Route::middleware('auth')->group(function () {
         //Subscribe
         Route::post("subscribe", [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
-        //Mail verification
-        Route::prefix('mail')->as('mail.')->group(function () {
-            Route::get('verification', [MailVerificationController::class, 'showVerification'])->name('verification');
-            Route::post('verify', [MailVerificationController::class, 'verifyMail'])->name('verify');
-        });
-
         //Billing
         Route::prefix('billing')->as('billing.')->group(function () {
             Route::get('', [BillingController::class, 'index'])->name('index');
@@ -129,12 +123,18 @@ Route::middleware('auth')->group(function () {
                 Route::get('delete/{id}', [CardController::class, 'deleteCard'])->name('delete');
             });
         });
-    });
 
-    //Phone verification
-    Route::prefix('phone')->as('phone.')->group(function () {
-        Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
-        Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
+        //Mail verification
+        Route::prefix('mail')->as('mail.')->group(function () {
+            Route::get('verification', [MailVerificationController::class, 'showVerification'])->name('verification');
+            Route::post('verify', [MailVerificationController::class, 'verifyMail'])->name('verify');
+        });
+
+        //Phone verification
+        Route::prefix('phone')->as('phone.')->group(function () {
+            Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
+            Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
+        });
     });
 });
 
