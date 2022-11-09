@@ -12,7 +12,7 @@ class Subscription extends BaseModel
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'plan_id', 'card_id', 'expires_at'
+        'user_id', 'plan_id', 'card_id', 'expires_at', 'plan_amount'
     ];
 
     protected static function boot()

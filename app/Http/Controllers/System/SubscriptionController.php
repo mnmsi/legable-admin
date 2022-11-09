@@ -16,14 +16,16 @@ class SubscriptionController extends Controller
 
     public function subscribe(CardRequest $request)
     {
+        $requestData                = $request->except('_token');
+        $requestData['user_id']     = Auth::id();
+        $requestData['plan_amount'] = 30;
+
         $subscribe = $this->payment($request->all());
         if (strtolower($subscribe->status) !== 'succeeded') {
             abort(404);
         }
 
-        $requestData            = $request->except('_token');
-        $requestData['user_id'] = Auth::id();
-        $requestData['brand']   = $subscribe->payment_method_details->card->brand;
+        $requestData['brand'] = $subscribe->payment_method_details->card->brand;
 
         if (!$card = $this->updateOrCreate($requestData, $requestData)) {
             abort(404);

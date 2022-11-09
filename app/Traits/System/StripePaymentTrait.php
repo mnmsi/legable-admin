@@ -30,7 +30,7 @@ trait StripePaymentTrait
     {
         $stripe = new StripeClient(getenv('STRIPE_SECRET'));
         return $stripe->charges->create([
-            "amount"      => ceil(30 * 100),
+            "amount"      => ceil($data['plan_amount'] * 100),
             "currency"    => getenv('STRIPE_CURRENCY'),
             "source"      => $this->createToken($data),
             "description" => "Name: " . (Auth::user()->name ?? $data['name']) . ", Email: " . Auth::user()->email,
