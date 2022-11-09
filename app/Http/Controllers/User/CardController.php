@@ -22,8 +22,7 @@ class CardController extends Controller
             abort(404);
         }
 
-        $request['brand'] = $card->card->brand;
-
+        $request['brand'] = strtolower($card->card->brand);
         if (!$this->create($request->all())) {
             abort(404);
         }

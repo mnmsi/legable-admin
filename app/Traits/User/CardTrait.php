@@ -12,6 +12,23 @@ trait CardTrait
         return UserPaymentMethod::create($data);
     }
 
+    public function cards()
+    {
+        return UserPaymentMethod::get();
+    }
+
+    public function cardList()
+    {
+        return $this->cards()->map(function ($item) {
+            return [
+                'brand'     => $item->brand,
+                'name'      => $item->name,
+                'number'    => substr($item->number, -4),
+                'is_active' => $item->is_active,
+            ];
+        });
+    }
+
     public function validateCard($cardInfo)
     {
         return $this->createToken($cardInfo);

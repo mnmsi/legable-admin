@@ -13,70 +13,75 @@
         {{-- title bar end--}}
         {{--   payment getway start  --}}
         <div class="">
-            <form action="" class="payment-card-wrapper">
+            <div class="payment-card-wrapper">
                 {{--            single payment card start--}}
-                <label for="master">
-                    <div class="single-payment-card active">
-                        <div class="single-payment-card-header">
-                            <div class="card-name">Credit Card</div>
-                            <input type="radio" name="card" id="master" checked>
-                            <div class="selected-sign">
-                                <img src="{{asset("image/billing/tick.svg")}}" alt="">
+                @foreach($cards as $card)
+                    <label for="{{$card['brand']}}">
+                        <div class="single-payment-card active">
+                            <div class="single-payment-card-header">
+                                <div class="card-name">{{$card['name']}}</div>
+                                @if($card['is_active'])
+                                    <input type="radio" name="card" id="master" checked>
+                                @endif
+                                <div class="selected-sign">
+                                    <img src="{{asset("image/billing/tick.svg")}}" alt="">
+                                </div>
+                            </div>
+                            <div class="payment-card-body">
+                                <div class="payment-method-logo">
+                                    <img src="{{asset("image/billing/".$card['brand'].".svg")}}" alt="">
+                                </div>
+                                <div class="encrypted">
+                                    <img src="{{asset("image/billing/encrypted.svg")}}" alt="">
+                                </div>
+                                <div class="card-digit">
+                                    {{$card['number']}}
+                                </div>
+                            </div>
+                            <div class="payment-card-footer">
+                                <div class="minus-action">
+                                    <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="payment-card-body">
-                            <div class="payment-method-logo">
-                                <img src="{{asset("image/billing/mastercard.svg")}}" alt="">
-                            </div>
-                            <div class="encrypted">
-                                <img src="{{asset("image/billing/encrypted.svg")}}" alt="">
-                            </div>
-                            <div class="card-digit">
-                                4258
-                            </div>
-                        </div>
-                        <div class="payment-card-footer">
-                            <div class="minus-action">
-                                <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </label>
-                <label for="visa">
-                    <div class="single-payment-card">
-                        <div class="single-payment-card-header">
-                            <div class="card-name">Debit Card</div>
-                            <input type="radio" name="card" id="visa">
-                            <div class="selected-sign">
-                                <img src="{{asset("image/billing/tick.svg")}}" alt="">
-                            </div>
-                        </div>
-                        <div class="payment-card-body">
-                            <div class="payment-method-logo">
-                                <img src="{{asset("image/billing/visa.svg")}}" alt="">
-                            </div>
-                            <div class="encrypted">
-                                <img src="{{asset("image/billing/encrypted.svg")}}" alt="">
-                            </div>
-                            <div class="card-digit">
-                                4258
-                            </div>
-                        </div>
-                        <div class="payment-card-footer">
-                            <div class="minus-action">
-                                {{--   <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>--}}
-                            </div>
-                        </div>
-                    </div>
-                </label>
+                    </label>
+                @endforeach
+
+                {{--                <label for="visa">--}}
+                {{--                    <div class="single-payment-card">--}}
+                {{--                        <div class="single-payment-card-header">--}}
+                {{--                            <div class="card-name">Debit Card</div>--}}
+                {{--                            <input type="radio" name="card" id="visa">--}}
+                {{--                            <div class="selected-sign">--}}
+                {{--                                <img src="{{asset("image/billing/tick.svg")}}" alt="">--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                        <div class="payment-card-body">--}}
+                {{--                            <div class="payment-method-logo">--}}
+                {{--                                <img src="{{asset("image/billing/visa.svg")}}" alt="">--}}
+                {{--                            </div>--}}
+                {{--                            <div class="encrypted">--}}
+                {{--                                <img src="{{asset("image/billing/encrypted.svg")}}" alt="">--}}
+                {{--                            </div>--}}
+                {{--                            <div class="card-digit">--}}
+                {{--                                4258--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                        <div class="payment-card-footer">--}}
+                {{--                            <div class="minus-action">--}}
+                {{--                                --}}{{--   <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </label>--}}
+
                 <a href="{{route("billing.card.add")}}">
                     <div class="single-payment-card add-card">
                         <img src="{{asset("image/billing/plus.svg")}}" alt="">
                     </div>
                 </a>
                 {{--            single payment card end--}}
-
-            </form>
+            </div>
             {{--   payment getway end  --}}
             {{--        billing history start--}}
             <div class="my-plan-title-bar payment-method-title mt-5 mb-4 ">

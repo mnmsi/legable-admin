@@ -30,6 +30,10 @@ class UserAddress extends BaseModel
         parent::boot();
         static::creating(function ($model) {
             $model->user_id = Auth::id();
+
+            if ($model->count() === 0) {
+                $model->status = 1;
+            }
         });
     }
 
