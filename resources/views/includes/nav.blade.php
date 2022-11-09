@@ -36,7 +36,7 @@
                 </ul>
             </div>
             {{--  notification end--}}
-            <a class="nav-link">
+            <a href="{{route('security.settings')}}" class="nav-link">
                 <img src="{{asset('image/common/setting.svg')}}" alt="">
             </a>
             <div class="dropdown dropdown-list">
