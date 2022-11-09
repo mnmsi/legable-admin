@@ -13,6 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
+            $table->double('plan_amount')->after('card_id');
             $table->timestamp('expires_at')->after('card_id');
         });
     }
@@ -25,6 +26,7 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
+            $table->dropColumn('plan_amount');
             $table->dropColumn('expires_at');
         });
     }
