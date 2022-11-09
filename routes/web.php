@@ -13,6 +13,7 @@ use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\BillingController;
 use App\Http\Controllers\User\CardController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\InformationController;
 use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
 use App\Http\Controllers\User\PhoneVerificationController;
@@ -76,6 +77,12 @@ Route::middleware('auth')->group(function () {
         Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
     });
 
+    //Information
+    Route::prefix('information')->as('information.')->group(function () {
+        Route::get('', [InformationController::class, 'addInfo'])->name('add');
+        Route::post('store', [FileController::class, 'store'])->name('store');
+    });
+
     //Security
     Route::prefix('security')->as('security.')->group(function () {
         Route::get('check', [SecurityController::class, 'check'])->name('check');
@@ -122,17 +129,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-//search
-Route::get("/search-empty", function () {
-    return view("pages.dashboard.empty");
-});
-
-// important
-
-
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::get('test', function (Request $request) {
 
@@ -168,11 +164,6 @@ Route::get('test', function (Request $request) {
 });
 
 //add information
-
-Route::get("/information", function () {
-    return view("pages.information.add");
-});
-
 Route::get("/pdf", function () {
     $pdf = Pdf::loadView('pages.invoice.index');
     return $pdf->stream();
