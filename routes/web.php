@@ -110,6 +110,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('card')->as('card.')->group(function () {
             Route::get('add', [CardController::class, 'addCard'])->name('add');
             Route::post('store', [CardController::class, 'storeCard'])->name('store');
+            Route::get('active/{id}', [CardController::class, 'activeCard'])->name('active');
+            Route::get('delete/{id}', [CardController::class, 'deleteCard'])->name('delete');
         });
     });
 

@@ -22,10 +22,14 @@
                                 <div class="card-name">{{$card['name']}}</div>
                                 @if($card['is_active'])
                                     <input type="radio" name="card" id="master" checked>
+                                    <div class="selected-sign">
+                                        <img src="{{asset("image/billing/tick.svg")}}" alt="">
+                                    </div>
+                                @else
+                                    <a href="{{route('billing.card.active', $card['id'])}}">
+                                        <img src="{{asset("image/billing/ellipse_outlined.svg")}}" alt="">
+                                    </a>
                                 @endif
-                                <div class="selected-sign">
-                                    <img src="{{asset("image/billing/tick.svg")}}" alt="">
-                                </div>
                             </div>
                             <div class="payment-card-body">
                                 <div class="payment-method-logo">
@@ -40,7 +44,8 @@
                             </div>
                             <div class="payment-card-footer">
                                 <div class="minus-action">
-                                    <a href=""><img src="{{asset("image/billing/minus.svg")}}" alt=""></a>
+                                    <a href="{{route('billing.card.delete', $card['id'])}}"><img
+                                            src="{{asset("image/billing/minus.svg")}}" alt=""></a>
                                 </div>
                             </div>
                         </div>

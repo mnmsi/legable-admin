@@ -29,4 +29,41 @@ class CardController extends Controller
 
         return redirect()->route('billing.index');
     }
+
+    public function deleteCard($id)
+    {
+        if (!$card = $this->getCard($id)) {
+            abort(404);
+        }
+
+        if ($card->is_active) {
+            if ($firstCard = $this->getFirstCard()) {
+                $firstCard->update([
+                    'is_active' => 1
+                ]);
+            }
+        }
+
+        $card->delete();
+        return redirect()->back();
+    }
+
+    public function activeCard($id)
+    {
+        if (!$card = $this->getCard($id)) {
+            abort(404);
+        }
+
+        if ($activeCard = $this->getActiveCard()) {
+            $activeCard->update([
+                'is_active' => 0
+            ]);
+        }
+
+        $card->update([
+            'is_active' => 1
+        ]);
+
+        return redirect()->back();
+    }
 }
