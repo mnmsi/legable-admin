@@ -11,6 +11,8 @@
         background: transparent;
     }
 
+
+
     .items-block {
         padding: 20px 50px 30px 20px;
         @include media("<=991px") {
@@ -73,3 +75,4 @@
         row-gap: 0;
     }
 }
+

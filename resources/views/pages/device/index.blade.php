@@ -12,7 +12,7 @@
             <h2 class="add-device-title">Total Active Sessions ({{count($devices)}})</h2>
 
             {{-- main page content --}}
-            <div class="row gap-lg-0 gap-2 align-items-stretch">
+            <div class="row gap-lg-3 gap-2 align-items-stretch">
 
                 @foreach($devices as $device)
                     <div class="col-lg-5 mb-4">

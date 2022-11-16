@@ -115,3 +115,10 @@
     }
 
 }
+
+.upload_form{
+    margin: 100px 0;
+    @include media("<=991px"){
+        margin: 0;
+    }
+}

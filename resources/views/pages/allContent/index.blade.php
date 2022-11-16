@@ -20,7 +20,6 @@
             $('#addboxid').on('click', function () {
                 $('#addBoxModal').modal('show');
             });
-
             $('#pageModalClose,addBoxModalClose').on('click', function () {
                 $('#pageModal').modal('hide');
                 $('#addBoxModal').modal('hide');

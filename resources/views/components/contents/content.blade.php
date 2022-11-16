@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="bottom-block">
-        <h6 class="sub-header6 mb-4 border-bottom pb-3 mt-4">
+        <h6 class="sub-header6 mb-4 border-bottom pb-3 mt-5">
             All Contents
         </h6>
         <div class="conten-items">

@@ -37,7 +37,6 @@
                                        class="form-control @error('address_line_two') is-invalid @enderror" name="address_line_two"
                                        autocomplete="false" autofocus placeholder="Enter your address">
                                 @include('components.utils.form_field_alert', ['name' => 'address_line_two'])
-
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
