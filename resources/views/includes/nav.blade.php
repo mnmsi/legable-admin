@@ -44,7 +44,7 @@
                     <img src="{{get_image(Auth::user()->avatar)}}" alt="profile" height="40" width="auto">
                 </a>
 
-                <ul class="dropdown-menu user-profile">
+                <ul class="dropdown-menu user-profile" >
                     <li class="u-profile">
                         <div class="p-image">
                             <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid avatar">
@@ -85,7 +85,7 @@
                             <a class="dropdown-item" href="javascript:void(0)"
                                onclick="document.getElementById('logoutForm').submit();">
                                 <img src="{{asset('image/sidebar/icon5.png')}}" alt=""/>
-                                <label>Sign out</label>
+                                <label class="sign_out_button">Sign out</label>
                             </a>
                         </form>
                     </li>

@@ -172,7 +172,7 @@ body {
     }
 
     .form-label {
-        font-weight: 400;
+        font-weight: 500;
         font-size: 16px;
         line-height: 30px;
         letter-spacing: 0.015em;
@@ -304,9 +304,11 @@ body {
     display: none;
 }
 
+
+
 .submit-btn {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     color: #f8f8f8;
     background: #175067;
@@ -400,12 +402,11 @@ body {
                 filter: invert(25%) sepia(12%) saturate(3488%) hue-rotate(153deg) brightness(89%) contrast(85%);
             }
         }
-
         .submit-btn {
-            background: #fb8b24;
+            //background: #fb8b24;
+            background: red;
             color: #f8f8f8;
             border: none;
-
             &:hover {
                 background-color: #fb8b24 !important;
                 border-color: #fb8b24 !important;
