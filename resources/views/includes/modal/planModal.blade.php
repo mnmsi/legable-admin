@@ -50,7 +50,18 @@
                                 <input type="text" class="form-control" id="dName" name="name" placeholder="Enter name">
                             </div>
                             <div class="mb-3">
-                                <label for="dName" class="form-label">Card Number</label>
+                                <label for="dName" class="form-label d-flex justify-content-between align-items-center">
+                                    <span>
+                                        Card Number
+                                    </span>
+                                    <span>
+                                        <span class="pe-3"><img  class="img-fluid" src="{{asset("image/billing/mastercard.svg")}}"
+                                                   alt=""></span>
+                                    <span><img  class="img-fluid" src="{{asset("image/billing/visa.svg")}}"
+                                               alt=""></span>
+                                    </span>
+
+                                </label>
                                 <input type="number" class="form-control" id="dName" name="number"
                                        placeholder="0000 5432 2367 0275" size='20' autocomplete='off'>
                             </div>
@@ -99,18 +110,17 @@
                         <div class="avatar">
                             <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid">
                         </div>
-                        <p>Dolor sit amet, consectetur adipiscing elit. Suspendisse arcu netus neque hendrerit sed
+                        <p><img src="{{asset("image/plans/m_comment.png")}}" alt="">    Dolor sit amet, consectetur adipiscing elit. Suspendisse arcu netus neque hendrerit sed
                             turpis diam sodales.</p>
-                        <h3>Darren C. Bass</h3>
+                        <h3 class="ps-4">Darren C. Bass</h3>
                     </div>
-
                     <div class="testimonial">
                         <div class="avatar">
                             <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid">
                         </div>
-                        <p>Dolor sit amet, consectetur adipiscing elit. Suspendisse arcu netus neque hendrerit sed
+                        <p> <img src="{{asset("image/plans/m_comment.png")}}" alt=""> Dolor sit amet, consectetur adipiscing elit. Suspendisse arcu netus neque hendrerit sed
                             turpis diam sodales.</p>
-                        <h3>David Williams</h3>
+                        <h3 class="ps-4">David Williams</h3>
                     </div>
                 </div>
 

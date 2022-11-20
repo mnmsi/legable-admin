@@ -5,19 +5,18 @@
                   buttonIcon="{{ asset('image/dashboard/document.svg') }}" buttonText="Upload Files" id="dashmodalid"/>
     {{-- page content start --}}
     <div class="block-min-height block-wrapper">
-        <div class="row mb-5 mt-4">
+        <div class="row">
             <div class="col-lg-9">
                 {{-- ligable welcome bar start --}}
                 @include('components.welcomeCard')
                 {{-- ligable welcome bar end --}}
                 {{-- qick access --}}
-
                 <div class="mt-5">
-                    <h2 class="dashboard-section-title mb-4">Suggested</h2>
+                    <h2 class="dashboard-section-title mb-4">Quick Access</h2>
                 </div>
                 <div class="row" id="draggable">
                     @foreach($drawers as $key => $drawer)
-                        <div class="col-lg-4 col-6" id="{{$drawer['id']}}">
+                        <div class="col-lg-4 mb-4 col-6" id="{{$drawer['id']}}">
                             <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                                     date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
                                     :required-pass="$drawer['is_password_required']" :type="$drawer['content_type']"/>
@@ -26,7 +25,7 @@
                 </div>
                 {{-- qick access --}}
             </div>
-            <div class="col-lg-3 px-4 border-start">
+            <div class="col-lg-3 ps-4 border-start">
                 {{-- Keep your data safe --}}
                 <div class="keep-data-safe-wrapper">
                     <div class="keep-data-safe-content">

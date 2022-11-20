@@ -78,13 +78,14 @@
                     <tr>
                         <td>30 June 2022</td>
                         <td>Legable Premium Plan</td>
-                        <td><strong>$ 30.00</strong></td>
+                        <td class="pe-5"><strong>$ 30.00</strong></td>
                         <td><a href="">Download</a></td>
                     </tr>
-                    <tr>
+
+                    <tr class="ps-5">
                         <td>30 June 2022</td>
                         <td>Legable Premium Plan</td>
-                        <td><strong>$ 30.00</strong></td>
+                        <td class="pe-5"><strong>$ 30.00</strong></td>
                         <td><a href="#">Download</a></td>
                     </tr>
                     </tbody>

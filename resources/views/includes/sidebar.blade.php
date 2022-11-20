@@ -111,7 +111,7 @@
             {{-- single menu item --}}
             {{--   Menu Break Title start --}}
             <div class="menu-break-title-wrapper">
-                <div class="menu-break-title">Profile</div>
+                <div class="menu-break-title user_profile_break">Profile</div>
             </div>
             {{--   Menu Break Title end --}}
             {{--   Profile start  --}}

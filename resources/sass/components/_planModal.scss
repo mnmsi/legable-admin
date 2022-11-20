@@ -66,7 +66,7 @@
                 .top-block {
                     background: #175067;
                     border-radius: 7px 7px 0 0;
-                    padding: 60px;
+                    padding: 100px 60px 60px 60px;
                     display: grid;
                     grid-template-columns: 1fr min-content;
                     grid-template-rows: auto;
@@ -212,6 +212,7 @@
                             font-weight: 400;
                             font-size: 13px;
                             line-height: 20px;
+                            margin-bottom: 0.5rem;
                             color: #282A2C;
                         }
 
@@ -265,7 +266,7 @@
                         }
 
                         p {
-                            font-weight: 300;
+                            font-weight: 400;
                             font-size: 13px;
                             line-height: 20px;
                             letter-spacing: 0.03em;
@@ -301,8 +302,11 @@
     }
 }
 
+.exp{
+    height: 39px !important;
+}
 
-//cancel plan modal
+    //cancel plan modal
 #cancelPlan{
     @include media("<=991px"){
         .modal-header{
