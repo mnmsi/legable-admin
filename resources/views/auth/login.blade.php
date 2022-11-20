@@ -50,6 +50,7 @@
                                         <button type="submit">
                                             {{ __('Login') }}
                                         </button>
+                                        <div class="auth_text text-center mt-3">Already have an account? <a href="{{route("register")}}">Register Here</a></div>
                                     </div>
                                 </form>
                             </div>

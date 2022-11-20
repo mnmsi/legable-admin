@@ -181,6 +181,8 @@ Registration form end
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .verify_image_wrapper{
@@ -225,5 +227,20 @@ Registration form end
     span{
         color: #EFB86E;
         display: inline-block;
+    }
+}
+
+//auth text
+
+.auth_text{
+    color: rgba(23, 80, 103, 0.5);
+    letter-spacing: 0.015em;
+    font-weight: 400;
+    font-size: 16px;
+    & a{
+        color: #175067;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+        font-size: 16px;
     }
 }

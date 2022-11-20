@@ -133,6 +133,8 @@
                         <div class="signup_button_wrapper register_button_wrapper">
                             <button class="signup_button" type="submit">Start Verification<img
                                     src="{{asset("image/Auth/arrow.svg")}}" alt="arrow"></button>
+
+                            <div class="auth_text">Already have an account? <a href="{{route("login")}}">Sign In</a></div>
                         </div>
                     </form>
                 </div>
