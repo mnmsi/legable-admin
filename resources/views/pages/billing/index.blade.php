@@ -86,7 +86,7 @@
                         <td>30 June 2022</td>
                         <td>Legable Premium Plan</td>
                         <td class="pe-5"><strong>$ 30.00</strong></td>
-                        <td><a href="#">Download</a></td>
+                        <td><a href="#">Downl oad</a></td>
                     </tr>
                     </tbody>
                 </table>

@@ -150,7 +150,6 @@
                 $(clickable).click(function () {
                     input_file.click();
                 })
-                console.log(clickable)
                 if (value == "file") {
                     input.css("display", "none")
                     file.show();

@@ -65,7 +65,6 @@ class RegisterController extends Controller
         DB::beginTransaction();
         try {
             $user = $this->createUser($request->all());
-
             if (!$user) {
                 abort(404);
             }
@@ -79,6 +78,7 @@ class RegisterController extends Controller
                 return $response;
             }
 
+//            dd("test");
             DB::commit();
             return redirect()->route('mail.verification');
 //            return $request->wantsJson()

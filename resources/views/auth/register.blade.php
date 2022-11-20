@@ -15,7 +15,7 @@
                                     <label for="name" class="form-label">Name</label>
                                     <input id="name" type="text"
                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ old('name') }}" required autocomplete="false" autofocus
+                                           value="{{ old('name') }}"  autocomplete="false" autofocus
                                            placeholder="Enter your name">
                                     @include('components.utils.form_field_alert', ['name'=>'name'])
                                 </div>
@@ -25,17 +25,17 @@
                                     <label for="email" class="form-label">Email</label>
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required autocomplete="false" autofocus
+                                           value="{{ old('email') }}"  autocomplete="false" autofocus
                                            placeholder="example@gmail.com">
                                     @include('components.utils.form_field_alert', ['name'=>'email'])
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <div class="form-group input-wrapper">
+                                <div class="form-group input-wrapper phone-input-wrapper">
                                     <label for="phone" class="form-label">Phone Number</label>
                                     <input id="phone" type="number"
                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                           value="{{ old('phone') }}" required autocomplete="false" autofocus
+                                           value="{{ old('phone') }}"  autocomplete="false" autofocus
                                            placeholder="Enter phone number">
                                     @include('components.utils.form_field_alert', ['name'=>'phone'])
                                 </div>
@@ -46,7 +46,7 @@
                                     <input id="password" type="password"
                                            class="form-control @error('password') is-invalid @enderror" name="password"
                                            value="{{ old('password') }}"
-                                           required autocomplete="false" autofocus placeholder="Enter your password">
+                                            autocomplete="false" autofocus placeholder="Enter your password">
                                     @include('components.utils.form_field_alert', ['name'=>'password'])
                                 </div>
                             </div>
@@ -54,9 +54,9 @@
                                 <div class="form-group input-wrapper">
                                     <label for="address" class="form-label">ADDRESS</label>
                                     <input id="address" type="text"
-                                           class="form-control @error('address') is-invalid @enderror" name="address[address_line_one]"
+                                           class="form-control @error('address.address_line_one') is-invalid @enderror" name="address[address_line_one]"
                                            value="{{ old('address.address_line_one') }}"
-                                           required autocomplete="false" autofocus placeholder="Enter your address">
+                                            autocomplete="false" autofocus placeholder="Enter your address">
                                     @include('components.utils.form_field_alert', ['name'=>'address.address_line_one'])
                                 </div>
                             </div>
@@ -64,9 +64,9 @@
                                 <div class="form-group input-wrapper">
                                     <label for="city" class="form-label">CITY</label>
                                     <input id="city" type="text"
-                                           class="form-control @error('password') is-invalid @enderror" name="address[city]"
+                                           class="form-control @error('address.city') is-invalid @enderror" name="address[city]"
                                            value="{{ old('address.city') }}"
-                                           required autocomplete="false" autofocus placeholder="Enter your city">
+                                            autocomplete="false" autofocus placeholder="Enter your city">
                                     @include('components.utils.form_field_alert', ['name'=>'address.city'])
                                 </div>
                             </div>
@@ -74,19 +74,19 @@
                                 <div class="form-group input-wrapper">
                                     <label for="region" class="form-label">REGION</label>
                                     <input id="region" type="text"
-                                           class="form-control @error('region') is-invalid @enderror" name="address[region]"
+                                           class="form-control @error('address.region') is-invalid @enderror" name="address[region]"
                                            value="{{ old('address.region') }}"
-                                           required autocomplete="false" autofocus placeholder="Enter your region">
+                                            autocomplete="false" autofocus placeholder="Enter your region">
                                     @include('components.utils.form_field_alert', ['name'=>'address.region'])
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <div class="form-group input-wrapper">
+                                <div class="form-group input-wrapper phone-input-wrapper">
                                     <label for="zip_code" class="form-label">ZIP CODE</label>
-                                    <input id="zip_code" type="text"
-                                           class="form-control @error('zip_code') is-invalid @enderror" name="address[zip]"
+                                    <input id="zip_code" type="number"
+                                           class="form-control @error('address.zip') is-invalid @enderror" name="address[zip]"
                                            value="{{ old('address.zip') }}"
-                                           required autocomplete="false" autofocus placeholder="Enter your zip code">
+                                            autocomplete="false" autofocus placeholder="Enter your zip code">
                                     @include('components.utils.form_field_alert', ['name'=>'address.zip'])
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group input-wrapper">
                                     <label for="country" class="form-label">COUNTRY</label>
-                                    <select name="address[country]" id="country" class="form-control country-select" required>
+                                    <select name="address[country]" id="country" class="form-control country-select @error('address.country') is-invalid @enderror" >
                                         <option value="">Select Country</option>
                                         @foreach($countries as $country)
                                             <option value="{{$country['id']}}" {{old('address.country') == $country['id'] ? 'selected' : ''}}>{{$country['name']}}</option>
