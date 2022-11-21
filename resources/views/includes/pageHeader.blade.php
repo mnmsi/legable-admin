@@ -14,7 +14,7 @@
         </div>
         <div class="header-btn">
             @if(count($btn)>0)
-                <button class="add-btn" id="{{$btn['id']}}">{{$btn['text']}}</button>
+                <button class="add-btn addBoxCls" id="{{$btn['id']}}" onclick="{{$btn['fnClick'] ?: ""}}">{{$btn['text']}}</button>
             @endif
             @if(count($link)>0)
                 <a href="{{$link['url']}}" class="redirect">{{$link['text']}}</a>

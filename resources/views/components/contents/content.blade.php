@@ -1,5 +1,4 @@
-<x-breadcrumb title="Drawers" subtitle="Everything is encrypted here!" buttonText="+ Add Hello "
-              link="/drawer/add"/>
+@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>['id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>'/file/upload','text'=>'Upload Content']])
 <div class="block-wrapper block-min-height content-wrappers">
     <div class="top-block">
         <h6 class="sub-header6 mb-4">

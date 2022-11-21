@@ -35,7 +35,7 @@ class SecurityController extends Controller
                     'data'         => get_file($drawer->password, $drawer->file_url),
                 ]);
             } else {
-                return $this->returnItemView($drawer);
+                return $this->returnItemView($drawer, myEncrypt($drawer->id));
             }
         }
 

@@ -94,6 +94,7 @@
     <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
     <script>
         $(document).ready(function () {
+            //content add box
             $("#draggable").sortable({
                 animation: 300,
                 // dropOnEmpty: false,

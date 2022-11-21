@@ -8,7 +8,10 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
 });
 
+// show modal
+
 function showSecurityPanel(contentKey, contentName, contentType) {
+
     $('input#drawer-key').val(contentKey)
     $('input#drawer-name').val(contentName)
     $('input#drawer-type').val(contentType)
@@ -75,3 +78,17 @@ function showContent(image) {
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show')
 }
+
+
+function addBoxClick(id) {
+    $("#drawerId").val(id);
+    let box = $("#box-drawer");
+    box.prop('disabled', "disabled");
+    $(`#box-drawer option[value=${id}]`).attr("selected",true);
+    let value = box.val();
+    $("#addBoxModal").modal('show');
+}
+
+//`<option value="${optionValue}">
+//                                        ${optionText}
+//                                   </option>`

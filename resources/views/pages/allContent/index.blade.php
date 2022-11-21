@@ -3,8 +3,6 @@
 
 @section('content')
     <div class="content-page">
-        @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=>[],'link'=>['url'=>'/file/upload','text'=>'Upload Content']])
-
         <div id="contents">
             @include('components.contents.content')
         </div>
@@ -12,6 +10,7 @@
 
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.file_show')
+    @include('includes.modal.addBox')
 @endsection
 
 @section('script')
@@ -26,7 +25,6 @@
             });
         })
     </script>
-
     <script src="{{asset('js/content.js')}}"></script>
 @endsection
 

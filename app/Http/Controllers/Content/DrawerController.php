@@ -52,6 +52,6 @@ class DrawerController extends Controller
             abort(404);
         }
 
-        return $this->returnItemView($drawer);
+        return $this->returnItemView($drawer, $id);
     }
 }

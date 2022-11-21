@@ -1,4 +1,5 @@
 <!-- Modal -->
+
 <div class="modal fade global-modal add-box-modal" id="addBoxModal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-width">
@@ -15,9 +16,8 @@
                 <div class="row all-form-wrapper mt-5">
                     <form action="{{route('box.create')}}" method="post">
                         @csrf
-
                         <input type="hidden" name="use_master_key" value="1">
-
+                        <input type="hidden" name="drawer" value="" id="drawerId">
                         <div class="col-12">
                             <div>
                                 <h3 class="sub-header3 mb-0">Create new Box</h3>
@@ -33,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Select Information Template</label>
-                                <select class="form-select" aria-label="Default select example" name="drawer">
+                                <select class="form-select" aria-label="Default select example" name="drawer" id="box-drawer">
                                     <option selected>select a template</option>
                                     @foreach($drawers as $drawer)
                                         <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
