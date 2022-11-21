@@ -1,6 +1,6 @@
 @extends('layouts.signup')
 @section('content')
-    @include("components.auth.signup-hero",['title'=>'Verify Email Address','subtitle'=>'Just ome more step, lets verify your email address'])
+    @include("components.auth.signup-hero",['title'=>'Verify Email Address','subtitle'=>'Just one more step, lets verify your email address'])
     <div class="signup-section-break"></div>
     <div class="container">
         <div class="row justify-content-center">
@@ -42,6 +42,7 @@
                             <button class="signup_button" type="button" onclick="onSubmit(event)">Verify Email Address
                                 <img
                                     src="{{asset("image/Auth/arrow.svg")}}" alt="arrow"></button>
+                            <div class="auth_text"><a href="{{route("dashboard")}}">Skip</a></div>
                         </div>
                     </form>
                 </div>

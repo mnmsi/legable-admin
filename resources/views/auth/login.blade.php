@@ -13,7 +13,7 @@
                                     @csrf
                                     <div class="form-group input-wrapper">
                                         <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                                         <button type="submit">
                                             {{ __('Login') }}
                                         </button>
-                                        <div class="auth_text text-center mt-3">Already have an account? <a href="{{route("register")}}">Register Here</a></div>
+                                        <div class="auth_text text-center mt-3">Don't have any account? <a href="{{route("register")}}">Register Here</a></div>
                                     </div>
                                 </form>
                             </div>

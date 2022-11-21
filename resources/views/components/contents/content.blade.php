@@ -1,3 +1,5 @@
+<x-breadcrumb title="Drawers" subtitle="Everything is encrypted here!" buttonText="+ Add Hello "
+              link="/drawer/add"/>
 <div class="block-wrapper block-min-height content-wrappers">
     <div class="top-block">
         <h6 class="sub-header6 mb-4">

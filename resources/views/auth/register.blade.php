@@ -23,7 +23,7 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group input-wrapper">
                                     <label for="email" class="form-label">Email</label>
-                                    <input id="email" type="email"
+                                    <input id="email" type="text"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
                                            value="{{ old('email') }}"  autocomplete="false" autofocus
                                            placeholder="example@gmail.com">
@@ -141,4 +141,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $("input[type='number']").on('keypress', function(e){
+            if (e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) {
+                e.preventDefault();
+            }
+        });
+    </script>
 @endsection
