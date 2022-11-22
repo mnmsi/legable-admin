@@ -32,7 +32,7 @@ trait VerificationTrait
 
     public function generateToken()
     {
-        return rand(000000, 999999);
+        return rand(100000, 999999);
     }
 
     public function getRequestedOtpDetails($otp)

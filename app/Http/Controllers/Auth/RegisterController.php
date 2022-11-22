@@ -68,7 +68,6 @@ class RegisterController extends Controller
             if (!$user) {
                 abort(404);
             }
-
             $user->addresses()->attach($user->id, $request->address);
             $this->storeDevice($request, $user);
 
@@ -77,7 +76,6 @@ class RegisterController extends Controller
             if ($response = $this->registered($request, $user)) {
                 return $response;
             }
-
 //            dd("test");
             DB::commit();
             return redirect()->route('mail.verification');
