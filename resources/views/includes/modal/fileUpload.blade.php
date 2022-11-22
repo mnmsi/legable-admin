@@ -14,11 +14,9 @@
                 </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
-                        <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data" id="fileUploadForm">
                             @csrf
-
                             <input type="hidden" name="use_master_key" value="1">
-
                             <div class="mb-3">
                                 <h5 class="sub-header5 mb-3">Upload a File</h5>
                                 <label for="file-upload" class="custom-file-upload">
@@ -27,7 +25,6 @@
                                 <input id="file-upload" type="file" name="file"/>
                                 @include("components.utils.form_field_alert", ['name'=> 'file'])
                             </div>
-
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Select Drawer</label>
                                 <select class="form-select" aria-label="Default select example" name="drawer">

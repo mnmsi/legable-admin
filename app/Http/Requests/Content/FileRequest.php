@@ -33,7 +33,7 @@ class FileRequest extends FormRequest
         }
 
         return [
-            'file'                   => 'required|file',
+            'file'                   => 'required|file|max:512000',
             'drawer'                 => 'required_if:security_key,null',
             'security_key'           => 'required_if:drawer,""|max:255',
             'file_password_required' => 'required|integer|in:0,1',
@@ -51,11 +51,9 @@ class FileRequest extends FormRequest
             $parent_id = null;
             $password  = Hash::make($this->security_key);
         }
-
         if (!$this->hasFile('file') && !$this->file('file')->isValid()) {
             abort(404);
         }
-
         $this->merge([
             'content_type'           => 'file',
             'parent_id'              => $parent_id,

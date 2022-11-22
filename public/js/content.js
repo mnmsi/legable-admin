@@ -11,7 +11,6 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
 // show modal
 
 function showSecurityPanel(contentKey, contentName, contentType) {
-
     $('input#drawer-key').val(contentKey)
     $('input#drawer-name').val(contentName)
     $('input#drawer-type').val(contentType)
@@ -28,10 +27,8 @@ function enterDrawer(url, that) {
 
 function checkSecurity(event, that, url) {
     event.preventDefault();
-
     let formData = $(that).serialize()
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
-
     if ($("#drawer-type").val() === 'file') {
         getFile(url, formData);
     } else {
@@ -41,17 +38,12 @@ function checkSecurity(event, that, url) {
 
 function loadDrawer(url, formData, dataObj) {
     $("#contents").load(`${url}?${formData}`, function (responseTxt, statusTxt) {
-
         if (statusTxt === 'error') {
-
             let rep = JSON.parse(responseTxt);
             $("#message").html(rep.message)
-
         } else {
-
             dataObj.data = responseTxt
             history.pushState(dataObj, dataObj.drawer_name)
-
             $("#pageModal").modal('hide')
             $("#securityForm").trigger('reset')
             $(this).find("small.text-danger").html("")
@@ -88,7 +80,3 @@ function addBoxClick(id) {
     let value = box.val();
     $("#addBoxModal").modal('show');
 }
-
-//`<option value="${optionValue}">
-//                                        ${optionText}
-//                                   </option>`

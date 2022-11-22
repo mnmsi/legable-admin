@@ -1,10 +1,14 @@
 @extends('layouts.app')
 @section('title','All Contents')
-
 @section('content')
     <div class="content-page">
+        @if(Session::get('success'))
+            <div class="alert alert-success">
+                {{session::get('success')}}
+            </div>
+        @endif
         <div id="contents">
-            @include('components.contents.content')
+            @include('components.contents.content', ['showBtn' => false])
         </div>
     </div>
 

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title','Drawers')
 @section('content')
-
     <div id="contents">
         <x-breadcrumb title="Drawers" subtitle="Everything is encrypted here!" buttonText="+ Add Drawer "
                       link="/drawer/add"/>

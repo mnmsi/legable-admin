@@ -14,7 +14,6 @@
                 <form action="{{route('security.check')}}" method="post" id="securityForm"
                       onsubmit="checkSecurity(event, this,'{{route('security.check')}}')">
                     @csrf
-
                     <div class="row all-form-wrapper mt-5">
                         <div class="col-12">
                             <div class="mb-3">

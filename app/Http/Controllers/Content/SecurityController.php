@@ -22,6 +22,8 @@ class SecurityController extends Controller
 
     public function check(SecurityRequest $request)
     {
+
+
         $drawer = Content::find($request->drawer_id);
 
         if (!$drawer) {

@@ -56,7 +56,7 @@
                 } else {
                     $('#passwordField').hide('fast');
                 }
-            })
+            });
         })
     </script>
 @endsection

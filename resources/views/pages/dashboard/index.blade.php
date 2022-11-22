@@ -12,16 +12,20 @@
                 {{-- ligable welcome bar end --}}
                 {{-- qick access --}}
                 <div class="mt-5">
-                    <h2 class="dashboard-section-title mb-4">Quick Access</h2>
+
                 </div>
-                <div class="row" id="draggable">
-                    @foreach($drawers as $key => $drawer)
-                        <div class="col-lg-4 mb-4 col-6" id="{{$drawer['id']}}">
-                            <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
-                                    date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
-                                    :required-pass="$drawer['is_password_required']" :type="$drawer['content_type']"/>
-                        </div>
-                    @endforeach
+                <div id="contents">
+                    <h2 class="dashboard-section-title mb-4">Quick Access</h2>
+                    <div class="row" id="draggable">
+                        @foreach($drawers as $key => $drawer)
+                            <div class="col-lg-4 mb-4 col-6" id="{{$drawer['id']}}">
+                                <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
+                                        date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
+                                        :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
+                                        :type="$drawer['content_type']"/>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 {{-- qick access --}}
             </div>
@@ -81,20 +85,27 @@
             <x-add-new-icon id="createNew"/>
             {{-- add new button --}}
         </div>
+
     </div>
     @include('includes.modal.fileUpload')
-    @include('includes.modal.addBox')
     @include('includes.modal.welcomeCardModal')
     @include('includes.offcanvas.new-offcanvas')
     @include('includes.offcanvas.new-information')
+    @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
+    @include('includes.modal.addBox')
     {{-- page content end --}}
 @endsection
 @section('script')
     <script src="{{asset("js/jquery-ui.min.js")}}"></script>
     <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
+    <script src="{{asset('js/content.js')}}"></script>
     <script>
         $(document).ready(function () {
             //content add box
+            //    show file name
+            $("#file-upload").on("change", function (e) {
+                $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
+            })
             $("#draggable").sortable({
                 animation: 300,
                 // dropOnEmpty: false,
@@ -107,7 +118,7 @@
                 items: ".col-lg-4",
                 update: function () {
                     var order = $("#draggable").sortable('toArray');
-                    localStorage.setItem("Sorted",JSON.stringify(order));
+                    localStorage.setItem("Sorted", JSON.stringify(order));
                 }
 
             });
@@ -129,6 +140,7 @@
 
             //hide all modal
             $('#addBoxModalClose,#addBoxModalClose,#infoModalClose').on('click', function () {
+                console.log(121)
                 $('#uploadFile').modal('hide');
                 $('#addBoxModal').modal('hide');
                 $('#cardModal').modal('hide');
@@ -144,10 +156,16 @@
                 $('#newOffcanvas').offcanvas('hide');
                 $("#informationOfCanvas").offcanvas('show');
             });
-
             @if ($errors->any())
             $('#uploadFile').modal('show');
             @endif
+
+            {{--  reset everything when modal hide --}}
+            $('#uploadFile').on('hidden.bs.modal', function () {
+                $(".text-small").hide();
+                $("#fileUploadForm")[0].reset();
+                $(".custom-file-upload").text('select a file to upload');
+            });
         })
     </script>
     <script src="{{asset('js/content.js')}}"></script>
