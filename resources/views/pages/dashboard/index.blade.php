@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','Dashboard')
 @section('content')
+
     <x-breadcrumb id="openPopup" title="Dashboard" subtitle="Everything is encrypted here!"
                   buttonIcon="{{ asset('image/dashboard/document.svg') }}" buttonText="Upload Files" id="dashmodalid"/>
     {{-- page content start --}}
@@ -139,8 +140,7 @@
             });
 
             //hide all modal
-            $('#addBoxModalClose,#addBoxModalClose,#infoModalClose').on('click', function () {
-                console.log(121)
+            $('#addBoxModalClose,#infoModalClose').on('click', function () {
                 $('#uploadFile').modal('hide');
                 $('#addBoxModal').modal('hide');
                 $('#cardModal').modal('hide');
@@ -156,8 +156,14 @@
                 $('#newOffcanvas').offcanvas('hide');
                 $("#informationOfCanvas").offcanvas('show');
             });
-            @if ($errors->any())
-            $('#uploadFile').modal('show');
+            @if($errors->any())
+                @if(Str::contains($errors->all()[0],'box'))
+                $('#addBoxModal').modal('show');
+                @elseif(Str::contains($errors->all()[0],'information'))
+                // $('#uploadFile').modal('show');
+                @else
+                $('#uploadFile').modal('show');
+                @endif
             @endif
 
             {{--  reset everything when modal hide --}}
@@ -165,6 +171,10 @@
                 $(".text-small").hide();
                 $("#fileUploadForm")[0].reset();
                 $(".custom-file-upload").text('select a file to upload');
+            });
+            $('#addBoxModal').on('hidden.bs.modal',function (){
+                $(".text-small").hide();
+                $("#fileUploadForm")[0].reset();
             });
         })
     </script>
