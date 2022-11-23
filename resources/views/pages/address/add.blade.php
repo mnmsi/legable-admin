@@ -26,7 +26,7 @@
                                 <label for="address_line_one" class="form-label">Address Line 1</label>
                                 <input id="address_line_one" type="text"
                                        class="form-control @error('address_line_one') is-invalid @enderror" name="address_line_one"
-                                       required autocomplete="false" autofocus placeholder="Enter your zip code">
+                                       required autocomplete="false" autofocus placeholder="Enter your zip code" value="{{ old('address_line_one') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'address_line_one'])
                             </div>
                         </div>
@@ -35,17 +35,18 @@
                                 <label for="address_line_two" class="form-label">Address Line 2</label>
                                 <input id="address_line_two" type="text"
                                        class="form-control @error('address_line_two') is-invalid @enderror" name="address_line_two"
-                                       autocomplete="false" autofocus placeholder="Enter your address">
+                                       autocomplete="false" autofocus placeholder="Enter your address" value="{{ old('address_line_two') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'address_line_two'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4">
                             <div class="form-group input-wrapper">
                                 <label for="country" class="form-label">Select Country</label>
-                                <select name="country" id="country" class="form-control country-select" required>
+                                <select name="country" id="country" class="form-control country-select" required >
                                     <option value="">Country</option>
                                     @foreach($countries as $country)
-                                        <option value="{{$country['id']}}">{{$country['name']}}</option>
+{{--                                        <option value="{{$country['id']}}">{{$country['name']}}</option>--}}
+                                        <option value="{{$country['id']}}" {{ old($country['id']) == $country['id'] ? 'selected' : null}}>{{$country['name']}}</option>
                                     @endforeach
                                 </select>
                                 @include('components.utils.form_field_alert', ['name' => 'country'])
@@ -55,6 +56,7 @@
                             <div class="form-group input-wrapper">
                                 <label for="city" class="form-label">City</label>
                                 <input id="city" type="text"
+                                       value="{{ old('city') }}"
                                        class="form-control @error('city') is-invalid @enderror" name="city"
                                        required autocomplete="false" autofocus placeholder="Enter your city">
                                 @include('components.utils.form_field_alert', ['name' => 'city'])
@@ -65,7 +67,7 @@
                                 <label for="region" class="form-label">Region</label>
                                 <input id="region" type="text"
                                        class="form-control @error('region') is-invalid @enderror" name="region"
-                                       required autocomplete="false" autofocus placeholder="Enter your region">
+                                       required autocomplete="false" autofocus placeholder="Enter your region" value="{{ old('region') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'region'])
                             </div>
                         </div>
@@ -74,13 +76,13 @@
                                 <label for="zip" class="form-label">Zip Code</label>
                                 <input id="zip" type="text"
                                        class="form-control @error('zip') is-invalid @enderror" name="zip"
-                                       required autocomplete="false" autofocus placeholder="Enter your zip code">
+                                       required autocomplete="false" autofocus placeholder="Enter your zip code" value="{{ old('zip') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'zip'])
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="address_submit_wrapper">
-                                <a href="">Cancel</a>
+                                <a href="{{route('acc.setting')}}">Cancel</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">

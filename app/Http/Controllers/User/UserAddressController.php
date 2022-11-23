@@ -25,7 +25,7 @@ class UserAddressController extends Controller
             abort(404);
         }
 
-        return redirect()->route('acc.setting');
+        return redirect()->route('acc.setting')->withSuccess('Success!');
     }
 
     public function edit($id)
@@ -43,6 +43,6 @@ class UserAddressController extends Controller
             abort(404);
         }
 
-        return redirect()->route('acc.setting');
+        return redirect()->route('acc.setting')->withSuccess('Success!');
     }
 }

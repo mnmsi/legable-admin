@@ -41,7 +41,7 @@ class DrawerController extends Controller
             abort(404);
         }
 
-        return redirect()->route('drawer.index');
+        return redirect()->route('drawer.index')->withSuccess('Success!');
     }
 
     public function items($id)

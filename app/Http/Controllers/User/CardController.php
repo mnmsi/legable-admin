@@ -28,7 +28,7 @@ class CardController extends Controller
             abort(404);
         }
 
-        return redirect()->route('billing.index');
+        return redirect()->route('billing.index')->withSuccess('Success!');
     }
 
     public function deleteCard($id)
@@ -46,7 +46,7 @@ class CardController extends Controller
         }
 
         $card->delete();
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Success!');
     }
 
     public function activeCard($id)
@@ -65,6 +65,6 @@ class CardController extends Controller
             'is_active' => 1
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Success!');
     }
 }

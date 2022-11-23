@@ -47,6 +47,6 @@ class DeviceController extends Controller
 
         $device->delete();
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Success!');
     }
 }

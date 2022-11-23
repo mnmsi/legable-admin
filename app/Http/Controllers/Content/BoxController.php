@@ -12,11 +12,10 @@ class BoxController extends Controller
     public function create(BoxRequest $request)
     {
         $content = Content::create($request->all());
-
         if (!$content) {
             abort(404);
         }
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess("Success!");
     }
 }

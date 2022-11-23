@@ -57,6 +57,10 @@
                     $('#passwordField').hide('fast');
                 }
             });
+            //    show file name
+            $("#file-upload").on("change", function (e) {
+                $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
+            })
         })
     </script>
 @endsection

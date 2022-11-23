@@ -9,11 +9,11 @@
 
 <!--Main layout-->
 <main>
-{{--    <div class="loader" id="loader">--}}
-{{--        <div class="loader-image">--}}
-{{--            <img src="{{asset("image/common/loader.svg")}}" class="img-fluid" alt="image">--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div class="loader" id="loader">--}}
+    {{--        <div class="loader-image">--}}
+    {{--            <img src="{{asset("image/common/loader.svg")}}" class="img-fluid" alt="image">--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     <!--Main Navigation-->
     @include('includes.nav')
     @include('includes.responsive.nav')
@@ -36,15 +36,29 @@
 <script src="{{asset('js/commonMethods.js')}}"></script>
 <script src="{{ asset('js/base.js') }}"></script>
 <script src="{{ asset('js/search.js') }}"></script>
+<script src="{{asset('vendor/toastr.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
 @yield('script')
 @stack('script')
-
 <script src="{{ asset('/sw.js') }}"></script>
 <script>
     // $(window).on('load', function () {
     //     $("#loader").fadeOut();
     // })
+    @if(Session::has('success'))
+    toastr.success('<?php echo session('success'); ?>')
+    @endif
+    @if(Session::has('warning'))
+    toastr.warning('<?php echo session('warning'); ?>')
+    @endif
+    @if(Session::has('error'))
+    toastr.error('<?php echo session('error'); ?>')
+    @endif
 
+    $('.toast').toast({
+        delay: 30000,
+        "progressBar": true
+    });
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);

@@ -37,7 +37,7 @@ class FileController extends Controller
             abort(404);
         }
 
-        return redirect()->route('content')->withSuccess('Hello world');
+        return redirect()->route('content')->withSuccess('Success!');
     }
 
     public function getFile($id)
