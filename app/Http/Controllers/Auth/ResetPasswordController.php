@@ -35,12 +35,12 @@ class ResetPasswordController extends Controller
         $user = Auth::user()->update([
             'password' => $request->new_password
         ]);
-
         if (!$user) {
             abort(404);
+        }else{
+            return redirect()->back()
+                ->with("password_changed", "Password has been changed!");
         }
 
-        return redirect()->back()
-                         ->with("password_changed", "Password has been changed!");
     }
 }

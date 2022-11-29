@@ -33,16 +33,14 @@ class ResetPasswordRequest extends FormRequest
             'new_password' => 'required|string|max:255',
         ];
     }
-
     protected function passedValidation()
     {
         if (!$this->userPassCheck($this->old_password)) {
             return redirect()
                 ->back()
-                ->withErrors(['old_password' => "Invalid old password!"])
+                ->withErrors(['old_password' => "Invalid old password!","password_changed"=>""])
                 ->withInput();
         }
-
         $this->merge([
             'new_password' => Hash::make($this->new_password)
         ]);

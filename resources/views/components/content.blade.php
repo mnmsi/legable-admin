@@ -1,7 +1,7 @@
 <div class="content-block-2 text-decoration-none" id="{{$id}}" onclick="{{$click}}">
     <img src="{{$url}}" alt="" class="img-fluid top-icon" />
     <div class="footer-item">
-        <p>{{$title}}</p>
+        <p>{{Str::limit($title,20,'...')}}</p>
         <img src="{{asset('image/content/lockIcon.svg')}}" alt="" class="img-fluid" />
     </div>
 </div>

@@ -6,6 +6,7 @@
 <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
 <link rel="manifest" href="{{ asset('/manifest.json') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="{{asset("css/select2.min.css")}}">
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('image/favicon.png')}}"/>
 <title>{{ config('app.name', 'Legable') }}</title>
 <!-- Scripts -->

@@ -54,11 +54,6 @@
     @if(Session::has('error'))
     toastr.error('<?php echo session('error'); ?>')
     @endif
-
-    $('.toast').toast({
-        delay: 30000,
-        "progressBar": true
-    });
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);

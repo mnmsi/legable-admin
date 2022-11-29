@@ -16,10 +16,8 @@
                 {{--  name form--}}
                 <form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
-
                     <div class="row">
                         <div class="col-lg-6 col-md-6 mb-4">
-
                             <div class="form-group input-wrapper">
                                 <label for="name" class="form-label">Name</label>
                                 <input id="address_line_one" type="text"

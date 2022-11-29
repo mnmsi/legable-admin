@@ -41,7 +41,7 @@
             </a>
             <div class="dropdown dropdown-list">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{get_image(Auth::user()->avatar)}}" alt="profile" height="40" width="auto">
+                    <img src="{{get_image(Auth::user()->avatar)}}" alt="profile" height="40" width="40px" style="border-radius: 50%">
                 </a>
 
                 <ul class="dropdown-menu user-profile" >

@@ -3,6 +3,7 @@
 @section('content')
     <div class="content-page">
         <div id="contents">
+{{--            @dd($drawers,$contents)--}}
             @include('components.contents.content', ['showBtn' => false])
         </div>
     </div>

@@ -27,9 +27,9 @@
                             <label for="old_password" class="mb-3 form-label">Old Password</label>
                             <input type="password" class="form-control" placeholder="Enter your current password"
                                    id="old_password" name="old_password" autocomplete="off">
-                            <div class="password-eye">
+                            <label for="old_password" class="password-eye">
                                 <img src="{{asset("image/common/eyeOpen.svg")}}" alt="eye">
-                            </div>
+                            </label>
                         </div>
                         @include('components.utils.form_field_alert', ['name' => 'old_password'])
                     </div>
@@ -39,9 +39,9 @@
                             <label for="new_password" class="mb-3 form-label">New Password</label>
                             <input type="password" class="form-control" placeholder="Enter new password"
                                    id="new_password" name="new_password" autocomplete="off">
-                            <div class="password-eye">
+                            <label for="new_password" class="password-eye">
                                 <img src="{{asset("image/common/eyeOpen.svg")}}" alt="eye">
-                            </div>
+                            </label>
                         </div>
                         @include('components.utils.form_field_alert', ['name' => 'new_password'])
                     </div>

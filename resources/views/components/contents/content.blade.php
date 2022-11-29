@@ -18,7 +18,7 @@
             All Contents
         </h6>
         <div class="conten-items">
-            @foreach($contents as $content)
+        @foreach($contents as $content)
                 <x-content :type="$content['content_type']" :required-pass="$content['is_password_required']"
                            title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"
                            id="{{$content['id']}}"/>
