@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('subscription')->group(function () {
         //Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('downloadInvoice/{id}', [BillingController::class, 'downloadInvoice'])->name('download.invoice');
 
         //User
         Route::prefix('user')->as('user.')->group(function () {
