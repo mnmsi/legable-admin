@@ -172,9 +172,3 @@ Route::get('test', function (Request $request) {
         'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
-
-//add information
-Route::get("/pdf", function () {
-    $pdf = Pdf::loadView('pages.invoice.index');
-    return $pdf->stream();
-});
