@@ -26,7 +26,7 @@
                                 <label for="address_line_one" class="form-label">Address Line 1</label>
                                 <input id="address_line_one" type="text"
                                        class="form-control @error('address_line_one') is-invalid @enderror" name="address_line_one"
-                                       required autocomplete="false" autofocus placeholder="Enter your zip code" value="{{ old('address_line_one') }}">
+                                       required autocomplete="false" autofocus placeholder="Enter your address" value="{{ old('address_line_one') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'address_line_one'])
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="col-lg-6 col-md-6 mb-4">
                             <div class="form-group input-wrapper">
                                 <label for="zip" class="form-label">Zip Code</label>
-                                <input id="zip" type="text"
+                                <input onkeypress="return /[0-9]/i.test(event.key)"  id="zip" type="text"
                                        class="form-control @error('zip') is-invalid @enderror" name="zip"
                                        required autocomplete="false" autofocus placeholder="Enter your zip code" value="{{ old('zip') }}">
                                 @include('components.utils.form_field_alert', ['name' => 'zip'])

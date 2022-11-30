@@ -64,7 +64,7 @@
         {{--  title bar end--}}
         <div class="row align-items-stretch mt-3">
             @foreach($addresses as $key => $address)
-                <div class="col-lg-4 pe-lg-4">
+                <div class="col-lg-4 pe-lg-4 mb-4">
                     <div class="single-address-box">
                         <div class="single-address-box-content-wrapper">
                             <div class="single-address-box-header">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-4">
+            <div class="col-lg-4  pe-lg-4 mb-4">
                 <a href="{{route("user.address.add")}}" class="text-decoration-none">
                     <div class="single-address-box add-new-box">
                         <div class="address-box-add-content">
