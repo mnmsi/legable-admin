@@ -30,7 +30,10 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
+    //Update plan
     Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
+    //Subscribe
+    Route::post("subscribe", [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
     Route::middleware('subscription')->group(function () {
         //Dashboard
@@ -109,9 +112,6 @@ Route::middleware('auth')->group(function () {
 
         //Search
         Route::get("search", [SearchController::class, 'search'])->name('search');
-
-        //Subscribe
-        Route::post("subscribe", [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
         //Billing
         Route::prefix('billing')->as('billing.')->group(function () {
