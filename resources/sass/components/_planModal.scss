@@ -302,28 +302,31 @@
     }
 }
 
-.exp{
+.exp {
     height: 39px !important;
 }
 
-    //cancel plan modal
-#cancelPlan{
-    @include media("<=991px"){
-        .modal-header{
-            &::before{
+//cancel plan modal
+#cancelPlan {
+    @include media("<=991px") {
+        .modal-header {
+            &::before {
                 content: "Cancel Plan";
             }
         }
     }
-     .modal-content {
-         padding: 40px 40px !important;
-     }
-    .modal-dialog{
+
+    .modal-content {
+        padding: 40px 40px !important;
+    }
+
+    .modal-dialog {
         max-width: 770px;
     }
-    .cancel-plan-modal{
 
-        h2{
+    .cancel-plan-modal {
+
+        h2 {
             text-align: center;
             font-weight: 600;
             font-size: 24px;
@@ -331,34 +334,46 @@
             color: #3A494E;
             margin-bottom: 50px;
         }
-        .form-check{
+
+        .form-check {
             margin-bottom: 24px;
-            label{
+
+            label {
                 font-weight: 400;
                 font-size: 18px;
                 color: #282A2C;
                 opacity: 0.8;
                 margin-left: 18px;
             }
-            .form-check-input{
+
+            .form-check-input {
                 height: 20px;
                 width: 20px;
                 border: 2px solid #175067;
                 border-radius: 1px;
-                &:focus{
+
+                &:focus {
                     box-shadow: none;
-                    border-color:#175067;
+                    border-color: #175067;
                 }
-                &:checked{
-                    border-color:#175067;
+
+                &:checked {
+                    border-color: #175067;
                     background-color: transparent;
 
                 }
             }
-            .form-check-input:checked[type=checkbox]{
+
+            .form-check-input:checked[type=checkbox] {
                 background-image: url("/image/plans/check_box.svg");
                 background-size: 15px;
             }
         }
     }
+}
+
+
+
+.update_plan_page{
+    border-radius: 0 !important;
 }

@@ -19,7 +19,7 @@
             margin: 0;
             position: relative;
             padding: 0;
-            font-family:" sans-serif","sans-serif";
+            font-family: " sans-serif", "sans-serif";
         }
 
         #header {
@@ -34,7 +34,7 @@
             font-weight: 400;
             font-size: 15px;
             color: #5F5E61;
-            font-family:" sans-serif","sans-serif";
+            font-family: " sans-serif", "sans-serif";
         }
 
         .email p {
@@ -108,7 +108,7 @@
             <p class="text">Accounteer Smart Cloud Accounting Ltd</p>
             <p class="text">No Mambilla street, </p>
             <p class="text">Federal Capital Territory, Abuja</p>
-            <div class="header-content-wrapper">
+            <div class="header-content-wrapper">l
                 <div class="email">
                     <p>team@legable.com</p>
                 </div>
@@ -190,16 +190,22 @@
         <table style="font-family: sans-serif">
             <tr>
                 <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">Subtotal</th>
-                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$ 30.00</td>
+                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
+                    30.00
+                </td>
             </tr>
             <tr>
                 <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">VAT(5%)</th>
-                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$ 2.00</td>
+                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
+                    2.00
+                </td>
 
             </tr>
             <tr>
                 <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">Total</th>
-                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$ 32.00</td>
+                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
+                    32.00
+                </td>
             </tr>
         </table>
     </section>

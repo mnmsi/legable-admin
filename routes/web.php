@@ -30,7 +30,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
+//    Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
 
     Route::middleware('subscription')->group(function () {
         //Dashboard
@@ -177,3 +177,7 @@ Route::get("/pdf", function () {
     $pdf = Pdf::loadView('pages.invoice.index');
     return $pdf->stream();
 });
+
+Route::get('update/plan', function (){
+    return view("pages.billing.update_plan");
+})->name('update.plan');
