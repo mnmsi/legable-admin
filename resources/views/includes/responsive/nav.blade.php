@@ -15,7 +15,6 @@
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('image/common/profile.svg')}}" alt="profile">
                 </a>
-
                 <ul class="dropdown-menu user-profile">
                     <li class="u-profile">
                         <div class="p-image">
