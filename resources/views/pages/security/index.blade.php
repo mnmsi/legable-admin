@@ -66,7 +66,8 @@
                             <p>Generate a master key to unlock all contents at a time </p>
                             <div class="all-form-wrapper">
                                 <div class="form-check form-switch d-flex justify-content-end">
-                                    <input style="height: 22px; width: 45px;" class="form-check-input" type="checkbox" id="checkPass" value="1"
+                                    <input style="height: 22px; width: 45px;" class="form-check-input" type="checkbox"
+                                           id="checkPass" value="1"
                                            {{$is_active_master_key ? 'checked' : ''}} onchange="changeMasterKeyStatus('{{route('user.master-key.change.status')}}')">
                                     <label class="form-check-label ms-3" for="checkPass">Activate</label>
                                 </div>
@@ -91,6 +92,7 @@
                             <label for="master_key" class="mb-3 form-label">Generate Key</label>
                             <input type="password" class="form-control" placeholder="Enter Master Key" id="master_key"
                                    name="master_key">
+                            @include("components.utils.form_field_alert", ["name" => "master_key"])
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">

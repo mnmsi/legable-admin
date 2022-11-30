@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ResetPasswordRequest;
 use App\Providers\RouteServiceProvider;
+use App\Traits\Auth\AuthTrait;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class ResetPasswordController extends Controller
     |
     */
 
-    use ResetsPasswords;
+    use ResetsPasswords, AuthTrait;
 
     /**
      * Where to redirect users after resetting their password.
@@ -32,15 +33,22 @@ class ResetPasswordController extends Controller
 
     public function passwordReset(ResetPasswordRequest $request)
     {
+        if (!$this->userPassCheck($request->old_password)) {
+            return redirect()
+                ->back()
+                ->withErrors(['old_password' => "Invalid old password!"])
+                ->withInput();
+        }
+
         $user = Auth::user()->update([
             'password' => $request->new_password
         ]);
+
         if (!$user) {
             abort(404);
-        }else{
+        } else {
             return redirect()->back()
-                ->with("password_changed", "Password has been changed!");
+                             ->with("password_changed", "Password has been changed!");
         }
-
     }
 }
