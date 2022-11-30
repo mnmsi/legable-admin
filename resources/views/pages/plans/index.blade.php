@@ -17,24 +17,31 @@
 
         {{--        title bar end--}}
         <div class="row align-items-stretch lg-mt-3 mt-0">
-            <div class="col-lg-6 col-md-6 lg-mb-0 mb-4">
-                <div class="plan-box-wrapper">
-                    <div class="plan-box-content-wrapper">
-                        <div class="plan-card-header">
-                            <div class="plan-card-title">14 days Free Trial</div>
-                            <div>
-                                <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+            @if($isTrial && !$isSubscribed)
+                <div class="col-lg-6 col-md-6 lg-mb-0 mb-4">
+                    <div class="plan-box-wrapper">
+                        <div class="plan-box-content-wrapper">
+                            <div class="plan-card-header">
+                                <div class="plan-card-title">14 days Free Trial</div>
+                                <div>
+                                    <img src="{{asset("image/common/golden-sign.svg")}}" alt="image" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
-                        <div class="plan-box-content">
-                            <p>10 days remaining in your free trial</p>
-                        </div>
-                        <div class="cancel-subscription-button-wrapper">
-                            <a href="javascript:void(0)" id="cancel_subscription">Cancel Subscription</a>
+                            <div class="plan-box-content">
+                                <p>10 days remaining in your free trial</p>
+                            </div>
+                            <div class="cancel-subscription-button-wrapper">
+                                <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                    @csrf
+                                    <a href="javascript:void(0)"
+                                       onclick="document.getElementById('logoutForm').submit();">Cancel Subscription</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
+
             <div class="col-lg-6 col-md-6 lg-mb-0 mb-4 ">
                 <div class="plan-box-wrapper"
                      style="background: url('{{asset("image/plans/premium-bg.svg")}}') no-repeat center; background-size: cover;">
@@ -52,9 +59,15 @@
                     <div class="premium-body">
                         <p> 30 days cycle</p>
                     </div>
-                    <div class="upgrade-plan-button">
-                        <button type="button" id="proPlanid">Upgrade your plan</button>
-                    </div>
+                    @if($isSubscribed)
+                        <div class="upgrade-plan-button">
+                            <button type="button">Subscribed</button>
+                        </div>
+                    @else
+                        <div class="upgrade-plan-button">
+                            <button type="button" id="proPlanid">Upgrade your plan</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -63,7 +76,8 @@
                 <div class="plan-footer-title">Enable auto renewal</div>
                 <div class="all-form-wrapper">
                     <div class="form-check form-switch d-flex align-items-center">
-                        <input style="height: 22px; width: 45px;" class="form-check-input" type="checkbox" id="checkPass"
+                        <input style="height: 22px; width: 45px;" class="form-check-input" type="checkbox"
+                               id="checkPass"
                                onchange="autoRenewal('{{route('myPlan.auto.renewal')}}')"
                                value="1" {{$auto_renewal ? 'checked' : ''}}>
                         <label style="margin-top: 3px" class="form-check-label ms-3" for="checkPass">Active</label>

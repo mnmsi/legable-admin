@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserVerification::class);
     }
+
+    public function active_address()
+    {
+        return $this->hasOne(UserAddress::class)->whereStatus(1);
+    }
 }

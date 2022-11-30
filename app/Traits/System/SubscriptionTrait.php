@@ -34,4 +34,22 @@ trait SubscriptionTrait
 
         return true;
     }
+
+    public function billingHistory()
+    {
+        return Subscription::get()->map(function ($item) {
+            return [
+                'date'     => Carbon::parse($item->created_at)->format("d M Y"),
+                'details'  => "Premium",
+                'amount'   => $item->plan_amount,
+                'download' => route('download.invoice', $item->id)
+            ];
+        });
+    }
+
+    public function getSubscriptionDetails($id)
+    {
+        return Subscription::with("user.active_address.countryInfo", "card")
+                           ->find($id);
+    }
 }

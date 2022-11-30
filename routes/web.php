@@ -30,11 +30,12 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-//    Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
+    Route::get('update/plan', [BillingController::class, 'updatePlan'])->name('update.plan');
 
     Route::middleware('subscription')->group(function () {
         //Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('downloadInvoice/{id}', [BillingController::class, 'downloadInvoice'])->name('download.invoice');
 
         //User
         Route::prefix('user')->as('user.')->group(function () {
@@ -171,13 +172,3 @@ Route::get('test', function (Request $request) {
         'my_de'      => mydecrypt('MHNkNFNra2lVbkhxQlhNMEJxNHovUT09'),
     ];
 });
-
-//add information
-Route::get("/pdf", function () {
-    $pdf = Pdf::loadView('pages.invoice.index');
-    return $pdf->stream();
-});
-
-Route::get('update/plan', function (){
-    return view("pages.billing.update_plan");
-})->name('update.plan');

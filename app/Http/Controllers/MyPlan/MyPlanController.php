@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\MyPlan;
 
 use App\Http\Controllers\Controller;
+use App\Traits\System\SubscriptionTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MyPlanController extends Controller
 {
+    use SubscriptionTrait;
+
     public function myPlan()
     {
         return view("pages.plans.index", [
-            'auto_renewal' => Auth::user()->auto_renewal
+            'auto_renewal'  => Auth::user()->auto_renewal,
+            'isSubscribed' => $this->checkPlan() ?: false,
+            'isTrial'      => $this->checkTrial()
         ]);
     }
 

@@ -108,13 +108,13 @@
             <p class="text">Accounteer Smart Cloud Accounting Ltd</p>
             <p class="text">No Mambilla street, </p>
             <p class="text">Federal Capital Territory, Abuja</p>
-            <div class="header-content-wrapper">l
+            <div class="header-content-wrapper">
                 <div class="email">
                     <p>team@legable.com</p>
                 </div>
                 <div class="date_content_wrapper" style="text-align: right">
                     <div class="text">Date</div>
-                    <div class="date">30 June, 2022</div>
+                    <div class="date">{{\Carbon\Carbon::parse($data->created_at)->format("d M, Y")}}</div>
                 </div>
             </div>
         </div>
@@ -122,12 +122,17 @@
     <hr style="overflow: hidden; margin-top: 60px; border:1px solid #E2E2E2"/>
     {{--header end--}}
     {{--section plan start--}}
-    <section id="plan" style="margin-top: 70px;">
-        <h3>Legable Premium Plan</h3>
+    <section id="plan" style="margin-top: 40px;">
+        {{--        <h3>Legable Premium Plan</h3>--}}
         <p>Billing Address</p>
-        <p>IOTA Infotech Limited</p>
-        <div class="text">House 1/D 1/C, Road No. 16, Nikunja 02</div>
-        <div class="text">Dhaka, Bangladesh.</div>
+        <p style="margin-top: 25px;">{{$data->user->name}}</p>
+        <div class="text" style="margin-top: 15px;">{{$data->user->active_address->address_line_one}}</div>
+        @if(!empty($data->user->active_address->address_line_two))
+            <div class="text" style="margin-top: 15px;">{{$data->user->active_address->address_line_two}}</div>
+        @endif
+        <div class="text" style="margin-top: 15px;">{{$data->user->active_address->city}}
+            , {{$data->user->active_address->countryInfo->name}}.
+        </div>
     </section>
     <hr style="overflow: hidden; margin-top: 24px; border:1px solid #E2E2E2"/>
     {{--section plan end--}}
@@ -174,10 +179,9 @@
                         width: 20%;
                          float: right;
                         text-align: right;
-                        ">$ 30.00
+                        ">${{$data->plan_amount}}
                 </div>
             </div>
-            {{-- loop end--}}
         </div>
     </section>
     {{-- section summury end--}}
@@ -189,22 +193,9 @@
     <section id="subtotal" style="float: right">
         <table style="font-family: sans-serif">
             <tr>
-                <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">Subtotal</th>
-                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
-                    30.00
-                </td>
-            </tr>
-            <tr>
-                <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">VAT(5%)</th>
-                <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
-                    2.00
-                </td>
-
-            </tr>
-            <tr>
                 <th style="padding:10px 50px 10px 0;color: #3A494E; font-weight: 500; font-size: 14px;">Total</th>
                 <td style="text-align: right;font-weight: 600;font-size: 16px;line-height: 24px;color: #504648;">$
-                    32.00
+                    {{$data->plan_amount}}
                 </td>
             </tr>
         </table>
