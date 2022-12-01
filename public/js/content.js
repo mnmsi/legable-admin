@@ -19,6 +19,9 @@ function showSecurityPanel(contentKey, contentName, contentType) {
 
 function enterDrawer(url, that) {
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
+
+    console.log(url, that, dataObj)
+
     $("#contents").load(url, function (responseTxt) {
         dataObj.data = responseTxt
         history.pushState(dataObj, dataObj.drawer_name)
@@ -28,7 +31,7 @@ function enterDrawer(url, that) {
 function checkSecurity(event, that, url) {
     event.preventDefault();
     let formData = $(that).serialize()
-    let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
+    let dataObj = {url: url, drawer_name: $("#drawer-name").val()}
     if ($("#drawer-type").val() === 'file') {
         getFile(url, formData);
     } else {

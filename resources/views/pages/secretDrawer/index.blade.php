@@ -8,7 +8,7 @@
             @foreach($drawers as $drawer)
                 <div class="drawerDownload" id="{{$drawer['id']}}">
                     <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
-                            date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
+                            date="{{$drawer['date']}}" :data-drawer="$drawer['id']" :data-drawer-name="$drawer['name']"
                             :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
                             :type="$drawer['content_type']"/>
                 </div>

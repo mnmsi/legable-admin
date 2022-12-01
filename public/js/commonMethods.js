@@ -8,7 +8,7 @@ function showSmallText(id, type, msg) {
     $("#" + id).html(`<small class="text-small text-${type} ml-3" id="message">${msg}</small>`)
 }
 
-function isCurrentUrl(path) {
+function isCurrentUrl(path = '') {
     return location.href === location.origin + `/${path}`
 }
 
