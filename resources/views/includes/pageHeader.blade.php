@@ -15,7 +15,7 @@
         <div class="header-btn">
             @if(count($btn)>0)
                 @if($showBtn)
-                    @if($content_type != 'box')
+                    @if($content_type !== 'contents')
                         <button class="add-btn addBoxCls" id="{{$btn['id']}}"
                                 onclick="{{$btn['fnClick'] ?: ""}}">{{$btn['text']}}</button>
                     @endif

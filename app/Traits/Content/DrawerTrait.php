@@ -10,7 +10,7 @@ trait DrawerTrait
     {
         return view("components.contents.content", [
             'drawer_id'    => $id,
-            'content_type' => $items->content_type,
+            'content_type' => $items->content_type === 'drawer' ? "boxes" : "contents",
             'drawerFn'     => 'addBoxClick("' . $id . '")',
             'drawers'      => manipulate_data($items->drawerItems->where('content_type', 'box'), self::$defaultAttr),
             'contents'     => manipulate_data($items->drawerItems->where('content_type', 'file'), self::$defaultAttr)
