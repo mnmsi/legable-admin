@@ -109,7 +109,7 @@
             })
 
             $("#draggable").sortable({
-                animation: 300,
+                animation: 200,
                 // dropOnEmpty: false,
                 // scroll: true,
                 axis: "x,y",
