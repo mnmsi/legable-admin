@@ -24,6 +24,7 @@ class Content extends BaseModel
         'is_password_required',
         'is_able_use_master_key',
         'uses_at',
+        'order',
         'created_at',
         'updated_at'
     ];

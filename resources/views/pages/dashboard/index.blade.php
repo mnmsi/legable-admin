@@ -107,11 +107,12 @@
             $("#file-upload").on("change", function (e) {
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
             })
+
             $("#draggable").sortable({
                 animation: 300,
                 // dropOnEmpty: false,
                 // scroll: true,
-                axis: "x",
+                axis: "x,y",
                 classes: {
                     "ui-sortable": "highlight"
                 },
@@ -119,9 +120,8 @@
                 items: ".col-lg-4",
                 update: function () {
                     var order = $("#draggable").sortable('toArray');
-                    localStorage.setItem("Sorted", JSON.stringify(order));
+                    orderDrawer('{{route('drawer.order')}}', order)
                 }
-
             });
 
             //upload file
@@ -156,14 +156,15 @@
                 $('#newOffcanvas').offcanvas('hide');
                 $("#informationOfCanvas").offcanvas('show');
             });
+
             @if($errors->any())
-                @if(Str::contains($errors->all()[0],'box'))
-                $('#addBoxModal').modal('show');
-                @elseif(Str::contains($errors->all()[0],'information'))
-                // $('#uploadFile').modal('show');
-                @else
-                $('#uploadFile').modal('show');
-                @endif
+            @if(Str::contains($errors->all()[0],'box'))
+            $('#addBoxModal').modal('show');
+            @elseif(Str::contains($errors->all()[0],'information'))
+            // $('#uploadFile').modal('show');
+            @else
+            $('#uploadFile').modal('show');
+            @endif
             @endif
 
             {{--  reset everything when modal hide --}}
@@ -172,7 +173,7 @@
                 $("#fileUploadForm")[0].reset();
                 $(".custom-file-upload").text('select a file to upload');
             });
-            $('#addBoxModal').on('hidden.bs.modal',function (){
+            $('#addBoxModal').on('hidden.bs.modal', function () {
                 $(".text-small").hide();
                 $("#fileUploadForm")[0].reset();
             });

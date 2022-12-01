@@ -76,7 +76,24 @@ function addBoxClick(id) {
     $("#drawerId").val(id);
     let box = $("#box-drawer");
     box.prop('disabled', "disabled");
-    $(`#box-drawer option[value=${id}]`).attr("selected",true);
+    $(`#box-drawer option[value=${id}]`).attr("selected", true);
     let value = box.val();
     $("#addBoxModal").modal('show');
+}
+
+function orderDrawer(url, order) {
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: {
+            order: order
+        },
+        success: function (response) {
+            console.log("success")
+        }, error: function (error) {
+            console.log("error")
+        }
+    });
 }
