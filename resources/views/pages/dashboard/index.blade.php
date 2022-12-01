@@ -17,9 +17,9 @@
                 </div>
                 <div id="contents">
                     <h2 class="dashboard-section-title mb-4">Quick Access</h2>
-                    <div class="row" id="draggable">
+                    <div class="row" id="contents">
                         @foreach($drawers as $key => $drawer)
-                            <div class="col-lg-4 mb-4 col-6" id="{{$drawer['id']}}">
+                            <div class="col-lg-4 mb-4 col-6 all-contents" id="{{$drawer['id']}}">
                                 <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                                         date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
                                         :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
@@ -105,18 +105,20 @@
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
             })
 
-            $("#draggable").sortable({
+            $("#contents").sortable({
                 animation: 200,
                 // dropOnEmpty: false,
-                // scroll: true,
+                scroll: true,
+                scrollSpeed: 300,
                 axis: "x,y",
                 classes: {
                     "ui-sortable": "highlight"
                 },
                 tolerance: "pointer",
-                items: ".col-lg-4",
+                items: ".all-contents",
                 update: function () {
-                    var order = $("#draggable").sortable('toArray');
+                    let order = $("#contents").sortable('toArray');
+                    console.log(order)
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });

@@ -4,9 +4,9 @@
     <div id="contents">
         <x-breadcrumb title="Drawers" subtitle="Everything is encrypted here!" buttonText="+ Add Drawer "
                       link="/drawer/add"/>
-        <div class="block-wrapper block-min-height wrapper-block" id="secretDrawer">
+        <div class="block-wrapper block-min-height wrapper-block" id="contents">
             @foreach($drawers as $drawer)
-                <div class="drawerDownload" id="{{$drawer['id']}}">
+                <div class="all-contents" id="{{$drawer['id']}}">
                     <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                             date="{{$drawer['date']}}" :data-drawer="$drawer['id']" :data-drawer-name="$drawer['name']"
                             :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
@@ -30,7 +30,7 @@
                 $('#addBoxModal').modal('show');
             });
 
-            $("#secretDrawer").sortable({
+            $("#contents").sortable({
                 animation: 200,
                 // dropOnEmpty: false,
                 scroll: true,
@@ -40,12 +40,14 @@
                     "ui-sortable": "highlight"
                 },
                 tolerance: "pointer",
-                items: ".drawerDownload",
+                items: ".all-contents",
                 update: function () {
-                    var order = $("#secretDrawer").sortable('toArray');
+                    let order = $("#contents").sortable('toArray');
+                    console.log(order)
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });
+
         })
     </script>
 @endsection
