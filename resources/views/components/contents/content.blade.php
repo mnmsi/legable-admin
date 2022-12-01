@@ -1,8 +1,8 @@
 @include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=> [ 'id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>'/file/upload','text'=>'Upload Content'], 'showBtn' => $showBtn ?? true])
 <div class="block-wrapper block-min-height content-wrappers">
     <div class="top-block">
-        <h6 class="sub-header6 mb-4">
-            Drawers
+        <h6 class="sub-header6 mb-4 text-capitalize">
+            {{$content_type ?? "Drawers"}}
         </h6>
         <div class="conten-items">
             @foreach($drawers as $key => $drawer)

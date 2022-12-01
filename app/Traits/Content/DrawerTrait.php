@@ -9,10 +9,11 @@ trait DrawerTrait
     public function returnItemView($items, $id)
     {
         return view("components.contents.content", [
-            'drawer_id' => $id,
-            'drawerFn' => 'addBoxClick("'.$id.'")',
-            'drawers'  => manipulate_data($items->drawerItems->where('content_type', 'box'), self::$defaultAttr),
-            'contents' => manipulate_data($items->drawerItems->where('content_type', 'file'), self::$defaultAttr)
+            'drawer_id'    => $id,
+            'content_type' => $items->content_type,
+            'drawerFn'     => 'addBoxClick("' . $id . '")',
+            'drawers'      => manipulate_data($items->drawerItems->where('content_type', 'box'), self::$defaultAttr),
+            'contents'     => manipulate_data($items->drawerItems->where('content_type', 'file'), self::$defaultAttr)
         ]);
     }
 }
