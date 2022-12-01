@@ -21,7 +21,7 @@ class DashboardController extends Controller
                     'password_required' => $item->is_password_required,
                     'date'              => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
                 ];
-            }, Content::where('content_type', 'drawer')->orderBy('order')->get()->all())
+            }, Content::where('content_type', 'drawer')->get()->all())
         ]);
     }
 }

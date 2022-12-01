@@ -97,9 +97,6 @@
     {{-- page content end --}}
 @endsection
 @section('script')
-    <script src="{{asset("js/jquery-ui.min.js")}}"></script>
-    <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
-    <script src="{{asset('js/content.js')}}"></script>
     <script>
         $(document).ready(function () {
             //content add box
@@ -179,6 +176,4 @@
             });
         })
     </script>
-    <script src="{{asset('js/content.js')}}"></script>
-
 @endsection

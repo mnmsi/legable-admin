@@ -51,6 +51,10 @@ class Content extends BaseModel
         static::addGlobalScope('user', function (Builder $builder) {
             $builder->where('user_id', Auth::id());
         });
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('order');
+        });
     }
 
     public function drawerItems()

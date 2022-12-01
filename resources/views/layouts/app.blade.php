@@ -38,6 +38,12 @@
 <script src="{{ asset('js/search.js') }}"></script>
 <script src="{{asset('vendor/toastr.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+
+
+<script src="{{asset("js/jquery-ui.min.js")}}"></script>
+<script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
+<script src="{{asset('js/content.js')}}"></script>
+
 @yield('script')
 @stack('script')
 <script src="{{ asset('/sw.js') }}"></script>
