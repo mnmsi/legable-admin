@@ -15,8 +15,10 @@
         <div class="header-btn">
             @if(count($btn)>0)
                 @if($showBtn)
-                    <button class="add-btn addBoxCls" id="{{$btn['id']}}"
-                            onclick="{{$btn['fnClick'] ?: ""}}">{{$btn['text']}}</button>
+                    @if($content_type != 'box')
+                        <button class="add-btn addBoxCls" id="{{$btn['id']}}"
+                                onclick="{{$btn['fnClick'] ?: ""}}">{{$btn['text']}}</button>
+                    @endif
                 @endif
             @endif
             @if(count($link)>0)
