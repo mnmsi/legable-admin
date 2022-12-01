@@ -1,4 +1,4 @@
-@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=> [ 'id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>'/file/upload','text'=>'Upload Content'], 'showBtn' => $showBtn ?? true])
+@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=> [ 'id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>route('file.upload', [($content_type ?? 'drawer')=>($drawer_id ?? 'all')]),'text'=>'Upload Content'], 'showBtn' => $showBtn ?? true])
 <div class="block-wrapper block-min-height content-wrappers">
     <div class="top-block">
         <h6 class="sub-header6 mb-4 text-capitalize">
@@ -18,7 +18,7 @@
             All Contents
         </h6>
         <div class="conten-items">
-        @foreach($contents as $content)
+            @foreach($contents as $content)
                 <x-content :type="$content['content_type']" :required-pass="$content['is_password_required']"
                            title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"
                            id="{{$content['id']}}"/>

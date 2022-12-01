@@ -45,15 +45,20 @@ class FileRequest extends FormRequest
     {
         if (!empty($this->drawer)) {
             $drawer    = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
+            if (!$drawer) {
+                $drawer    = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
+            }
             $parent_id = $drawer->id;
             $password  = Hash::make($drawer->password);
         } else {
             $parent_id = null;
             $password  = Hash::make($this->security_key);
         }
+
         if (!$this->hasFile('file') && !$this->file('file')->isValid()) {
             abort(404);
         }
+
         $this->merge([
             'content_type'           => 'file',
             'parent_id'              => $parent_id,

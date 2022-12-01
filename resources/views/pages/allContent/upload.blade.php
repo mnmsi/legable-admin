@@ -17,13 +17,23 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Select Drawer</label>
-                    <select class="form-select" aria-label="Default select example" name="drawer">
-                        <option value="">select a drawer</option>
-                        @foreach($drawers as $drawer)
-                            <option
-                                value="{{$drawer['id']}}" {{old('drawer') == $drawer['id'] ? 'selected':''}}>{{$drawer['name']}}</option>
-                        @endforeach
-                    </select>
+                    @if(request()->has("drawer"))
+                        <select class="form-select" aria-label="Default select example" name="drawer">
+                            <option value="">select a drawer</option>
+                            @foreach($drawers as $drawer)
+                                <option
+                                    value="{{$drawer['id']}}" {{old('drawer', request("drawer")) == $drawer['id'] ? 'selected':''}}>{{$drawer['name']}}</option>
+                            @endforeach
+                        </select>
+                    @else
+                        <select class="form-select" aria-label="Default select example" name="drawer">
+                            <option value="">select a drawer</option>
+                            @foreach($boxes as $box)
+                                <option
+                                    value="{{$box['id']}}" {{old('drawer', request("box")) == $box['id'] ? 'selected':''}}>{{$box['name']}}</option>
+                            @endforeach
+                        </select>
+                    @endif
                     @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                 </div>
 
