@@ -32,7 +32,7 @@ class DrawerRequest extends FormRequest
         }
 
         return [
-            'drawer_name'       => 'required|string|max:255',
+            'drawer_name'       => 'required|unique:App\Models\Content\Content,name|string|max:255',
             'drawer_password'   => 'required|string|max:255',
             'password_required' => 'required|integer|in:0,1',
             'master_key'        => 'nullable|integer|in:0,1', //need update
