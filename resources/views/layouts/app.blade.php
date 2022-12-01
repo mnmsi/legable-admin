@@ -45,15 +45,17 @@
     // $(window).on('load', function () {
     //     $("#loader").fadeOut();
     // })
+
     @if(Session::has('success'))
-    toastr.success('<?php echo session('success'); ?>')
+    toastr.success('{{session('success')}}')
     @endif
     @if(Session::has('warning'))
-    toastr.warning('<?php echo session('warning'); ?>')
+    toastr.warning('{{session('warning')}}')
     @endif
     @if(Session::has('error'))
-    toastr.error('<?php echo session('error'); ?>')
+    toastr.error('{{session('error')}}')
     @endif
+
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);
