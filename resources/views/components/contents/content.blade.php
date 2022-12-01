@@ -1,4 +1,5 @@
-@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=> [ 'id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>route('file.upload', [($content_type ?? 'drawer')=>($drawer_id ?? 'all')]),'text'=>'Upload Content'], 'showBtn' => $showBtn ?? true, 'contentType' => $content_type ?? 'drawer'])
+@include('includes.pageHeader',['title'=>'All Contents','list'=>['Dashboard','All Contents'],'btn'=> [ 'id'=>'add_box','text'=>'+ Add Box', 'fnClick' => $drawerFn ?? "" ],'link'=>['url'=>route('file.upload', [(($content_type ?? 'drawer') === 'boxes' ? 'drawer' : 'boxes')=>($drawer_id ?? 'all')]),'text'=>'Upload Content'], 'showBtn' => $showBtn ?? true, 'contentType' => $content_type ?? 'drawer'])
+
 <div class="block-wrapper block-min-height content-wrappers">
     @if(($content_type ?? 'drawers') !== 'contents')
         <div class="top-block">

@@ -30,7 +30,7 @@
                             <option value="">select a drawer</option>
                             @foreach($boxes as $box)
                                 <option
-                                    value="{{$box['id']}}" {{old('drawer', request("box")) == $box['id'] ? 'selected':''}}>{{$box['name']}}</option>
+                                    value="{{$box['id']}}" {{old('drawer', request("boxes")) == $box['id'] ? 'selected':''}}>{{$box['name']}}</option>
                             @endforeach
                         </select>
                     @endif
