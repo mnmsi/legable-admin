@@ -16,7 +16,6 @@
                     <div class="col-12">
                         <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data" id="fileUploadForm">
                             @csrf
-                            <input type="hidden" name="use_master_key" value="1">
                             <div class="mb-3">
                                 <h5 class="sub-header5 mb-3">Upload a File</h5>
                                 <label for="file-upload" class="custom-file-upload">
@@ -35,10 +34,12 @@
                                 </select>
                                 @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                             </div>
-                            {{--                        <div class="form-check form-switch d-flex justify-content-end align-items-center">--}}
-                            {{--                            <input class="form-check-input" type="checkbox" id="checkPass" checked>--}}
-                            {{--                            <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>--}}
-                            {{--                        </div>--}}
+                            <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                                <input  class="form-check-input" type="checkbox" id="master_key"
+                                        name="use_master_key"
+                                        value="1" checked>
+                                <label class="form-check-label ms-3" for="master_key"> Use Master Key</label>
+                            </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary my-4 submit-btn">Upload</button>
                             </div>
