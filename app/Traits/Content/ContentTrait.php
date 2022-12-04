@@ -3,6 +3,7 @@
 namespace App\Traits\Content;
 
 use App\Models\Content\Content;
+use Illuminate\Support\Carbon;
 
 trait ContentTrait
 {
@@ -11,6 +12,12 @@ trait ContentTrait
     public function drawers()
     {
         return Content::where('content_type', 'drawer')
+                      ->get();
+    }
+
+    public function boxes()
+    {
+        return Content::where('content_type', 'box')
                       ->get();
     }
 
@@ -57,5 +64,31 @@ trait ContentTrait
     public function dataResource($data)
     {
         return manipulate_data($data, self::$defaultAttr);
+    }
+
+    public function getDrawers()
+    {
+        return array_map(function ($item) {
+            return [
+                'id'                => myEncrypt($item->id),
+                'name'              => $item->name,
+                'content_type'      => $item->content_type,
+                'password_required' => $item->is_password_required,
+                'date'              => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+            ];
+        }, $this->drawers()->all());
+    }
+
+    public function getBoxes()
+    {
+        return array_map(function ($item) {
+            return [
+                'id'                => myEncrypt($item->id),
+                'name'              => $item->name,
+                'content_type'      => $item->content_type,
+                'password_required' => $item->is_password_required,
+                'date'              => Carbon::parse($item->created_at)->format('M d, Y, h:m A'),
+            ];
+        }, $this->boxes()->all());
     }
 }

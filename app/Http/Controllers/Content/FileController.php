@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Content\AjaxFileRequest;
 use App\Http\Requests\Content\FileRequest;
 use App\Models\Content\Content;
 use Illuminate\Http\Request;
@@ -41,9 +42,18 @@ class FileController extends Controller
         return redirect()->route('content')->withSuccess('Success!');
     }
 
-    public function storeAjax(Request $request)
+    public function storeAjax(AjaxFileRequest $request)
     {
-        dd($request->all(), $request->file("file"));
+        $content = Content::create($request->all());
+
+        if (!$content) {
+            abort(404);
+        }
+
+        return response()->json([
+            'status' => true,
+            'msg'    => ["Successfully upload content!!"]
+        ]);
     }
 
     public function getFile($id)

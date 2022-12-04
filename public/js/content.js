@@ -93,26 +93,28 @@ $('#uploadFileAjax').on('show.bs.modal', function (e) {
     let contentType = button.data('content-type');
     let contentId = button.data('content-id');
 
-    //populate the textbox
-    $(e.currentTarget).find('input[name="content_type"]').val(contentType);
-    $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+    if (contentType === 'drawer') {
+        $("#contentDrawerDiv").show();
+        $('#drawerSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#boxSelectId").removeAttr("name")
+    } else {
+        $("#contentBoxDiv").show();
+        $('#boxSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#drawerSelectId").removeAttr("name")
+    }
 });
 
 function uploadFileByAjax(event, that, url) {
     event.preventDefault();
 
-    let data = new FormData(that);
-
-    for (const pair of data.entries()) {
-        console.log(`${pair[0]}, ${pair[1]}`);
-    }
-
+    let formData = new FormData(that);
+    formData.append('file', $("#file-upload")[0].files[0])
 
     $.ajax({
-        type: 'POST',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        method: 'POST',
         url: url,
-        // headers: {'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')},
-        data: new FormData(that),
+        data: formData,
         processData: false,
         contentType: false,
         dataType: 'json',

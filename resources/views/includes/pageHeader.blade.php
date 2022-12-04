@@ -24,7 +24,7 @@
             @if(count($link)>0)
                 {{--                <a href="{{$link['url']}}" class="redirect">{{$link['text']}}</a>--}}
                 <button type="button" class="redirect" id="uploadContentBtn" onclick="showContentModal(this)"
-                        data-content-type="{{$content_type == 'boxes' ? 'drawer' : 'box'}}"
+                        data-content-type="{{($content_type ?? 'drawer') == 'boxes' ? 'drawer' : 'box'}}"
                         data-content-id="{{$contentId}}">{{$link['text']}}</button>
             @endif
         </div>
