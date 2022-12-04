@@ -22,6 +22,8 @@ class LoginController extends Controller
     |
     */
 
+    public int $maxAttempts = 999999;
+
     use AuthTrait, AuthenticatesUsers {
         login as authTraitLogin;
         logout as authTraitLogout;
@@ -47,7 +49,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $login = $this->authTraitLogin($request);
-
         if ($login->getStatusCode()) {
             $this->storeDevice($request, Auth::user());
         }
