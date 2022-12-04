@@ -108,7 +108,7 @@ function uploadFileByAjax(event, that, url) {
     event.preventDefault();
 
     let formData = new FormData(that);
-    formData.append('file', $("#file-upload")[0].files[0])
+    formData.append('file', $("#fileUpload")[0].files[0])
 
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
