@@ -30,7 +30,7 @@ class ResetPasswordRequest extends FormRequest
     {
         return [
             'old_password' => 'required|string|max:255',
-            'new_password' => 'required|string|max:255',
+            'new_password' => 'required|string|max:255|min:8',
         ];
     }
     protected function passedValidation()

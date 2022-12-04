@@ -9,6 +9,11 @@
                 <div class="card form-container-card">
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
+                            @if (session('success'))
+                                <div class="alert alert-success py-2" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <form method="POST" action="{{ route('login') }}" class="login-form">
                                 @csrf
                                 <div class="form-group all-form-wrapper input-wrapper">
