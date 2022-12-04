@@ -20,8 +20,6 @@ function showSecurityPanel(contentKey, contentName, contentType) {
 function enterDrawer(url, that) {
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
 
-    console.log(url, that, dataObj)
-
     $("#contents").load(url, function (responseTxt) {
         dataObj.data = responseTxt
         history.pushState(dataObj, dataObj.drawer_name)
@@ -74,7 +72,6 @@ function showContent(image) {
     $("#fileShowModal").modal('show')
 }
 
-
 function addBoxClick(id) {
     $("#drawerId").val(id);
     let box = $("#box-drawer");
@@ -82,6 +79,64 @@ function addBoxClick(id) {
     $(`#box-drawer option[value=${id}]`).attr("selected", true);
     let value = box.val();
     $("#addBoxModal").modal('show');
+}
+
+function showContentModal(that) {
+    $('#uploadFileAjax').modal('show');
+}
+
+//triggered when modal is about to be shown
+$('#uploadFileAjax').on('show.bs.modal', function (e) {
+
+    let button = $("#uploadContentBtn")
+    //get data-id attribute of the clicked element
+    let contentType = button.data('content-type');
+    let contentId = button.data('content-id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="content_type"]').val(contentType);
+    $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+
+    if (contentType === 'drawer') {
+        $("#contentDrawerDiv").show();
+        $('#drawerSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#boxSelectId").removeAttr("name")
+    } else {
+        $("#contentBoxDiv").show();
+        $('#boxSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#drawerSelectId").removeAttr("name")
+    }
+});
+
+function uploadFileByAjax(event, that, url) {
+    event.preventDefault();
+
+    let formData = new FormData(that);
+    formData.append('file', $("#fileUpload")[0].files[0])
+
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        method: 'POST',
+        url: url,
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function (response) {
+
+            if (response.status) {
+                $("#contents").html(response.data)
+                let dataObj = {url: location.href, drawer_name: response.drawer_name, data: response.data}
+                console.log(dataObj)
+                history.pushState(dataObj, dataObj.drawer_name)
+            }
+
+            $("#uploadFileAjax").modal('hide')
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
 }
 
 function orderDrawer(url, order) {

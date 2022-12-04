@@ -18,6 +18,7 @@ class ContentController extends Controller
 
         return view("pages.allContent.index", [
             'drawers'  => $this->drawersWithDefaultAttr($data ?? null),
+            'boxes'    => $this->getBoxes(),
             'contents' => $this->filesWithDefaultAttr($data ?? null)
         ]);
     }

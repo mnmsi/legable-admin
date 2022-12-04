@@ -127,9 +127,9 @@
             {{--   Profile end  --}}
             {{--  logout start--}}
             <div class="logout-button-wrapper">
-                <form method="POST" action="{{ route('logout') }}" id="logoutform">
+                <form method="POST" action="{{ route('logout') }}" id="logoutformS">
                     @csrf
-                    <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();">
+                    <a href="javascript:void(0)" onclick="document.getElementById('logoutformS').submit();">
                         <img src="{{asset("image/sidebar/logout.svg")}}" alt="image">
                         <div>Log out</div>
                     </a>

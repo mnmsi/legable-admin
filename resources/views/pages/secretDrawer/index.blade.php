@@ -21,6 +21,9 @@
 
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.addBox')
+    @include('includes.modal.fileUploadAjax')
+    @include('includes.modal.file_show')
+
 @endsection
 
 @section('script')
