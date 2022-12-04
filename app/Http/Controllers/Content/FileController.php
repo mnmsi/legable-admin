@@ -56,9 +56,10 @@ class FileController extends Controller
         $drawer = Content::find(myDecrypt($request->content_id));
 
         return response()->json([
-            'status' => true,
-            'msg'    => ["Successfully upload content!!"],
-            'data'   => $this->returnItemView($drawer, $request->content_id)->render()
+            'status'      => true,
+            'msg'         => ["Successfully upload content!!"],
+            'drawer_name' => $drawer->name,
+            'data'        => $this->returnItemView($drawer, $request->content_id)->render()
         ]);
     }
 

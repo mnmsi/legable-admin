@@ -123,9 +123,14 @@ function uploadFileByAjax(event, that, url) {
         contentType: false,
         dataType: 'json',
         success: function (response) {
+
             if (response.status) {
                 $("#contents").html(response.data)
+                let dataObj = {url: location.href, drawer_name: response.drawer_name, data: response.data}
+                console.log(dataObj)
+                history.pushState(dataObj, dataObj.drawer_name)
             }
+
             $("#uploadFileAjax").modal('hide')
         },
         error: function (error) {
