@@ -20,8 +20,6 @@ function showSecurityPanel(contentKey, contentName, contentType) {
 function enterDrawer(url, that) {
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
 
-    console.log(url, that, dataObj)
-
     $("#contents").load(url, function (responseTxt) {
         dataObj.data = responseTxt
         history.pushState(dataObj, dataObj.drawer_name)
@@ -74,7 +72,6 @@ function showContent(image) {
     $("#fileShowModal").modal('show')
 }
 
-
 function addBoxClick(id) {
     $("#drawerId").val(id);
     let box = $("#box-drawer");
@@ -82,6 +79,50 @@ function addBoxClick(id) {
     $(`#box-drawer option[value=${id}]`).attr("selected", true);
     let value = box.val();
     $("#addBoxModal").modal('show');
+}
+
+function showContentModal(that) {
+    $('#uploadFileAjax').modal('show');
+}
+
+//triggered when modal is about to be shown
+$('#uploadFileAjax').on('show.bs.modal', function (e) {
+
+    let button = $("#uploadContentBtn")
+    //get data-id attribute of the clicked element
+    let contentType = button.data('content-type');
+    let contentId = button.data('content-id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="content_type"]').val(contentType);
+    $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+});
+
+function uploadFileByAjax(event, that, url) {
+    event.preventDefault();
+
+    let data = new FormData(that);
+
+    for (const pair of data.entries()) {
+        console.log(`${pair[0]}, ${pair[1]}`);
+    }
+
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        // headers: {'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')},
+        data: new FormData(that),
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
 }
 
 function orderDrawer(url, order) {

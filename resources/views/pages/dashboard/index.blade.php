@@ -89,6 +89,7 @@
 
     </div>
     @include('includes.modal.fileUpload')
+    @include('includes.modal.fileUploadAjax')
     @include('includes.modal.welcomeCardModal')
     @include('includes.offcanvas.new-offcanvas')
     @include('includes.offcanvas.new-information')

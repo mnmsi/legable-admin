@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('file')->as('file.')->group(function () {
             Route::get('upload', [FileController::class, 'upload'])->name('upload');
             Route::post('store', [FileController::class, 'store'])->name('store');
+            Route::post('store-ajax', [FileController::class, 'storeAjax'])->name('store.ajax');
             Route::get('get/{id}', [FileController::class, 'getFile'])->name('get.file');
         });
 

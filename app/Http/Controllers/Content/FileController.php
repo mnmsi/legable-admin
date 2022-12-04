@@ -41,6 +41,11 @@ class FileController extends Controller
         return redirect()->route('content')->withSuccess('Success!');
     }
 
+    public function storeAjax(Request $request)
+    {
+        dd($request->all(), $request->file("file"));
+    }
+
     public function getFile($id)
     {
         $content = Content::find(myDecrypt($id));
