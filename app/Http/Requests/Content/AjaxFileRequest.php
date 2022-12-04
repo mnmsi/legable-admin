@@ -81,7 +81,8 @@ class AjaxFileRequest extends FormRequest
             'name'                   => $this->file->getClientOriginalName(),
             'file_url'               => file_upload($password, $this->file),
             'password'               => $password,
-            'is_password_required'   => $this->file_password_required,
+            'is_password_required'   => 1,
+//            'is_password_required'   => $this->file_password_required ?? 1,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
     }
