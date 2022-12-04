@@ -19,12 +19,15 @@
                               onsubmit="uploadFileByAjax(event, this, '{{route('file.store.ajax')}}')">
                             @csrf
 
+                            <input type="hidden" name="content_type">
+                            <input type="hidden" name="content_id">
+
                             <div class="mb-3">
                                 <h5 class="sub-header5 mb-3">Upload a File</h5>
                                 <label for="fileUpload" class="custom-file-upload">
                                     select a file to upload
                                 </label>
-                                <input id="fileUpload" type="file" name="file"/>
+                                <input id="fileUpload" type="file" name="file" style="display: none"/>
                                 @include("components.utils.form_field_alert", ['name'=> 'file'])
                             </div>
 

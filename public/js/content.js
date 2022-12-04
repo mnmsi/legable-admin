@@ -93,6 +93,10 @@ $('#uploadFileAjax').on('show.bs.modal', function (e) {
     let contentType = button.data('content-type');
     let contentId = button.data('content-id');
 
+    //populate the textbox
+    $(e.currentTarget).find('input[name="content_type"]').val(contentType);
+    $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+
     if (contentType === 'drawer') {
         $("#contentDrawerDiv").show();
         $('#drawerSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
@@ -119,7 +123,10 @@ function uploadFileByAjax(event, that, url) {
         contentType: false,
         dataType: 'json',
         success: function (response) {
-            console.log(response)
+            if (response.status) {
+                $("#contents").html(response.data)
+            }
+            $("#uploadFileAjax").modal('hide')
         },
         error: function (error) {
             console.log(error)

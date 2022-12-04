@@ -95,6 +95,8 @@
     @include('includes.offcanvas.new-information')
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.addBox')
+    @include('includes.modal.file_show')
+
     {{-- page content end --}}
 @endsection
 @section('script')
