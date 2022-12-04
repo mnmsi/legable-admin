@@ -24,6 +24,7 @@ class Content extends BaseModel
         'is_password_required',
         'is_able_use_master_key',
         'uses_at',
+        'order',
         'created_at',
         'updated_at'
     ];
@@ -49,6 +50,10 @@ class Content extends BaseModel
         parent::booted();
         static::addGlobalScope('user', function (Builder $builder) {
             $builder->where('user_id', Auth::id());
+        });
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('order');
         });
     }
 

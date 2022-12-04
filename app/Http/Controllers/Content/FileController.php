@@ -25,7 +25,8 @@ class FileController extends Controller
     public function upload()
     {
         return view("pages.allContent.upload", [
-            'drawers' => manipulate_data(Content::where('content_type', 'drawer')->get()->all(), ['id', 'name'])
+            'drawers' => manipulate_data(Content::where('content_type', 'drawer')->get()->all(), ['id', 'name']),
+            'boxes'   => manipulate_data(Content::where('content_type', 'box')->get()->all(), ['id', 'name'])
         ]);
     }
 

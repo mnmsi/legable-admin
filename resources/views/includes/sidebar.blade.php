@@ -18,7 +18,7 @@
         <div class="sidebar-menu">
             {{--            single menu item--}}
             <a href="/"
-               class="single-menu-wrapper {{ (request()->is('/') || request()->is('search-empty')) ? 'active' : '' }}">
+               class="single-menu-wrapper {{ (request()->is('/') || request()->is('search-empty')) ? 'active' : '' }}" id="dashboard">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/dashboard.svg")}}" alt="icon">
@@ -28,7 +28,7 @@
             </a>
             {{--            single menu item--}}
             {{--            single menu item--}}
-            <a href="/drawer" class="single-menu-wrapper {{ (request()->segment(1)=='drawer') ? 'active' : '' }}">
+            <a href="/drawer" class="single-menu-wrapper {{ (request()->segment(1)=='drawer') ? 'active' : '' }}" id="secretDrawer">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/secret.svg")}}" alt="icon">

@@ -7,6 +7,7 @@ use App\Http\Requests\Content\DrawerRequest;
 use App\Models\Content\Content;
 use App\Traits\Content\DrawerTrait;
 use App\Traits\Content\SecurityTrait;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class DrawerController extends Controller
@@ -53,5 +54,16 @@ class DrawerController extends Controller
         }
 
         return $this->returnItemView($drawer, $id);
+    }
+
+    public function orderDrawer(Request $request)
+    {
+        foreach ($request->order as $key => $order) {
+            Content::find(myDecrypt($order))->update([
+                'order' => $key
+            ]);
+        }
+
+        return true;
     }
 }

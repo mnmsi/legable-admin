@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
             Route::get('add', [DrawerController::class, 'add'])->name('add');
             Route::post('create', [DrawerController::class, 'create'])->name('create');
             Route::get('items/{id}', [DrawerController::class, 'items'])->name('items');
+            Route::post('order', [DrawerController::class, 'orderDrawer'])->name('order');
         });
 
         //box

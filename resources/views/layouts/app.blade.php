@@ -38,6 +38,12 @@
 <script src="{{ asset('js/search.js') }}"></script>
 <script src="{{asset('vendor/toastr.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+
+
+<script src="{{asset("js/jquery-ui.min.js")}}"></script>
+<script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
+<script src="{{asset('js/content.js')}}"></script>
+
 @yield('script')
 @stack('script')
 <script src="{{ asset('/sw.js') }}"></script>
@@ -45,15 +51,17 @@
     // $(window).on('load', function () {
     //     $("#loader").fadeOut();
     // })
+
     @if(Session::has('success'))
-    toastr.success('<?php echo session('success'); ?>')
+    toastr.success('{{session('success')}}')
     @endif
     @if(Session::has('warning'))
-    toastr.warning('<?php echo session('warning'); ?>')
+    toastr.warning('{{session('warning')}}')
     @endif
     @if(Session::has('error'))
-    toastr.error('<?php echo session('error'); ?>')
+    toastr.error('{{session('error')}}')
     @endif
+
     if (!navigator.serviceWorker?.controller) {
         navigator.serviceWorker?.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);

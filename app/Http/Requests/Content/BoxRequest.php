@@ -39,7 +39,7 @@ class BoxRequest extends FormRequest
         }
 
         return [
-            'box_name'          => 'required|string|max:255',
+            'box_name'          => 'required|unique:App\Models\Content\Content,name|string|max:255',
             'drawer'            => 'required|string|exists:App\Models\Content\Content,id',
             'password_required' => 'required|integer|in:0,1',
             'use_master_key'    => 'required|integer|in:0,1',

@@ -4,12 +4,14 @@
     <div id="contents">
         <x-breadcrumb title="Drawers" subtitle="Everything is encrypted here!" buttonText="+ Add Drawer "
                       link="/drawer/add"/>
-        <div class="block-wrapper block-min-height wrapper-block">
+        <div class="block-wrapper block-min-height wrapper-block" id="contents">
             @foreach($drawers as $drawer)
-                <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
-                        date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
-                        :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
-                        :type="$drawer['content_type']"/>
+                <div class="all-contents" id="{{$drawer['id']}}">
+                    <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
+                            date="{{$drawer['date']}}" :data-drawer="$drawer['id']" :data-drawer-name="$drawer['name']"
+                            :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
+                            :type="$drawer['content_type']"/>
+                </div>
             @endforeach
         </div>
         {{-- add new button --}}
@@ -22,11 +24,31 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/content.js')}}"></script>
     <script>
-        $(".addBoxCls").on("click", function () {
-            $('#addBoxModal').modal('show');
-        });
+        $(document).ready(function () {
+            $(".addBoxCls").on("click", function () {
+                $('#addBoxModal').modal('show');
+            });
+
+            $("#contents").sortable({
+                animation: 200,
+                // dropOnEmpty: false,
+                scroll: true,
+                scrollSpeed: 300,
+                axis: "x,y",
+                classes: {
+                    "ui-sortable": "highlight"
+                },
+                tolerance: "pointer",
+                items: ".all-contents",
+                update: function () {
+                    let order = $("#contents").sortable('toArray');
+                    console.log(order)
+                    orderDrawer('{{route('drawer.order')}}', order)
+                }
+            });
+
+        })
     </script>
 @endsection
 
