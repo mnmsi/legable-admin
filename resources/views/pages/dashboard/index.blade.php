@@ -99,8 +99,7 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            //content add box
-            //    show file name
+            //  show file name
             $("#file-upload").on("change", function (e) {
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
             })

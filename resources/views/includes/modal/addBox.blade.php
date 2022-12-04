@@ -15,7 +15,8 @@
                 <div class="row all-form-wrapper mt-5">
                     <form action="{{route('box.create')}}" method="post">
                         @csrf
-                        <input type="hidden" name="use_master_key" value="1">
+
+
                         <input type="hidden" name="drawer" value="" id="drawerId">
                         <div class="col-12">
                             <div>
@@ -32,7 +33,8 @@
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Select Information Template</label>
-                                <select class="form-select" aria-label="Default select example" name="drawer" id="box-drawer">
+                                <select class="form-select" aria-label="Default select example" name="drawer"
+                                        id="box-drawer">
                                     <option selected>select a template</option>
                                     @foreach($drawers as $drawer)
                                         <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
@@ -40,12 +42,22 @@
                                 </select>
                                 @include('components.utils.form_field_alert', ['name' => 'drawer'])
                             </div>
+                            <div class="d-flex justify-content-between align-items-center">
 
-                            <div class="form-check form-switch d-flex justify-content-end align-items-center">
-                                <input class="form-check-input" type="checkbox" id="checkPass" name="password_required"
-                                       value="1" checked>
-                                <label class="form-check-label ms-3" for="checkPass">Box Requires a Password</label>
+                                <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                                    <input disabled class="form-check-input" type="checkbox" id="checkPass"
+                                           name="use_master_key"
+                                           value="1" checked>
+                                    <label class="form-check-label ms-3" for="checkPass"> Use Master Key</label>
+                                </div>
+                                <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                                    <input class="form-check-input" type="checkbox" id="checkPass"
+                                           name="password_required"
+                                           value="1" checked>
+                                    <label class="form-check-label ms-3" for="checkPass">Box Requires a Password</label>
+                                </div>
                             </div>
+
 
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary my-4 submit-btn">Add to Drawer</button>

@@ -6,7 +6,6 @@
             @include('components.contents.content', ['showBtn' => false])
         </div>
     </div>
-
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.file_show')
     @include('includes.modal.addBox')

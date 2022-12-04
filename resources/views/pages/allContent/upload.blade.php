@@ -37,10 +37,18 @@
                     @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                 </div>
 
-                <div class="form-check form-switch d-flex justify-content-end">
-                    <input class="form-check-input" type="checkbox" id="checkPass" name="file_password_required"
-                           value="1">
-                    <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                        <input style="margin-bottom: 6px" disabled class="form-check-input" type="checkbox" id="master"
+                               name="use_master_key"
+                               value="1" checked>
+                        <label class="form-check-label ms-3" for="master"> Use Master Key</label>
+                    </div>
+                    <div class="form-check form-switch d-flex justify-content-end">
+                        <input style="margin-top: 6px" class="form-check-input" type="checkbox" id="checkPass" name="file_password_required"
+                               value="1">
+                        <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
+                    </div>
                 </div>
 
                 <div class="mb-3" style="display: none" id="passwordField">
