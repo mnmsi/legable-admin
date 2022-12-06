@@ -3,10 +3,9 @@
     <x-breadcrumb title="Upload File" subtitle="upload and get the the best security for your files"/>
     <div class="block-wrapper block-min-height content-upload-wrapper all-form-wrapper">
         <div class="form-body">
-
             <form action="{{route('file.store')}}" method="POST" enctype="multipart/form-data" class="upload_form">
                 @csrf
-{{--                <input type="hidden" name="use_master_key" value="1">--}}
+                {{--                <input type="hidden" name="use_master_key" value="1">--}}
                 <div class="mb-3">
                     <h5 class="sub-header5 mb-3">Upload a File</h5>
                     <label for="file-upload" class="custom-file-upload">
@@ -36,28 +35,26 @@
                     @endif
                     @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                 </div>
-
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="form-check form-switch d-flex justify-content-end align-items-center">
-                        <input style="margin-bottom: 6px"  class="form-check-input" type="checkbox" id="master"
+                        <input style="margin-bottom: 6px" class="form-check-input" type="checkbox" id="master"
                                name="use_master_key"
                                value="1" checked>
                         <label class="form-check-label ms-3" for="master"> Use Master Key</label>
                     </div>
                     <div class="form-check form-switch d-flex justify-content-end">
-                        <input style="margin-top: 6px" class="form-check-input" type="checkbox" id="checkPass" name="file_password_required"
+                        <input style="margin-top: 6px" class="form-check-input" type="checkbox" id="checkPass"
+                               name="file_password_required"
                                value="1">
                         <label class="form-check-label ms-3" for="checkPass">File Requires a Password</label>
                     </div>
                 </div>
-
                 <div class="mb-3" style="display: none" id="passwordField">
                     <label for="security_key" class="form-label">Password</label>
                     <input type="password" class="form-control" id="security_key" name="security_key"
                            placeholder="Enter password" value="{{old('security_key')}}">
                     @include('components.utils.form_field_alert', ['name' => 'security_key'])
                 </div>
-
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary my-4 submit-btn">Upload</button>
                 </div>
