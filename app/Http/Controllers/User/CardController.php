@@ -7,6 +7,7 @@ use App\Http\Requests\User\CardRequest;
 use App\Traits\System\StripePaymentTrait;
 use App\Traits\User\CardTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
@@ -24,7 +25,7 @@ class CardController extends Controller
         }
 
         $request['brand'] = strtolower($card->card->brand);
-        if (!$this->create($request->all())) {
+        if (!$this->updateOrCreate(['user_id' => Auth::id(), 'number' => $request->number], $request->all())) {
             abort(404);
         }
 
