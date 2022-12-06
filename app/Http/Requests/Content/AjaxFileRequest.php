@@ -3,7 +3,9 @@
 namespace App\Http\Requests\Content;
 
 use App\Models\Content\Content;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -82,8 +84,18 @@ class AjaxFileRequest extends FormRequest
             'file_url'               => file_upload($password, $this->file),
             'password'               => $password,
             'is_password_required'   => 1,
-//            'is_password_required'   => $this->file_password_required ?? 1,
+            //            'is_password_required'   => $this->file_password_required ?? 1,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => false,
+                'errors' => view("components.utils.top_alert", ['errors' => $validator->errors()])->render(),
+            ], 422)
+        );
     }
 }

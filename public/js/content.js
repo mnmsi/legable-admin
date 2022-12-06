@@ -8,8 +8,11 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
 });
 
-// show modal
+$("#uploadFileAjax").on("hidden.bs.modal", function () {
+    $("#contentErrors").html("")
+});
 
+// show modal
 function showSecurityPanel(contentKey, contentName, contentType) {
     $('input#drawer-key').val(contentKey)
     $('input#drawer-name').val(contentName)
@@ -125,16 +128,21 @@ function uploadFileByAjax(event, that, url) {
         success: function (response) {
 
             if (response.status) {
+
                 $("#contents").html(response.data)
                 let dataObj = {url: location.href, drawer_name: response.drawer_name, data: response.data}
                 console.log(dataObj)
-                history.pushState(dataObj, dataObj.drawer_name)
-            }
+                history.replaceState(dataObj, dataObj.drawer_name)
 
-            $("#uploadFileAjax").modal('hide')
+                //Hide modal
+                $("#uploadFileAjax").modal('hide')
+
+            } else {
+                $("#contentErrors").html(response.errors)
+            }
         },
         error: function (error) {
-            console.log(error)
+            $("#contentErrors").html(error.responseJSON.errors)
         }
     });
 }

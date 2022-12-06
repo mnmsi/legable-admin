@@ -19,6 +19,8 @@
                               onsubmit="uploadFileByAjax(event, this, '{{route('file.store.ajax')}}')">
                             @csrf
 
+                            <div id="contentErrors"></div>
+
                             <input type="hidden" name="content_type">
                             <input type="hidden" name="content_id">
 
