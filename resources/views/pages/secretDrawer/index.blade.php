@@ -27,6 +27,7 @@
 @endsection
 
 @section('script')
+    <script src="{{asset("js/content.js")}}"></script>
     <script>
         $(document).ready(function () {
             $(".addBoxCls").on("click", function () {
