@@ -5,6 +5,7 @@ namespace App\Http\Requests\Content;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class DrawerRequest extends FormRequest
 {
@@ -18,6 +19,15 @@ class DrawerRequest extends FormRequest
         return Auth::check();
     }
 
+    protected function prepareForValidation()
+    {
+        if (!isset($this->password_required)) {
+            $this->merge([
+                'password_required' => 0
+            ]);
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,14 +35,14 @@ class DrawerRequest extends FormRequest
      */
     public function rules()
     {
-        if (!isset($this->password_required)) {
-            $this->merge([
-                'password_required' => 0
-            ]);
-        }
-
         return [
-            'drawer_name'       => 'required|unique:App\Models\Content\Content,name,user_id,' . Auth::id() . '|string|max:255',
+            'drawer_name'       => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('contents', 'name')
+                    ->where('user_id', Auth::id())
+            ],
             'drawer_password'   => 'required|string|max:255',
             'password_required' => 'required|integer|in:0,1',
             'master_key'        => 'nullable|integer|in:0,1', //need update
