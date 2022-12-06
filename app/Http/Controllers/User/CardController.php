@@ -20,8 +20,16 @@ class CardController extends Controller
 
     public function storeCard(CardRequest $request)
     {
-        if (!$card = $this->validateCard($request->all())) {
-            abort(404);
+        try {
+            if (!$card = $this->validateCard($request->all())) {
+                abort(404);
+            }
+        }
+        catch (\Exception $exception) {
+            return redirect()
+                ->back()
+                ->withErrors(['number' => $exception->getMessage()])
+                ->withInput();
         }
 
         $request['brand'] = strtolower($card->card->brand);
