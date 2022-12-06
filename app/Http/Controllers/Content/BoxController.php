@@ -16,6 +16,10 @@ class BoxController extends Controller
             abort(404);
         }
 
-        return redirect()->back()->withSuccess("Success!");
+        return response()->json([
+            'status'      => true,
+            'drawer_name' => $content->name,
+            'msg'         => '<small class="text-small text-success ml-3">Successfully created!!</small>'
+        ]);
     }
 }

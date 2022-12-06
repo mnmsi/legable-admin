@@ -5,6 +5,7 @@ namespace App\Http\Requests\Content;
 use App\Models\Content\Content;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 
 class BoxRequest extends FormRequest
@@ -19,12 +20,7 @@ class BoxRequest extends FormRequest
         return Auth::check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    protected function prepareForValidation()
     {
         if (!empty($this->drawer)) {
             $this->merge([
@@ -37,9 +33,17 @@ class BoxRequest extends FormRequest
                 'password_required' => 0
             ]);
         }
+    }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
         return [
-            'box_name'          => 'required|unique:App\Models\Content\Content,name|string|max:255',
+            'box_name'          => 'required|unique:App\Models\Content\Content,name,user_id,' . Auth::id() . '|string|max:255',
             'drawer'            => 'required|string|exists:App\Models\Content\Content,id',
             'password_required' => 'required|integer|in:0,1',
             'use_master_key'    => 'required|integer|in:0,1',
@@ -62,5 +66,15 @@ class BoxRequest extends FormRequest
             'is_password_required'   => $this->password_required,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => false,
+                'errors' => view("components.utils.top_alert", ['errors' => $validator->errors()])->render(),
+            ], 422)
+        );
     }
 }

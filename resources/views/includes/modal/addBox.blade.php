@@ -13,8 +13,11 @@
                     <img src="{{asset('/image/drawer/modalIcon2.svg')}}" alt="" class="img-fluid"/>
                 </div>
                 <div class="row all-form-wrapper mt-5">
-                    <form action="{{route('box.create')}}" method="post">
+                    <form method="post" id="boxCreateFormId"
+                          onsubmit="uploadBoxByAjax(event, this, '{{route('box.create')}}')">
                         @csrf
+
+                        <div id="boxErrors"></div>
 
 
                         <input type="hidden" name="drawer" value="" id="drawerId">

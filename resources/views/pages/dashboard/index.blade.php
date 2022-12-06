@@ -89,11 +89,14 @@
 
     </div>
     @include('includes.modal.fileUpload')
+    @include('includes.modal.fileUploadAjax')
     @include('includes.modal.welcomeCardModal')
     @include('includes.offcanvas.new-offcanvas')
     @include('includes.offcanvas.new-information')
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.addBox')
+    @include('includes.modal.file_show')
+
     {{-- page content end --}}
 @endsection
 @section('script')
@@ -175,6 +178,18 @@
                 $(".text-small").hide();
                 $("#fileUploadForm")[0].reset();
             });
+
+            $("#checkPassA").change(function () {
+                if ($(this).is(":checked")) {
+                    $('#passwordField').show('fast');
+                } else {
+                    $('#passwordField').hide('fast');
+                }
+            });
+            //    show file name
+            $("#fileUpload").on("change", function (e) {
+                $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
+            })
         })
     </script>
 @endsection

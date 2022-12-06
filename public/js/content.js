@@ -8,8 +8,19 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
 });
 
-// show modal
+$("#uploadFileAjax").on("hidden.bs.modal", function () {
+    $("#fileUploadFormA").trigger('reset')
+    $("#contentErrors").html("")
+    $("#contentDrawerDiv").hide()
+    $("#contentBoxDiv").hide()
+});
 
+$("#addBoxModal").on("hidden.bs.modal", function () {
+    $("#boxCreateFormId").trigger('reset')
+    $("#boxErrors").html("")
+});
+
+// show modal
 function showSecurityPanel(contentKey, contentName, contentType) {
     $('input#drawer-key').val(contentKey)
     $('input#drawer-name').val(contentName)
@@ -19,8 +30,6 @@ function showSecurityPanel(contentKey, contentName, contentType) {
 
 function enterDrawer(url, that) {
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
-
-    console.log(url, that, dataObj)
 
     $("#contents").load(url, function (responseTxt) {
         dataObj.data = responseTxt
@@ -74,14 +83,83 @@ function showContent(image) {
     $("#fileShowModal").modal('show')
 }
 
-
 function addBoxClick(id) {
     $("#drawerId").val(id);
-    let box = $("#box-drawer");
-    box.prop('disabled', "disabled");
+    // let box = $("#box-drawer");
+    // box.prop('disabled', "disabled");
     $(`#box-drawer option[value=${id}]`).attr("selected", true);
-    let value = box.val();
+    // let value = box.val();
     $("#addBoxModal").modal('show');
+}
+
+function showContentModal(that) {
+    $('#uploadFileAjax').modal('show');
+}
+
+//triggered when modal is about to be shown
+$('#uploadFileAjax').on('show.bs.modal', function (e) {
+
+    let button = $("#uploadContentBtn")
+    //get data-id attribute of the clicked element
+    let contentType = button.data('content-type');
+    let contentId = button.data('content-id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="content_type"]').val(contentType);
+    $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+
+    console.log(contentType)
+
+    if (contentType === 'drawer') {
+        $("#contentDrawerDiv").show();
+        $('#drawerSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#boxSelectId").removeAttr("name")
+    } else {
+        $("#contentBoxDiv").show();
+        $('#boxSelectId option[value="' + contentId + '"]').attr('selected', 'selected')
+        $("#drawerSelectId").removeAttr("name")
+    }
+});
+
+function uploadFileByAjax(event, that, url) {
+    event.preventDefault();
+
+    let formData = new FormData(that);
+    formData.append('file', $("#fileUpload")[0].files[0])
+
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        method: 'POST',
+        url: url,
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function (response) {
+
+            if (response.status) {
+                showAjaxMessageOnDivById("contentErrors", "success", "Successful!!")
+
+                //Log data on content
+                $("#contents").html(response.data)
+
+                //Update state
+                let dataObj = {url: location.href, drawer_name: response.drawer_name, data: response.data}
+                history.replaceState(dataObj, dataObj.drawer_name)
+
+                //Hide modal after 3 seconds
+                setTimeout(function () {
+                    $("#uploadFileAjax").modal('hide')
+                }, 2000)
+
+            } else {
+                showAjaxMessageOnDivById("contentErrors", "danger", response.errors)
+            }
+        },
+        error: function (error) {
+            showHtmlOnAjaxResponse("contentErrors", error.responseJSON.errors)
+        }
+    });
 }
 
 function orderDrawer(url, order) {
@@ -97,6 +175,47 @@ function orderDrawer(url, order) {
             console.log("success")
         }, error: function (error) {
             console.log("error")
+        }
+    });
+}
+
+function uploadBoxByAjax(event, that, url) {
+    event.preventDefault();
+
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        method: 'POST',
+        url: url,
+        data: new FormData(that),
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function (response) {
+
+            if (response.status) {
+                showAjaxMessageOnDivById("boxErrors", "success", response.msg)
+
+                let drawerIn = $("#drawerId");
+                if (drawerIn.val() !== "" || drawerIn.val() !== null || drawerIn.val() !== undefined) {
+                    //Log data on content
+                    $("#contents").html(response.data)
+
+                    //Update state
+                    let dataObj = {url: location.href, drawer_name: response.drawer_name, data: response.data}
+                    history.replaceState(dataObj, dataObj.drawer_name)
+                }
+
+                //Hide modal after 3 seconds
+                setTimeout(function () {
+                    $("#addBoxModal").modal('hide')
+                }, 2000)
+
+            } else {
+                showAjaxMessageOnDivById("boxErrors", "danger", response.msg)
+            }
+        },
+        error: function (error) {
+            showHtmlOnAjaxResponse("boxErrors", error.responseJSON.errors)
         }
     });
 }

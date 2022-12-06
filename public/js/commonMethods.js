@@ -4,6 +4,10 @@ function showAjaxMessageOnDivById(id, type, msg) {
                         </div>`)
 }
 
+function showHtmlOnAjaxResponse(id, msg) {
+    $("#" + id).html(msg)
+}
+
 function showSmallText(id, type, msg) {
     $("#" + id).html(`<small class="text-small text-${type} ml-3" id="message">${msg}</small>`)
 }
