@@ -21,6 +21,13 @@ class CardRequest extends FormRequest
         return Auth::check();
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'number' => str_replace(" ", "", $this->number)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,16 +35,12 @@ class CardRequest extends FormRequest
      */
     public function rules()
     {
-        $this->merge([
-            'number' => str_replace(" ", "", $this->number)
-        ]);
-
         return [
             'name'      => 'required|string|max:255',
-            'number'    => 'required|integer',
-            'exp_month' => 'required|integer|between:1,12',
-            'exp_year'  => 'required|integer|digits:4|min:' . (date('Y')),
-            'cvc'       => 'required|integer|digits_between:3,4',
+            'number'    => 'required|numeric',
+            'exp_month' => 'required|numeric|between:1,12',
+            'exp_year'  => 'required|numeric|digits:4|min:' . (date('Y')),
+            'cvc'       => 'required|numeric|digits_between:3,4',
         ];
     }
 }
