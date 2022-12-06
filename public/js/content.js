@@ -11,6 +11,8 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
 $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $("#fileUploadFormA").trigger('reset')
     $("#contentErrors").html("")
+    $("#contentDrawerDiv").hide()
+    $("#contentBoxDiv").hide()
 });
 
 $("#addBoxModal").on("hidden.bs.modal", function () {
@@ -105,6 +107,8 @@ $('#uploadFileAjax').on('show.bs.modal', function (e) {
     //populate the textbox
     $(e.currentTarget).find('input[name="content_type"]').val(contentType);
     $(e.currentTarget).find('input[name="content_id"]').val(contentId);
+
+    console.log(contentType)
 
     if (contentType === 'drawer') {
         $("#contentDrawerDiv").show();
