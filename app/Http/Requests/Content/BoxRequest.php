@@ -33,6 +33,12 @@ class BoxRequest extends FormRequest
                 'password_required' => 0
             ]);
         }
+
+        if (!isset($this->use_master_key)) {
+            $this->merge([
+                'use_master_key' => 0
+            ]);
+        }
     }
 
     /**

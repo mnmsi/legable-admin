@@ -57,22 +57,18 @@
                                 @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="masterKey"
-                                               name="use_master_key" value="1" checked>
-                                        <label class="form-check-label ms-3" for="masterKey">Use master key</label>
-                                    </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                                    <input class="form-check-input" type="checkbox" id="masterKey"
+                                           name="use_master_key" value="1" checked>
+                                    <label class="form-check-label ms-3" for="masterKey">Use master key</label>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="checkPassA"
-                                               name="file_password_required"
-                                               value="1">
-                                        <label class="form-check-label ms-3" for="checkPassA">File Requires a
-                                            Password</label>
-                                    </div>
+                                <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                                    <input class="form-check-input" type="checkbox" id="checkPassA"
+                                           name="file_password_required"
+                                           value="1">
+                                    <label class="form-check-label ms-3" for="checkPassA">File Requires a
+                                        Password</label>
                                 </div>
                             </div>
 

@@ -26,6 +26,12 @@ class DrawerRequest extends FormRequest
                 'password_required' => 0
             ]);
         }
+
+        if (!isset($this->master_key)) {
+            $this->merge([
+                'master_key' => 0
+            ]);
+        }
     }
 
     /**
@@ -56,7 +62,7 @@ class DrawerRequest extends FormRequest
             'name'                   => $this->drawer_name,
             'password'               => Hash::make($this->drawer_password),
             'is_password_required'   => $this->password_required,
-            'is_able_use_master_key' => 1,
+            'is_able_use_master_key' => $this->master_key,
         ]);
     }
 }

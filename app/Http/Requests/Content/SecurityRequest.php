@@ -17,6 +17,15 @@ class SecurityRequest extends FormRequest
         return Auth::check();
     }
 
+    protected function prepareForValidation()
+    {
+        if (!empty($this->drawer_key)) {
+            $this->merge([
+                'drawer_id' => myDecrypt($this->drawer_key)
+            ]);
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,12 +33,6 @@ class SecurityRequest extends FormRequest
      */
     public function rules()
     {
-        if (!empty($this->drawer_key)) {
-            $this->merge([
-                'drawer_id' => myDecrypt($this->drawer_key)
-            ]);
-        }
-
         return [
             'security_key' => 'required|string|max:255',
             'drawer_id'    => 'required|integer|exists:App\Models\Content\Content,id',

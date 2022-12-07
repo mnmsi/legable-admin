@@ -19,10 +19,23 @@
                            placeholder="Enter security key" value="{{old('drawer_password')}}">
                     @include('components.utils.form_field_alert', ['name' => 'drawer_password'])
                 </div>
-                <div class="form-check form-switch d-flex justify-content-end">
-                    <input class="form-check-input" type="checkbox" id="checkPass" name="password_required" value="1" checked>
-                    <label class="form-check-label ms-3" for="checkPass">Requires Password</label>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="form-check form-switch d-flex justify-content-end align-items-center">
+                        <input style="margin-bottom: 6px" class="form-check-input" type="checkbox" id="master"
+                               name="master_key"
+                               value="1" checked>
+                        <label class="form-check-label ms-3" for="master"> Use Master Key</label>
+                    </div>
+                    <div class="form-check form-switch d-flex justify-content-end">
+                        <input style="margin-top: 6px" class="form-check-input" type="checkbox" id="checkPass"
+                               name="password_required"
+                               value="1" checked>
+                        <label class="form-check-label ms-3" for="checkPass">Requires Password</label>
+                    </div>
                 </div>
+
+
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary my-4 submit-btn">Create Drawer</button>
                 </div>

@@ -5,7 +5,7 @@
         <div class="form-body">
             <form action="{{route('file.store')}}" method="POST" enctype="multipart/form-data" class="upload_form">
                 @csrf
-                {{--                <input type="hidden" name="use_master_key" value="1">--}}
+
                 <div class="mb-3">
                     <h5 class="sub-header5 mb-3">Upload a File</h5>
                     <label for="file-upload" class="custom-file-upload">

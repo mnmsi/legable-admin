@@ -19,12 +19,7 @@ class FileRequest extends FormRequest
         return Auth::check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    protected function prepareForValidation()
     {
         if (!isset($this->file_password_required)) {
             $this->merge([
@@ -32,6 +27,20 @@ class FileRequest extends FormRequest
             ]);
         }
 
+        if (!isset($this->use_master_key)) {
+            $this->merge([
+                'use_master_key' => 0
+            ]);
+        }
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
         return [
             'file'                   => 'required|file|max:512000',
             'drawer'                 => 'required_if:security_key,null',
