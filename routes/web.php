@@ -20,7 +20,6 @@ use App\Http\Controllers\User\MasterKeyController;
 use App\Http\Controllers\User\PhoneVerificationController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
