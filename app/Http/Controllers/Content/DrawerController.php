@@ -10,6 +10,8 @@ use App\Traits\Content\DrawerTrait;
 use App\Traits\Content\SecurityTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class DrawerController extends Controller
 {
@@ -59,5 +61,33 @@ class DrawerController extends Controller
         }
 
         return true;
+    }
+
+    public function changeName(Request $request, $id)
+    {
+        $drawer = Content::find(myDecrypt($id));
+        if (!$drawer) {
+            abort(404);
+        }
+
+        if ($request->isMethod("POST")) {
+            return $this->updateDrawer($drawer, $request);
+        }
+
+        return view('pages.secretDrawer.changeName', [
+            'id'       => $id,
+            'name'     => $drawer->name,
+            'prev_url' => url()->previous()
+        ]);
+    }
+
+    public function changePassword($id)
+    {
+        dd($id);
+    }
+
+    public function delete($id)
+    {
+        dd($id);
     }
 }

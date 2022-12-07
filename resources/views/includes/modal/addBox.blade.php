@@ -38,7 +38,7 @@
                                 <label for="formFile" class="form-label">Select Information Template</label>
                                 <select class="form-select" aria-label="Default select example" name="drawer"
                                         id="box-drawer">
-                                    <option selected>select a template</option>
+                                    <option value="" selected>select a template</option>
                                     @foreach($drawers as $drawer)
                                         <option value="{{$drawer['id']}}">{{$drawer['name']}}</option>
                                     @endforeach

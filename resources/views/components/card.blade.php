@@ -12,9 +12,9 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu card-dropdown" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="{{$id}}">Change Password</a></li>
-                    <li><a class="dropdown-item" href="{{$id}}">Rename Drawer</a></li>
-                    <li><a class="dropdown-item" href="{{$id}}">Delete Drawer</a></li>
+                    <li><a class="dropdown-item" href="{{route('drawer.change.password', $id)}}">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{{route('drawer.change.name', $id)}}">Rename Drawer</a></li>
+                    <li><a class="dropdown-item" href="{{route('drawer.delete', $id)}}">Delete Drawer</a></li>
                 </ul>
             </div>
         </div>

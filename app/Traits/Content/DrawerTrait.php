@@ -2,6 +2,10 @@
 
 namespace App\Traits\Content;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 trait DrawerTrait
 {
     public static $defaultAttr = ['id', 'name', 'content_type', 'is_password_required', 'is_able_use_master_key'];
@@ -15,5 +19,34 @@ trait DrawerTrait
             'drawers'      => manipulate_data($items->drawerItems->where('content_type', 'box'), self::$defaultAttr),
             'contents'     => manipulate_data($items->drawerItems->where('content_type', 'file'), self::$defaultAttr)
         ]);
+    }
+
+    public function updateDrawer($drawer, $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "name" => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('contents', 'name')
+                    ->whereNot('id', $drawer->id)
+                    ->where('user_id', Auth::id())
+            ]
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $drawer->update([
+            'name' => $request->name
+        ]);
+
+        return redirect()
+            ->to($request->prev_url ?? null)
+            ->withSuccess("Successfully updated!!");
     }
 }

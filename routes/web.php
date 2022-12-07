@@ -74,6 +74,11 @@ Route::middleware('auth')->group(function () {
             Route::post('create', [DrawerController::class, 'create'])->name('create');
             Route::get('items/{id}', [DrawerController::class, 'items'])->name('items');
             Route::post('order', [DrawerController::class, 'orderDrawer'])->name('order');
+
+            Route::match(['get', 'post'], 'change-name/{id}', [DrawerController::class, 'changeName'])->name('change.name');
+            Route::get('change-password/{id}', [DrawerController::class, 'changePassword'])->name('change.password');
+            Route::get('delete/{id}', [DrawerController::class, 'delete'])->name('delete');
+
         });
 
         //box

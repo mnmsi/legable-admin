@@ -22,6 +22,7 @@
                             <div class="col-lg-4 mb-4 col-6 all-contents" id="{{$drawer['id']}}">
                                 <x-card icon="{{ asset('image/card/card-icon.svg') }}" title="{{$drawer['name']}}"
                                         date="{{$drawer['date']}}" :data-drawer="$drawer['id']"
+                                        :id="$drawer['id']"
                                         :required-pass="$drawer['password_required']" :drawer-name="$drawer['name']"
                                         :type="$drawer['content_type']"/>
                             </div>
