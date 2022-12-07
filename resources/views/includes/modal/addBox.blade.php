@@ -20,7 +20,7 @@
                         <div id="boxErrors"></div>
 
 
-                        <input type="hidden" name="drawer" value="" id="drawerId">
+                        <input type="hidden" name="drawerContent" value="" id="drawerId">
                         <div class="col-12">
                             <div>
                                 <h3 class="sub-header3 mb-0">Create new Box</h3>
