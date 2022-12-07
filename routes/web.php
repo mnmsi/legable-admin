@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
                 Route::post("store", [UserAddressController::class, 'store'])->name("store");
                 Route::get("edit/{id}", [UserAddressController::class, 'edit'])->name("edit");
                 Route::post("update/{id}", [UserAddressController::class, 'update'])->name("update");
+                Route::get('active/{id}', [UserAddressController::class, 'activeAddress'])->name('active');
             });
         });
 

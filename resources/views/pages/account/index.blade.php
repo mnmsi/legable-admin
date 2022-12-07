@@ -74,6 +74,10 @@
                                         <img src="{{asset("image/common/golden-sign.svg")}}" alt="image"
                                              class="img-fluid">
                                     </div>
+                                @else
+                                    <a href="{{route('user.address.active', $address['id'])}}">
+                                        <img src="{{asset("image/billing/ellipse_outlined.svg")}}" alt="">
+                                    </a>
                                 @endif
                             </div>
                             <div class="address-box-content">

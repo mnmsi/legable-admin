@@ -45,4 +45,23 @@ class UserAddressController extends Controller
 
         return redirect()->route('acc.setting')->withSuccess('Success!');
     }
+
+    public function activeAddress($id)
+    {
+        if (!$address = $this->getAddressById($id)) {
+            abort(404);
+        }
+
+        if ($activeAddress = $this->getActiveAddress()) {
+            $activeAddress->update([
+                'status' => 0
+            ]);
+        }
+
+        $address->update([
+            'status' => 1
+        ]);
+
+        return redirect()->back()->withSuccess('Success!');
+    }
 }

@@ -49,7 +49,6 @@ trait AddressTrait
     public function activeAddressId()
     {
         return $this->activeAddress()->id ?? null;
-//        return ($this->activeAddress()->id ?? $this->getFirstAddressFromList()['id']) ?? null;
     }
 
     public function activeAddressEncId()
@@ -80,5 +79,11 @@ trait AddressTrait
     public function fullAddress($address)
     {
         return $address->address_line_one . ", " . ($address->address_line_two ? $address->address_line_two . ", " : '') . $address->city . ", " . $address->region . ", " . $address->countryInfo->name . ", " . $address->zip;
+    }
+
+    public function getActiveAddress()
+    {
+        return $this->getAddress()->where('status', 1)
+                    ->first();
     }
 }
