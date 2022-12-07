@@ -3,7 +3,9 @@
 namespace App\Traits\Content;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -72,5 +74,22 @@ trait DrawerTrait
         return redirect()
             ->to($request->prev_url ?? null)
             ->withSuccess("Successfully updated!!");
+    }
+
+    public function deleteDrawerAndContents($drawer)
+    {
+        $drawer->drawerItems->map(function ($item) use ($drawer) {
+
+            $fileUrl = myDecrypt($item->file_url);
+
+            if (Storage::exists(myDecrypt($item->file_url))) {
+                Storage::delete(myDecrypt($item->file_url));
+            }
+        });
+
+        $drawer->delete();
+        $drawer->drawerItems()->delete();
+
+        return true;
     }
 }

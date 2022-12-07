@@ -100,6 +100,15 @@ class DrawerController extends Controller
 
     public function delete($id)
     {
-        dd($id);
+        $drawer = Content::find(myDecrypt($id));
+        if (!$drawer) {
+            abort(404);
+        }
+
+        $this->deleteDrawerAndContents($drawer);
+
+        return redirect()
+            ->back()
+            ->withSuccess("Successfully deleted!!");
     }
 }

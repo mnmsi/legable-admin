@@ -78,7 +78,6 @@ Route::middleware('auth')->group(function () {
             Route::match(['get', 'post'], 'change-name/{id}', [DrawerController::class, 'changeName'])->name('change.name');
             Route::match(['get', 'post'], 'change-password/{id}', [DrawerController::class, 'changePassword'])->name('change.password');
             Route::get('delete/{id}', [DrawerController::class, 'delete'])->name('delete');
-
         });
 
         //box
