@@ -3,6 +3,7 @@
 namespace App\Traits\Content;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -43,6 +44,29 @@ trait DrawerTrait
 
         $drawer->update([
             'name' => $request->name
+        ]);
+
+        return redirect()
+            ->to($request->prev_url ?? null)
+            ->withSuccess("Successfully updated!!");
+    }
+
+    public function updatePassword($drawer, $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'new_password'              => 'required|string|max:30',
+            'new_password_confirmation' => 'required|string|same:new_password|max:30',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $drawer->update([
+            'password' => Hash::make($request->new_password)
         ]);
 
         return redirect()

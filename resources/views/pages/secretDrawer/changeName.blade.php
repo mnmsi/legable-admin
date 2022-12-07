@@ -9,8 +9,8 @@
                     </div>
                     <div class="row all-form-wrapper mt-5">
                         <div>
-                            <h3 class="sub-header3 mb-0">Create new Box</h3>
-                            <p class="form-label-2">add a box to this drawer</p>
+                            <h3 class="sub-header3 mb-0">Change Drawer Name</h3>
+                            <p class="form-label-2">Rename and save new drawer name</p>
                         </div>
 
                         <form action="{{route('drawer.change.name', $id)}}" method="post" id="boxCreateFormId">

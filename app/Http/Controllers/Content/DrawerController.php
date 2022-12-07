@@ -81,9 +81,21 @@ class DrawerController extends Controller
         ]);
     }
 
-    public function changePassword($id)
+    public function changePassword(Request $request, $id)
     {
-        dd($id);
+        $drawer = Content::find(myDecrypt($id));
+        if (!$drawer) {
+            abort(404);
+        }
+
+        if ($request->isMethod("POST")) {
+            return $this->updatePassword($drawer, $request);
+        }
+
+        return view('pages.secretDrawer.changePassword', [
+            'id'       => $id,
+            'prev_url' => url()->previous()
+        ]);
     }
 
     public function delete($id)
