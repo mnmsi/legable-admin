@@ -38,8 +38,7 @@ function isString(val) {
     return typeof val === 'string';
 }
 
-function jsonParse(data)
-{
+function jsonParse(data) {
     try {
         return JSON.parse(data);
     } catch (e) {
@@ -61,4 +60,8 @@ function base64MimeType(encoded) {
     }
 
     return result;
+}
+
+function checkEventPropagationByClass(selector) {
+    return $(event.target).closest("." + selector).length || $(event.target).hasClass(selector);
 }

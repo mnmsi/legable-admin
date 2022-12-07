@@ -1,12 +1,15 @@
-<div class="document-card  {{$requiredPass? 'drawers' : 'public-drawer'}}" id="{{ $id }}" data-drawer-name="{{$drawerName}}" data-drawer="{{$dataDrawer}}" onclick="{{$click}}">
+<div class="document-card  {{$requiredPass? 'drawers' : 'public-drawer'}}" id="{{ $id }}"
+     data-drawer-name="{{$drawerName}}" data-drawer="{{$dataDrawer}}" onclick="{{$click}}">
     <div class="document-card-content-wrapper">
-        <div class="card-icon-wrapper">
+        <div class="card-icon-wrapper position-relative" style="padding-right: 5px!important;">
             <div class="card-icon">
                 <img src="{{ $icon }}" alt="icon">
             </div>
-            <div class="dropdown">
+            <div class="dropdown content-dropdown">
                 <div class="three-dot" id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                    <img src="{{ asset('image/card/dots.svg') }}" alt="dots">
+                    <div style="padding: 15px">
+                        <img src="{{ asset('image/card/dots.svg') }}" alt="dots">
+                    </div>
                 </div>
                 <ul class="dropdown-menu card-dropdown" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="{{$id}}">Change Password</a></li>

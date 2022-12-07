@@ -22,6 +22,11 @@ $("#addBoxModal").on("hidden.bs.modal", function () {
 
 // show modal
 function showSecurityPanel(contentKey, contentName, contentType) {
+
+    if (checkEventPropagationByClass('content-dropdown')) {
+        return;
+    }
+
     $('input#drawer-key').val(contentKey)
     $('input#drawer-name').val(contentName)
     $('input#drawer-type').val(contentType)
@@ -29,6 +34,11 @@ function showSecurityPanel(contentKey, contentName, contentType) {
 }
 
 function enterDrawer(url, that) {
+
+    if (checkEventPropagationByClass('content-dropdown')) {
+        return;
+    }
+
     let dataObj = {url: url, drawer_name: $(that).attr('data-drawer-name')}
 
     $("#contents").load(url, function (responseTxt) {
