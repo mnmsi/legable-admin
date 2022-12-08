@@ -2,6 +2,7 @@
 
 namespace App\Models\Content;
 
+use App\Casts\InformationDataCast;
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,11 +18,7 @@ class InformationData extends BaseModel
         'data',
     ];
 
-    public function data(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => myDecrypt($value),
-            set: fn($value) => myEncrypt($value),
-        );
-    }
+    protected $casts = [
+        'data' => InformationDataCast::class
+    ];
 }

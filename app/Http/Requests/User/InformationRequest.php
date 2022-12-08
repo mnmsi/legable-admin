@@ -46,7 +46,7 @@ class InformationRequest extends FormRequest
         foreach ($this->title as $key => $title) {
             $data[] = [
                 'title' => $title,
-                'data'  => $this->data[$key],
+                'data'  => myEncrypt($this->data[$key]),
             ];
         }
 
