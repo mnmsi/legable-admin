@@ -33,7 +33,6 @@ class InformationController extends Controller
             }
 
             $informationCreate = Information::create([
-                'user_id'             => Auth::id(),
                 'information_type_id' => $information->id,
             ]);
 
