@@ -10,15 +10,11 @@
         <ul class="offcanvas-menu">
             <li id="openNewInfo"><a href="javascript:void(0)"><img src="{{ asset('image/off-canvas/new-info.svg') }}"
                                                                    alt="">New Information</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Banking Information</a>
-            </li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Memo</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Passwords</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Proposals</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Contracts</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Notary</a></li>
-            <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">E-Signatures</a></li>
-
+            @foreach($informationTypes as $info)
+                <li><a href="{{route('information.add', $info->id)}}"><img
+                            src="{{ asset('image/off-canvas/create.svg') }}" alt="">{{$info->name}}</a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </div>

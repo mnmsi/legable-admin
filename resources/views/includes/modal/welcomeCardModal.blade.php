@@ -8,16 +8,19 @@
                     Information Templates
                 </div>
                 <div class="body-item">
-                    <p class="add-dash-icon-1" id="infoModalClose">Banking Information</p>
-                    <p class="add-dash-icon-2" id="infoModalClose">Memo</p>
-                    <p class="add-dash-icon-3" id="infoModalClose">Passwords</p>
-                    <p class="add-dash-icon-3" id="infoModalClose">Proposals</p>
-                    <p class="add-dash-icon-3" id="infoModalClose">Contracts</p>
-                    <p class="add-dash-icon-3" id="infoModalClose">Notary</p>
-                    <p class="add-dash-icon-3" id="infoModalClose">E-Signatures</p>
+
+                    @foreach($informationTypes as $info)
+                        <a href="{{route('information.add', encrypt($info->id))}}"><p class="add-dash-icon-1"
+                                                                             id="infoModalClose">{{$info->name}}</p></a>
+                    @endforeach
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+<style>
+    a {
+        all: unset;
+    }
+</style>

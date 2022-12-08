@@ -92,8 +92,8 @@ Route::middleware('auth')->group(function () {
 
         //Information
         Route::prefix('information')->as('information.')->group(function () {
-            Route::get('', [InformationController::class, 'addInfo'])->name('add');
-            Route::post('store', [FileController::class, 'store'])->name('store');
+            Route::get('{id}', [InformationController::class, 'addInfo'])->name('add');
+            Route::post('store/{id}', [InformationController::class, 'store'])->name('store');
         });
 
         //Security

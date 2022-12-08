@@ -16,8 +16,9 @@ class DashboardController extends Controller
     public function index()
     {
         return view("pages.dashboard.index", [
-            'drawers' => $this->getDrawers(),
-            'boxes'   => $this->getBoxes()
+            'drawers'          => $this->getDrawers(),
+            'boxes'            => $this->getBoxes(),
+            'informationTypes' => InformationType::get(),
         ]);
     }
 }

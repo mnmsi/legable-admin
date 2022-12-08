@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class InformationRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class InformationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,31 @@ class InformationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'   => 'required|array',
+            'title.*' => 'required|string|max:255',
+            'data'    => 'required|array',
+            'data.*'  => 'required|string|max:255',
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.*.required' => 'This field is required',
+            'data.*.required'  => 'This field is required',
+        ];
+    }
+
+    protected function passedValidation()
+    {
+        $data = array();
+        foreach ($this->title as $key => $title) {
+            $data[] = [
+                'title' => $title,
+                'data'  => $this->data[$key],
+            ];
+        }
+
+        $this->merge(['data' => $data]);
     }
 }
