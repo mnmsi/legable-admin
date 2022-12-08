@@ -46,4 +46,9 @@ class Information extends BaseModel
     {
         return $this->belongsToMany($this::class, 'information_data', 'information_id');
     }
+
+    public function hasManyInformationData()
+    {
+        return $this->hasMany(InformationData::class, 'information_id');
+    }
 }

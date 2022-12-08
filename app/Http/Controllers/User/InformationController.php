@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class InformationController extends Controller
 {
+    public function index()
+    {
+        return view('pages.Information.index', [
+            'information'      => Information::with('hasManyInformationData', 'informationType')->get(),
+            'informationTypes' => InformationType::get(),
+        ]);
+    }
+
     public function addInfo($id)
     {
         if (!$information = InformationType::find(decrypt($id))) {
@@ -45,7 +53,22 @@ class InformationController extends Controller
 
         DB::commit();
         return redirect()
-            ->route('dashboard')
+            ->route('information.index')
             ->with('success', 'Information added successfully');
+    }
+
+    public function getData($id)
+    {
+        $infoTypeData = Information::with('hasManyInformationData', 'informationType')
+                                   ->where('information_type_id', decrypt($id))
+                                   ->first();
+
+        if (!$infoTypeData) {
+            abort(404);
+        }
+
+        return view('pages.Information.info_data', [
+            'infoTypeData' => $infoTypeData->hasManyInformationData,
+        ]);
     }
 }

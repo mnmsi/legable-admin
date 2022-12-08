@@ -46,6 +46,16 @@
                     <div class="link-name">All Contents</div>
                 </div>
             </a>
+
+            <a href="{{route('information.index')}}" class="single-menu-wrapper {{ (request()->segment(1)=='information') ? 'active' : '' }}" id="content">
+                <div class="menu-content-wrapper">
+                    <div class="icon-wrapper">
+                        <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">
+                    </div>
+                    <div class="link-name">Information</div>
+                </div>
+            </a>
+
             {{-- single menu item --}}
             {{--   Menu Break Title start --}}
             <div class="menu-break-title-wrapper">
