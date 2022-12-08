@@ -111,6 +111,7 @@
             $('#closePlanModal').on('click', function () {
                 $('#planModal').modal('hide');
             });
+
             //plan modal
             $("#cancel_subscription").on("click", function () {
                 $("#cancelPlan").modal("show");

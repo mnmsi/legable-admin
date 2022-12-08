@@ -11,3 +11,8 @@ function autoRenewal(url) {
         }
     });
 }
+
+function hidePlanModal() {
+    $('#planModal').modal('hide')
+    $('#planFormId')[0].reset();
+}

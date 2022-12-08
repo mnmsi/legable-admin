@@ -37,12 +37,13 @@
                         </div>
                     </div>
                     <div class="right-block all-form-wrapper">
-                        <form method="post" action="{{route('subscribe')}}">
+                        <form method="post" action="{{route('subscribe')}}" id="planFormId">
                             @csrf
 
                             <div class="top-sec">
                                 <h4>Your Legable Subscription</h4>
-                                <span id="closePlanModal"><img src="{{asset('image/global/close1.svg')}}" alt=""
+                                <span id="closePlanModal" onclick="hidePlanModal()">
+                                    <img src="{{asset('image/global/close1.svg')}}" alt=""
                                                                class="img-fluid"></span>
                             </div>
 
@@ -53,7 +54,8 @@
 
                             <div class="mb-3">
                                 <label for="dName" class="form-label">Card Holder</label>
-                                <input type="text" class="form-control" id="dName" name="name" placeholder="Enter name" value="{{old('name')}}">
+                                <input type="text" class="form-control" id="dName" name="name" placeholder="Enter name"
+                                       value="{{old('name')}}">
                                 @include('components.utils.form_field_alert', ['name' => 'name'])
                             </div>
                             <div class="mb-3">
@@ -75,7 +77,8 @@
 
                                 </label>
                                 <input type="number" class="form-control" id="dName" name="number"
-                                       placeholder="0000 5432 2367 0275" size='20' autocomplete='off' value="{{old('number')}}">
+                                       placeholder="0000 5432 2367 0275" size='20' autocomplete='off'
+                                       value="{{old('number')}}">
                                 @include('components.utils.form_field_alert', ['name' => 'number'])
                             </div>
                             <div class="row">
