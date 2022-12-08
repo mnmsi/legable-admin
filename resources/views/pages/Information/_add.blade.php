@@ -210,7 +210,8 @@
                 $(clickable).click(function () {
                     input_file.click();
                 })
-                if (value == "file") {
+
+                if (value === "file") {
                     input.css("display", "none")
                     file.show();
                 } else {
