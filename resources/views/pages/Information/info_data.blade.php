@@ -3,13 +3,15 @@
 @section('content')
     <div id="informationType">
         <x-breadcrumb title="Information" subtitle="Everything is encrypted here!"/>
-        <div class="block-wrapper block-min-height content-wrappers informationTypeShowDivCls" id="informationTypeShowDiv">
+        <div class="block-wrapper block-min-height content-wrappers informationTypeShowDivCls"
+             id="informationTypeShowDiv">
             <div class="block-wrapper block-min-height content-wrappers">
                 <div class="top-block">
                     <div class="conten-items">
                         @foreach($information as $key => $info)
                             <div class="all-contents" id="{{encrypt($info->id)}}">
                                 <x-information-data :id="encrypt($info->id)"
+                                                    :name="$info->name"
                                                     url="{{asset('image/content/demo1.svg')}}"/>
                             </div>
                         @endforeach
@@ -64,6 +66,7 @@
                 success: function (data) {
 
                     if (data.status) {
+                        $('#infoName').html(data.name);
                         $('#informationDiv').html(data.information);
                     } else {
                         showAjaxMessageOnDivById('statusDiv', 'danger', data.msg)

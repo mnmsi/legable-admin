@@ -2,7 +2,8 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-width">
         <div class="modal-content">
-            <div class="modal-header justify-content-end">
+            <div class="modal-header justify-content-between">
+                <div class="align-items-center fileModalHeader"><strong id="infoName"></strong></div>
                 <button type="button" class="close p-0 border-0" id="pageModalClose" data-bs-dismiss="modal">
                     <img src="{{asset('/image/drawer/closeIcon.svg')}}" alt="" class="img-fluid"/>
                 </button>

@@ -13,6 +13,7 @@ class InformationData extends Component
      */
     public function __construct(
         public $id,
+        public $name,
         public $url
     )
     {

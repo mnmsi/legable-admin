@@ -89,7 +89,7 @@ class InformationController extends Controller
 
         return response()->json([
             'status'      => true,
-            //            'information' => $information->hasManyInformationData,
+            'name'        => $information->name,
             'information' => $this->informationTemplate($information->hasManyInformationData),
         ]);
     }
