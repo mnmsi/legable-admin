@@ -4,7 +4,7 @@
     <x-breadcrumb title="Information" subtitle="Everything is encrypted here!"
                   buttonText="+ New Info " id="newInformationButton"/>
 
-    <div class="block-wrapper block-min-height content-wrappers">
+    <div class="block-wrapper block-min-height content-wrappers" id="informationTypeShowDiv">
         <div class="block-wrapper block-min-height content-wrappers">
             <div class="top-block">
                 <div class="conten-items">
@@ -27,6 +27,23 @@
         $(document).ready(function () {
             $('#newInformationButton').click(function () {
                 $('#cardModal').modal('show');
+            });
+
+            $("#informationTypeShowDiv").sortable({
+                animation: 200,
+                scroll: true,
+                scrollSpeed: 300,
+                axis: "x,y",
+                classes: {
+                    "ui-sortable": "highlight"
+                },
+                tolerance: "pointer",
+                items: ".all-contents",
+                update: function () {
+                    let order = $("#informationTypeShowDiv").sortable('toArray');
+                    console.log(order)
+                    local.set('informationIds', order);
+                }
             });
         });
 

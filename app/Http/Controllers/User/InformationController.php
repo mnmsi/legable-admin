@@ -18,7 +18,9 @@ class InformationController extends Controller
     public function index()
     {
         return view('pages.Information.index', [
-            'information'      => Information::with('hasManyInformationData', 'informationType')->get(),
+            'information'      => Information::with('hasManyInformationData', 'informationType')
+                                             ->get()
+                                             ->unique('information_type_id'),
             'informationTypes' => InformationType::get(),
         ]);
     }
@@ -45,6 +47,7 @@ class InformationController extends Controller
 
             $informationCreate = Information::create([
                 'information_type_id' => $information->id,
+                'name'                => $request->name,
             ]);
 
             $informationCreate->informationData()->sync($request->data);

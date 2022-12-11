@@ -16,6 +16,7 @@ class Information extends BaseModel
     protected $fillable = [
         'user_id',
         'information_type_id',
+        'name',
     ];
 
     protected static function boot()

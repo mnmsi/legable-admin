@@ -7,6 +7,16 @@
         <form action="{{route('information.store', $informationId)}}" method="POST">
             @csrf
 
+            <div class="row">
+                <div class="form-group input-wrapper">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                           name="name" required placeholder="Input information name here"
+                           value="{{old('name')}}">
+                    @include('components.utils.form_field_alert',['name' => "name"])
+                </div>
+            </div>
+
             @if(old('title'))
                 @foreach(old('title') as $key => $title)
                     <div class="row">

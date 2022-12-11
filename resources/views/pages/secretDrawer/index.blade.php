@@ -52,7 +52,6 @@
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });
-
         })
     </script>
 @endsection

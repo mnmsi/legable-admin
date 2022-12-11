@@ -1,23 +1,26 @@
-function Local () {
+function Local() {
     return {
-        set : function (key, obj) {
+        set: function (key, obj) {
             localStorage.setItem(key, JSON.stringify(obj));
             return obj;
         },
-        get : function (key) {
+        get: function (key) {
             let obj = {};
             if (localStorage.getItem(key) !== 'undefined') {
                 obj = JSON.parse(localStorage.getItem(key));
             }
             return obj;
         },
-        clear : function () {
+        clear: function () {
             localStorage.clear();
             return this;
         },
-        remove : function (key) {
+        remove: function (key) {
             localStorage.removeItem(key);
             return this;
         }
     };
 }
+
+let local = Local();
+

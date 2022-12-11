@@ -29,6 +29,7 @@ class InformationRequest extends FormRequest
             'title.*' => 'required|string|max:255',
             'data'    => 'required|array',
             'data.*'  => 'required|string|max:255',
+            'name'    => 'required|string|max:255',
         ];
     }
 
