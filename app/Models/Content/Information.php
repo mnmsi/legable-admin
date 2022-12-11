@@ -5,6 +5,8 @@ namespace App\Models\Content;
 use App\Models\BaseModel;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Auth;
 
 class Information extends BaseModel

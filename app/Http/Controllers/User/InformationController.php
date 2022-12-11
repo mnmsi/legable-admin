@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\InformationRequest;
 use App\Models\Content\Information;
 use App\Models\Content\InformationType;
+use App\Traits\Information\InformationTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InformationController extends Controller
 {
+    use InformationTrait;
+
     public function index()
     {
         return view('pages.Information.index', [
@@ -61,14 +64,30 @@ class InformationController extends Controller
     {
         $infoTypeData = Information::with('hasManyInformationData', 'informationType')
                                    ->where('information_type_id', decrypt($id))
-                                   ->first();
+                                   ->get();
 
         if (!$infoTypeData) {
             abort(404);
         }
 
         return view('pages.Information.info_data', [
-            'infoTypeData' => $infoTypeData->hasManyInformationData,
+            'information' => $infoTypeData,
+        ]);
+    }
+
+    public function showInformation($id)
+    {
+        $information = Information::with('hasManyInformationData')
+                                  ->find(decrypt($id));
+
+        if (!$information) {
+            abort(404);
+        }
+
+        return response()->json([
+            'status'      => true,
+            //            'information' => $information->hasManyInformationData,
+            'information' => $this->informationTemplate($information->hasManyInformationData),
         ]);
     }
 }

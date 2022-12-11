@@ -7,7 +7,7 @@
         <div class="block-wrapper block-min-height content-wrappers">
             <div class="top-block">
                 <div class="conten-items">
-                    @foreach($infoTypeData as $key => $info)
+                    @foreach($information as $key => $info)
                         <div class="all-contents" id="{{encrypt($info->id)}}">
                             <x-information-data :id="encrypt($info->id)"
                                                 url="{{asset('image/content/demo1.svg')}}"/>
@@ -22,21 +22,39 @@
 @endsection
 @section('script')
     <script>
-        function getInformationData(id) {
-            $('#file_show').modal('show');
+        $(document).ready(function () {
+            $('#fileShowModal').on('hidden.bs.modal', function () {
+                $('#allTypeContent').attr('src', '');
+                $('#informationDiv').html('');
+            });
+        });
 
-            /*$.ajax({
-                url: "{{route('information.item')}}",
+        function getInformationData(id) {
+            $("#allTypeContent").hide();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{route('information.show', '')}}/" + id,
                 type: "POST",
                 data: {
-                    "_token": "{{ csrf_token() }}",
                     "id": id
                 },
                 success: function (data) {
-                    $('#file_show').modal('show');
-                    $('#file_show .modal-body').html(data);
+
+                    if (data.status) {
+                        $('#informationDiv').html(data.information);
+                    } else {
+                        showAjaxMessageOnDivById('statusDiv', 'danger', data.msg)
+                    }
+
+                    $('#fileShowModal').modal('show');
+                },
+                error: function (error) {
+                    showAjaxMessageOnDivById('statusDiv', 'danger', error.responseJSON.msg)
                 }
-            });*/
+            });
         }
     </script>
 @endsection

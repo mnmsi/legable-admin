@@ -12,6 +12,8 @@
                     <embed src="" id="allTypeContent" style="width: 100%;height: 400px"/>
                 </div>
                 <div id="statusDiv"></div>
+                <div id="informationDiv">
+                </div>
             </div>
         </div>
     </div>

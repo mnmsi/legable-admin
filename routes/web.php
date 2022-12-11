@@ -96,7 +96,7 @@ Route::middleware('auth')->group(function () {
             Route::get('add/{id}', [InformationController::class, 'addInfo'])->name('add');
             Route::post('store/{id}', [InformationController::class, 'store'])->name('store');
             Route::get('data/{id}', [InformationController::class, 'getData'])->name('data');
-            Route::post('item', [InformationController::class, 'getData'])->name('item');
+            Route::post('show/{id}', [InformationController::class, 'showInformation'])->name('show');
         });
 
         //Security
