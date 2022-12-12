@@ -20,7 +20,8 @@ class InformationController extends Controller
         return view('pages.Information.index', [
             'information'      => Information::with('hasManyInformationData', 'informationType')
                                              ->get()
-                                             ->unique('information_type_id'),
+                                             ->unique('information_type_id')
+                                             ->values(),
             'informationTypes' => InformationType::get(),
         ]);
     }
@@ -66,7 +67,7 @@ class InformationController extends Controller
     public function getData($id)
     {
         $infoTypeData = Information::with('hasManyInformationData', 'informationType')
-                                   ->where('information_type_id', decrypt($id))
+                                   ->where('information_type_id', $id)
                                    ->get();
 
         if (!$infoTypeData) {
