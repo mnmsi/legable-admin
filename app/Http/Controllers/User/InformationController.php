@@ -82,7 +82,7 @@ class InformationController extends Controller
     public function showInformation($id)
     {
         $information = Information::with('hasManyInformationData')
-                                  ->find(decrypt($id));
+                                  ->find($id);
 
         if (!$information) {
             abort(404);
