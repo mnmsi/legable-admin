@@ -17,7 +17,7 @@ class InformationController extends Controller
 
     public function index()
     {
-        return view('pages.Information.index', [
+        return view('pages.information.index', [
             'information'      => Information::with('hasManyInformationData', 'informationType')
                                              ->get()
                                              ->unique('information_type_id')
@@ -74,7 +74,7 @@ class InformationController extends Controller
             abort(404);
         }
 
-        return view('pages.Information.info_data', [
+        return view('pages.information.info_data', [
             'information' => $infoTypeData,
         ]);
     }
