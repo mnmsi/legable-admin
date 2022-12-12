@@ -8,7 +8,8 @@
             <div class="searchbar-wrapper">
                 <div class="searchbar-content-wrapper">
                     <label for="search"><img src="{{asset('image/common/search.svg')}}" alt="search"></label>
-                    <input type="text" id="search" placeholder="Search anything" onkeyup="search('{{route('search')}}', this)">
+                    <input type="text" id="search" placeholder="Search anything"
+                           onkeydown="search('{{route('search')}}', this)">
                     <div id="suggestion"></div>
                 </div>
             </div>
@@ -18,7 +19,8 @@
         <div class="sidebar-menu">
             {{--            single menu item--}}
             <a href="/"
-               class="single-menu-wrapper {{ (request()->is('/') || request()->is('search-empty')) ? 'active' : '' }}" id="dashboard">
+               class="single-menu-wrapper {{ (request()->is('/') || request()->is('search-empty')) ? 'active' : '' }}"
+               id="dashboard">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/dashboard.svg")}}" alt="icon">
@@ -28,7 +30,8 @@
             </a>
             {{--            single menu item--}}
             {{--            single menu item--}}
-            <a href="/drawer" class="single-menu-wrapper {{ (request()->segment(1)=='drawer') ? 'active' : '' }}" id="secretDrawer">
+            <a href="/drawer" class="single-menu-wrapper {{ (request()->segment(1)=='drawer') ? 'active' : '' }}"
+               id="secretDrawer">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/secret.svg")}}" alt="icon">
@@ -38,7 +41,8 @@
             </a>
             {{--            single menu item--}}
             {{--            single menu item--}}
-            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}" id="content">
+            <a href="/content" class="single-menu-wrapper {{ (request()->segment(1)=='content') ? 'active' : '' }}"
+               id="content">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">
@@ -47,7 +51,8 @@
                 </div>
             </a>
 
-            <a href="{{route('information.index')}}" class="single-menu-wrapper {{ (request()->segment(1)=='information') ? 'active' : '' }}" id="content">
+            <a href="{{route('information.index')}}"
+               class="single-menu-wrapper {{ (request()->segment(1)=='information') ? 'active' : '' }}" id="content">
                 <div class="menu-content-wrapper">
                     <div class="icon-wrapper">
                         <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">

@@ -1,5 +1,11 @@
 function search(url, that) {
-    $.ajax({
+
+    if (event.key === 'Enter') {
+        myRedirect('/content', 'searchData', that.value)
+    }
+
+
+    /*$.ajax({
         url: url,
         type: "GET",
         data: `value=${that.value}`,
@@ -11,7 +17,7 @@ function search(url, that) {
         }, error: function (error) {
             autoComplete(that, []);
         }
-    });
+    });*/
 }
 
 const autoComplete = (input, arr) => {

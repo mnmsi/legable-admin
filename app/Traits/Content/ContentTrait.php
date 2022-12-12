@@ -91,4 +91,10 @@ trait ContentTrait
             ];
         }, $this->boxes()->all());
     }
+
+    public function searchContent($value)
+    {
+        return Content::where('name', 'like', "%$value%")
+                      ->get();
+    }
 }

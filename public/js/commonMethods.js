@@ -20,7 +20,7 @@ let myRedirect = function (redirectUrl, arg, value) {
     let csrf = $("[name='csrf-token']").attr('content');
     let form = $('<form action="' + redirectUrl + '" method="post">' +
         '<input type="hidden" name="_token" value="' + csrf + '"/>' +
-        '< type="hidden" name="' + arg + '" value="' + JSON.stringify(value).replaceAll('"', "'") + '"/>' + '</form>');
+        '<input type="hidden" name="' + arg + '" value="' + value + '"/>' + '</form>');
     $('body').append(form);
     $(form).submit();
 };

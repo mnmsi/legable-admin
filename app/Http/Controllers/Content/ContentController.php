@@ -13,7 +13,7 @@ class ContentController extends Controller
     public function index(Request $request)
     {
         if ($request->isMethod('post')) {
-            $data = collect(json_decode(str_replace("'", '"', $request->searchData), true));
+            $data = $this->searchContent($request->searchData);
         }
 
         return view("pages.allContent.index", [
