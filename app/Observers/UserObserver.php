@@ -7,6 +7,7 @@ use App\Events\PhoneVerificationEvent;
 use App\Models\User\User;
 use App\Notifications\MailVerificationNotification;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Session;
 
 class UserObserver
 {
@@ -36,7 +37,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        if (in_array('email_verified_at', array_keys($user->getChanges()))) {
+        if (in_array('email_verified_at', array_keys($user->getChanges())) && is_null($user->phone_verified_at)) {
             event(new PhoneVerificationEvent());
         }
     }

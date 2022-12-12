@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Events\MailVerificationEvent;
+use App\Events\PhoneVerificationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CardRequest;
 use App\Traits\System\StripePaymentTrait;
@@ -9,6 +11,8 @@ use App\Traits\System\SubscriptionTrait;
 use App\Traits\User\CardTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
@@ -21,13 +25,17 @@ class SubscriptionController extends Controller
                              ->with("plan_exists", "Already subscribed plan!!");
         }
 
-//        if (is_null(Auth::user()->email_verified_at)) {
-//            return redirect()->route('mail.verification');
-//        }
-//
-//        if (is_null(Auth::user()->phone_verified_at)) {
-//            return redirect()->route('phone.verification');
-//        }
+        if (is_null(Auth::user()->email_verified_at)) {
+            Session::put('subscriptionData', json_encode($request->all()));
+            event(new MailVerificationEvent(Auth::user()));
+            return redirect()->route('mail.verification');
+        }
+
+        if (is_null(Auth::user()->phone_verified_at)) {
+            Session::put('subscriptionData', json_encode($request->all()));
+            event(new PhoneVerificationEvent());
+            return redirect()->route('phone.verification');
+        }
 
         $requestData                = $request->except('_token');
         $requestData['user_id']     = Auth::id();
