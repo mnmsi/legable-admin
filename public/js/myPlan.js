@@ -1,6 +1,4 @@
-$('#planModal').on('hidden.bs.modal', function () {
-    $('#planFormId')[0].reset();
-});
+
 
 function autoRenewal(url) {
     $.ajax({

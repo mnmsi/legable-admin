@@ -116,6 +116,11 @@
             $("#cancel_subscription").on("click", function () {
                 $("#cancelPlan").modal("show");
             })
+
+            $('#planModal').on('hidden.bs.modal', function () {
+                $('#planFormId')[0].reset();
+                $('.field-error-txt').text('');
+            });
         })
 
         const monthInput = document.querySelector('#month');

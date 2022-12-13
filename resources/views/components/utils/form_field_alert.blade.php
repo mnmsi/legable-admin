@@ -1,3 +1,3 @@
 @error($name)
-    <small class="text-small text-danger ml-3">{{ $message }}</small>
+    <small class="text-small text-danger ml-3 field-error-txt">{{ $message }}</small>
 @enderror
