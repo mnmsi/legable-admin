@@ -6,10 +6,13 @@
             @include('components.contents.content', ['showBtn' => false])
         </div>
     </div>
+
+    @include('includes.modal.fileUpload')
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.file_show')
     @include('includes.modal.addBox')
     @include('includes.modal.fileUploadAjax')
+
 @endsection
 @section('script')
     <script>

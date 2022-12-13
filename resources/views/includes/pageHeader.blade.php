@@ -22,10 +22,16 @@
                 @endif
             @endif
             @if(count($link)>0)
-                {{--                <a href="{{$link['url']}}" class="redirect">{{$link['text']}}</a>--}}
-                <button type="button" class="redirect" id="uploadContentBtn" onclick="showContentModal(this)"
-                        data-content-type="{{($content_type ?? 'drawer') == 'boxes' ? 'drawer' : 'box'}}"
-                        data-content-id="{{$contentId}}">{{$link['text']}}</button>
+                @if(is_null($contentId))
+                        <button type="button" class="redirect" id="uploadContentBtn" onclick="showContentModal(this)"
+                                data-content-type="{{($content_type ?? 'drawer') == 'boxes' ? 'drawer' : 'box'}}"
+                                data-content-id="{{$contentId}}">{{$link['text']}}</button>
+                @else
+                    <button type="button" class="redirect" id="uploadContentBtn" onclick="showAjaxContentModal(this)"
+                            data-content-type="{{($content_type ?? 'drawer') == 'boxes' ? 'drawer' : 'box'}}"
+                            data-content-id="{{$contentId}}">{{$link['text']}}</button>
+                @endif
+
             @endif
         </div>
     </div>

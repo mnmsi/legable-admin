@@ -15,6 +15,7 @@ $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $("#contentBoxDiv").hide()
 
     $(".custom-file-upload").text('select a file to upload');
+    $('#passwordField').hide();
 });
 
 $("#addBoxModal").on("hidden.bs.modal", function () {
@@ -104,8 +105,12 @@ function addBoxClick(id) {
     $("#addBoxModal").modal('show');
 }
 
-function showContentModal(that) {
+function showAjaxContentModal(that) {
     $('#uploadFileAjax').modal('show');
+}
+
+function showContentModal(that) {
+    $('#uploadFile').modal('show');
 }
 
 //triggered when modal is about to be shown
