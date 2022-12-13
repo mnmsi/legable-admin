@@ -57,8 +57,10 @@ class FileRequest extends FormRequest
             if (!$drawer) {
                 $drawer    = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
             }
+
             $parent_id = $drawer->id;
-            $password  = Hash::make($drawer->password);
+            $password  = $drawer->password;
+
         } else {
             $parent_id = null;
             $password  = Hash::make($this->security_key);
@@ -74,7 +76,7 @@ class FileRequest extends FormRequest
             'name'                   => $this->file->getClientOriginalName(),
             'file_url'               => file_upload($password, $this->file),
             'password'               => $password,
-            'is_password_required'   => $this->file_password_required,
+            'is_password_required'   => $this->use_master_key ? 1 : $this->file_password_required,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
     }

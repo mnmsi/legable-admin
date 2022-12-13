@@ -3,7 +3,7 @@
 @section('content')
     <div class="content-page">
         <div id="contents">
-            @include('components.contents.content', ['showBtn' => false])
+            @include('components.contents.content', ['showBtn' => false, 'upload_content_btn' => true])
         </div>
     </div>
 
@@ -17,6 +17,13 @@
 @section('script')
     <script>
         $(document).ready(function () {
+
+            @if($errors->any())
+            @if($errors->has('file') || $errors->has('drawer') || $errors->has('security_key'))
+                showContentModal(this);
+            @endif
+            @endif
+
             $('#addboxid').on('click', function () {
                 $('#addBoxModal').modal('show');
             });
@@ -42,6 +49,8 @@
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });
+
+
         })
     </script>
 @endsection

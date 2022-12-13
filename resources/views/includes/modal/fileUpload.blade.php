@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade global-modal add-box-modal file-upload-modal" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade global-modal add-box-modal file-upload-modal" id="uploadFileWithoutAjax" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-width">
         <div class="modal-content">
@@ -24,6 +24,7 @@
                                 <input id="file-upload" type="file" name="file"/>
                                 @include("components.utils.form_field_alert", ['name'=> 'file'])
                             </div>
+
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Select Drawer</label>
                                 <select class="form-select" aria-label="Default select example" name="drawer">
@@ -37,17 +38,24 @@
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check form-switch d-flex justify-content-end align-items-center">
-                                    <input class="form-check-input" type="checkbox" id="masterKey"
+                                    <input class="form-check-input" type="checkbox" id="masterKeyW"
                                            name="use_master_key" value="1" checked>
-                                    <label class="form-check-label ms-3" for="masterKey">Use master key</label>
+                                    <label class="form-check-label ms-3" for="masterKeyW">Use master key</label>
                                 </div>
                                 <div class="form-check form-switch d-flex justify-content-end align-items-center">
-                                    <input class="form-check-input" type="checkbox" id="checkPassA"
+                                    <input class="form-check-input" type="checkbox" id="checkPassW"
                                            name="file_password_required"
                                            value="1">
-                                    <label class="form-check-label ms-3" for="checkPassA">File Requires a
+                                    <label class="form-check-label ms-3" for="checkPassW">File Requires a
                                         Password</label>
                                 </div>
+                            </div>
+
+                            <div class="mb-3 mt-1" style="display: none" id="passwordField">
+                                <label for="security_keyA" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="security_keyA" name="security_key"
+                                       placeholder="Enter password" value="{{old('security_key')}}">
+                                @include('components.utils.form_field_alert', ['name' => 'security_key'])
                             </div>
 
                             <div class="col-auto">

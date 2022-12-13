@@ -110,7 +110,7 @@ function showAjaxContentModal(that) {
 }
 
 function showContentModal(that) {
-    $('#uploadFile').modal('show');
+    $('#uploadFileWithoutAjax').modal('show');
 }
 
 //triggered when modal is about to be shown
@@ -242,7 +242,22 @@ $("#checkPassA").change(function () {
         $('#passwordField').hide('fast');
     }
 });
+
 //    show file name
 $("#fileUpload").on("change", function (e) {
     $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
 })
+
+
+//  show file name
+$("#file-upload").on("change", function (e) {
+    $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
+})
+
+$("#checkPassW").change(function () {
+    if ($(this).is(":checked")) {
+        $('#passwordField').show('fast');
+    } else {
+        $('#passwordField').hide('fast');
+    }
+});

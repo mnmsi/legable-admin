@@ -5,7 +5,8 @@
     'link'=>['url'=>route('file.upload', [(($content_type ?? 'drawer') === 'boxes' ? 'drawer' : 'boxes')=>($drawer_id ?? 'all')]),'text'=>'Upload Content'],
     'showBtn' => $showBtn ?? true,
     'contentType' => $content_type ?? 'drawer',
-    'contentId' => $drawer_id ?? null
+    'contentId' => $drawer_id ?? null,
+    'upload_content_btn' => $upload_content_btn ?? false
 ])
 
 <div class="block-wrapper block-min-height content-wrappers">

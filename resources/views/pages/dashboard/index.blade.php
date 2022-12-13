@@ -103,6 +103,13 @@
 @section('script')
     <script>
         $(document).ready(function () {
+
+            @if($errors->any())
+            @if($errors->has('file') || $errors->has('drawer') || $errors->has('security_key'))
+            showContentModal(this);
+            @endif
+            @endif
+
             //  show file name
             $("#file-upload").on("change", function (e) {
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
@@ -128,7 +135,7 @@
 
             //upload file
             $('#dashmodalid').on('click', function () {
-                $('#uploadFile').modal('show');
+                $('#uploadFileWithoutAjax').modal('show');
             });
 
             //create box
