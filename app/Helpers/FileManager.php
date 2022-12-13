@@ -98,6 +98,7 @@ function thumbnail($file_url)
         'powerpoint' => asset('image/thumb/powerpoint.svg'),
         'video'      => asset('image/thumb/video.svg'),
         'audio'      => asset('images/thumb/audio.svg'),
+        'pdf'        => asset('image/thumb/pdf.svg'),
         default      => asset('image/content/demo1.svg'),
     };
 }

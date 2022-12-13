@@ -245,9 +245,9 @@ function uploadBoxByAjax(event, that, url) {
 
 $("#checkPassA").change(function () {
     if ($(this).is(":checked")) {
-        $('#passwordField').show('fast');
+        $('#passwordFieldA').show('fast');
     } else {
-        $('#passwordField').hide('fast');
+        $('#passwordFieldA').hide('fast');
     }
 });
 
@@ -269,3 +269,5 @@ $("#checkPassW").change(function () {
         $('#passwordField').hide('fast');
     }
 });
+
+
