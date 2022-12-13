@@ -49,7 +49,7 @@ trait ContentTrait
             return $this->dataResource($this->drawers());
         }
 
-        return $this->drawerFromData($data);
+        return $this->dataResource($this->drawerFromData($data));
     }
 
     public function filesWithDefaultAttr($data = null)
@@ -58,7 +58,7 @@ trait ContentTrait
             return $this->dataResource($this->files());
         }
 
-        return $this->filesFromData($data);
+        return $this->dataResource($this->filesFromData($data));
     }
 
     public function dataResource($data)
