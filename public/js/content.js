@@ -8,6 +8,12 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
 });
 
+$("#uploadFileWithoutAjax").on("hidden.bs.modal", function () {
+    $(".custom-file-upload").text('select a file to upload');
+    $("#fileUploadForm").trigger('reset')
+    $('.field-error-txt').text('');
+});
+
 $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $("#fileUploadFormA").trigger('reset')
     $("#contentErrors").html("")
@@ -140,7 +146,9 @@ function uploadFileByAjax(event, that, url) {
     event.preventDefault();
 
     let formData = new FormData(that);
-    formData.append('file', $("#fileUpload")[0].files[0])
+    if ($("#fileUpload")[0].files[0] !== undefined) {
+        formData.append('file', $("#fileUpload")[0].files[0])
+    }
 
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

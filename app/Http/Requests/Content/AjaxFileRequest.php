@@ -52,6 +52,14 @@ class AjaxFileRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'drawer.required_if'       => 'The ' . ($this->content_type ?? 'drawer') . ' field is required.',
+            'security_key.required_if' => 'The security key field is required.',
+        ];
+    }
+
     protected function passedValidation()
     {
         if (!empty($this->drawer)) {

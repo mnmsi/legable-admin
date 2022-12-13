@@ -50,12 +50,20 @@ class FileRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'drawer.required_if'       => 'The drawer field is required.',
+            'security_key.required_if' => 'The security key field is required.',
+        ];
+    }
+
     protected function passedValidation()
     {
         if (!empty($this->drawer)) {
-            $drawer    = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
+            $drawer = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
             if (!$drawer) {
-                $drawer    = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
+                $drawer = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
             }
 
             $parent_id = $drawer->id;
