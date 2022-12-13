@@ -13,6 +13,8 @@ $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $("#contentErrors").html("")
     $("#contentDrawerDiv").hide()
     $("#contentBoxDiv").hide()
+
+    $(".custom-file-upload").text('select a file to upload');
 });
 
 $("#addBoxModal").on("hidden.bs.modal", function () {
@@ -117,8 +119,6 @@ $('#uploadFileAjax').on('show.bs.modal', function (e) {
     //populate the textbox
     $(e.currentTarget).find('input[name="content_type"]').val(contentType);
     $(e.currentTarget).find('input[name="content_id"]').val(contentId);
-
-    console.log(contentType)
 
     if (contentType === 'drawer') {
         $("#contentDrawerDiv").show();

@@ -52,6 +52,18 @@
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });
+
+            $("#checkPassA").change(function () {
+                if ($(this).is(":checked")) {
+                    $('#passwordField').show('fast');
+                } else {
+                    $('#passwordField').hide('fast');
+                }
+            });
+            //    show file name
+            $("#fileUpload").on("change", function (e) {
+                $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
+            })
         })
     </script>
 @endsection
