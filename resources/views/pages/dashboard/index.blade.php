@@ -73,7 +73,7 @@
                 </div>
             </div>
             {{-- document only visible phone --}}
-            <div class="res-recently-open-dock-wrapper">
+            {{--<div class="res-recently-open-dock-wrapper">
                 <div class="mb-4 mt-2">
                     <x-section-title title="Recently Opened"/>
                 </div>
@@ -81,7 +81,7 @@
                             size="300kb"/>
                 <x-document icon="{{ asset('image/document/image.svg') }}" name="Images.png" date="Novemaber 22.2020"
                             size="300kb"/>
-            </div>
+            </div>--}}
             {{-- document only visible phone --}}
             {{-- add new button --}}
             <x-add-new-icon id="createNew"/>
