@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary my-4 submit-btn">Rename Drawer</button>
+                                <button type="submit" class="btn btn-primary my-4 submit-btn">Change Password</button>
                             </div>
                         </form>
                     </div>
