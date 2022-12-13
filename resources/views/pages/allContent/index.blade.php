@@ -18,7 +18,7 @@
                 $('#addBoxModal').modal('show');
             });
 
-            $('#pageModalClose,addBoxModalClose').on('click', function () {
+            $('#pageModalClose, #addBoxModalClose').on('click', function () {
                 $('#pageModal').modal('hide');
                 $('#addBoxModal').modal('hide');
             });
