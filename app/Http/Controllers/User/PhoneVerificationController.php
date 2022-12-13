@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Events\PhoneVerificationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\System\SubscriptionController;
+use App\Http\Requests\User\CardRequest;
 use App\Http\Requests\User\Verification\PhoneRequest;
 use App\Traits\System\VerificationTrait;
 use Illuminate\Http\Request;
@@ -34,10 +35,9 @@ class PhoneVerificationController extends Controller
         Auth::user()->update(['phone_verified_at' => now()]);
 
         if (Session::exists('subscriptionData')) {
-            $data = json_decode(Session::get('subscriptionData'));
+            $data = json_decode(Session::get('subscriptionData'), true);
             Session::forget('subscriptionData');
-//            return (new SubscriptionController())->subscribe($data);
-            return app()->call('App\Http\Controllers\System\SubscriptionController@subscribe', [$data]);
+            return (new SubscriptionController())->subscribe((new CardRequest())->merge((array) $data));
         }
 
         return redirect()->route('dashboard');

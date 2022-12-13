@@ -36,4 +36,12 @@ trait StripePaymentTrait
             "description" => "Name: " . (Auth::user()->name ?? $data['name']) . ", Email: " . Auth::user()->email,
         ]);
     }
+
+    public function returnException($msg)
+    {
+        return redirect()
+            ->route('myPlan.my-plan')
+            ->withErrors(["invalidCard" => $msg])
+            ->withInput();
+    }
 }

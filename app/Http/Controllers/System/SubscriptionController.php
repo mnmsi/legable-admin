@@ -9,6 +9,8 @@ use App\Http\Requests\User\CardRequest;
 use App\Traits\System\StripePaymentTrait;
 use App\Traits\System\SubscriptionTrait;
 use App\Traits\User\CardTrait;
+use App\Traits\User\MailVerificationTrait;
+use App\Traits\User\PhoneVerificationTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Queue;
@@ -16,25 +18,28 @@ use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
-    use CardTrait, SubscriptionTrait, StripePaymentTrait;
+    use CardTrait, SubscriptionTrait, StripePaymentTrait, MailVerificationTrait, PhoneVerificationTrait;
 
     public function subscribe(CardRequest $request)
     {
         if ($this->checkPlan()) {
-            return redirect()->back()
+            return redirect()->route('myPlan.my-plan')
                              ->with("plan_exists", "Already subscribed plan!!");
         }
 
+        try {
+            $this->createToken($request->all());
+        }
+        catch (\Exception $exception) {
+            return $this->returnException($exception->getMessage());
+        }
+
         if (is_null(Auth::user()->email_verified_at)) {
-            Session::put('subscriptionData', json_encode($request->all()));
-            event(new MailVerificationEvent(Auth::user()));
-            return redirect()->route('mail.verification');
+            return $this->verifyMail($request);
         }
 
         if (is_null(Auth::user()->phone_verified_at)) {
-            Session::put('subscriptionData', json_encode($request->all()));
-            event(new PhoneVerificationEvent());
-            return redirect()->route('phone.verification');
+            return $this->verifyPhone($request);
         }
 
         $requestData                = $request->except('_token');
@@ -62,12 +67,11 @@ class SubscriptionController extends Controller
                 abort(404);
             }
 
-            return redirect()->back();
+            return redirect()->route('myPlan.my-plan')
+                             ->withSuccess('Successfully subscribed plan!!');
         }
         catch (\Exception $exception) {
-            return redirect()
-                ->back()
-                ->withErrors(["invalidCard" => $exception->getMessage()]);
+            return $this->returnException($exception->getMessage());
         }
     }
 }
