@@ -34,5 +34,11 @@ return [
     'myhash' => [
         'secret_key' => env('HASH_SECRET_KEY'),
         'secret_iv'  => env('HASH_SECRET_IV_KEY'),
-    ]
+    ],
+
+    'twilio' => [
+        'sid'    => env('TWILIO_SID'),
+        'token'  => env('TWILIO_AUTH_TOKEN'),
+        'number' => env('TWILIO_NUMBER'),
+    ],
 ];

@@ -66,9 +66,6 @@ class UserRegisterRequest extends FormRequest
             'address.zip.required'=>'The zip field is required',
             'address.zip.integer'=>'The zip field is not valid format',
             'address.zip.max'=>'The zip field is less than or equal 15',
-
-
-
         ];
     }
 

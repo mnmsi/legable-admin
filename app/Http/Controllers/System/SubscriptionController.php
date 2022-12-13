@@ -39,12 +39,7 @@ class SubscriptionController extends Controller
         }
 
         if (is_null(Auth::user()->phone_verified_at)) {
-            try {
-                return $this->verifyPhone($request);
-            }
-            catch (\Exception $exception) {
-                return $this->returnException("Invalid phone number for verification! Please contact with us for update your phone number.");
-            }
+            return $this->verifyPhone($request);
         }
 
         $requestData                = $request->except('_token');

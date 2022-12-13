@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use App\Traits\Auth\AuthTrait;
 use App\Traits\Auth\RegisterTrait;
 use App\Traits\User\AddressTrait;
+use App\Traits\User\PhoneVerificationTrait;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
@@ -31,7 +32,7 @@ class RegisterController extends Controller
     |
     */
 
-    use AuthTrait, AddressTrait, RegisterTrait, RegistersUsers {
+    use AuthTrait, AddressTrait, RegisterTrait, PhoneVerificationTrait, RegistersUsers {
         showRegistrationForm as traitRegistrationForm;
         register as traitRegister;
     }
@@ -62,12 +63,22 @@ class RegisterController extends Controller
 
     public function register(UserRegisterRequest $request)
     {
+        try {
+            if (!is_null($this->phoneLookUp($request->phone)['error_code'])) {
+                return $this->returnExceptionPhoneValidation(['phone' => 'Invalid phone number']);
+            }
+        }
+        catch (\Exception $e) {
+            return $this->returnExceptionPhoneValidation(['phone' => 'Invalid phone number']);
+        }
+
         DB::beginTransaction();
         try {
             $user = $this->createUser($request->all());
             if (!$user) {
                 abort(404);
             }
+
             $user->addresses()->attach($user->id, $request->address);
             $this->storeDevice($request, $user);
 
@@ -76,9 +87,10 @@ class RegisterController extends Controller
             if ($response = $this->registered($request, $user)) {
                 return $response;
             }
-//            dd("test");
+
             DB::commit();
             return redirect()->route('mail.verification');
+
 //            return $request->wantsJson()
 //                ? new JsonResponse([], 201)
 //                : redirect($this->redirectPath());
