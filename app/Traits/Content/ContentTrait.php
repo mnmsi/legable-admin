@@ -95,7 +95,7 @@ trait ContentTrait
     public function searchContent($value)
     {
         return Content::where('name', 'like', "%$value%")
-                      ->whereNotNull('parent_id')
+                      ->whereNull('parent_id')
                       ->get();
     }
 }
