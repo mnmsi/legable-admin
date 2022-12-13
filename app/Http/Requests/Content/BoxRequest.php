@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class BoxRequest extends FormRequest
 {
@@ -49,7 +50,14 @@ class BoxRequest extends FormRequest
     public function rules()
     {
         return [
-            'box_name'          => 'required|unique:App\Models\Content\Content,name,user_id,' . Auth::id() . '|string|max:255',
+            'box_name'       => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('contents', 'name')
+                    ->where('content_type', 'box')
+                    ->where('user_id', Auth::id())
+            ],
             'drawer'            => 'required|string|exists:App\Models\Content\Content,id',
             'password_required' => 'required|integer|in:0,1',
             'use_master_key'    => 'required|integer|in:0,1',

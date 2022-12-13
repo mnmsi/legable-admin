@@ -47,6 +47,7 @@ class DrawerRequest extends FormRequest
                 'string',
                 'max:255',
                 Rule::unique('contents', 'name')
+                    ->where('content_type', 'drawer')
                     ->where('user_id', Auth::id())
             ],
             'drawer_password'   => 'required|string|max:255',
