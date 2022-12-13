@@ -68,7 +68,26 @@ function mimeType($file_url)
         abort(404);
     }
 
-    return explode('/', Storage::mimeType($file_url))[0];
+    return match (Storage::mimeType($file_url)) {
+        'application/pdf'                                                   => 'pdf',
+        'application/zip'                                                   => 'zip',
+        'application/x-rar-compressed'                                      => 'rar',
+        'application/x-7z-compressed'                                       => '7z',
+
+        'application/vnd.ms-excel',
+        'application/msexcel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'excel',
+
+        'application/vnd.ms-powerpoint',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'application/powerpoint'                                            => 'powerpoint',
+
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.ms-word',
+        'application/msword'                                                => 'word',
+
+        default                                                             => 'image',
+    };
 }
 
 function thumbnail($file_url)
