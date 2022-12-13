@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 
 trait ContentTrait
 {
-    public static $defaultAttr = ['id', 'name', 'content_type', 'is_password_required', 'is_able_use_master_key'];
+    public static $defaultAttr = ['id', 'name', 'content_type', 'file_url', 'is_password_required', 'is_able_use_master_key'];
 
     public function drawers()
     {

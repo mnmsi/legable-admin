@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 function file_upload($password, $file)
 {
@@ -58,4 +59,26 @@ function file_name($directory)
 function image_data($directory, $imageContent)
 {
     return 'data:' . Storage::mimeType($directory) . ';base64,' . base64_encode($imageContent);
+}
+
+function mimeType($file_url)
+{
+    $file_url = myDecrypt($file_url);
+    if (!$file_url) {
+        abort(404);
+    }
+
+    return explode('/', Storage::mimeType($file_url))[0];
+}
+
+function thumbnail($file_url)
+{
+    return match (mimeType($file_url)) {
+        'image'      => asset('image/thumb/image.svg'),
+        'excel'      => asset('image/thumb/excel.svg'),
+        'powerpoint' => asset('image/thumb/powerpoint.svg'),
+        'video'      => asset('image/thumb/video.svg'),
+        'audio'      => asset('images/thumb/audio.svg'),
+        default      => asset('image/content/demo1.svg'),
+    };
 }

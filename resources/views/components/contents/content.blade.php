@@ -26,7 +26,7 @@
             @foreach($contents as $content)
                 <div class="all-contents" id="{{$content['id']}}">
                     <x-content :type="$content['content_type']" :required-pass="$content['is_password_required']"
-                               title="{{$content['name']}}" url="{{asset('image/content/demo1.svg')}}"
+                               title="{{$content['name']}}" url="{{thumbnail($content['file_url'])}}"
                                id="{{$content['id']}}"/>
                 </div>
             @endforeach

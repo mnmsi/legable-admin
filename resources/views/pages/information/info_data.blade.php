@@ -7,15 +7,7 @@
              id="informationTypeShowDiv">
             <div class="block-wrapper block-min-height content-wrappers">
                 <div class="top-block">
-                    <div class="conten-items" id="contentsDivId">
-                        {{--@foreach($information as $key => $info)
-                            <div class="all-contents" id="{{$info->id}}">
-                                <x-information-data :id="$info->id"
-                                                    :name="$info->name"
-                                                    url="{{asset('image/content/demo1.svg')}}"/>
-                            </div>
-                        @endforeach--}}
-                    </div>
+                    <div class="conten-items" id="contentsDivId"></div>
                 </div>
             </div>
         </div>
@@ -70,10 +62,9 @@
             for (let info of filterInformationData) {
                 informationDataHtml += '<div class="all-contents" id="' + info.id + '">';
                 informationDataHtml += '<div class="content-block-2 text-decoration-none" id="' + info.id + '" onclick="getInformationData(' + info.id + ')">';
-                informationDataHtml += '<img src="{{asset('image/content/demo1.svg')}}" alt="" class="img-fluid top-icon"/>';
+                informationDataHtml += '<img src="{{asset('image/thumb/information.svg')}}" alt="" class="img-fluid top-icon"/>';
                 informationDataHtml += '<div class="footer-item">';
                 informationDataHtml += '<p>' + info.name + '</p>';
-                informationDataHtml += '<img src="{{asset('image/content/lockIcon.svg')}}" alt="" class="img-fluid"/>';
                 informationDataHtml += '</div></div></div>';
             }
 

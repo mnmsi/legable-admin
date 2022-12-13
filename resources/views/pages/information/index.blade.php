@@ -7,15 +7,7 @@
     <div class="block-wrapper block-min-height content-wrappers" id="informationTypeShowDiv">
         <div class="block-wrapper block-min-height content-wrappers">
             <div class="top-block">
-                <div class="conten-items" id="contentsDivId">
-                    {{--                    @foreach($information as $key => $info)--}}
-                    {{--                        <div class="all-contents" id="{{$info->id}}">--}}
-                    {{--                            <x-information :info-type-id="encrypt($info->informationType->id)"--}}
-                    {{--                                           :info-type-name="$info->informationType->name"--}}
-                    {{--                                           url="{{asset('image/card/card-icon.svg')}}"/>--}}
-                    {{--                        </div>--}}
-                    {{--                    @endforeach--}}
-                </div>
+                <div class="conten-items" id="contentsDivId"></div>
             </div>
         </div>
     </div>
