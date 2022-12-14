@@ -45,13 +45,16 @@
             let informationData = <?= json_encode($information); ?>;
             let filterInformationData = [];
 
-            console.log(informationData)
+            console.log(informationData, !informationData)
 
             if (!informationDataIds) {
                 filterInformationData = informationData;
             } else {
                 for (let infoId in informationDataIds) {
-                    filterInformationData.push(informationData.find(info => info.id.toString() === informationDataIds[infoId]))
+                    let data = informationData.find(info => info.id.toString() === informationDataIds[infoId]);
+                    if (data !== undefined) {
+                        filterInformationData.push(data);
+                    }
                 }
 
                 filterInformationData = filterInformationData.concat(informationData.filter(function (information) {

@@ -46,7 +46,10 @@
                 filterInformationData = informationData;
             } else {
                 for (let infoId in informationIds) {
-                    filterInformationData.push(informationData.find(info => info.id.toString() === informationIds[infoId]))
+                    let data = informationData.find(info => info.id.toString() === informationIds[infoId]);
+                    if (data !== undefined) {
+                        filterInformationData.push(data);
+                    }
                 }
 
                 filterInformationData = filterInformationData.concat(informationData.filter(function (information) {
@@ -56,7 +59,7 @@
 
             for (let info of filterInformationData) {
                 informationHtml += '<div class="all-contents" id="' + info.id + '">';
-                informationHtml += '<div class="content-block text-truncate" id="' + info.information_type.id + '" data-info-type-name="' + info.information_type.name + '" onclick="enterInformation(' + info.id + ')">';
+                informationHtml += '<div class="content-block text-truncate" id="' + info.information_type.id + '" data-info-type-name="' + info.information_type.name + '" onclick="enterInformation(' + info.information_type.id + ')">';
                 informationHtml += '<img src="{{asset('image/card/card-icon.svg')}}" alt="" class="img-fluid"/>';
                 informationHtml += '<h2 class="sub-header2 info-title mb-0">' + info.information_type.name + '</h2>';
                 informationHtml += '</div></div>';
