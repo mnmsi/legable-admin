@@ -65,16 +65,11 @@ class AjaxFileRequest extends FormRequest
         if (!empty($this->drawer)) {
             $drawer = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
             if (!$drawer) {
-                $drawer = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
+                abort(404);
             }
 
             $parent_id = $drawer->id;
-
-            if ($this->file_password_required) {
-                $password = Hash::make($this->security_key);
-            } else {
-                $password = $drawer->password;
-            }
+            $password  = !empty($this->file_password_required) ? Hash::make($this->security_key) : $drawer->password;
 
         } else {
             $parent_id = null;

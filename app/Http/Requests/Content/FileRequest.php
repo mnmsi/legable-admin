@@ -61,13 +61,14 @@ class FileRequest extends FormRequest
     protected function passedValidation()
     {
         if (!empty($this->drawer)) {
+
             $drawer = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
             if (!$drawer) {
-                $drawer = Content::where('content_type', 'box')->find(myDecrypt($this->drawer));
+                abort(404);
             }
 
             $parent_id = $drawer->id;
-            $password  = $drawer->password;
+            $password  = !empty($this->security_key) ? Hash::make($this->security_key) : $drawer->password;
 
         } else {
             $parent_id = null;
