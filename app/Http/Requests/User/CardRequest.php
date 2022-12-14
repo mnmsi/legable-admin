@@ -43,4 +43,12 @@ class CardRequest extends FormRequest
             'cvc'       => 'required|numeric|digits_between:3,4',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'exp_month.min' => 'The expiration month is invalid.',
+            'exp_year.min'  => 'The expiration year is invalid.',
+        ];
+    }
 }
