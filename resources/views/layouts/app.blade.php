@@ -39,7 +39,7 @@
 <script src="{{asset('vendor/toastr.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
 
-
+<script type="text/javascript" src="{{asset('vendor/xlsx.full.min.js')}}"></script>
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
 <script src="{{asset('js/content.js')}}"></script>

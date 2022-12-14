@@ -88,7 +88,13 @@ function getFile(url, formData) {
         type: "GET",
         data: formData,
         success: function (response) {
-            showContent(response.data)
+
+            if (response.fileMime.includes('excel')) {
+                showExcelFile(response.data, response.fileName)
+            } else {
+                showContent(response.data)
+            }
+
         }, error: function (error) {
             showSmallText('message', 'danger', error.responseJSON.message)
         }

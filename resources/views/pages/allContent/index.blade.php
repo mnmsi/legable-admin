@@ -15,6 +15,7 @@
 
 @endsection
 @section('script')
+    <script type="text/javascript" src="{{asset('js/fileshow.js')}}"></script>
     <script>
         $(document).ready(function () {
 

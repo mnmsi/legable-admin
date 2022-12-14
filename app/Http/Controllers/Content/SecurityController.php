@@ -32,6 +32,8 @@ class SecurityController extends Controller
             if ($drawer->content_type === 'file') {
                 return response()->json([
                     'content_type' => $drawer->content_type,
+                    'fileName'     => $drawer->name,
+                    'fileMime'     => getFileMime($drawer->file_url),
                     'data'         => get_file($drawer->password, $drawer->file_url),
                 ]);
             } else {

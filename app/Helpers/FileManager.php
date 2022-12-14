@@ -61,6 +61,16 @@ function image_data($directory, $imageContent)
     return 'data:' . Storage::mimeType($directory) . ';base64,' . base64_encode($imageContent);
 }
 
+function getFileUrl($url)
+{
+    return myDecrypt($url);
+}
+
+function getFileMime($fileUrl)
+{
+    return Storage::mimeType(getFileUrl($fileUrl));
+}
+
 function mimeType($file_url)
 {
     $file_url = myDecrypt($file_url);

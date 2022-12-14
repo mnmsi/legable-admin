@@ -1,6 +1,6 @@
 <div class="modal fade" id="fileShowModal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-width">
+    <div class="modal-dialog modal-dialog-centered modal-width" style="min-width: fit-content!important;">
         <div class="modal-content">
             <div class="modal-header justify-content-between">
                 <div class="align-items-center fileModalHeader"><strong id="infoName"></strong></div>
@@ -13,8 +13,8 @@
                     <embed src="" id="allTypeContent" style="width: 100%;height: 400px"/>
                 </div>
                 <div id="statusDiv"></div>
-                <div id="informationDiv">
-                </div>
+                <div id="informationDiv"></div>
+                <div id="excel_data"></div>
             </div>
         </div>
     </div>
