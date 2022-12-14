@@ -21,7 +21,7 @@
                                 <label for="security_key" class="form-label-2 mb-4">Enter security key to unlock this
                                     drawer</label>
                                 <input type="password" class="form-control" id="security_key" name="security_key"
-                                       placeholder="Enter security key" required>
+                                       placeholder="Enter security key" required autofocus>
                                 <input type="hidden" id="drawer-key" name="drawer_key">
                                 <input type="hidden" id="drawer-name">
                                 <input type="hidden" id="drawer-type">

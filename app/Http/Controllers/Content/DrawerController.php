@@ -11,6 +11,7 @@ use App\Traits\Content\SecurityTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 
@@ -28,7 +29,10 @@ class DrawerController extends Controller
 
     public function add()
     {
-        Session::put('drawerRedirectUrl', url()->previous());
+        if (url()->previous() !== route('drawer.add')) {
+            Session::put('drawerRedirectUrl', url()->previous());
+        }
+
         return view("pages.secretDrawer.add");
     }
 
