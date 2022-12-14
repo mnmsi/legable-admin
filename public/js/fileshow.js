@@ -21,10 +21,10 @@ function showExcelFile(fileData, fileName) {
 
     reader.onload = function (event) {
 
-        var data = new Uint8Array(reader.result);
-        var work_book = XLSX.read(data, {type: 'array'});
-        var sheet_name = work_book.SheetNames;
-        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header: 1});
+        let data = new Uint8Array(reader.result);
+        let work_book = XLSX.read(data, {type: 'array'});
+        let sheet_name = work_book.SheetNames;
+        let sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header: 1});
 
         if (sheet_data.length > 0) {
             var table_output = '<table class="table table-striped table-bordered">';
@@ -46,5 +46,35 @@ function showExcelFile(fileData, fileName) {
     }
 
     $("#allTypeContent").hide();
+    $("#pageModal").modal('hide')
+    $("#fileShowModal").modal('show');
+}
+
+function showDocFile(fileData) {
+    $("#allTypeContent").attr('src', "https://view.officeapps.live.com/op/embed.aspx?src=" + fileData);
+    $("#pageModal").modal('hide')
+    $("#fileShowModal").modal('show')
+}
+
+function parseWordDocxFile(fileData, fileName, showDiv) {
+
+    let file = dataURLtoFile(fileData, fileName);
+
+    let reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+
+    reader.onloadend = function (event) {
+
+        let arrayBuffer = reader.result;
+
+        mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(function (resultObject) {
+            console.log(resultObject.value);
+            $(showDiv).html(resultObject.value);
+            console.log(resultObject.value);
+        })
+    };
+
+    $("#allTypeContent").hide();
+    $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show');
 }

@@ -89,9 +89,17 @@ function getFile(url, formData) {
         data: formData,
         success: function (response) {
 
-            if (response.fileMime.includes('excel')) {
+            console.log(response)
+
+            if (response.fileMime.includes('excel') || response.fileMime.includes('csv')) {
                 showExcelFile(response.data, response.fileName)
+
+            } else if (response.fileMime.includes('msword') || response.fileMime.includes('document')) {
+
+                parseWordDocxFile(response.data, response.fileName, "#word_container")
+
             } else {
+
                 showContent(response.data)
             }
 

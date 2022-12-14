@@ -15,6 +15,7 @@
                 <div id="statusDiv"></div>
                 <div id="informationDiv"></div>
                 <div id="excel_data"></div>
+                <div id="word_container"></div>
             </div>
         </div>
     </div>

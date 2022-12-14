@@ -15,13 +15,13 @@
 
 @endsection
 @section('script')
-    <script type="text/javascript" src="{{asset('js/fileshow.js')}}"></script>
+
     <script>
         $(document).ready(function () {
 
             @if($errors->any())
             @if($errors->has('file') || $errors->has('drawer') || $errors->has('security_key'))
-                showContentModal(this);
+            showContentModal(this);
             @endif
             @endif
 

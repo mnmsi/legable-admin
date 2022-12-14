@@ -40,9 +40,13 @@
 <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
 
 <script type="text/javascript" src="{{asset('vendor/xlsx.full.min.js')}}"></script>
+
+<script src="{{asset('vendor/mammoth.browser.min.js')}}"></script>
+
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
 <script src="{{asset('js/content.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/fileshow.js')}}"></script>
 
 @yield('script')
 @stack('script')
