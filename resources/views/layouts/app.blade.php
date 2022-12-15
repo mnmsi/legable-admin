@@ -45,6 +45,19 @@
 {{--DOCUMENT--}}
 <script src="{{asset('vendor/mammoth.browser.min.js')}}"></script>
 
+{{--Powerpoint--}}
+<script src="{{asset('vendor/pptx/js/jszip.min.js')}}"></script>
+<script src="{{asset('vendor/pptx/js/filereader.js')}}"></script>
+<script src="{{asset('vendor/pptx/js/d3.min.js')}}"></script>
+<script src="{{asset('vendor/pptx/js/nv.d3.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('vendor/pptx/css/nv.d3.min.css')}}"/>
+<script src="{{asset('vendor/pptx/js/divs2slides.js')}}"></script>
+<link rel="stylesheet" href="{{asset('vendor/pptx/css/pptxjs.css')}}"/>
+<link rel="stylesheet" href="{{asset('vendor/pptx/css/ppt.custom.css')}}"/>
+<script src="{{asset('vendor/pptx/js/pptxjs.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js" integrity="sha512-MoP2OErV7Mtk4VL893VYBFq8yJHWQtqJxTyIAsCVKzILrvHyKQpAwJf9noILczN6psvXUxTr19T5h+ndywCoVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>
 <script src="{{asset('js/content.js')}}"></script>

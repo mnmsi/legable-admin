@@ -7,6 +7,7 @@ $("#pageModal").on("hidden.bs.modal", function () {
 $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
     $("#pdf_viewer").attr('src', "")
+    $("#my_pdf_viewer").hide();
 });
 
 $("#uploadFileWithoutAjax").on("hidden.bs.modal", function () {
@@ -93,23 +94,30 @@ function getFile(url, formData) {
             console.log(response)
             clearShowDiv();
 
-            if (response.fileMime.includes('excel') || response.fileMime.includes('csv')) {
-                showExcelFile(response.data, response.fileName)
+            if (response.fileMime) {
+                if (response.fileMime.includes('excel') || response.fileMime.includes('csv')) {
+                    showExcelFile(response.data, response.fileName)
 
-            } else if (response.fileMime.includes('msword') || response.fileMime.includes('document')) {
+                } else if ((response.fileMime.includes('msword') || response.fileMime.includes('document')) && !response.fileMime.includes('presentation')) {
+                    console.log("word")
+                    parseWordDocxFile(response.data, response.fileName)
 
-                parseWordDocxFile(response.data, response.fileName, "#word_container")
+                } else if (response.fileMime.includes('pdf')) {
+                    pdfRender(response.data, response.file_name)
 
-            } else if (response.fileMime.includes('pdf')) {
-                pdfRender(response.data, response.file_name)
+                } else if (response.fileMime.includes('powerpoint') || response.fileMime.includes('presentation')) {
+
+                    pptRender(response.data, response.fileName)
+                } else {
+                    showContent(response.data)
+                }
 
             } else {
-                console.log(4656)
-                showContent(response.data)
+                showSmallText('message', 'danger', error.responseJSON.message ?? "Something went wrong!!")
             }
 
         }, error: function (error) {
-            showSmallText('message', 'danger', error.responseJSON.message)
+            showSmallText('message', 'danger', error.responseJSON.message ?? "Something went wrong!!")
         }
     });
 }

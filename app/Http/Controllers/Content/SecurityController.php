@@ -44,7 +44,7 @@ class SecurityController extends Controller
                 catch (\Exception $e) {
                     return response()->json([
                         'message' => "Something went wrong!!"
-                    ], 401);
+                    ], 404);
                 }
             } else {
                 return $this->returnItemView($drawer, myEncrypt($drawer->id));

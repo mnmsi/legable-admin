@@ -56,7 +56,7 @@ function showDocFile(fileData) {
     $("#fileShowModal").modal('show')
 }
 
-function parseWordDocxFile(fileData, fileName, showDiv) {
+function parseWordDocxFile(fileData, fileName) {
 
     let file = dataURLtoFile(fileData, fileName);
 
@@ -68,9 +68,7 @@ function parseWordDocxFile(fileData, fileName, showDiv) {
         let arrayBuffer = reader.result;
 
         mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(function (resultObject) {
-            console.log(resultObject.value);
-            $(showDiv).html(resultObject.value);
-            console.log(resultObject.value);
+            $("#word_container").html(resultObject.value);
         })
     };
 
@@ -86,19 +84,38 @@ function clearShowDiv() {
     $("#informationDiv").html("");
     $("#excel_data").html("");
     $("#my_pdf_viewer").hide();
+    $("#ppt_data").html("");
 }
 
 function showPdf() {
     $("#allTypeContent").hide();
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show');
+    $("#my_pdf_viewer").show();
 }
 
 const pdfRender = (fileData, fileName) => {
-    $("#pdf_viewer").attr('src', fileData);
+    $("#pdf_viewer").attr('src', fileData + "#zoom=FitH&viewrect=0,0,100,100");
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show')
 
     showPdf();
-    $("#my_pdf_viewer").show();
+}
+
+const pptRender = (fileData, fileName) => {
+
+    let file = dataURLtoFile(fileData, fileName);
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = function () {
+        $("#ppt_data").pptxToHtml({
+            pptxFileUrl: reader.result,
+        });
+    }
+
+    $("#allTypeContent").hide();
+    $("#pageModal").modal('hide')
+    $("#fileShowModal").modal('show');
 }
