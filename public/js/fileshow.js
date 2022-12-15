@@ -78,3 +78,27 @@ function parseWordDocxFile(fileData, fileName, showDiv) {
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show');
 }
+
+function clearShowDiv() {
+    $("#allTypeContent").show();
+    $("#word_container").html("");
+    $("#statusDiv").html("");
+    $("#informationDiv").html("");
+    $("#excel_data").html("");
+    $("#my_pdf_viewer").hide();
+}
+
+function showPdf() {
+    $("#allTypeContent").hide();
+    $("#pageModal").modal('hide')
+    $("#fileShowModal").modal('show');
+}
+
+const pdfRender = (fileData, fileName) => {
+    $("#pdf_viewer").attr('src', fileData);
+    $("#pageModal").modal('hide')
+    $("#fileShowModal").modal('show')
+
+    showPdf();
+    $("#my_pdf_viewer").show();
+}

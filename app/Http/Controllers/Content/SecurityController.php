@@ -8,6 +8,7 @@ use App\Models\Content\Content;
 use App\Traits\Content\DrawerTrait;
 use App\Traits\Content\SecurityTrait;
 use Illuminate\Support\Facades\Auth;
+use PharIo\Version\Exception;
 
 class SecurityController extends Controller
 {
@@ -25,17 +26,26 @@ class SecurityController extends Controller
         $drawer = Content::find($request->drawer_id);
 
         if (!$drawer) {
-            abort(404);
+            return response()->json([
+                'message' => "Something went wrong!!"
+            ], 401);
         }
 
         if ($this->checkSecurity($drawer, $request->security_key)) {
             if ($drawer->content_type === 'file') {
-                return response()->json([
-                    'content_type' => $drawer->content_type,
-                    'fileName'     => $drawer->name,
-                    'fileMime'     => getFileMime($drawer->file_url),
-                    'data'         => get_file($drawer->password, $drawer->file_url),
-                ]);
+                try {
+                    return response()->json([
+                        'content_type' => $drawer->content_type,
+                        'fileName'     => $drawer->name,
+                        'fileMime'     => getFileMime($drawer->file_url),
+                        'data'         => get_file($drawer->password, $drawer->file_url),
+                    ]);
+                }
+                catch (\Exception $e) {
+                    return response()->json([
+                        'message' => "Something went wrong!!"
+                    ], 401);
+                }
             } else {
                 return $this->returnItemView($drawer, myEncrypt($drawer->id));
             }

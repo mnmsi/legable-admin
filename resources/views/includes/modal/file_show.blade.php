@@ -16,6 +16,9 @@
                 <div id="informationDiv"></div>
                 <div id="excel_data"></div>
                 <div id="word_container"></div>
+                <div id="my_pdf_viewer" style="display: none">
+                    <embed src="" id="pdf_viewer" style="width: 100%;height: 400px" />
+                </div>
             </div>
         </div>
     </div>

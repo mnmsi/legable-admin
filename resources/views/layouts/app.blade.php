@@ -39,9 +39,14 @@
 <script src="{{asset('vendor/toastr.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
 
+{{--EXCEL--}}
 <script type="text/javascript" src="{{asset('vendor/xlsx.full.min.js')}}"></script>
 
+{{--DOCUMENT--}}
 <script src="{{asset('vendor/mammoth.browser.min.js')}}"></script>
+
+{{--PDF--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
 
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 <script src="{{asset("js/jquery.ui.sortable-animation.js")}}"></script>

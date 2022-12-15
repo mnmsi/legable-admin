@@ -6,6 +6,7 @@ $("#pageModal").on("hidden.bs.modal", function () {
 
 $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
+    $("#pdf_viewer").attr('src', "")
 });
 
 $("#uploadFileWithoutAjax").on("hidden.bs.modal", function () {
@@ -90,6 +91,7 @@ function getFile(url, formData) {
         success: function (response) {
 
             console.log(response)
+            clearShowDiv();
 
             if (response.fileMime.includes('excel') || response.fileMime.includes('csv')) {
                 showExcelFile(response.data, response.fileName)
@@ -98,8 +100,11 @@ function getFile(url, formData) {
 
                 parseWordDocxFile(response.data, response.fileName, "#word_container")
 
-            } else {
+            } else if (response.fileMime.includes('pdf')) {
+                pdfRender(response.data, response.file_name)
 
+            } else {
+                console.log(4656)
                 showContent(response.data)
             }
 
@@ -110,7 +115,6 @@ function getFile(url, formData) {
 }
 
 function showContent(image) {
-
     $("#allTypeContent").attr('src', image);
     $("#pageModal").modal('hide')
     $("#fileShowModal").modal('show')
