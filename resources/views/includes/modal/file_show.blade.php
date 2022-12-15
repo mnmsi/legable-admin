@@ -1,6 +1,6 @@
 <div class="modal fade" id="fileShowModal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-width" style="max-width: fit-content!important;width: 800px;">
+    <div class="modal-dialog modal-dialog-centered modal-width" style="min-width: fit-content!important;width: 800px;">
         <div class="modal-content">
             <div class="modal-header justify-content-between">
                 <div class="align-items-center fileModalHeader"><strong id="infoName"></strong></div>
