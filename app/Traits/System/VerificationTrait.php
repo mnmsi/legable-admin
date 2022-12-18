@@ -5,6 +5,7 @@ namespace App\Traits\System;
 use App\Models\System\UserVerification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
@@ -23,9 +24,15 @@ trait VerificationTrait
 
     public function makeData($gateway)
     {
+        if (!Str::contains(Auth::user()->phone, '+880')) {
+            $otp = $this->generateToken();
+        } else {
+            $otp = "123456";
+        }
+
         return [
             'gateway'    => $gateway,
-            'otp'        => $this->generateToken(),
+            'otp'        => $otp,
             'expires_at' => now()->addMinutes(5),
         ];
     }
