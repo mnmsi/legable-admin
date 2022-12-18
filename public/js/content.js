@@ -10,6 +10,10 @@ $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#my_pdf_viewer").hide();
 });
 
+$("#helpCenterModal").on("hidden.bs.modal", function () {
+    $("#helpCenterForm").trigger('reset');
+});
+
 $("#uploadFileWithoutAjax").on("hidden.bs.modal", function () {
     $(".custom-file-upload").text('select a file to upload');
     $("#fileUploadForm").trigger('reset')

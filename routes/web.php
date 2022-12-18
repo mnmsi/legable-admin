@@ -14,6 +14,7 @@ use App\Http\Controllers\User\AccountSettingsController;
 use App\Http\Controllers\User\BillingController;
 use App\Http\Controllers\User\CardController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\HelpCenterController;
 use App\Http\Controllers\User\InformationController;
 use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
@@ -145,9 +146,6 @@ Route::middleware('auth')->group(function () {
             Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
         });
 
-        Route::prefix('notification')->group(function () {
-//            Route::get('list', [NotificationController::class, 'notifications'])->name('notification.list');
-            Route::get('seen', [NotificationController::class, 'updateStatus'])->name('notification.seen');
-        });
+        Route::post('help-center', [HelpCenterController::class, 'helpCenter'])->name('help.center');
     });
 });

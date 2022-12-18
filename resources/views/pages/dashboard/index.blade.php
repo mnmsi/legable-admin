@@ -66,7 +66,7 @@
                                 Please contact us for get supported.</p>
                         </div>
                         <div class="help-card-footer">
-                            <a href="#">Contact Support</a>
+                            <a href="javascript:void(0)" id="contactSupport" style="cursor: pointer">Contact Support</a>
                         </div>
                     </div>
                 </div>
@@ -96,6 +96,7 @@
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.addBox')
     @include('includes.modal.file_show')
+    @include('includes.modal.helpCenter')
 
     {{-- page content end --}}
 @endsection
@@ -134,6 +135,11 @@
             //upload file
             $('#dashmodalid').on('click', function () {
                 $('#uploadFileWithoutAjax').modal('show');
+            });
+
+            //help center
+            $('#contactSupport').on('click', function () {
+                $('#helpCenterModal').modal('show');
             });
 
             //create box
