@@ -44,7 +44,7 @@ class AjaxFileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file'                   => 'required|file|max:512000',
+            'file'                   => 'required|mimes:jpeg,bmp,png,gif,svg,pdf,docx,pptx,xls,csv|max:100000',
             'drawer'                 => 'required_if:security_key,null',
             'security_key'           => 'required_if:drawer,""|max:255',
             'file_password_required' => 'required|integer|in:0,1',

@@ -86,6 +86,8 @@ function mimeType($file_url)
 
         'application/vnd.ms-excel',
         'application/msexcel',
+        'text/csv',
+        'application/csv',
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'excel',
 
         'application/vnd.ms-powerpoint',

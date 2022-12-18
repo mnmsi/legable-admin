@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade global-modal add-box-modal file-upload-modal" id="uploadFileWithoutAjax" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade global-modal add-box-modal file-upload-modal" id="uploadFileWithoutAjax" tabindex="-1"
+     aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-width">
         <div class="modal-content">
@@ -14,10 +15,13 @@
                 </div>
                 <div class="row all-form-wrapper mt-5">
                     <div class="col-12">
-                        <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data" id="fileUploadForm">
+                        <form action="{{route('file.store')}}" method="post" enctype="multipart/form-data"
+                              id="fileUploadForm">
                             @csrf
                             <div class="mb-3">
-                                <h5 class="sub-header5 mb-3">Upload a File</h5>
+                                <h5 class="sub-header5 mb-3">Upload a File <small class="text-secondary"
+                                                                                  style="font-size: 10px">(N.B.: jpeg,
+                                        bmp, png, gif, svg, pdf, docx, pptx, xls, csv)</small></h5>
                                 <label for="file-upload" class="custom-file-upload">
                                     select a file to upload
                                 </label>

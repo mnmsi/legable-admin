@@ -25,7 +25,9 @@
                             <input type="hidden" name="content_id">
 
                             <div class="mb-3">
-                                <h5 class="sub-header5 mb-3">Upload a File</h5>
+                                <h5 class="sub-header5 mb-3">Upload a File <small class="text-secondary"
+                                                                                  style="font-size: 10px">(N.B.: jpeg,
+                                        bmp, png, gif, svg, pdf, docx, pptx, xls, csv)</small></h5>
                                 <label for="fileUpload" class="custom-file-upload">
                                     select a file to upload
                                 </label>
