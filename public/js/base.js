@@ -26,3 +26,17 @@ window.onclick = (event) => {
         history.pushState(null, '', target.attr('href'))
     }
 }
+
+function updateNotificationStatus(notId) {
+    $.ajax({
+        type: "get",
+        url: "http://34.207.161.107/wp-json/wl/v1/notification/?id=" + notId,
+        dataType: "json",
+        success: function (response) {
+            console.log('success')
+        },
+        error: function (error) {
+            console.log('error')
+        }
+    });
+}

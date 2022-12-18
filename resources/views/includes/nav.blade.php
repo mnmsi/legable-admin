@@ -10,7 +10,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li class="notification_panel_title">Notification</li>
                     @foreach($notifications->data as $notification)
-                        <li class="notification_element">
+                        <li class="notification_element {{!$notification->seen ? 'active' : ''}}" {{!$notification->seen ? "onclick=updateNotificationStatus(".$notification->id.")" : ""}}>
                             <div class="notification_text_icon">
                                 <div class="notification_icon">
                                     <img src="{{asset("image/bell.png")}}" alt="image">
@@ -23,31 +23,6 @@
                             <div class="time">{{\Carbon\Carbon::parse($notification->date)->ago()}}</div>
                         </li>
                     @endforeach
-
-                    <li class="notification_element active">
-                        <div class="notification_text_icon">
-                            <div class="notification_icon">
-                                <img src="{{asset("image/bell.png")}}" alt="image">
-                            </div>
-                            <div class="notification_text">
-                                Hi, IOTA Infotech Limited!
-                                Your plan will be <strong>renewed in 5 days</strong>.
-                            </div>
-                        </div>
-                        <div class="time">1hr ago</div>
-                    </li>
-                    <li class="notification_element">
-                        <div class="notification_text_icon">
-                            <div class="notification_icon">
-                                <img src="{{asset("image/bell.png")}}" alt="image">
-                            </div>
-                            <div class="notification_text">
-                                Hi, IOTA Infotech Limited!
-                                Your plan will be <strong>renewed in 5 days</strong>.
-                            </div>
-                        </div>
-                        <div class="time">1hr ago</div>
-                    </li>
                 </ul>
             </div>
             {{--  notification end--}}
