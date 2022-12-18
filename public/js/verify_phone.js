@@ -28,7 +28,6 @@ inputElements.forEach((ele,index)=>{
 function onSubmit(e){
     e.preventDefault()
     const code = inputElements.map(({value})=>value).join('')
-    console.log(code)
     let form = $("#verifyForm");
     form.append("<input type='hidden' name='otp' value='" + code + "'/>")
     form.submit();

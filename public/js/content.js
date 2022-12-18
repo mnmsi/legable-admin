@@ -91,7 +91,6 @@ function getFile(url, formData) {
         data: formData,
         success: function (response) {
 
-            console.log(response)
             clearShowDiv();
 
             if (response.fileMime) {
@@ -99,7 +98,6 @@ function getFile(url, formData) {
                     showExcelFile(response.data, response.fileName)
 
                 } else if ((response.fileMime.includes('msword') || response.fileMime.includes('document')) && !response.fileMime.includes('presentation')) {
-                    console.log("word")
                     parseWordDocxFile(response.data, response.fileName)
 
                 } else if (response.fileMime.includes('pdf')) {

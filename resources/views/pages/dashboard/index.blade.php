@@ -128,7 +128,6 @@
                 items: ".all-contents",
                 update: function () {
                     let order = $("#contents").sortable('toArray');
-                    console.log(order)
                     orderDrawer('{{route('drawer.order')}}', order)
                 }
             });

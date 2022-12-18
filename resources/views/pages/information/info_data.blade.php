@@ -45,8 +45,6 @@
             let informationData = <?= json_encode($information); ?>;
             let filterInformationData = [];
 
-            console.log(informationData, !informationData)
-
             if (!informationDataIds) {
                 filterInformationData = informationData;
             } else {
