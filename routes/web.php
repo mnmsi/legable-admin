@@ -17,6 +17,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\InformationController;
 use App\Http\Controllers\User\MailVerificationController;
 use App\Http\Controllers\User\MasterKeyController;
+use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\User\PhoneVerificationController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserController;
@@ -142,6 +143,11 @@ Route::middleware('auth')->group(function () {
         Route::prefix('phone')->as('phone.')->group(function () {
             Route::get('verification', [PhoneVerificationController::class, 'showVerification'])->name('verification');
             Route::post('verify', [PhoneVerificationController::class, 'verifyPhone'])->name('verify');
+        });
+
+        Route::prefix('notification')->group(function () {
+//            Route::get('list', [NotificationController::class, 'notifications'])->name('notification.list');
+            Route::get('seen', [NotificationController::class, 'updateStatus'])->name('notification.seen');
         });
     });
 });

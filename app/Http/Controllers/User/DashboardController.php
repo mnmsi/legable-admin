@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Content\Content;
 use App\Models\Content\InformationType;
 use App\Traits\Content\ContentTrait;
+use App\Traits\User\NotificationTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
-    use ContentTrait;
+    use ContentTrait, NotificationTrait;
 
     public function index()
     {

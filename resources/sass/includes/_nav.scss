@@ -243,9 +243,9 @@
         padding: 0 32px;
         .notification_text_icon{
             display: flex;
-            justify-content: center;
+            justify-content: revert;
             align-items: center;
-            flex: 0 0 258px;
+            //flex: 0 0 258px;
             gap:24px;
             .notification_text{
                 font-size: 12px;

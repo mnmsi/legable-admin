@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Traits\User\NotificationTrait;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use NotificationTrait;
     /**
      * Register any application services.
      *
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('notifications', $this->getNotification());
     }
 }

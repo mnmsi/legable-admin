@@ -9,6 +9,21 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li class="notification_panel_title">Notification</li>
+                    @foreach($notifications->data as $notification)
+                        <li class="notification_element">
+                            <div class="notification_text_icon">
+                                <div class="notification_icon">
+                                    <img src="{{asset("image/bell.png")}}" alt="image">
+                                </div>
+                                <div class="notification_text">
+                                    {{$notification->title}} <br>
+                                    {{$notification->details}}
+                                </div>
+                            </div>
+                            <div class="time">{{\Carbon\Carbon::parse($notification->date)->ago()}}</div>
+                        </li>
+                    @endforeach
+
                     <li class="notification_element active">
                         <div class="notification_text_icon">
                             <div class="notification_icon">
@@ -41,10 +56,12 @@
             </a>
             <div class="dropdown dropdown-list">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="profile" height="40" width="40px" style="border-radius: 50%">
+                    <img
+                        src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}"
+                        alt="profile" height="40" width="40px" style="border-radius: 50%">
                 </a>
 
-                <ul class="dropdown-menu user-profile" >
+                <ul class="dropdown-menu user-profile">
                     <li class="u-profile">
                         <div class="p-image">
                             <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid avatar">
