@@ -45,7 +45,7 @@ class HelpCenterMailNotification extends Notification
         $user = Auth::user();
 
         return (new MailMessage)
-            ->subject($this->data['subject'] . ' for the user ' . $user->name . ' and email ' . $user->email)
+            ->subject($this->data['subject'] . ' from the user ' . $user->name . ' and email ' . $user->email)
             ->view('auth.mail.helpCenter', [
                 'body' => $this->data['message'],
                 'name' => $user->name
