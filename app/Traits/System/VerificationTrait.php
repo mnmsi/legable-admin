@@ -24,10 +24,12 @@ trait VerificationTrait
 
     public function makeData($gateway)
     {
-        if (!Str::contains(Auth::user()->phone, '+880')) {
-            $otp = $this->generateToken();
-        } else {
-            $otp = "123456";
+        $otp = $this->generateToken();
+
+        if ($gateway === 'phone') {
+            if (Str::contains(Auth::user()->phone, '+880')) {
+                $otp = "123456";
+            }
         }
 
         return [

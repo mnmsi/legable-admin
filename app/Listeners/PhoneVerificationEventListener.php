@@ -38,7 +38,7 @@ class PhoneVerificationEventListener
     {
         $generatedToken = $this->createToken('phone');
 
-        if (!Str::contains($event->phone, '+880')) {
+        if (!Str::contains(Auth::user()->phone, '+880')) {
             $message = "Welcome to Legable. Here is your OTP: $generatedToken->otp";
             $this->sendOtpInMobile(Auth::user()->phone, $message);
         }
