@@ -79,7 +79,9 @@ class RegisterController extends Controller
                 abort(404);
             }
 
-            $user->addresses()->attach($user->id, $request->address);
+            $address           = $request->address;
+            $address['status'] = 1;
+            $user->addresses()->attach($user->id, $address);
             $this->storeDevice($request, $user);
 
             $this->guard()->login($user);
