@@ -121,27 +121,6 @@
                         </form>
                     </div>
                 </div>
-                <div class="bottom-block">
-                    <div class="testimonial">
-                        <div class="avatar">
-                            <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid">
-                        </div>
-                        <p><img src="{{asset("image/plans/m_comment.png")}}" alt=""> Dolor sit amet, consectetur
-                            adipiscing elit. Suspendisse arcu netus neque hendrerit sed
-                            turpis diam sodales.</p>
-                        <h3 class="ps-4">Darren C. Bass</h3>
-                    </div>
-                    <div class="testimonial">
-                        <div class="avatar">
-                            <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid">
-                        </div>
-                        <p><img src="{{asset("image/plans/m_comment.png")}}" alt=""> Dolor sit amet, consectetur
-                            adipiscing elit. Suspendisse arcu netus neque hendrerit sed
-                            turpis diam sodales.</p>
-                        <h3 class="ps-4">David Williams</h3>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
