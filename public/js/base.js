@@ -42,3 +42,7 @@ function updateNotificationStatus(notId) {
         }
     });
 }
+
+$('form').on('submit', function(e) {
+    $(this).find('button, input[type=button]').prop('disabled', true);
+});

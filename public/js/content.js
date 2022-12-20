@@ -174,6 +174,9 @@ $('#uploadFileAjax').on('show.bs.modal', function (e) {
 function uploadFileByAjax(event, that, url) {
     event.preventDefault();
 
+    let button = $(that).find('button, input[type=submit]');
+    button.prop('disabled', true);
+
     let formData = new FormData(that);
     if ($("#fileUpload")[0].files[0] !== undefined) {
         formData.append('file', $("#fileUpload")[0].files[0])
@@ -188,6 +191,7 @@ function uploadFileByAjax(event, that, url) {
         contentType: false,
         dataType: 'json',
         success: function (response) {
+            button.prop('disabled', false);
 
             if (response.status) {
                 showAjaxMessageOnDivById("contentErrors", "success", "Successful!!")
@@ -209,6 +213,7 @@ function uploadFileByAjax(event, that, url) {
             }
         },
         error: function (error) {
+            button.prop('disabled', false);
             showHtmlOnAjaxResponse("contentErrors", error.responseJSON.errors)
         }
     });
@@ -233,6 +238,8 @@ function orderDrawer(url, order) {
 
 function uploadBoxByAjax(event, that, url) {
     event.preventDefault();
+    let button = $(that).find('button, input[type=submit]');
+    button.prop('disabled', true);
 
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -243,6 +250,7 @@ function uploadBoxByAjax(event, that, url) {
         contentType: false,
         dataType: 'json',
         success: function (response) {
+            button.prop('disabled', false);
 
             if (response.status) {
                 showAjaxMessageOnDivById("boxErrors", "success", response.msg)
@@ -269,6 +277,7 @@ function uploadBoxByAjax(event, that, url) {
             }
         },
         error: function (error) {
+            button.prop('disabled', false);
             showHtmlOnAjaxResponse("boxErrors", error.responseJSON.errors)
         }
     });
