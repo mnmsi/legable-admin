@@ -37,7 +37,7 @@ class MailVerificationController extends Controller
         if (Session::exists('subscriptionData')) {
             $data = json_decode(Session::get('subscriptionData'), true);
             Session::forget('subscriptionData');
-            return (new SubscriptionController())->subscribe((new CardRequest())->merge((array) $data));
+            return (new SubscriptionController())->subscribe((new CardRequest())->merge((array)$data));
         }
 
         return redirect()->route('phone.verification');

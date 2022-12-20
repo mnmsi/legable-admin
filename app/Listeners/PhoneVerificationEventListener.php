@@ -7,6 +7,7 @@ use App\Traits\System\VerificationTrait;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
@@ -39,8 +40,15 @@ class PhoneVerificationEventListener
         $generatedToken = $this->createToken('phone');
 
         if (!Str::contains(Auth::user()->phone, '+880')) {
+
             $message = "Welcome to Legable. Here is your OTP: $generatedToken->otp";
-            $this->sendOtpInMobile(Auth::user()->phone, $message);
+
+            try {
+                $this->sendOtpInMobile(Auth::user()->phone, $message);
+            }
+            catch (\Exception $exception) {
+                return false;
+            }
         }
     }
 }
