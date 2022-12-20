@@ -96,7 +96,6 @@
     @include('includes.modal.password',['id'=>'','close_id'=>'','class'=>''])
     @include('includes.modal.addBox')
     @include('includes.modal.file_show')
-    @include('includes.modal.helpCenter')
 
     {{-- page content end --}}
 @endsection

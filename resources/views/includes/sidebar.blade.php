@@ -136,7 +136,11 @@
                 </div>
                 <div>
                     <div class="profile-name">IOTA infotech Ltd.</div>
-                    <div class="subscription-type">Premium Member</div>
+                    @if(!check_plan())
+                        <div class="subscription-type">Free Membership</div>
+                    @else
+                        <div class="subscription-type">Premium Member</div>
+                    @endif
                 </div>
             </div>
             {{--   Profile end  --}}

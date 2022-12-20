@@ -44,7 +44,11 @@
                         </div>
                         <p>
                             <label>IOTA Infotech Ltd.</label>
-                            <label>Free Membership</label>
+                            @if(!check_plan())
+                                <label>Free Membership</label>
+                            @else
+                                <label>Paid Membership</label>
+                            @endif
                         </p>
                     </li>
                     <li class="body-item">
@@ -54,23 +58,27 @@
                         </a>
                     </li>
                     <li class="body-item">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('myPlan.my-plan')}}">
                             <img src="{{asset('image/sidebar/icon2.png')}}" alt=""/>
                             <label>My Plan</label>
                         </a>
                     </li>
                     <li class="body-item">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="javascript:void(0)" id="helpAndSupport">
                             <img src="{{asset('image/sidebar/icon3.png')}}" alt=""/>
                             <label>Help & Support</label>
                         </a>
                     </li>
-                    <li class="body-item">
-                        <a class="dropdown-item go-pro" href="#">
-                            <img src="{{asset('image/sidebar/icon4.png')}}" alt=""/>
-                            <label>Upgrade to Pro</label>
-                        </a>
-                    </li>
+
+                    @if(!check_plan())
+                        <li class="body-item">
+                            <a class="dropdown-item go-pro" href="{{route('myPlan.my-plan')}}">
+                                <img src="{{asset('image/sidebar/icon4.png')}}" alt=""/>
+                                <label>Upgrade to Pro</label>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="sign-out">
                         <form method="POST" action="{{ route('logout') }}" id="logoutForm">
                             @csrf

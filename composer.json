@@ -41,7 +41,8 @@
         "files": [
             "app/Helpers/EncryptDecrypt.php",
             "app/Helpers/DataManipulation.php",
-            "app/Helpers/FileManager.php"
+            "app/Helpers/FileManager.php",
+            "app/Helpers/SubscriptionHelper.php"
         ]
     },
     "autoload-dev": {

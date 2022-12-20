@@ -10,9 +10,16 @@
                         <div class="res-profile-name">
                             IOTA Infotech Ltd.
                         </div>
-                        <div class="res-profile-member-tag">
-                            Premium Member
-                        </div>
+
+                        @if(!check_plan())
+                            <div class="res-profile-member-tag">
+                                Free Member
+                            </div>
+                        @else
+                            <div class="res-profile-member-tag">
+                                Premium Member
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

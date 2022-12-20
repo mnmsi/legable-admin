@@ -28,7 +28,10 @@
             </div>
         </div>
     </div>
+
     @include('includes.footer')
+    @include('includes.modal.helpCenter')
+
 </main>
 <!--Main layout-->
 <script src="{{asset('/vendor/jquery-3.6.1.min.js')}}"></script>
@@ -68,6 +71,14 @@
     // $(window).on('load', function () {
     //     $("#loader").fadeOut();
     // })
+
+    $('#helpAndSupport').on('click', function () {
+        $('#helpCenterModal').modal('show');
+    });
+
+    $('#resHelpCenter').on('click', function () {
+        $('#helpCenterModal').modal('show');
+    });
 
     @if(Session::has('success'))
     toastr.success('{{session('success')}}')
