@@ -36,6 +36,13 @@ class FileController extends Controller
 
     public function store(FileRequest $request)
     {
+        if ($request->file_password_required && empty($request->security_key)) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['security_key' => 'The security key field is required.']);
+        }
+
         $content = Content::create($request->all());
 
         if (!$content) {
@@ -47,12 +54,19 @@ class FileController extends Controller
 
     public function storeAjax(AjaxFileRequest $request)
     {
+        if ($request->file_password_required && empty($request->security_key)) {
+            return response()->json([
+                'status' => false,
+                'errors'    => ["The security key field is required."],
+            ]);
+        }
+
         $content = Content::create($request->all());
 
         if (!$content) {
             return response()->json([
-                'status'      => false,
-                'msg'         => ["Unable to upload file. Please try again!!"],
+                'status' => false,
+                'errors'    => ["Unable to upload file. Please try again!!"],
             ]);
         }
 
@@ -60,7 +74,7 @@ class FileController extends Controller
 
         return response()->json([
             'status'      => true,
-            'msg'         => ["Successfully upload content!!"],
+            'errors'         => ["Successfully upload content!!"],
             'drawer_name' => $drawer->name,
             'data'        => $this->returnItemView($drawer, $request->content_id)->render()
         ]);

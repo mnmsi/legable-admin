@@ -68,13 +68,13 @@
                                 <div class="form-check form-switch d-flex justify-content-end align-items-center">
                                     <input class="form-check-input" type="checkbox" id="checkPassA"
                                            name="file_password_required"
-                                           value="1">
+                                           value="1"  {{old('file_password_required') ? 'checked' : ''}}>
                                     <label class="form-check-label ms-3" for="checkPassA">File Requires a
                                         Password</label>
                                 </div>
                             </div>
 
-                            <div class="mb-3 mt-1" style="display: none" id="passwordFieldA">
+                            <div class="mb-3 mt-1" style="{{old('file_password_required') ? 'display: block' : 'display: none'}}" id="passwordFieldA">
                                 <label for="security_keyA" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="security_keyA" name="security_key"
                                        placeholder="Enter password" value="{{old('security_key')}}">
