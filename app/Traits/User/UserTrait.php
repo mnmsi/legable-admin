@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 trait UserTrait
 {
-    public static $updateAttr = ['id', 'name', 'email', 'phone', 'avatar'];
+    public static $updateAttr = ['id', 'name', 'email', 'phone', 'phone_verified_at', 'avatar'];
 
     public function getUserUpdatableData()
     {

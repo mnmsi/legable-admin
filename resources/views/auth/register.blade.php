@@ -162,7 +162,6 @@
         }).on('change', function (e, countryData) {
             let country_code = $("#phone_2").intlTelInput("getSelectedCountryData").dialCode;
             let number = $(this).val()
-            console.log(`+${country_code}${number}`)
             $("#phone").val(`+${country_code}${number}`)
         });
         $("input[type='number']").on('keypress', function (e) {

@@ -1,5 +1,8 @@
 @extends("layouts.app")
 @section('title','Add new address')
+@section('style')
+    <link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">
+@endsection
 @section('content')
     @include('includes.pageHeader',['title'=>'Account Settings','list'=>['Dashboard','Account Settings'],'btn'=>[],'link'=>[]])
     <div class="block-min-height block-wrapper">
@@ -29,6 +32,20 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            @if(is_null($user['phone_verified_at']))
+                                <div class="form-group input-wrapper phone-input-wrapper">
+                                    <input id="phone" type="text" hidden="hidden" name="phone"
+                                           value="{{old('phone', $user['phone'])}}">
+                                    <label for="phoneUpdate" class="form-label d-block">Phone Number</label>
+                                    <input id="phoneUpdate" type="number"
+                                           class="form-control @error('phone') is-invalid @enderror"
+                                           value="{{ old('phone', $user['phone']) }}" autocomplete="false" autofocus
+                                           placeholder="Enter phone number" style="padding-left: 100px !important;">
+                                    @include('components.utils.form_field_alert', ['name'=>'phone'])
+                                </div>
+                            @endif
+
                             <div class="name_submit_button">
                                 <button type="submit">Update Name</button>
                             </div>
@@ -65,14 +82,16 @@
                                        autocomplete="false" value="{{$user['email']}}" disabled>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 mb-4">
-                            <div class="form-group input-wrapper">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input id="phone" type="text"
-                                       class="form-control"
-                                       autocomplete="false" value="{{$user['phone']}}" disabled>
+                        @if(!is_null($user['phone_verified_at']))
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="form-group input-wrapper">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input id="phone" type="text"
+                                           class="form-control"
+                                           autocomplete="false" value="{{$user['phone']}}" disabled>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </form>
             </div>
@@ -82,6 +101,7 @@
     </div>
 @endsection
 @section("script")
+    <script src="{{asset("vendor/intlTelInput-jquery.min.js")}}"></script>
     <script>
         $(document).ready(function () {
             $("#avatar").on("click", function () {
@@ -92,6 +112,22 @@
                     $("#avatar").attr("src", URL.createObjectURL(e.target.files[0]))
                 }
             });
+        });
+
+        $("#phoneUpdate").intlTelInput({
+            preferredCountries: ["us", "bd"],
+            separateDialCode: true,
+            initialCountry: "bd"
+        }).on('change', function (e, countryData) {
+            let country_code = $("#phoneUpdate").intlTelInput("getSelectedCountryData").dialCode;
+            let number = $(this).val()
+            $("#phone").val(`+${country_code}${number}`)
+        });
+
+        $("input[type='number']").on('keypress', function (e) {
+            if (e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) {
+                e.preventDefault();
+            }
         });
     </script>
 @endsection

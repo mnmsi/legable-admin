@@ -4,11 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Traits\User\PhoneVerificationTrait;
 use App\Traits\User\UserTrait;
 
 class UserController extends Controller
 {
-    use UserTrait;
+    use UserTrait, PhoneVerificationTrait;
 
     public function edit()
     {
@@ -19,7 +20,16 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request)
     {
-        $reqData = $request->only('name', 'avatar');
+        try {
+            if (!is_null($this->phoneLookUp($request->phone)['error_code'])) {
+                return $this->returnExceptionPhoneValidation(['phone' => 'Invalid phone number']);
+            }
+        }
+        catch (\Exception $e) {
+            return $this->returnExceptionPhoneValidation(['phone' => 'Invalid phone number']);
+        }
+
+        $reqData = $request->only('name', 'phone', 'avatar');
 
         if ($request->has('avatar')) {
             $this->deleteAvatar();
