@@ -38,7 +38,7 @@ class CardRequest extends FormRequest
         return [
             'name'      => 'required|string|max:255',
             'number'    => 'required|numeric',
-            'exp_month' => 'required|numeric|between:1,12|min:' . date('m'),
+            'exp_month' => 'required|numeric|between:1,12' . (date('Y') == $this->exp_year ? '|min:' . date('m') : ''),
             'exp_year'  => 'required|numeric|digits:4|min:' . (date('Y')),
             'cvc'       => 'required|numeric|digits_between:3,4',
         ];
