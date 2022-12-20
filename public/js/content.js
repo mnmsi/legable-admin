@@ -25,6 +25,7 @@ $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $("#contentErrors").html("")
     $("#contentDrawerDiv").hide()
     $("#contentBoxDiv").hide()
+    $("#passwordFieldA").hide()
 
     $(".custom-file-upload").text('select a file to upload');
     $('#passwordField').hide();
