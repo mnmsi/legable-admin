@@ -21,6 +21,8 @@
                 <div id="my_pdf_viewer">
                     <embed id="pdf_viewer" src=""/>
                 </div>
+
+                <div id="urlShow"></div>
             </div>
         </div>
     </div>

@@ -37,7 +37,7 @@ $("#uploadFileAjax").on("hidden.bs.modal", function () {
     $(".custom-file-upload").text('select a file to upload');
     $('#passwordField').hide();
 
-    $(this).find('button, input[type=button]').prop('disabled', true);
+    $(this).find('button, input[type=submit]').prop('disabled', false);
 });
 
 $("#addBoxModal").on("hidden.bs.modal", function () {
@@ -137,10 +137,105 @@ function getFile(url, formData) {
     });
 }
 
-function showContent(image) {
-    $("#allTypeContent").attr('src', image);
-    $("#pageModal").modal('hide')
-    $("#fileShowModal").modal('show')
+function showContent(image, mimeType) {
+
+    console.log(mimeType)
+
+    clearShowDiv();
+
+    if (mimeType === 'word') {
+        axios({
+            method: 'get',
+            url: `${image}`,
+            responseType: 'blob'
+        }).then(function (response) {
+
+            let reader = new FileReader();
+            reader.readAsArrayBuffer(response.data);
+
+            reader.onloadend = function (event) {
+
+                let arrayBuffer = reader.result;
+
+                mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(function (resultObject) {
+                    $("#word_container").html(resultObject.value);
+                })
+            };
+        })
+
+        $("#allTypeContent").hide();
+        $("#pageModal").modal('hide')
+        $("#fileShowModal").modal('show');
+
+    }
+    else if (mimeType === 'excel') {
+
+        axios({
+            method: 'get',
+            url: `${image}`,
+            responseType: 'blob'
+        }).then(function (response) {
+
+            let reader = new FileReader();
+            reader.readAsArrayBuffer(response.data);
+
+            reader.onload = function (event) {
+
+                let data = new Uint8Array(reader.result);
+                let work_book = XLSX.read(data, {type: 'array'});
+                let sheet_name = work_book.SheetNames;
+                let sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header: 1});
+
+                if (sheet_data.length > 0) {
+                    var table_output = '<table class="table table-striped table-bordered">';
+                    for (var row = 0; row < sheet_data.length; row++) {
+                        table_output += '<tr>';
+                        for (var cell = 0; cell < sheet_data[row].length; cell++) {
+                            if (row == 0) {
+                                table_output += '<th>' + sheet_data[row][cell] + '</th>';
+                            } else {
+                                table_output += '<td>' + sheet_data[row][cell] + '</td>';
+                            }
+                        }
+                        table_output += '</tr>';
+                    }
+
+                    table_output += '</table>';
+                    $('#excel_data').html(table_output);
+                }
+            }
+
+            $("#allTypeContent").hide();
+            $("#pageModal").modal('hide')
+            $("#fileShowModal").modal('show');
+        })
+    }
+    else if (mimeType === 'powerpoint') {
+        axios({
+            method: 'get',
+            url: `${image}`,
+            responseType: 'blob'
+        }).then(function (response) {
+
+            let reader = new FileReader();
+            reader.readAsDataURL(response.data);
+
+            reader.onloadend = function () {
+                $("#ppt_data").pptxToHtml({
+                    pptxFileUrl: reader.result,
+                });
+            }
+
+            $("#allTypeContent").hide();
+            $("#pageModal").modal('hide')
+            $("#fileShowModal").modal('show');
+        })
+    }
+    else {
+        $("#allTypeContent").attr('src', image);
+        $("#pageModal").modal('hide')
+        $("#fileShowModal").modal('show')
+    }
 }
 
 function addBoxClick(id) {

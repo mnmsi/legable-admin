@@ -35,7 +35,7 @@
             @foreach($contents as $content)
                 <div class="all-contents" id="{{$content['id']}}">
                     <x-content :type="$content['content_type']" :required-pass="$content['is_password_required']"
-                               title="{{$content['name']}}" url="{{thumbnail($content['file_url'])}}"
+                               title="{{$content['name']}}" url="{{thumbnail($content['file_url'])}}" :mime-type="mimeType($content['file_url'])"
                                id="{{$content['id']}}"/>
                 </div>
             @endforeach

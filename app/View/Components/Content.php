@@ -16,12 +16,13 @@ class Content extends Component
      *
      * @return void
      */
-    public function __construct(public $requiredPass, public $type, $title, $url, $id, $status = true)
+    public function __construct(public $requiredPass, public $type, $title, $url, $id, $status = true, $mimeType = '')
     {
-        $this->title  = $title;
-        $this->url    = $url;
-        $this->id     = $id;
-        $this->status = $status;
+        $this->title    = $title;
+        $this->url      = $url;
+        $this->id       = $id;
+        $this->status   = $status;
+        $this->mimeType = $mimeType;
     }
 
     /**
@@ -33,7 +34,7 @@ class Content extends Component
     {
         $click = $this->requiredPass
             ? "showSecurityPanel('$this->id', '$this->title', '$this->type')"
-            : "showContent('" . route('file.get.file', $this->id) . "')";
+            : "showContent('" . route('file.get.file', $this->id) . "', '" . $this->mimeType . "')";
 
         return view('components.content', compact('click'));
     }
