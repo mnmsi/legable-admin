@@ -110,6 +110,7 @@
             //hide all modal
             $('#closePlanModal').on('click', function () {
                 $('#planModal').modal('hide');
+                location.reload()
             });
 
             //plan modal
@@ -120,6 +121,7 @@
             $('#planModal').on('hidden.bs.modal', function () {
                 $('#planFormId')[0].reset();
                 $('.field-error-txt').text('');
+                location.reload()
             });
         })
 
