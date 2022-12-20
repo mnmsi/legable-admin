@@ -8,15 +8,23 @@ trait NotificationTrait
 {
     public function getNotification()
     {
-        $http = Http::get("http://34.207.161.107/wp-json/wl/v1/notifications")->object();
+        try {
+            $http = Http::get("http://34.207.161.107/wp-json/wl/v1/notifications")->object();
 
-        if ($http->status === true) {
-            return $http;
+            if ($http->status === true) {
+                return $http;
+            }
+
+            return (object)[
+                'status' => false,
+                'data'   => []
+            ];
         }
-
-        return [
-            'status'  => false,
-            'message' => 'Something went wrong'
-        ];
+        catch (\Exception $exception) {
+            return (object)[
+                'status' => false,
+                'data'   => []
+            ];
+        }
     }
 }
