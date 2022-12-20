@@ -13,7 +13,7 @@ trait StripePaymentTrait
         return $this->createToken($cardInfo);
     }
 
-    private function createToken($data)
+    public function createToken($data)
     {
         $stripe = new StripeClient(getenv('STRIPE_SECRET'));
         return $stripe->tokens->create([
