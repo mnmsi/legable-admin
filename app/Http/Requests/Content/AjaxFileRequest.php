@@ -34,6 +34,12 @@ class AjaxFileRequest extends FormRequest
                 'use_master_key' => 0
             ]);
         }
+
+        if ($this->content_type == 'box') {
+            $this->merge([
+                'drawer' => $this->box
+            ]);
+        }
     }
 
     /**
@@ -63,9 +69,9 @@ class AjaxFileRequest extends FormRequest
     protected function passedValidation()
     {
         if (!empty($this->drawer)) {
-            $drawer = Content::where('content_type', 'drawer')->find(myDecrypt($this->drawer));
+            $drawer = Content::where('content_type', $this->content_type)->find(myDecrypt($this->drawer));
             if (!$drawer) {
-                abort(404);
+                $this->errorRes("Something went wrong. Please try again later.");
             }
 
             $parent_id = $drawer->id;
@@ -77,7 +83,7 @@ class AjaxFileRequest extends FormRequest
         }
 
         if (!$this->hasFile('file') && !$this->file('file')->isValid()) {
-            abort(404);
+            $this->errorRes("Something went wrong. Please try again later.");
         }
 
         $this->merge([
@@ -86,8 +92,7 @@ class AjaxFileRequest extends FormRequest
             'name'                   => $this->file->getClientOriginalName(),
             'file_url'               => file_upload($password, $this->file),
             'password'               => $password,
-            'is_password_required'   => 1,
-            //            'is_password_required'   => $this->file_password_required ?? 1,
+            'is_password_required'   => ($this->file_password_required || $this->use_master_key) ? 1 : 0,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
     }
@@ -99,6 +104,16 @@ class AjaxFileRequest extends FormRequest
                 'status' => false,
                 'errors' => view("components.utils.top_alert", ['errors' => $validator->errors()])->render(),
             ], 422)
+        );
+    }
+
+    public function errorRes($msg)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => false,
+                'errors' => $msg,
+            ])
         );
     }
 }

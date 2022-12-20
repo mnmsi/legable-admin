@@ -50,7 +50,10 @@ class FileController extends Controller
         $content = Content::create($request->all());
 
         if (!$content) {
-            abort(404);
+            return response()->json([
+                'status'      => false,
+                'msg'         => ["Unable to upload file. Please try again!!"],
+            ]);
         }
 
         $drawer = Content::find(myDecrypt($request->content_id));

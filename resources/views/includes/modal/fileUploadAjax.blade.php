@@ -49,7 +49,7 @@
 
                             <div class="mb-3" id="contentBoxDiv" style="display: none">
                                 <label for="formFile" class="form-label">Select Box</label>
-                                <select class="form-select" aria-label="Default select example" name="drawer"
+                                <select class="form-select" aria-label="Default select example" name="box"
                                         id="boxSelectId">
                                     <option value="">select a Drawer</option>
                                     @foreach($boxes as $box)
