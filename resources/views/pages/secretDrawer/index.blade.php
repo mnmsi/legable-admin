@@ -26,9 +26,7 @@
     @include('includes.modal.file_show')
 
 @endsection
-
 @section('script')
-    <script src="{{asset("js/content.js")}}"></script>
     <script>
         $(document).ready(function () {
             $(".addBoxCls").on("click", function () {
@@ -54,11 +52,6 @@
 
             //    show file name
             $("#fileUpload").on("change", function (e) {
-                $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
-            })
-
-            //    show file name
-            $("#file-upload").on("change", function (e) {
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
             })
         })

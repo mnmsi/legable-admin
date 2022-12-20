@@ -301,3 +301,6 @@ $("#checkPassW").change(function () {
 });
 
 
+function fileChange() {
+    $(".custom-file-upload").text(event.target.files[0].name);
+}

@@ -31,7 +31,7 @@
                                 <label for="fileUpload" class="custom-file-upload">
                                     select a file to upload
                                 </label>
-                                <input id="fileUpload" type="file" name="file" style="display: none"/>
+                                <input id="fileUpload" type="file" name="file" style="display: none" onchange="fileChange()"/>
                                 @include("components.utils.form_field_alert", ['name'=> 'file'])
                             </div>
 
