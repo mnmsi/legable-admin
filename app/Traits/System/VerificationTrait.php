@@ -14,7 +14,10 @@ trait VerificationTrait
 {
     public function create($data)
     {
-        return UserVerification::create($data);
+        return UserVerification::updateOrCreate([
+            'user_id' => Auth::id(),
+            'gateway' => $data['gateway'],
+        ], $data);
     }
 
     public function createToken($gateway)
