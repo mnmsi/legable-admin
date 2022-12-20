@@ -6,8 +6,15 @@ $("#pageModal").on("hidden.bs.modal", function () {
 
 $("#fileShowModal").on("hidden.bs.modal", function () {
     $("#allTypeContent").attr('src', "")
+    $("#allTypeContent").show();
     $("#pdf_viewer").attr('src', "")
     $("#my_pdf_viewer").hide();
+    $("#statusDiv").html("");
+    $("#informationDiv").html("");
+    $("#excel_data").html("");
+    $("#word_container").html("");
+    $("#pdf_viewer").attr('src', "")
+
 });
 
 $("#helpCenterModal").on("hidden.bs.modal", function () {
@@ -29,6 +36,8 @@ $("#uploadFileAjax").on("hidden.bs.modal", function () {
 
     $(".custom-file-upload").text('select a file to upload');
     $('#passwordField').hide();
+
+    $(this).find('button, input[type=button]').prop('disabled', true);
 });
 
 $("#addBoxModal").on("hidden.bs.modal", function () {
@@ -76,6 +85,7 @@ function checkSecurity(event, that, url) {
 
 function loadDrawer(url, formData, dataObj) {
     $("#contents").load(`${url}?${formData}`, function (responseTxt, statusTxt) {
+        $("#unlockBtn").prop('disabled', false);
         if (statusTxt === 'error') {
             let rep = JSON.parse(responseTxt);
             $("#message").html(rep.message)
@@ -96,6 +106,7 @@ function getFile(url, formData) {
         data: formData,
         success: function (response) {
 
+            $("#unlockBtn").prop('disabled', false);
             clearShowDiv();
 
             if (response.fileMime) {
@@ -120,6 +131,7 @@ function getFile(url, formData) {
             }
 
         }, error: function (error) {
+            $("#unlockBtn").prop('disabled', false);
             showSmallText('message', 'danger', error.responseJSON.message ?? "Something went wrong!!")
         }
     });

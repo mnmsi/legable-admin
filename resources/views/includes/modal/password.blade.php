@@ -28,7 +28,7 @@
                                 <small class="text-small text-danger ml-3" id="message"></small>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary my-4 submit-btn">Unlock</button>
+                                <button type="submit" class="btn btn-primary my-4 submit-btn" id="unlockBtn">Unlock</button>
                             </div>
                         </div>
                     </div>
