@@ -39,11 +39,11 @@
                                 {{-- remember me and forget password --}}
                                 <div class="remember_me_wrapper">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember"
+                                        {{--<input class="form-check-input" type="checkbox" name="remember"
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
-                                        </label>
+                                        </label>--}}
                                     </div>
                                     <div class="forget-password-link">
                                         @if (Route::has('password.request'))
