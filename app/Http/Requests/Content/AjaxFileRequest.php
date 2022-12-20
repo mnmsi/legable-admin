@@ -90,7 +90,7 @@ class AjaxFileRequest extends FormRequest
             'content_type'           => 'file',
             'parent_id'              => $parent_id,
             'name'                   => $this->file->getClientOriginalName(),
-            'file_url'               => file_upload($password, $this->file),
+            'file_url'               => file_upload($password, $this->file, ($drawer->id . '_' . $drawer->name) ?? microtime()),
             'password'               => $password,
             'is_password_required'   => ($this->file_password_required || $this->use_master_key) ? 1 : 0,
             'is_able_use_master_key' => $this->use_master_key,

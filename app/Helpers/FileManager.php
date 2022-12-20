@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-function file_upload($password, $file)
+function file_upload($password, $file, $dir)
 {
-    $fileUrl     = 'content/' . $file->getClientOriginalName();
+    $fileUrl     = 'content/' . $dir . '/' . $file->getClientOriginalName();
     $fileContent = myEncrypt($file->getContent(), $password);
 
     $binToHex = bin2hex($fileContent);
