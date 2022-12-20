@@ -261,6 +261,8 @@ function uploadBoxByAjax(event, that, url) {
                     $("#addBoxModal").modal('hide')
                 }, 2000)
 
+                location.reload()
+
             } else {
                 showAjaxMessageOnDivById("boxErrors", "danger", response.msg)
             }
