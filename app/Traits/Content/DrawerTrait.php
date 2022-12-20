@@ -78,14 +78,14 @@ trait DrawerTrait
 
     public function deleteDrawerAndContents($drawer)
     {
-        $drawer->drawerItems->map(function ($item) use ($drawer) {
+        /*$drawer->drawerItems->map(function ($item) use ($drawer) {
 
             $fileUrl = myDecrypt($item->file_url);
 
             if (Storage::exists(myDecrypt($item->file_url))) {
                 Storage::delete(myDecrypt($item->file_url));
             }
-        });
+        });*/
 
         $drawer->delete();
         $drawer->drawerItems()->delete();
