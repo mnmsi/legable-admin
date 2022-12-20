@@ -39,7 +39,7 @@
                 <ul class="dropdown-menu user-profile">
                     <li class="u-profile">
                         <div class="p-image">
-                            <img src="{{asset('image/common/profile.svg')}}" alt="" class="img-fluid avatar">
+                            <img src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="" class="img-fluid avatar">
                             <img src="{{asset('image/sidebar/badge.png')}}" alt="" class="badgeIcon">
                         </div>
                         <p>
