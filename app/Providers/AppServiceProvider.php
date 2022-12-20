@@ -29,14 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (App::environment('local')) {
-            $ip = "220.158.204.250";
-        } else {
-            $ip = request()->ip();
-        }
-
-        $location = Location::get($ip);
-
+        $location = Location::get(request()->ip());
         date_default_timezone_set($location->timezone ?? config('app.timezone'));
 
         View::share('notifications', $this->getNotification());
