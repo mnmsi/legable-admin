@@ -33,13 +33,13 @@
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img
                         src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}"
-                        alt="profile" height="40" width="40px" style="border-radius: 50%">
+                        alt="profile" height="40" width="40px" style="border-radius: 50%; object-fit: cover">
                 </a>
 
                 <ul class="dropdown-menu user-profile">
                     <li class="u-profile">
                         <div class="p-image">
-                            <img src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="" class="img-fluid avatar">
+                            <img style="object-fit: cover" src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="" class="img-fluid avatar">
                             <img src="{{asset('image/sidebar/badge.png')}}" alt="" class="badgeIcon">
                         </div>
                         <p>

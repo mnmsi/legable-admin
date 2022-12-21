@@ -32,7 +32,6 @@
                                     </span>
                                 @enderror
                             </div>
-
                             @if(is_null($user['phone_verified_at']))
                                 <div class="form-group input-wrapper phone-input-wrapper">
                                     <input id="phone" type="text" hidden="hidden" name="phone"
@@ -47,13 +46,12 @@
                             @endif
 
                             <div class="name_submit_button">
-                                <button type="submit">Update Name</button>
+                                <button type="submit">Update</button>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 mb-4 ">
                             {{--  photo submit form--}}
                             <div class="d-flex justify-content-center flex-column">
-
                                 @if ($user['avatar'])
                                     <img id="avatar"
                                          src="{{get_image($user['avatar'])}}"
@@ -66,8 +64,8 @@
                                          style="border-radius: 50%; object-fit: cover; cursor: pointer; margin: 0 auto 24px  auto">
                                 @endif
                                 <input type="file" hidden id="file" name="avatar" accept="image/*">
-                                <button class="photo_upload_button"><img src="" alt=""><img
-                                        src="{{asset("image/Auth/upload.png")}}" alt=""> Upload Photo
+                                <button onclick="$('#file').click()" type="button" class="photo_upload_button"><img src="" alt=""><img
+                                            src="{{asset("image/Auth/upload.png")}}" alt=""> Upload
                                 </button>
                             </div>
                         </div>

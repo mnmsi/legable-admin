@@ -24,9 +24,16 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:255|unique:App\Models\User\User,phone',
-        ];
+        if($this->phone == Auth::user()->phone) {
+           return [
+               'name' => 'required|string|max:255',
+           ];
+        }else{
+            return [
+                'name' => 'required|string|max:255',
+                'phone' => 'required|string|max:255|unique:App\Models\User\User,phone',
+            ];
+        }
+
     }
 }

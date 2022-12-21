@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Traits\User\PhoneVerificationTrait;
 use App\Traits\User\UserTrait;
+use Auth;
 
 class UserController extends Controller
 {
@@ -28,17 +29,13 @@ class UserController extends Controller
         catch (\Exception $e) {
             return $this->returnExceptionPhoneValidation(['phone' => 'Invalid phone number']);
         }
-
         $reqData = $request->only('name', 'phone', 'avatar');
-
         if ($request->has('avatar')) {
             $this->deleteAvatar();
             $path = $this->storeAvatar($request->file('avatar'));
-
             if ($path === false) {
                 return $this->error("Unable to upload avatar!");
             }
-
             $reqData['avatar'] = $path;
         }
 
