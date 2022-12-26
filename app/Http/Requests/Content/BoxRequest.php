@@ -50,7 +50,7 @@ class BoxRequest extends FormRequest
     public function rules()
     {
         return [
-            'box_name'       => [
+            'box_name'          => [
                 'required',
                 'string',
                 'max:255',
@@ -77,7 +77,7 @@ class BoxRequest extends FormRequest
             'parent_id'              => $drawer->id,
             'name'                   => $this->box_name,
             'password'               => $drawer->password,
-            'is_password_required'   => $this->password_required,
+            'is_password_required'   => $this->use_master_key ? 1 : $this->password_required,
             'is_able_use_master_key' => $this->use_master_key,
         ]);
     }
