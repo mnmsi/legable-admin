@@ -42,7 +42,14 @@ class HelpCenterMailNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $user = Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            $user = (object)[
+                'name'  => $this->data['name'],
+                'email' => $this->data['email'],
+            ];
+        }
 
         return (new MailMessage)
             ->subject($this->data['subject'] . ' from the user ' . $user->name . ' and email ' . $user->email)
