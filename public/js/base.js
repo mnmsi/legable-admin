@@ -16,9 +16,9 @@ window.onpopstate = (event) => {
         } else {
             $("#contents").html(state.data)
         }
+    } else {
+        location.reload()
     }
-
-    location.reload()
 };
 
 window.onclick = (event) => {
