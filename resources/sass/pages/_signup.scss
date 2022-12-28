@@ -172,11 +172,11 @@ Registration form end
     margin: 60px auto auto;
     width: 492px;
     @include media("<=991px"){
-        width: 100%;
+        width: auto;
         height: 50px;
+        margin: 16px auto auto auto;
     }
     height: 58px;
-
     img{
         margin-left: 18px;
     }

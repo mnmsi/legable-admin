@@ -188,7 +188,8 @@
 .res-profile-icon-wrapper {
     display: flex;
     align-items: center;
-    gap: 25px;
+   justify-content: space-between;
+    gap: 20px;
 }
 
 .res-page-name {

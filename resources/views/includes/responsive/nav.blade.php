@@ -2,7 +2,7 @@
 <nav class="res-nav">
     <div class="res-navbar-wrapper">
         <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-{{--            <img src="{{asset('image/common/expandNav.svg')}}" alt="">--}}
+            <img src="{{asset('image/common/expandNav.svg')}}" alt="">
         </div>
         <div class="res-page-name">@yield('title')</div>
         <div class="res-profile-icon-wrapper">
@@ -13,7 +13,8 @@
             @endif
             <div class="dropdown dropdown-list">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('image/common/profile.svg')}}" alt="profile">
+{{--                    <img src="{{asset('image/common/profile.svg')}}" alt="profile">--}}
+                    <img width="24px" height="24px" style="object-fit: cover;border-radius: 50%" src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="" class="">
                 </a>
                 <ul class="dropdown-menu user-profile">
                     <li class="u-profile">

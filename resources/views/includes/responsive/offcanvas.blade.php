@@ -4,7 +4,8 @@
             <div class="res-off-canvas-header">
                 <div class="res-profile-wrapper">
                     <div class="res-profile-image-wrapper">
-                        <img src="{{asset('image/common/profile.svg')}}" alt="image">
+                        <img height="24px" width="24px"  style="object-fit: cover; border-radius: 50%" src="{{Auth::user()->avatar ?get_image(Auth::user()->avatar) : asset("image/common/profile.svg")}}" alt="" class="img-fluid">
+{{--                        <img src="{{asset('image/common/profile.svg')}}" alt="image">--}}
                     </div>
                     <div class="res-profile-name_wrapper">
                         <div class="res-profile-name">
@@ -53,6 +54,16 @@
                             <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">
                         </div>
                         <div class="link-name">All Contents</div>
+                    </div>
+                </a>
+                {{-- single menu item --}}
+                {{--            single menu item--}}
+                <a href="{{ route('information.index') }}" class="single-menu-wrapper {{ (request()->segment(1)=='information') ? 'active' : '' }}">
+                    <div class="menu-content-wrapper">
+                        <div class="icon-wrapper">
+                            <img src="{{asset("image/sidebar/inbox.svg")}}" alt="icon">
+                        </div>
+                        <div class="link-name">Information</div>
                     </div>
                 </a>
                 {{-- single menu item --}}
