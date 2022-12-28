@@ -62,7 +62,7 @@ class DrawerRequest extends FormRequest
             'content_type'           => 'drawer',
             'name'                   => $this->drawer_name,
             'password'               => Hash::make($this->drawer_password),
-            'is_password_required'   => $this->password_required,
+            'is_password_required'   => $this->master_key ? 1 : $this->password_required,
             'is_able_use_master_key' => $this->master_key,
         ]);
     }
