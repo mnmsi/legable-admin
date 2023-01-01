@@ -45,7 +45,7 @@
                                 </select>
                                 @include('components.utils.form_field_alert', ['name' => 'drawer'])
                             </div>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-start align-items-lg-center flex-column flex-lg-row">
 
                                 <div class="form-check form-switch d-flex justify-content-end align-items-center">
                                     <input  class="form-check-input" type="checkbox" id="master_key"

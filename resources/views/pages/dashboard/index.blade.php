@@ -101,8 +101,11 @@
 @endsection
 @section('script')
     <script>
-        $(document).ready(function () {
 
+        $(document).ready(function () {
+            $("#createBoxModalClick").on("click", function (e) {
+                $('#addBoxModal').modal('show');
+            })
             @if($errors->any())
             @if($errors->has('file') || $errors->has('drawer') || $errors->has('security_key'))
             showContentModal(this);
@@ -113,6 +116,8 @@
             $("#file-upload").on("change", function (e) {
                 $(".custom-file-upload").text($(this).val().replace(/C:\\fakepath\\/i, ''));
             })
+
+
 
             $("#contents").sortable({
                 animation: 200,
@@ -143,8 +148,6 @@
 
             //create box
             $('#dashCreateBox').on('click', function () {
-                // alert(121)
-                console.log('create box')
                 $('#addBoxModal').modal('show');
             });
 

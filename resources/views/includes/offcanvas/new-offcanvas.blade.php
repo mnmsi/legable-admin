@@ -10,8 +10,8 @@
    <li id="openNewInfo"><a href="javascript:void(0)"><img src="{{ asset('image/off-canvas/new-info.svg') }}"
       alt="">New
      Information</a></li>
-   <li><a href="#"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Create Box</a></li>
-   <li><a href="#"><img src="{{ asset('image/off-canvas/drawer.svg') }}" alt="">New Drawer</a></li>
+   <li><a id="createBoxModalClick" href="javascript:void(0)"><img src="{{ asset('image/off-canvas/create.svg') }}" alt="">Create Box</a></li>
+   <li><a href="{{route("drawer.add")}}"><img src="{{ asset('image/off-canvas/drawer.svg') }}" alt="">New Drawer</a></li>
   </ul>
  </div>
 </div>
