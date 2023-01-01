@@ -1,37 +1,56 @@
 .add-new-offcanvas {
-    &.info-offcanvas {
-        height: 50%;
-    }
+  &.info-offcanvas {
+    height: 50%;
+  }
+
+  border-radius: 10px 10px 0px 0px;
+
+  .offcanvas-header {
+    background: #175067;
     border-radius: 10px 10px 0px 0px;
-    .offcanvas-header {
-        background: #175067;
-        border-radius: 10px 10px 0px 0px;
-        padding: 24px;
-        height: 56px;
-        .offcanvas-title {
-            color: #fff;
-            font-weight: 600;
-            font-size: 15px;
-            line-height: 18px;
-        }
-        .btn-close {
-            opacity: 1;
-        }
+    padding: 24px;
+    height: 56px;
+
+    .offcanvas-title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 18px;
     }
-    .offcanvas-menu {
-        list-style: none;
-        li {
-            margin: 30px 0;
-            a {
-                display: flex;
-                align-items: center;
-                gap: 18px;
-                font-weight: 500;
-                font-size: 13px;
-                text-decoration: none;
-                line-height: 18px;
-                color: #737373;
-            }
-        }
+
+    .btn-close {
+      opacity: 1;
     }
+  }
+
+  .offcanvas-menu {
+    list-style: none;
+
+    li {
+      margin: 30px 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-weight: 500;
+        font-size: 13px;
+        text-decoration: none;
+        line-height: 18px;
+        color: #737373;
+      }
+
+      button {
+        padding: 0;
+        background: none;
+        border: none;
+        font-size: 13px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        color: #737373;
+        gap: 18px;
+      }
+    }
+  }
 }

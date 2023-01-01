@@ -19,7 +19,7 @@
                               id="fileUploadForm">
                             @csrf
                             <div class="mb-3">
-                                <h5 class="sub-header5 mb-3">Upload a File <small class="text-secondary"
+                                <h5 class="sub-header5 mb-3 d-lg-block d-flex flex-column">Upload a File <small class="text-secondary"
                                                                                   style="font-size: 10px">(N.B.: jpeg,
                                         bmp, png, gif, svg, pdf, docx, pptx, xls, csv)</small></h5>
                                 <label for="file-upload" class="custom-file-upload">
@@ -40,7 +40,7 @@
                                 @include("components.utils.form_field_alert", ['name'=> 'drawer'])
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-start align-items-lg-center flex-column flex-lg-row">
                                 <div class="form-check form-switch d-flex justify-content-end align-items-center">
                                     <input class="form-check-input" type="checkbox" id="masterKeyW"
                                            name="use_master_key" value="1" checked>

@@ -8,7 +8,6 @@
                     Information Templates
                 </div>
                 <div class="body-item">
-
                     @foreach($informationTypes as $info)
                         <a href="{{route('information.add', encrypt($info->id))}}"><p class="add-dash-icon-1"
                                                                              id="infoModalClose">{{$info->name}}</p></a>

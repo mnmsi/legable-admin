@@ -32,7 +32,9 @@
             $(".addBoxCls").on("click", function () {
                 $('#addBoxModal').modal('show');
             });
-
+            $("#fileUpload").on("click", function () {
+                window.location.href = "/drawer/add";
+            });
             $("#contents").sortable({
                 animation: 200,
                 // dropOnEmpty: false,

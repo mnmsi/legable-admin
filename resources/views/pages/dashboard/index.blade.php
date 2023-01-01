@@ -143,6 +143,8 @@
 
             //create box
             $('#dashCreateBox').on('click', function () {
+                // alert(121)
+                console.log('create box')
                 $('#addBoxModal').modal('show');
             });
 

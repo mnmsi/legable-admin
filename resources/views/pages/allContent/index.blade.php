@@ -5,6 +5,7 @@
         <div id="contents">
             @include('components.contents.content', ['showBtn' => false, 'upload_content_btn' => true])
         </div>
+        <x-add-new-icon id="addContent"/>
     </div>
 
     @include('includes.modal.fileUpload')
@@ -21,7 +22,7 @@
 
             @if($errors->any())
             @if($errors->has('file') || $errors->has('drawer') || $errors->has('security_key'))
-            showContentModal(this);
+            Unlock(this);
             @endif
             @endif
 
@@ -32,6 +33,15 @@
             $('#pageModalClose, #addBoxModalClose').on('click', function () {
                 $('#pageModal').modal('hide');
                 $('#addBoxModal').modal('hide');
+            });
+
+            $("#addContent").on("click", function () {
+                showContentModal();
+            });
+
+            $("Unlock").on("click", function () {
+                alert(121)
+                // $('#addBoxModal').modal('show');
             });
 
             $("#contents").sortable({

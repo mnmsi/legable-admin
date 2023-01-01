@@ -8,10 +8,10 @@
     </div>
     <div class="offcanvas-body">
         <ul class="offcanvas-menu">
-            <li id="openNewInfo"><a href="javascript:void(0)"><img src="{{ asset('image/off-canvas/new-info.svg') }}"
-                                                                   alt="">New Information</a></li>
+{{--            <li id="openNewInfo"><a href="javascript:void(0)"><img src="{{ asset('image/off-canvas/new-info.svg') }}"--}}
+{{--                                                                   alt="">New Information</a></li>--}}
             @foreach($informationTypes as $info)
-                <li><a href="{{route('information.add', $info->id)}}"><img
+                <li><a href="{{route('information.add', encrypt($info->id))}}"><img
                             src="{{ asset('image/off-canvas/create.svg') }}" alt="">{{$info->name}}</a>
                 </li>
             @endforeach

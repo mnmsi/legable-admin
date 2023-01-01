@@ -39,8 +39,9 @@
             @include media("<=991px") {
                 padding: 0 10px;
                 gap: 15px;
-                grid-template-columns: repeat(auto-fit, 160px);
-                justify-content: space-evenly;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     }
@@ -113,8 +114,10 @@
             line-height: 21px;
             margin-bottom: 0;
             @include media("<=991px") {
-                line-break: anywhere;
                 text-align: left;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
 
