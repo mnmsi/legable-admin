@@ -86,7 +86,7 @@
                 {{-- single menu item --}}
                 {{--            single menu item--}}
                 <a href="/account-settings"
-                   class="single-menu-wrapper {{request()->is("account-settings") ? "active" : ""}}">
+                   class="single-menu-wrapper {{request()->is("account-settings") || request()->is("user/edit") ? "active" : ""}}">
                     <div class="menu-content-wrapper">
                         <div class="icon-wrapper">
                             <img src="{{asset("image/sidebar/account.svg")}}" alt="icon">
@@ -97,7 +97,7 @@
                 {{-- single menu item --}}
                 {{--   single menu item--}}
                 <a href="/security/settings"
-                   class="single-menu-wrapper {{request()->is("security-settings") ? "active" : ""}}">
+                   class="single-menu-wrapper {{request()->is("security/settings") ? "active" : ""}}">
                     <div class="menu-content-wrapper">
                         <div class="icon-wrapper">
                             <img src="{{asset("image/sidebar/security.svg")}}" alt="icon">
@@ -133,10 +133,13 @@
                 {{-- single menu item --}}
                 {{--  logout start--}}
                 <div class="logout-button-wrapper">
-                    <a href="#">
-                        <img src="{{asset("image/sidebar/logout.svg")}}" alt="image">
-                        Logout
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                        @csrf
+                        <a class="dropdown-item" href="javascript:void(0)"
+                           onclick="document.getElementById('logoutForm').submit();">
+                            <img src="{{asset('image/sidebar/logout.svg')}}" alt=""/>
+                            <label class="sign_out_button">Sign out</label>
+                        </a>
                 </div>
                 {{--   logout end--}}
             </div>

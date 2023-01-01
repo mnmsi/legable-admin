@@ -14,7 +14,7 @@
 
     .account-edit-icon {
         @include media("<=991px") {
-            display: none;
+            //display: none;
         }
     }
 
@@ -183,7 +183,7 @@
 
 @include media("<=991px") {
     .add-new-box {
-        display: none;
+        //display: none;
     }
 }
 
@@ -206,12 +206,12 @@
     }
 }
 
-.create-account-button {
-    display: none;
-    @include media("<=991px") {
-        display: block;
-    }
-}
+//.create-account-button {
+//    display: none;
+//    @include media("<=991px") {
+//        display: block;
+//    }
+//}
 
 
 //==================//

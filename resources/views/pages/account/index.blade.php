@@ -57,9 +57,9 @@
                             src="{{asset("image/common/edit.svg")}}" alt="edit" class="img-fluid"></a>
                 @endif
             </div>
-            <div class="create-account-button">
-                <a href="#"><img src="{{asset("image/common/squire-add.svg")}}" alt="edit" class="img-fluid"></a>
-            </div>
+{{--            <div class="create-account-button">--}}
+{{--                <a href="#"><img src="{{asset("image/common/squire-add.svg")}}" alt="edit" class="img-fluid"></a>--}}
+{{--            </div>--}}
         </div>
         {{--  title bar end--}}
         <div class="row align-items-stretch mt-3">
@@ -83,7 +83,7 @@
                             <div class="address-box-content">
                                 <p>{{$address['full_address']}}</p>
                             </div>
-                            <a href="#" class="edit-address-button">Edit Address</a>
+{{--                            <a href="#" class="edit-address-button">Edit Address</a>--}}
                         </div>
                     </div>
                 </div>

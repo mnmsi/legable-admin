@@ -7,8 +7,8 @@
         {{--        title bar start--}}
         <div class="my-plan-title-bar payment-method-title">
             <p>Payment Methods</p>
-            <div class="add-payment-button"><a href=""><img src="{{asset("image/common/squire-add.svg")}}" alt=""></a>
-            </div>
+{{--            <div class="add-payment-button"><a href=""><img src="{{asset("image/common/squire-add.svg")}}" alt=""></a>--}}
+{{--            </div>--}}
         </div>
         {{-- title bar end--}}
         {{--   payment getway start  --}}
@@ -51,7 +51,6 @@
                         </div>
                     </label>
                 @endforeach
-
                 <a href="{{route("billing.card.add")}}">
                     <div class="single-payment-card add-card">
                         <img src="{{asset("image/billing/plus.svg")}}" alt="">
@@ -75,12 +74,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {{--                    <tr>--}}
-                    {{--                        <td>30 June 2022</td>--}}
-                    {{--                        <td>Legable Premium Plan</td>--}}
-                    {{--                        <td class="pe-5"><strong>$ 30.00</strong></td>--}}
-                    {{--                        <td><a href="">Download</a></td>--}}
-                    {{--                    </tr>--}}
                     @foreach($billings as $item)
                         <tr class="ps-5">
                             <td>{{$item['date']}}</td>
@@ -92,49 +85,20 @@
                     </tbody>
                 </table>
             </div>
-            {{--        billing history for mobile responsive start--}}
-            <div class="res-single-table-content">
-                <div class="res-single-table-header">
-                    <div class="res-single-date">30 June 2022</div>
-                    <div class="res-single-price">$ 30.00</div>
-                </div>
-                <div class="res-table-body">
-                    <div class="res-plan-text">Legable Premium Plan</div>
-                    <div class="res-plan-download">
-                        <a href="#">Download</a>
+            @foreach($billings as $item)
+                <div class="res-single-table-content">
+                    <div class="res-single-table-header">
+                        <div class="res-single-date">{{$item['date']}}</div>
+                        <div class="res-single-price">${{$item['amount']}}</div>
+                    </div>
+                    <div class="res-table-body">
+                        <div class="res-plan-text">{{$item['details']}}</div>
+                        <div class="res-plan-download">
+                            <a href="{{$item['download']}}">Download</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{--        billing history for mobile responsive end--}}
-            {{--        billing history for mobile responsive start--}}
-            <div class="res-single-table-content">
-                <div class="res-single-table-header">
-                    <div class="res-single-date">30 June 2022</div>
-                    <div class="res-single-price">$ 30.00</div>
-                </div>
-                <div class="res-table-body">
-                    <div class="res-plan-text">Legable Premium Plan</div>
-                    <div class="res-plan-download">
-                        <a href="#">Download</a>
-                    </div>
-                </div>
-            </div>
-            {{--        billing history for mobile responsive end--}}
-            {{--        billing history for mobile responsive start--}}
-            <div class="res-single-table-content">
-                <div class="res-single-table-header">
-                    <div class="res-single-date">30 June 2022</div>
-                    <div class="res-single-price">$ 30.00</div>
-                </div>
-                <div class="res-table-body">
-                    <div class="res-plan-text">Legable Premium Plan</div>
-                    <div class="res-plan-download">
-                        <a href="#">Download</a>
-                    </div>
-                </div>
-            </div>
-            {{--        billing history for mobile responsive end--}}
-            {{--        billing history end--}}
+            @endforeach
             {{--  main page end--}}
         </div>
 @endsection
